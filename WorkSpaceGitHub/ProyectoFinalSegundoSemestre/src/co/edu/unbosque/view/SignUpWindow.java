@@ -3,6 +3,7 @@ package co.edu.unbosque.view;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -17,6 +18,7 @@ public class SignUpWindow extends JFrame {
 
 	private JLabel titulo;
 	private JTextField usuario, contraseña;
+	private JButton botonRegistro;
 
 	public SignUpWindow() {
 
@@ -45,6 +47,15 @@ public class SignUpWindow extends JFrame {
 //		contraseña.setFont(new Font("Arial", 1, 25));
 //		contraseña.setForeground(Color.white);
 		add(contraseña);
+
+		botonRegistro = new JButton();
+		botonRegistro.setBounds(400, 500, 165, 99);
+		botonRegistro.setToolTipText("Boton para guardar el usuario y contraseña");
+		botonRegistro.setBackground(new Color(0, 0, 0, 0));
+//		botonRegistro.setOpaque(false);
+//		botonRegistro.setContentAreaFilled(false);
+//		botonRegistro.setBorderPainted(false);
+		add(botonRegistro);
 	}
 
 }

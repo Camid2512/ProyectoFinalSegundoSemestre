@@ -16,6 +16,8 @@ public class Controller implements ActionListener {
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
 
+		agregarLectores();
+
 	}
 
 	public void run() {
@@ -26,11 +28,11 @@ public class Controller implements ActionListener {
 
 	public void agregarLectores() {
 
+		logWind.getRegister().addActionListener(this);
+		logWind.getRegister().setActionCommand("BotonRegistro");
+
 		logWind.getLogin().addActionListener(this);
 		logWind.getLogin().setActionCommand("BOTONLOGING");
-
-		logWind.getRegister().addActionListener(this);
-		logWind.getRegister().setActionCommand("BOTONREGISTER");
 
 	}
 
@@ -38,10 +40,14 @@ public class Controller implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
-		case "BOTONREGISTER": {
+		case "BotonRegistro": {
 
 			logWind.setVisible(false);
 			signWind.setVisible(true);
+
+			break;
+		}
+		case "BOTONLOGIN": {
 
 			break;
 		}

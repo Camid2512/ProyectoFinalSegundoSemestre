@@ -29,7 +29,7 @@ public class LoginWindow extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setTitle("Iniciar sesión");
-		setDefaultCloseOperation(HIDE_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
 
