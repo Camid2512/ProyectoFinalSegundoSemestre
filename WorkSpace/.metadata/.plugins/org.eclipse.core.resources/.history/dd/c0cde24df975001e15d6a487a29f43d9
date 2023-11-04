@@ -1,0 +1,32 @@
+package co.edu.unbosque.model;
+
+public class LoteryBetDTO extends BetDTO {
+
+	private String loteryName;
+	private int numbers;
+	private int serialNum;
+
+	public LoteryBetDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public LoteryBetDTO(String loteryName, int numbers, int serialNum) {
+		super();
+		this.loteryName = loteryName;
+		this.numbers = numbers;
+		this.serialNum = serialNum;
+	}
+
+	public LoteryBetDTO(int day, int month, int year, double betPlaced) {
+		super(day, month, year, betPlaced);
+		// TODO Auto-generated constructor stub
+	}
+
+	public LoteryBetDTO(int day, int month, int year, double betPlaced, String loteryName, int numbers, int serialNum) {
+		super(day, month, year, betPlaced);
+		this.loteryName = loteryName;
+		this.numbers = numbers;
+		this.serialNum = serialNum;
+	}
+
+}

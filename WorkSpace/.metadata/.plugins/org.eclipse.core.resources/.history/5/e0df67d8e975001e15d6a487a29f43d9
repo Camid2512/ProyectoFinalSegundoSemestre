@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+package co.edu.unbosque.model;
+
+/**
+ * 
+ * Clase de Cajero
+ * 
+ */
+public class CheckerDTO {
+
+}

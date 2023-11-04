@@ -1,0 +1,11 @@
+package co.edu.unbosque.model;
+
+public class BallotDTO {
+
+	private int number;
+
+	public BallotDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,7 @@
+package co.edu.unbosque.model;
+
+public class LoteryBetDTO extends BetDTO {
+
+	private String loteryName;
+
+}

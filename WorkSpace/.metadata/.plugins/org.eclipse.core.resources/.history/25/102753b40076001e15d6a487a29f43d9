@@ -1,0 +1,103 @@
+package co.edu.unbosque.model.persistence;
+
+import java.io.File;
+import java.util.ArrayList;
+
+import co.edu.unbosque.model.LoteryBetDTO;
+import co.edu.unbosque.model.SuperAstroDTO;
+
+public class SuperAstroDAO implements CRUDOperation {
+
+	private ArrayList<SuperAstroDTO> superAstroList;
+	/**
+	 * Este es el atributo de el nombre de archivo
+	 * 
+	 * @author Cristhian Diaz
+	 * @version 1.0
+	 * @since 25/09/2023
+	 */
+	private final String FILENAME;
+
+	/**
+	 * Este es el atributo de el nombre serial de archivo
+	 * 
+	 * @author Cristhian Diaz
+	 * @version 1.0
+	 * @since 25/09/2023
+	 */
+	private final String SERIAL_FILENAME;
+
+	public SuperAstroDAO() {
+		// TODO Auto-generated constructor stub
+
+		superAstroList = new ArrayList<SuperAstroDTO>();
+		FILENAME = "superastro.dat";
+		SERIAL_FILENAME = "superastroserialized.dat";
+
+		readFromFile();
+		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
+			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
+			@SuppressWarnings("unchecked")
+			ArrayList<LoteryBetDTO> temp2 = (ArrayList<LoteryBetDTO>) temp;
+			superAstroList = temp2;
+		} else {
+			superAstroList = new ArrayList<LoteryBetDTO>();
+		}
+
+	}
+
+	@Override
+	public void create(String... attribs) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void create(Object obj) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String readAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateByIndex(int index, String... newData) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(int index) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(Object obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void readFromFile() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void writeFile() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void writeSerializable() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

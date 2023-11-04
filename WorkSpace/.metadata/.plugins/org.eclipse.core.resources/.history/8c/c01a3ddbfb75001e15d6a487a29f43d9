@@ -1,0 +1,12 @@
+package co.edu.unbosque.model;
+
+public class ChanceDTO extends BetDTO {
+
+	private String loteryName;
+	private int numbers;
+
+	public ChanceDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,7 @@
+package co.edu.unbosque.model;
+
+public class BetPlayDTO extends BetDTO {
+
+	private String equipos;
+
+}

@@ -1,0 +1,10 @@
+package co.edu.unbosque.model;
+
+public class BetDTO {
+
+	private int day;
+	private int month;
+	private int year;
+
+	private double betPlacced;
+}

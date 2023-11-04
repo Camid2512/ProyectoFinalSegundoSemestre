@@ -1,0 +1,108 @@
+package co.edu.unbosque.model.persistence;
+
+import java.util.ArrayList;
+
+import co.edu.unbosque.model.OwnerDTO;
+
+public class OwnerDAO implements CRUDOperation {
+
+	private ArrayList<OwnerDTO> ownerList;
+	/**
+	 * Este es el atributo de el nombre de archivo
+	 * 
+	 * @author Cristhian Diaz
+	 * @version 1.0
+	 * @since 25/09/2023
+	 */
+	private final String FILENAME;
+	/**
+	 * Este es el atributo de el nombre serial de archivo
+	 * 
+	 * @author Cristhian Diaz
+	 * @version 1.0
+	 * @since 25/09/2023
+	 */
+	private final String SERIAL_FILENAME;
+
+	public OwnerDAO() {
+
+		ownerList = new ArrayList<OwnerDTO>();
+		FILENAME = "ownerlogin.csv";
+		SERIAL_FILENAME = "ownerloginserialized.csv";
+		readFromFile();
+		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
+			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
+			@SuppressWarnings("unchecked")
+			ArrayList<OwnerDTO> temp2 = (ArrayList<OwnerDTO>) temp;
+			ownerList = temp2;
+		} else {
+			ownerList = new ArrayList<OwnerDTO>();
+		}
+
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void create(String... attribs) {
+		// TODO Auto-generated method stub
+
+		OwnerDTO owner = new OwnerDTO();
+
+		owner.setUsername(attribs[0]);
+		owner.setPassword(attribs[1]);
+
+		ownerList.add(owner);
+		writeFile();
+		writeSerializable();
+
+	}
+
+	@Override
+	public void create(Object obj) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String readAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateByIndex(int index, String... newData) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(int index) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(Object obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void readFromFile() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void writeFile() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void writeSerializable() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

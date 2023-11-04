@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+package co.edu.unbosque.model;
+
+/**
+ * Clase de gerente de sede
+ */
+public class HeadquarterManagerDTO extends OwnerDTO {
+
+}
