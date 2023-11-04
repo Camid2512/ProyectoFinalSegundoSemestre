@@ -4,17 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import co.edu.unbosque.view.LoginWindow;
+import co.edu.unbosque.view.OwnerWindow;
 import co.edu.unbosque.view.SignUpWindow;
 
 public class Controller implements ActionListener {
 
 	private LoginWindow logWind;
 	private SignUpWindow signWind;
+	private OwnerWindow ownWind;
 
 	public Controller() {
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
+		ownWind = new OwnerWindow();
 
 		agregarLectores();
 
@@ -29,10 +32,10 @@ public class Controller implements ActionListener {
 	public void agregarLectores() {
 
 		logWind.getRegister().addActionListener(this);
-		logWind.getRegister().setActionCommand("BotonRegistro");
+		logWind.getRegister().setActionCommand("BOTONREGISTRO");
 
 		logWind.getLogin().addActionListener(this);
-		logWind.getLogin().setActionCommand("BOTONLOGING");
+		logWind.getLogin().setActionCommand("BOTONLOGIN");
 
 	}
 
@@ -40,7 +43,7 @@ public class Controller implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
-		case "BotonRegistro": {
+		case "BOTONREGISTRO": {
 
 			logWind.setVisible(false);
 			signWind.setVisible(true);
@@ -49,6 +52,8 @@ public class Controller implements ActionListener {
 		}
 		case "BOTONLOGIN": {
 
+			logWind.setVisible(false);
+			ownWind.setVisible(true);
 			break;
 		}
 		default:
