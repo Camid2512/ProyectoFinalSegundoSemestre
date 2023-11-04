@@ -1,8 +1,0 @@
-package co.edu.unbosque.model;
-
-public class SuperAstroDTO extends BetDTO {
-
-	private int number;
-	private String zodiacSign;
-
-}

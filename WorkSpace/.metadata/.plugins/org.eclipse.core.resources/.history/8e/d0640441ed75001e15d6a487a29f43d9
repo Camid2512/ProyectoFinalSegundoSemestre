@@ -1,8 +1,0 @@
-package co.edu.unbosque.model;
-
-public class HeadquarterDTO {
-
-	private String location;
-	private int employeesNumber;
-
-}

@@ -1,8 +1,0 @@
-package co.edu.unbosque.model;
-
-public class OwnerDTO {
-
-	private String username;
-	private String password;
-
-}

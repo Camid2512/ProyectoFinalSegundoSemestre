@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename package &apos;co.edu.unbosque.persistance&apos; to &apos;co.edu.unbosque.model.persistance&apos;&#x0D;&#x0A;- Original project: &apos;MIGRACION01&apos;&#x0D;&#x0A;- Original element: &apos;MIGRACION01/src/co.edu.unbosque.persistance&apos;&#x0D;&#x0A;- Renamed element: &apos;MIGRACION01/src/co.edu.unbosque.model.persistance&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;co.edu.unbosque.persistance&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;co.edu.unbosque.persistance" name="co.edu.unbosque.model.persistance" qualified="false" references="true" stamp="1693445637897" textual="false" version="1.0"/>
-</session>

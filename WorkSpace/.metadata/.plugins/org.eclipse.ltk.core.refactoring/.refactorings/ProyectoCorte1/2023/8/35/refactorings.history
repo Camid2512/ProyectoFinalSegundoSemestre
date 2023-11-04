@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;co.edu.unbosque.model.persistance.OperacionesDAo&apos; to &apos;OperacionesDAO&apos;&#x0D;&#x0A;- Original project: &apos;ProyectoCorte1&apos;&#x0D;&#x0A;- Original element: &apos;co.edu.unbosque.model.persistance.OperacionesDAo&apos;&#x0D;&#x0A;- Renamed element: &apos;co.edu.unbosque.model.persistance.OperacionesDAO&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;OperacionesDAo&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;co.edu.unbosque.model.persistance{OperacionesDAo.java[OperacionesDAo" matchStrategy="1" name="OperacionesDAO" qualified="false" references="true" similarDeclarations="false" stamp="1693277840160" textual="false" version="1.0"/>
-</session>

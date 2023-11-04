@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+C:\Users\camid\Downloads\UNIVERSIDAD\PROGRAMACION I\WorkSpace\.metadata\.plugins\org.eclipse.jdt.core
-1356400947.index
-2594547737.index
-1865797976.index
