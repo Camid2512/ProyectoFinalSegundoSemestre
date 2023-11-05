@@ -12,28 +12,39 @@ public class HeadquarterManagerDTO extends OwnerDTO {
 	 * Constructor vacio de la clase gerente de sede
 	 * 
 	 */
+
+	private String headquerterName;
+
 	public HeadquarterManagerDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * 
-	 * Super Constructor de la clase gerente de sede
-	 * 
-	 */
 	public HeadquarterManagerDTO(String username, String password) {
 		super(username, password);
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * 
-	 * toString de la clase gerente de sede
-	 * 
-	 */
+	public HeadquarterManagerDTO(String nombreSede) {
+		super();
+		this.headquerterName = nombreSede;
+	}
+
+	public HeadquarterManagerDTO(String username, String password, String nombreSede) {
+		super(username, password);
+		this.headquerterName = nombreSede;
+	}
+
+	public String getNombreSede() {
+		return headquerterName;
+	}
+
+	public void setNombreSede(String nombreSede) {
+		this.headquerterName = nombreSede;
+	}
+
 	@Override
 	public String toString() {
-		return "HeadquarterManagerDTO []" + super.toString();
+		return "HeadquarterManagerDTO [nombreSede=" + headquerterName + "]" + super.toString();
 	}
 
 }

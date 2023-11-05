@@ -50,6 +50,7 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 
 		manager.setUsername(attribs[0]);
 		manager.setPassword(attribs[1]);
+		manager.setNombreSede(attribs[2]);
 
 		headquarterManagerList.add(manager);
 		writeFile();
@@ -92,6 +93,9 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 			}
 			if (!newData[1].isEmpty() || !newData[1].equals("") || newData[1].length() != 0) {
 				headquarterManagerList.get(index).setPassword(newData[1]);
+			}
+			if (!newData[2].isEmpty() || !newData[2].equals("") || newData[2].length() != 0) {
+				headquarterManagerList.get(index).setNombreSede(newData[2]);
 			}
 			writeFile();
 			writeSerializable();
@@ -138,8 +142,9 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 			String[] cols = lines[i].split(";");
 			String username = cols[0];
 			String password = cols[1];
+			String headquerterName = cols[1];
 
-			headquarterManagerList.add(new HeadquarterManagerDTO(username, password));
+			headquarterManagerList.add(new HeadquarterManagerDTO(username, password, headquerterName));
 
 		}
 	}
@@ -153,7 +158,8 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 		content = "";
 		headquarterManagerList.forEach(headquarterManager -> {
 			content += headquarterManager.getUsername() + ";";
-			content += headquarterManager.getPassword() + ";MAN\n";
+			content += headquarterManager.getPassword() + ";";
+			content += headquarterManager.getNombreSede() + ";MAN\n";
 		});
 		FileHandler.openAndWriteFile(FILENAME, content);
 
