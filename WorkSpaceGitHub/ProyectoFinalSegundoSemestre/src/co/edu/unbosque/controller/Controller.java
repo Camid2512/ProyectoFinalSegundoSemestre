@@ -41,11 +41,27 @@ public class Controller implements ActionListener {
 		logWind.getLogin().addActionListener(this);
 		logWind.getLogin().setActionCommand("BOTONLOGIN");
 
+		logWind.getExit().addActionListener(this);
+		logWind.getExit().setActionCommand("EXITLOGIN");
+
 		// BOTONES DE VENTANA DUENO
 
 		ownWind.getMod1Btn().addActionListener(this);
 		ownWind.getMod1Btn().setActionCommand("BOTONMOD1");
 
+		ownWind.getExit().addActionListener(this);
+		ownWind.getExit().setActionCommand("EXITOWN");
+
+		ownWind.getBack().addActionListener(this);
+		ownWind.getBack().setActionCommand("BACKOWN");
+
+		// BOTONES MODULO 1 (OWNER)
+
+		houseManageWindow.getExit().addActionListener(this);
+		houseManageWindow.getExit().setActionCommand("EXITHOUSEMANAGE");
+
+		houseManageWindow.getBack().addActionListener(this);
+		houseManageWindow.getBack().setActionCommand("BACKHOUSEMANAGE");
 	}
 
 	@Override
@@ -65,13 +81,44 @@ public class Controller implements ActionListener {
 			ownWind.setVisible(true);
 			break;
 		}
+
+		case "EXITLOGIN": {
+			System.exit(1);
+			break;
+
+		}
+		case "EXITOWN": {
+
+			System.exit(1);
+			break;
+		}
+		case "EXITHOUSEMANAGE": {
+			System.exit(1);
+			break;
+		}
+
 		case "BOTONMOD1": {
 
 			logWind.setVisible(false);
 			ownWind.setVisible(false);
 			houseManageWindow.setVisible(true);
+			break;
+		}
+
+		case "BACKOWN": {
+
+			ownWind.setVisible(false);
+			logWind.setVisible(true);
+			break;
 
 		}
+		case "BACKHOUSEMANAGE": {
+
+			houseManageWindow.setVisible(false);
+			ownWind.setVisible(true);
+
+		}
+
 		default:
 
 			break;

@@ -2,7 +2,9 @@ package co.edu.unbosque.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,15 +16,14 @@ public class LoginWindow extends JFrame {
 	/**
 	 * 
 	 */
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1518185821545289498L;
 
-	private JLabel titulo;
+	private JLabel titulo, mainImage;
 	private JTextField usuario, contraseña;
-	private JButton register, login;
+	private JButton register, login, exit;
 
 	public LoginWindow() {
 		setSize(1280, 720);
@@ -33,41 +34,72 @@ public class LoginWindow extends JFrame {
 		setUndecorated(true);
 		setLayout(null);
 
+		exit = new JButton();
+		exit.setBounds(1199, 7, 74, 72);
+		exit.setToolTipText("SALIR DEL PROGRAMA");
+		exit.setBackground(new Color(0, 0, 0, 0));
+		exit.setOpaque(false);
+		exit.setContentAreaFilled(false);
+		exit.setBorderPainted(false);
+		add(exit);
+
 		register = new JButton();
-		register.setBounds(400, 500, 165, 99);
+		register.setBounds(675, 490, 166, 41);
 		register.setToolTipText("Crea una cuenta si no tienes una");
-//		register.setBackground(new Color(0, 0, 0, 0));
-//		register.setOpaque(false);
-//		register.setContentAreaFilled(false);
-//		register.setBorderPainted(false);
+		register.setBackground(new Color(0, 0, 0, 0));
+		register.setOpaque(false);
+		register.setContentAreaFilled(false);
+		register.setBorderPainted(false);
 		add(register);
 
 		login = new JButton();
-		login.setBounds(300, 600, 165, 99);
+		login.setBounds(443, 402, 396, 74);
 		login.setToolTipText("Inicia sesión");
-//		login.setBackground(new Color(0, 0, 0, 0));
-//		login.setOpaque(false);
-//		login.setContentAreaFilled(false);
-//		login.setBorderPainted(false);
+		login.setBackground(new Color(0, 0, 0, 0));
+		login.setOpaque(false);
+		login.setContentAreaFilled(false);
+		login.setBorderPainted(false);
 		add(login);
 
 		usuario = new JTextField();
-		usuario.setBounds(300, 235, 309, 70);
-//		usuario.setBackground(new Color(0, 0, 0, 0));
-//		usuario.setOpaque(false);
-//		usuario.setBorder(new EmptyBorder(15, 15, 15, 15));
-//		usuario.setFont(new Font("Arial", 1, 25));
-//		usuario.setForeground(Color.white);
+		usuario.setBounds(312, 179, 656, 68);
+		usuario.setBackground(new Color(0, 0, 0, 0));
+		usuario.setOpaque(false);
+		usuario.setBorder(new EmptyBorder(15, 15, 15, 15));
+		usuario.setFont(new Font("Arial", 1, 25));
+		usuario.setForeground(Color.white);
 		add(usuario);
 
 		contraseña = new JTextField();
-		contraseña.setBounds(300, 350, 309, 70);
-//		contraseña.setBackground(new Color(0, 0, 0, 0));
-//		contraseña.setOpaque(false);
-//		contraseña.setBorder(new EmptyBorder(15, 15, 15, 15));
-//		contraseña.setFont(new Font("Arial", 1, 25));
-//		contraseña.setForeground(Color.white);
+		contraseña.setBounds(312, 290, 656, 68);
+		contraseña.setBackground(new Color(0, 0, 0, 0));
+		contraseña.setOpaque(false);
+		contraseña.setBorder(new EmptyBorder(15, 15, 15, 15));
+		contraseña.setFont(new Font("Arial", 1, 25));
+		contraseña.setForeground(Color.white);
 		add(contraseña);
+
+		mainImage = new JLabel();
+		mainImage.setBounds(0, 0, 1280, 720);
+
+		Image temporal1;
+		temporal1 = new ImageIcon("src/Images/login-register.png").getImage();
+
+		ImageIcon img1;
+		img1 = new ImageIcon(
+				temporal1.getScaledInstance(mainImage.getWidth(), mainImage.getHeight(), Image.SCALE_SMOOTH));
+
+		mainImage.setIcon(img1);
+		mainImage.setVisible(true);
+		add(mainImage);
+	}
+
+	public JButton getExit() {
+		return exit;
+	}
+
+	public void setExit(JButton exit) {
+		this.exit = exit;
 	}
 
 	public JLabel getTitulo() {
