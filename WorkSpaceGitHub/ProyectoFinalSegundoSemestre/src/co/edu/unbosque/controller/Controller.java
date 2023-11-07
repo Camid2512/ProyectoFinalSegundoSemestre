@@ -34,6 +34,13 @@ public class Controller implements ActionListener {
 
 	public void agregarLectores() {
 
+		// BOTONES DE VENTANA REGISTER
+
+		signWind.getExit().addActionListener(this);
+		signWind.getExit().setActionCommand("EXITSIGNUP");
+		signWind.getBack().addActionListener(this);
+		signWind.getBack().setActionCommand("BACKSIGN");
+
 		// BOTONES DE VENTANA LOGIN
 		logWind.getRegister().addActionListener(this);
 		logWind.getRegister().setActionCommand("BOTONREGISTRO");
@@ -82,6 +89,19 @@ public class Controller implements ActionListener {
 			break;
 		}
 
+		case "BACKSIGN": {
+
+			signWind.setVisible(false);
+			logWind.setVisible(true);
+			break;
+
+		}
+
+		case "EXITSIGNUP": {
+			System.exit(1);
+			break;
+
+		}
 		case "EXITLOGIN": {
 			System.exit(1);
 			break;
