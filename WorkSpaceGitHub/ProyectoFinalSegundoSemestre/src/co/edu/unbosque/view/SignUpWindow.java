@@ -19,7 +19,7 @@ public class SignUpWindow extends JFrame {
 	private static final long serialVersionUID = -1518185821545289498L;
 
 	private JLabel mainImage;
-	private JTextField usuario, contraseña;
+	private JTextField usuario, password;
 	private JButton botonRegistro, exit, back;
 
 	public SignUpWindow() {
@@ -59,14 +59,14 @@ public class SignUpWindow extends JFrame {
 		usuario.setForeground(Color.white);
 		add(usuario);
 
-		contraseña = new JTextField();
-		contraseña.setBounds(314, 327, 658, 70);
-		contraseña.setBackground(new Color(0, 0, 0, 0));
-		contraseña.setOpaque(false);
-		contraseña.setBorder(new EmptyBorder(15, 15, 15, 15));
-		contraseña.setFont(new Font("Arial", 1, 25));
-		contraseña.setForeground(Color.white);
-		add(contraseña);
+		password = new JTextField();
+		password.setBounds(314, 327, 658, 70);
+		password.setBackground(new Color(0, 0, 0, 0));
+		password.setOpaque(false);
+		password.setBorder(new EmptyBorder(15, 15, 15, 15));
+		password.setFont(new Font("Arial", 1, 25));
+		password.setForeground(Color.white);
+		add(password);
 
 		botonRegistro = new JButton();
 		botonRegistro.setBounds(446, 458, 420, 74);
@@ -96,10 +96,6 @@ public class SignUpWindow extends JFrame {
 		return mainImage;
 	}
 
-	public void setMainImage(JLabel mainImage) {
-		this.mainImage = mainImage;
-	}
-
 	public JTextField getUsuario() {
 		return usuario;
 	}
@@ -108,12 +104,12 @@ public class SignUpWindow extends JFrame {
 		this.usuario = usuario;
 	}
 
-	public JTextField getContraseña() {
-		return contraseña;
+	public JTextField getPassword() {
+		return password;
 	}
 
-	public void setContraseña(JTextField contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(JTextField password) {
+		this.password = password;
 	}
 
 	public JButton getBotonRegistro() {
@@ -142,6 +138,10 @@ public class SignUpWindow extends JFrame {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public void setMainImage(JLabel mainImage) {
+		this.mainImage = mainImage;
 	}
 
 }

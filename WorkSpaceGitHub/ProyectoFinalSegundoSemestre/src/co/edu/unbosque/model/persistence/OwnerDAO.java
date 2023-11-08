@@ -14,7 +14,7 @@ public class OwnerDAO implements CRUDOperation {
 	 * @version 1.0
 	 * @since 25/09/2023
 	 */
-	private final String FILENAME;
+	private final String FILENAME = "ownerlogin.csv";
 	/**
 	 * Este es el atributo de el nombre serial de archivo
 	 * 
@@ -22,13 +22,11 @@ public class OwnerDAO implements CRUDOperation {
 	 * @version 1.0
 	 * @since 25/09/2023
 	 */
-	private final String SERIAL_FILENAME;
+	private final String SERIAL_FILENAME = "ownerloginserialized.csv";
 
 	public OwnerDAO() {
 
 		ownerList = new ArrayList<OwnerDTO>();
-		FILENAME = "ownerlogin.csv";
-		SERIAL_FILENAME = "ownerloginserialized.csv";
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
@@ -52,8 +50,8 @@ public class OwnerDAO implements CRUDOperation {
 		owner.setPassword(attribs[1]);
 
 		ownerList.add(owner);
-		writeFile();
 		writeSerializable();
+		writeFile();
 
 	}
 
@@ -61,8 +59,8 @@ public class OwnerDAO implements CRUDOperation {
 	public void create(Object obj) {
 		// TODO Auto-generated method stub
 		ownerList.add((OwnerDTO) obj);
-		writeFile();
 		writeSerializable();
+		writeFile();
 
 	}
 
@@ -166,6 +164,38 @@ public class OwnerDAO implements CRUDOperation {
 
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, ownerList);
 
+	}
+
+	public ArrayList<OwnerDTO> getOwnerList() {
+		return ownerList;
+	}
+
+	public void setOwnerList(ArrayList<OwnerDTO> ownerList) {
+		this.ownerList = ownerList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
 	}
 
 }

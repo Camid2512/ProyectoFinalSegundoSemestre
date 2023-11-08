@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
+import co.edu.unbosque.model.persistence.OwnerDAO;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.OwnerWindow;
@@ -19,10 +20,12 @@ public class Controller implements ActionListener {
 	private BettingHouseManagmentWindow houseManageWindow;
 
 	private HouseSettingDAO houseDAO;
+	private OwnerDAO ownDAO;
 
 	public Controller() {
 
 		houseDAO = new HouseSettingDAO();
+		ownDAO = new OwnerDAO();
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
@@ -35,11 +38,11 @@ public class Controller implements ActionListener {
 
 	public void run() {
 
-		if (!houseDAO.getMyFile().exists()) {
-			signWind.setVisible(true);
-		} else {
-			logWind.setVisible(true);
-		}
+//		if (ownDAO.getOwnerList().isEmpty()) {
+//			signWind.setVisible(true);
+//		} else {
+		logWind.setVisible(true);
+//		}
 
 	}
 
@@ -51,6 +54,9 @@ public class Controller implements ActionListener {
 		signWind.getExit().setActionCommand("EXITSIGNUP");
 		signWind.getBack().addActionListener(this);
 		signWind.getBack().setActionCommand("BACKSIGN");
+
+		signWind.getBotonRegistro().addActionListener(this);
+		signWind.getBotonRegistro().setActionCommand("BOTONGUARDARREGISTRO");
 
 		// BOTONES DE VENTANA LOGIN
 		logWind.getRegister().addActionListener(this);
@@ -102,6 +108,17 @@ public class Controller implements ActionListener {
 			logWind.setVisible(false);
 			ownWind.setVisible(true);
 			break;
+		}
+
+		case "BOTONGUARDARREGISTRO": {
+
+			createAccount();
+
+			signWind.getUsuario().setText("");
+			signWind.getPassword().setText("");
+
+			break;
+
 		}
 
 		case "BACKSIGN": {
@@ -162,7 +179,7 @@ public class Controller implements ActionListener {
 
 			houseManageWindow.setVisible(false);
 			ownWind.setVisible(true);
-
+			break;
 		}
 
 		default:
@@ -182,6 +199,29 @@ public class Controller implements ActionListener {
 
 		JOptionPane.showMessageDialog(houseManageWindow,
 				"HAS SETEADO CON EXITO LA CONFIGURACION DE TU CASA DE APUESTAS");
+
+	}
+
+	public void createAccount() {
+
+		String user = "";
+		String pass = "";
+
+		user = signWind.getUsuario().getText();
+		pass = signWind.getPassword().getText();
+//		int response = JOptionPane.showConfirmDialog(signWind, "¿ESTA SEGURO DE LOS DATOS?");
+
+//		if (JOptionPane.OK_OPTION == response) {
+		ownDAO.create(user, pass);
+//			JOptionPane.showMessageDialog(signWind, "CUENTA CREADA CON EXITO");
+//		} else if (JOptionPane.NO_OPTION == response) {
+
+//			JOptionPane.showMessageDialog(signWind, "VUELVE A INGRESAR LOS DATOS");
+//			String user1 = signWind.getUsuario().getText();
+//			String pass1 = signWind.getPassword().getText();
+
+//			ownDAO.create(user1, pass1);
+//		}
 
 	}
 
