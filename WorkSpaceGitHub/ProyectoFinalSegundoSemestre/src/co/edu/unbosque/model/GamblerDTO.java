@@ -1,7 +1,13 @@
 package co.edu.unbosque.model;
 
-public class GamblerDTO {
+import java.io.Serializable;
 
+public class GamblerDTO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7972015745358472339L;
 	private String fullName;
 	private long documentId;
 	private String gamingVenue;

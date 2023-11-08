@@ -2,6 +2,10 @@ package co.edu.unbosque.model;
 
 public class LoteryBetDTO extends BetDTO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -670184573400479029L;
 	private String loteryName;
 	private int numbers;
 	private int serialNum;

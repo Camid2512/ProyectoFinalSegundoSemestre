@@ -38,11 +38,11 @@ public class Controller implements ActionListener {
 
 	public void run() {
 
-//		if (ownDAO.getOwnerList().isEmpty()) {
-//			signWind.setVisible(true);
-//		} else {
-		logWind.setVisible(true);
-//		}
+		if (ownDAO.getOwnerList().isEmpty()) {
+			signWind.setVisible(true);
+		} else {
+			logWind.setVisible(true);
+		}
 
 	}
 
@@ -106,7 +106,10 @@ public class Controller implements ActionListener {
 		case "BOTONLOGIN": {
 
 			logWind.setVisible(false);
-			ownWind.setVisible(true);
+			checkLogin();
+			logWind.getUsuario().setText("");
+			logWind.getPassword().setText("");
+
 			break;
 		}
 
@@ -189,6 +192,26 @@ public class Controller implements ActionListener {
 
 	}
 
+	public void checkLogin() {
+
+		String nameToCheck = logWind.getUsuario().getText();
+		@SuppressWarnings("deprecation")
+		String passToCheck = logWind.getPassword().getText().toString();
+		for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
+
+			if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
+					&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
+				JOptionPane.showMessageDialog(logWind, "EXISTES CARE MONDA");
+				ownWind.setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(logWind, "CABRON", "TA MAL", 0);
+				logWind.setVisible(true);
+			}
+
+		}
+
+	}
+
 	public void createHouse() {
 
 		String name = houseManageWindow.getNameHouse().getText();
@@ -207,22 +230,17 @@ public class Controller implements ActionListener {
 		String user = "";
 		String pass = "";
 
+		int response = JOptionPane.showConfirmDialog(signWind, "¿ESTA SEGURO DE LOS DATOS?");
 		user = signWind.getUsuario().getText();
 		pass = signWind.getPassword().getText();
-//		int response = JOptionPane.showConfirmDialog(signWind, "¿ESTA SEGURO DE LOS DATOS?");
 
-//		if (JOptionPane.OK_OPTION == response) {
-		ownDAO.create(user, pass);
-//			JOptionPane.showMessageDialog(signWind, "CUENTA CREADA CON EXITO");
-//		} else if (JOptionPane.NO_OPTION == response) {
+		if (JOptionPane.NO_OPTION == response) {
 
-//			JOptionPane.showMessageDialog(signWind, "VUELVE A INGRESAR LOS DATOS");
-//			String user1 = signWind.getUsuario().getText();
-//			String pass1 = signWind.getPassword().getText();
+		} else if (JOptionPane.OK_OPTION == response) {
+			ownDAO.create(user, pass);
+			JOptionPane.showMessageDialog(signWind, "CUENTA CREADA CON EXITO");
 
-//			ownDAO.create(user1, pass1);
-//		}
-
+		}
 	}
 
 }

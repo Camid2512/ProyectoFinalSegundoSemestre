@@ -1,7 +1,13 @@
 package co.edu.unbosque.model;
 
-public class BallotDTO extends BetDTO {
+import java.io.Serializable;
 
+public class BallotDTO extends BetDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5504939515313427010L;
 	private int number;
 
 	public BallotDTO() {

@@ -1,5 +1,7 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * 
  * Clase dueño con datos de registro
@@ -9,8 +11,12 @@ package co.edu.unbosque.model;
  * @since 28/10/2023
  */
 
-public class OwnerDTO {
+public class OwnerDTO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2327892187158301932L;
 	/*
 	 * Atributo para usuario del dueño
 	 * 

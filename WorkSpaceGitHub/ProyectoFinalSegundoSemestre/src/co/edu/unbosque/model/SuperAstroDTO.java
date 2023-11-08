@@ -2,6 +2,10 @@ package co.edu.unbosque.model;
 
 public class SuperAstroDTO extends BetDTO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8782928204611148874L;
 	private int number;
 	private String zodiacSign;
 

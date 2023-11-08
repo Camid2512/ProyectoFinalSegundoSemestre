@@ -1,7 +1,13 @@
 package co.edu.unbosque.model;
 
-public class HouseSettingDTO {
+import java.io.Serializable;
 
+public class HouseSettingDTO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1121669860161534193L;
 	private String nameBettingHouse;
 	private int numberVenue;
 	private double totalBudgetAvailable;

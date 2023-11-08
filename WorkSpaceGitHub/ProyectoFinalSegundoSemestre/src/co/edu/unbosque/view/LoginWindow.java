@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -22,7 +23,8 @@ public class LoginWindow extends JFrame {
 	private static final long serialVersionUID = -1518185821545289498L;
 
 	private JLabel titulo, mainImage;
-	private JTextField usuario, contraseña;
+	private JTextField usuario;
+	private JPasswordField password;
 	private JButton register, login, exit;
 
 	public LoginWindow() {
@@ -70,14 +72,14 @@ public class LoginWindow extends JFrame {
 		usuario.setForeground(Color.white);
 		add(usuario);
 
-		contraseña = new JTextField();
-		contraseña.setBounds(312, 290, 656, 68);
-		contraseña.setBackground(new Color(0, 0, 0, 0));
-		contraseña.setOpaque(false);
-		contraseña.setBorder(new EmptyBorder(15, 15, 15, 15));
-		contraseña.setFont(new Font("Arial", 1, 25));
-		contraseña.setForeground(Color.white);
-		add(contraseña);
+		password = new JPasswordField();
+		password.setBounds(312, 290, 656, 68);
+		password.setBackground(new Color(0, 0, 0, 0));
+		password.setOpaque(false);
+		password.setBorder(new EmptyBorder(15, 15, 15, 15));
+		password.setFont(new Font("Arial", 1, 25));
+		password.setForeground(Color.white);
+		add(password);
 
 		mainImage = new JLabel();
 		mainImage.setBounds(0, 0, 1280, 720);
@@ -94,20 +96,20 @@ public class LoginWindow extends JFrame {
 		add(mainImage);
 	}
 
-	public JButton getExit() {
-		return exit;
-	}
-
-	public void setExit(JButton exit) {
-		this.exit = exit;
-	}
-
 	public JLabel getTitulo() {
 		return titulo;
 	}
 
 	public void setTitulo(JLabel titulo) {
 		this.titulo = titulo;
+	}
+
+	public JLabel getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(JLabel mainImage) {
+		this.mainImage = mainImage;
 	}
 
 	public JTextField getUsuario() {
@@ -118,12 +120,12 @@ public class LoginWindow extends JFrame {
 		this.usuario = usuario;
 	}
 
-	public JTextField getContraseña() {
-		return contraseña;
+	public JPasswordField getPassword() {
+		return password;
 	}
 
-	public void setContraseña(JTextField contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(JPasswordField password) {
+		this.password = password;
 	}
 
 	public JButton getRegister() {
@@ -140,6 +142,14 @@ public class LoginWindow extends JFrame {
 
 	public void setLogin(JButton login) {
 		this.login = login;
+	}
+
+	public JButton getExit() {
+		return exit;
+	}
+
+	public void setExit(JButton exit) {
+		this.exit = exit;
 	}
 
 	public static long getSerialversionuid() {

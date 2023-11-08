@@ -1,7 +1,13 @@
 package co.edu.unbosque.model;
 
-public class BetDTO {
+import java.io.Serializable;
 
+public class BetDTO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2754106331524816379L;
 	private int day;
 	private int month;
 	private int year;

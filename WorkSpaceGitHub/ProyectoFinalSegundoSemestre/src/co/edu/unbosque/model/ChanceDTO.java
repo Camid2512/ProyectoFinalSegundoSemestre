@@ -1,7 +1,12 @@
 package co.edu.unbosque.model;
 
+
 public class ChanceDTO extends BetDTO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4255194954611632980L;
 	private String loteryName;
 	private int numbers;
 

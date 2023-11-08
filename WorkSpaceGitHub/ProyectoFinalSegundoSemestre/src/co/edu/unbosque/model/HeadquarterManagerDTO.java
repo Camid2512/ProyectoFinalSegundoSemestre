@@ -13,6 +13,10 @@ public class HeadquarterManagerDTO extends OwnerDTO {
 	 * 
 	 */
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6385667339937525680L;
 	private String headquerterName;
 
 	public HeadquarterManagerDTO() {

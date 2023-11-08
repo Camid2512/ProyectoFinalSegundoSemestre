@@ -1,7 +1,13 @@
 package co.edu.unbosque.model;
 
-public class HeadquarterDTO {
+import java.io.Serializable;
 
+public class HeadquarterDTO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7926887290023177109L;
 	private String location;
 	private int employeesNumber;
 

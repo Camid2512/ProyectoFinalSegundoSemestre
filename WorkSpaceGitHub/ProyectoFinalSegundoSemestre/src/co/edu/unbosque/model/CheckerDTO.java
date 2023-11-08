@@ -16,6 +16,11 @@ public class CheckerDTO extends HeadquarterManagerDTO {
 	 * 
 	 */
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -283480740690058403L;
+
 	public CheckerDTO() {
 		// TODO Auto-generated constructor stub
 	}

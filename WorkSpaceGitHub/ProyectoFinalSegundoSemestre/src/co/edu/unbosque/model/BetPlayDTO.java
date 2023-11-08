@@ -2,6 +2,10 @@ package co.edu.unbosque.model;
 
 public class BetPlayDTO extends BetDTO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6649047852911984639L;
 	private String team1;
 	private String team2;
 	private String team3;
