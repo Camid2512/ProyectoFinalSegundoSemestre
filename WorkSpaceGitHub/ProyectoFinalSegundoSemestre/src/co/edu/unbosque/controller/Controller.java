@@ -3,6 +3,9 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
+import co.edu.unbosque.model.persistence.HouseSettingDAO;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.OwnerWindow;
@@ -15,7 +18,11 @@ public class Controller implements ActionListener {
 	private OwnerWindow ownWind;
 	private BettingHouseManagmentWindow houseManageWindow;
 
+	private HouseSettingDAO houseDAO;
+
 	public Controller() {
+
+		houseDAO = new HouseSettingDAO();
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
@@ -28,7 +35,11 @@ public class Controller implements ActionListener {
 
 	public void run() {
 
-		logWind.setVisible(true);
+		if (!houseDAO.getMyFile().exists()) {
+			signWind.setVisible(true);
+		} else {
+			logWind.setVisible(true);
+		}
 
 	}
 
@@ -69,6 +80,10 @@ public class Controller implements ActionListener {
 
 		houseManageWindow.getBack().addActionListener(this);
 		houseManageWindow.getBack().setActionCommand("BACKHOUSEMANAGE");
+
+		houseManageWindow.getCreateBtn().addActionListener(this);
+		houseManageWindow.getCreateBtn().setActionCommand("CREATEHOUSE");
+
 	}
 
 	@Override
@@ -125,6 +140,17 @@ public class Controller implements ActionListener {
 			break;
 		}
 
+		case "CREATEHOUSE": {
+
+			createHouse();
+			houseManageWindow.getNameHouse().setText("");
+			houseManageWindow.getTotalBudget().setText("");
+			int aux = 0;
+			houseManageWindow.getNumberVenue().setValue(aux);
+
+			break;
+		}
+
 		case "BACKOWN": {
 
 			ownWind.setVisible(false);
@@ -143,6 +169,19 @@ public class Controller implements ActionListener {
 
 			break;
 		}
+
+	}
+
+	public void createHouse() {
+
+		String name = houseManageWindow.getNameHouse().getText();
+		double budget = Double.parseDouble(houseManageWindow.getTotalBudget().getText());
+		int numVenue = Integer.parseInt(houseManageWindow.getNumberVenue().getValue().toString());
+
+		houseDAO.create(name, numVenue, budget);
+
+		JOptionPane.showMessageDialog(houseManageWindow,
+				"HAS SETEADO CON EXITO LA CONFIGURACION DE TU CASA DE APUESTAS");
 
 	}
 

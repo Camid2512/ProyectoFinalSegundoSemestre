@@ -3,7 +3,6 @@ package co.edu.unbosque.model.persistence;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Properties;
 
 public class HouseSettingDAO {
 
@@ -14,6 +13,7 @@ public class HouseSettingDAO {
 	public HouseSettingDAO() {
 
 		CONFIG_FILENAME = "config.properties";
+		myFile = new File("src/co/edu/unbosque/model/persistence/" + CONFIG_FILENAME);
 
 	}
 
@@ -45,6 +45,26 @@ public class HouseSettingDAO {
 		} catch (IOException e) {
 			System.out.println("Problema al crear el archivo, revise problemas de acceso.");
 		}
+	}
+
+	public File getMyFile() {
+		return myFile;
+	}
+
+	public void setMyFile(File myFile) {
+		this.myFile = myFile;
+	}
+
+	public PrintWriter getFileWriter() {
+		return fileWriter;
+	}
+
+	public void setFileWriter(PrintWriter fileWriter) {
+		this.fileWriter = fileWriter;
+	}
+
+	public String getCONFIG_FILENAME() {
+		return CONFIG_FILENAME;
 	}
 
 }
