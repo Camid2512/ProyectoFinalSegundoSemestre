@@ -2,9 +2,6 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
 
@@ -15,7 +12,11 @@ import co.edu.unbosque.view.CreateVenueWindow;
 import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
+import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
+import co.edu.unbosque.view.SelectShowVenueWindow;
+import co.edu.unbosque.view.SelectUpdateVenueWindow;
 import co.edu.unbosque.view.SignUpWindow;
+import co.edu.unbosque.view.UpdateVenueByOwnerWindow;
 import co.edu.unbosque.view.VenueManagmentByOwnerWindow;
 
 public class Controller implements ActionListener {
@@ -27,6 +28,10 @@ public class Controller implements ActionListener {
 	private VenueManagmentByOwnerWindow venueManageOwn;
 	private ManagerCreationWindow managerCreationWin;
 	private CreateVenueWindow createVenueWin;
+	private SelectShowVenueWindow selShowVenOwn;
+	private SelectUpdateVenueWindow selUpdateVenOwn;
+	private UpdateVenueByOwnerWindow updateVenueOwn;
+	private SelectDeleteVenueOwnWindow selDeleteVenueOwn;
 
 	private HouseSettingDAO houseDAO;
 	private OwnerDAO ownDAO;
@@ -43,6 +48,10 @@ public class Controller implements ActionListener {
 		venueManageOwn = new VenueManagmentByOwnerWindow();
 		managerCreationWin = new ManagerCreationWindow();
 		createVenueWin = new CreateVenueWindow();
+		selShowVenOwn = new SelectShowVenueWindow();
+		selUpdateVenOwn = new SelectUpdateVenueWindow();
+		updateVenueOwn = new UpdateVenueByOwnerWindow();
+		selDeleteVenueOwn = new SelectDeleteVenueOwnWindow();
 		agregarLectores();
 
 	}
@@ -115,6 +124,15 @@ public class Controller implements ActionListener {
 		venueManageOwn.getCreate().addActionListener(this);
 		venueManageOwn.getCreate().setActionCommand("CREATEVENUE");
 
+		venueManageOwn.getRead().addActionListener(this);
+		venueManageOwn.getRead().setActionCommand("SELECTVENUEOWN");
+
+		venueManageOwn.getUpdate().addActionListener(this);
+		venueManageOwn.getUpdate().setActionCommand("SELECTVENUEUPDATEOWN");
+
+		venueManageOwn.getDelete().addActionListener(this);
+		venueManageOwn.getDelete().setActionCommand("SELECTVENUEDELETEOWN");
+
 		// BOTONES CREAR JEFE DE SEDE
 
 		managerCreationWin.getExit().addActionListener(this);
@@ -125,6 +143,52 @@ public class Controller implements ActionListener {
 
 		managerCreationWin.getCreateAccount().addActionListener(this);
 		managerCreationWin.getCreateAccount().setActionCommand("CREATENEWVENUE");
+
+		// BOTONES CREAR SEDE (OWNER)
+
+		createVenueWin.getExit().addActionListener(this);
+		createVenueWin.getExit().setActionCommand("EXITCREATEVENUE");
+
+		createVenueWin.getBack().addActionListener(this);
+		createVenueWin.getBack().setActionCommand("BACKCREATEVENUE");
+
+		// BOTONES MENU SELECCION SEDE MOSTRAR (OWNER)
+
+		selShowVenOwn.getExit().addActionListener(this);
+		selShowVenOwn.getExit().setActionCommand("EXITSELECTSHOWOWN");
+
+		selShowVenOwn.getBack().addActionListener(this);
+		selShowVenOwn.getBack().setActionCommand("BACKSELECTSHOWOWN");
+
+		// BOTONES MENU SELECCION SEDE ACTUALIZAR (OWNER)
+
+		selUpdateVenOwn.getExit().addActionListener(this);
+		selUpdateVenOwn.getExit().setActionCommand("EXITSELECTUPDATEOWN");
+
+		selUpdateVenOwn.getBack().addActionListener(this);
+		selUpdateVenOwn.getBack().setActionCommand("BACKSELECTUPDATEOWN");
+
+		selUpdateVenOwn.getNext().addActionListener(this);
+		selUpdateVenOwn.getNext().setActionCommand("MENUUPDATESELECTED");
+
+		// BOTONES ACTUALIZAR SEDE (OWNER)
+
+		updateVenueOwn.getExit().addActionListener(this);
+		updateVenueOwn.getExit().setActionCommand("EXITUPDATEVENUEOWN");
+
+		updateVenueOwn.getBack().addActionListener(this);
+		updateVenueOwn.getBack().setActionCommand("BACKUPDATEVENUEOWN");
+
+		// BOTONES MENU SELECCION SEDE ACTUALIZAR (OWNER)
+
+		selDeleteVenueOwn.getExit().addActionListener(this);
+		selDeleteVenueOwn.getExit().setActionCommand("EXITSELECTDELETEOWN");
+
+		selDeleteVenueOwn.getBack().addActionListener(this);
+		selDeleteVenueOwn.getBack().setActionCommand("BACKSELECTDELETEOWN");
+
+		selDeleteVenueOwn.getNext().addActionListener(this);
+		selDeleteVenueOwn.getNext().setActionCommand("DELETEVENUEOWN");
 
 	}
 
@@ -169,33 +233,111 @@ public class Controller implements ActionListener {
 		}
 
 		case "EXITSIGNUP": {
-			System.exit(1);
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
 			break;
 
 		}
 		case "EXITLOGIN": {
-			System.exit(1);
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
 			break;
 
 		}
 		case "EXITOWN": {
 
-			System.exit(1);
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
 			break;
 		}
 		case "EXITHOUSEMANAGE": {
-			System.exit(1);
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
 			break;
 		}
 		case "EXITVENUEOWN": {
-			System.exit(1);
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
 			break;
 		}
 		case "EXITCREATEBOSS": {
-			System.exit(1);
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
 			break;
 		}
+		case "EXITCREATEVENUE": {
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
 
+			}
+			break;
+		}
+		case "EXITSELECTSHOWOWN": {
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
+		case "EXITSELECTUPDATEOWN": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
+		case "EXITUPDATEVENUEOWN": {
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
+		case "EXITSELECTDELETEOWN": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
 		case "BOTONMOD1OWN": {
 
 			logWind.setVisible(false);
@@ -243,6 +385,47 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "SELECTVENUEOWN": {
+
+			venueManageOwn.setVisible(false);
+			selShowVenOwn.setVisible(true);
+			break;
+
+		}
+		case "SELECTVENUEUPDATEOWN": {
+
+			venueManageOwn.setVisible(false);
+			selUpdateVenOwn.setVisible(true);
+			break;
+
+		}
+		case "SELECTVENUEDELETEOWN": {
+
+			venueManageOwn.setVisible(false);
+			selDeleteVenueOwn.setVisible(true);
+			break;
+
+		}
+		case "BACKSELECTUPDATEOWN": {
+
+			selUpdateVenOwn.setVisible(false);
+			venueManageOwn.setVisible(true);
+			break;
+
+		}
+		case "MENUUPDATESELECTED": {
+
+			selUpdateVenOwn.setVisible(false);
+			updateVenueOwn.setVisible(true);
+			break;
+
+		}
+		case "BACKSELECTSHOWOWN": {
+
+			selShowVenOwn.setVisible(false);
+			venueManageOwn.setVisible(true);
+
+		}
 		case "BACKCREATEBOSS": {
 
 			managerCreationWin.setVisible(false);
@@ -264,7 +447,26 @@ public class Controller implements ActionListener {
 			ownWind.setVisible(true);
 			break;
 		}
+		case "BACKCREATEVENUE": {
 
+			createVenueWin.setVisible(false);
+			venueManageOwn.setVisible(true);
+			break;
+		}
+		case "BACKUPDATEVENUEOWN": {
+
+			updateVenueOwn.setVisible(false);
+			selUpdateVenOwn.setVisible(true);
+			break;
+
+		}
+		case "BACKSELECTDELETEOWN": {
+
+			selDeleteVenueOwn.setVisible(false);
+			venueManageOwn.setVisible(true);
+			break;
+
+		}
 		default:
 
 			break;
@@ -321,7 +523,8 @@ public class Controller implements ActionListener {
 		String user = "";
 		String pass = "";
 
-		int response = JOptionPane.showConfirmDialog(signWind, "¿ESTA SEGURO DE LOS DATOS?");
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?", "CONFIRMAR",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
 		user = signWind.getUsuario().getText();
 		pass = signWind.getPassword().getText();
 
@@ -334,4 +537,19 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	public boolean exitConfirm() {
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO QUE QUIERE CERRAR EL APLICATIVO?", "¿SALIR?",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		return confirmation;
+
+	}
 }

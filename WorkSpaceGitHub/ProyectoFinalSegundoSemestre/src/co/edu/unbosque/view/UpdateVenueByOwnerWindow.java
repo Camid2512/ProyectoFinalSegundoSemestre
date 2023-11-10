@@ -14,12 +14,12 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
-public class CreateVenueWindow extends JFrame {
+public class UpdateVenueByOwnerWindow extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2874008353487983310L;
+	private static final long serialVersionUID = -4408642502855127544L;
 
 	private JButton exit, back, createVenue;
 	private JLabel mainImage;
@@ -28,7 +28,7 @@ public class CreateVenueWindow extends JFrame {
 	private JSpinner numEmployes;
 	private SpinnerNumberModel n;
 
-	public CreateVenueWindow() {
+	public UpdateVenueByOwnerWindow() {
 		// TODO Auto-generated constructor stub
 
 		setSize(1280, 720);
