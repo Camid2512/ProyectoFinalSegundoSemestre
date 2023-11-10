@@ -2,15 +2,21 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
 import co.edu.unbosque.model.persistence.OwnerDAO;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
+import co.edu.unbosque.view.CreateVenueWindow;
 import co.edu.unbosque.view.LoginWindow;
+import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
 import co.edu.unbosque.view.SignUpWindow;
+import co.edu.unbosque.view.VenueManagmentByOwnerWindow;
 
 public class Controller implements ActionListener {
 
@@ -18,6 +24,9 @@ public class Controller implements ActionListener {
 	private SignUpWindow signWind;
 	private OwnerWindow ownWind;
 	private BettingHouseManagmentWindow houseManageWindow;
+	private VenueManagmentByOwnerWindow venueManageOwn;
+	private ManagerCreationWindow managerCreationWin;
+	private CreateVenueWindow createVenueWin;
 
 	private HouseSettingDAO houseDAO;
 	private OwnerDAO ownDAO;
@@ -31,7 +40,9 @@ public class Controller implements ActionListener {
 		signWind = new SignUpWindow();
 		ownWind = new OwnerWindow();
 		houseManageWindow = new BettingHouseManagmentWindow();
-
+		venueManageOwn = new VenueManagmentByOwnerWindow();
+		managerCreationWin = new ManagerCreationWindow();
+		createVenueWin = new CreateVenueWindow();
 		agregarLectores();
 
 	}
@@ -71,13 +82,16 @@ public class Controller implements ActionListener {
 		// BOTONES DE VENTANA DUENO
 
 		ownWind.getMod1Btn().addActionListener(this);
-		ownWind.getMod1Btn().setActionCommand("BOTONMOD1");
+		ownWind.getMod1Btn().setActionCommand("BOTONMOD1OWN");
 
 		ownWind.getExit().addActionListener(this);
 		ownWind.getExit().setActionCommand("EXITOWN");
 
 		ownWind.getBack().addActionListener(this);
 		ownWind.getBack().setActionCommand("BACKOWN");
+
+		ownWind.getMod2Btn().addActionListener(this);
+		ownWind.getMod2Btn().setActionCommand("BOTONMOD2OWN");
 
 		// BOTONES MODULO 1 (OWNER)
 
@@ -89,6 +103,28 @@ public class Controller implements ActionListener {
 
 		houseManageWindow.getCreateBtn().addActionListener(this);
 		houseManageWindow.getCreateBtn().setActionCommand("CREATEHOUSE");
+
+		// BOTONES MODULO 2 (OWNER)
+
+		venueManageOwn.getExit().addActionListener(this);
+		venueManageOwn.getExit().setActionCommand("EXITVENUEOWN");
+
+		venueManageOwn.getBack().addActionListener(this);
+		venueManageOwn.getBack().setActionCommand("BACKVENUEOWN");
+
+		venueManageOwn.getCreate().addActionListener(this);
+		venueManageOwn.getCreate().setActionCommand("CREATEVENUE");
+
+		// BOTONES CREAR JEFE DE SEDE
+
+		managerCreationWin.getExit().addActionListener(this);
+		managerCreationWin.getExit().setActionCommand("EXITCREATEBOSS");
+
+		managerCreationWin.getBack().addActionListener(this);
+		managerCreationWin.getBack().setActionCommand("BACKCREATEBOSS");
+
+		managerCreationWin.getCreateAccount().addActionListener(this);
+		managerCreationWin.getCreateAccount().setActionCommand("CREATENEWVENUE");
 
 	}
 
@@ -151,8 +187,16 @@ public class Controller implements ActionListener {
 			System.exit(1);
 			break;
 		}
+		case "EXITVENUEOWN": {
+			System.exit(1);
+			break;
+		}
+		case "EXITCREATEBOSS": {
+			System.exit(1);
+			break;
+		}
 
-		case "BOTONMOD1": {
+		case "BOTONMOD1OWN": {
 
 			logWind.setVisible(false);
 			ownWind.setVisible(false);
@@ -169,6 +213,42 @@ public class Controller implements ActionListener {
 			houseManageWindow.getNumberVenue().setValue(aux);
 
 			break;
+		}
+
+		case "BOTONMOD2OWN": {
+
+			ownWind.setVisible(false);
+			venueManageOwn.setVisible(true);
+			break;
+		}
+		case "BACKVENUEOWN": {
+			venueManageOwn.setVisible(false);
+			ownWind.setVisible(true);
+			break;
+		}
+
+		case "CREATEVENUE": {
+
+			venueManageOwn.setVisible(false);
+			managerCreationWin.setVisible(true);
+
+			break;
+
+		}
+
+		case "CREATENEWVENUE": {
+
+			managerCreationWin.setVisible(false);
+			createVenueWin.setVisible(true);
+			break;
+
+		}
+		case "BACKCREATEBOSS": {
+
+			managerCreationWin.setVisible(false);
+			venueManageOwn.setVisible(true);
+			break;
+
 		}
 
 		case "BACKOWN": {
@@ -196,18 +276,29 @@ public class Controller implements ActionListener {
 
 		String nameToCheck = logWind.getUsuario().getText();
 		@SuppressWarnings("deprecation")
-		String passToCheck = logWind.getPassword().getText().toString();
+		String passToCheck = logWind.getPassword().getText();
+
+		boolean checked = false;
+
 		for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
 
 			if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
 					&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
-				JOptionPane.showMessageDialog(logWind, "EXISTES CARE MONDA");
-				ownWind.setVisible(true);
+
+				checked = true;
+
 			} else {
-				JOptionPane.showMessageDialog(logWind, "CABRON", "TA MAL", 0);
-				logWind.setVisible(true);
+
+				checked = false;
 			}
 
+		}
+		if (checked) {
+			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
+			ownWind.setVisible(true);
+		} else {
+			JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
+			logWind.setVisible(true);
 		}
 
 	}

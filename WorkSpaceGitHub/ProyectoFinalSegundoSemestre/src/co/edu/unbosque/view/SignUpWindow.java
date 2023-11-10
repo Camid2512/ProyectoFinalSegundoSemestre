@@ -60,7 +60,7 @@ public class SignUpWindow extends JFrame {
 		add(usuario);
 
 		password = new JTextField();
-		password.setBounds(314, 327, 658, 70);
+		password.setBounds(314, 351, 658, 70);
 		password.setBackground(new Color(0, 0, 0, 0));
 		password.setOpaque(false);
 		password.setBorder(new EmptyBorder(15, 15, 15, 15));

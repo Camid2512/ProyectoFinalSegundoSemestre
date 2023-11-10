@@ -16,15 +16,15 @@ public class OwnerWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JLabel mainImage;
-	private JButton mod1Btn, mod2Btn, mod3Btn, mod4Btn, mod5Btn, headquarterBtn, exit, back;
+	private JButton mod1Btn, mod2Btn, mod3Btn, mod4Btn, mod5Btn, exit, back;
 
 	public OwnerWindow() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("Iniciar sesión");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("DUEÑO");
+		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
 
@@ -47,7 +47,7 @@ public class OwnerWindow extends JFrame {
 		add(back);
 
 		mod1Btn = new JButton("MOD 1");
-		mod1Btn.setBounds(189, 275, 434, 66);
+		mod1Btn.setBounds(154, 191, 435, 69);
 		mod1Btn.setToolTipText("Boton gestion casa de apuestas");
 		mod1Btn.setBackground(new Color(0, 0, 0, 0));
 		mod1Btn.setOpaque(false);
@@ -56,7 +56,7 @@ public class OwnerWindow extends JFrame {
 		add(mod1Btn);
 
 		mod2Btn = new JButton("MOD 2");
-		mod2Btn.setBounds(656, 275, 434, 66);
+		mod2Btn.setBounds(657, 191, 435, 69);
 		mod2Btn.setToolTipText("Boton gestion sedes");
 		mod2Btn.setBackground(new Color(0, 0, 0, 0));
 		mod2Btn.setOpaque(false);
@@ -65,7 +65,7 @@ public class OwnerWindow extends JFrame {
 		add(mod2Btn);
 
 		mod3Btn = new JButton("MOD 3");
-		mod3Btn.setBounds(189, 379, 434, 66);
+		mod3Btn.setBounds(154, 337, 435, 69);
 		mod3Btn.setToolTipText("Boton gestion apostadores");
 		mod3Btn.setBackground(new Color(0, 0, 0, 0));
 		mod3Btn.setOpaque(false);
@@ -74,7 +74,7 @@ public class OwnerWindow extends JFrame {
 		add(mod3Btn);
 
 		mod4Btn = new JButton("MOD4");
-		mod4Btn.setBounds(656, 379, 434, 66);
+		mod4Btn.setBounds(657, 337, 435, 69);
 		mod4Btn.setToolTipText("Boton gestion apuestas");
 		mod4Btn.setBackground(new Color(0, 0, 0, 0));
 		mod4Btn.setOpaque(false);
@@ -83,22 +83,13 @@ public class OwnerWindow extends JFrame {
 		add(mod4Btn);
 
 		mod5Btn = new JButton("MOD 5");
-		mod5Btn.setBounds(445, 482, 394, 75);
+		mod5Btn.setBounds(428, 482, 394, 75);
 		mod5Btn.setToolTipText("Boton para consultas");
 		mod5Btn.setBackground(new Color(0, 0, 0, 0));
 		mod5Btn.setOpaque(false);
 		mod5Btn.setContentAreaFilled(false);
 		mod5Btn.setBorderPainted(false);
 		add(mod5Btn);
-
-		headquarterBtn = new JButton("CREAR SEDE");
-		headquarterBtn.setBounds(445, 174, 391, 75);
-		headquarterBtn.setToolTipText("Boton crear nueva sede");
-		headquarterBtn.setBackground(new Color(0, 0, 0, 0));
-		headquarterBtn.setOpaque(false);
-		headquarterBtn.setContentAreaFilled(false);
-		headquarterBtn.setBorderPainted(false);
-		add(headquarterBtn);
 
 		mainImage = new JLabel();
 		mainImage.setBounds(0, 0, 1280, 720);
@@ -162,14 +153,6 @@ public class OwnerWindow extends JFrame {
 
 	public void setMod5Btn(JButton mod5Btn) {
 		this.mod5Btn = mod5Btn;
-	}
-
-	public JButton getHeadquarterBtn() {
-		return headquarterBtn;
-	}
-
-	public void setHeadquarterBtn(JButton headquarterBtn) {
-		this.headquarterBtn = headquarterBtn;
 	}
 
 	public JButton getExit() {

@@ -73,18 +73,18 @@ public class BettingHouseManagmentWindow extends JFrame {
 
 		numberVenue = new JSpinner();
 		numberVenue.setBounds(432, 409, 414, 69);
-//		numberVenue.setBackground(new Color(0, 0, 0, 0));
-		numberVenue.setOpaque(true);
 		n = new SpinnerNumberModel();
 		n.setMinimum(0);
 		numberVenue.setModel(n);
-//		numberVenue.setBorder(new EmptyBorder(15, 15, 15, 15));
-//		numberVenue.setFont(new Font("Arial", 1, 25));
-//		numberVenue.setForeground(Color.white);
+		numberVenue.setBorder(new EmptyBorder(20, 20, 20, 20));
+		numberVenue.setFont(new Font("Arial", 1, 25));
+		numberVenue.setForeground(Color.white);
+		numberVenue.setBackground(new Color(188, 186, 190));
+		numberVenue.getEditor().getComponent(0).setBackground(new Color(188, 186, 190));
 		add(numberVenue);
 
 		totalBudget = new JTextField();
-		totalBudget.setBounds(251, 294, 776, 67);
+		totalBudget.setBounds(251, 309, 776, 67);
 		totalBudget.setBackground(new Color(0, 0, 0, 0));
 		totalBudget.setOpaque(false);
 		totalBudget.setBorder(new EmptyBorder(15, 15, 15, 15));

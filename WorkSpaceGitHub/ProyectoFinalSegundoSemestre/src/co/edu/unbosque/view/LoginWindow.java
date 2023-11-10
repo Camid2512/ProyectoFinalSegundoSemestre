@@ -73,7 +73,7 @@ public class LoginWindow extends JFrame {
 		add(usuario);
 
 		password = new JPasswordField();
-		password.setBounds(312, 290, 656, 68);
+		password.setBounds(315, 315, 656, 68);
 		password.setBackground(new Color(0, 0, 0, 0));
 		password.setOpaque(false);
 		password.setBorder(new EmptyBorder(15, 15, 15, 15));
