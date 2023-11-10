@@ -7,13 +7,19 @@ import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
 import co.edu.unbosque.model.persistence.OwnerDAO;
+import co.edu.unbosque.view.BetManagmentByOwnerWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
+import co.edu.unbosque.view.CreateGamblerWindow;
 import co.edu.unbosque.view.CreateVenueWindow;
+import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
 import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
+import co.edu.unbosque.view.SelectDeleteGamblerOwnWindow;
 import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
+import co.edu.unbosque.view.SelectShowGamblerWindow;
 import co.edu.unbosque.view.SelectShowVenueWindow;
+import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
 import co.edu.unbosque.view.SignUpWindow;
 import co.edu.unbosque.view.UpdateVenueByOwnerWindow;
@@ -32,6 +38,12 @@ public class Controller implements ActionListener {
 	private SelectUpdateVenueWindow selUpdateVenOwn;
 	private UpdateVenueByOwnerWindow updateVenueOwn;
 	private SelectDeleteVenueOwnWindow selDeleteVenueOwn;
+	private GamblerManagmentByOwnerWindow gamManageOwn;
+	private CreateGamblerWindow createGamblerWinOwn;
+	private SelectShowGamblerWindow selShowGamblerOwn;
+	private SelectUpdateGamblerWindow selUpdateGamblerOwn;
+	private SelectDeleteGamblerOwnWindow selDeleteGamblerOwn;
+	private BetManagmentByOwnerWindow betManOwn;
 
 	private HouseSettingDAO houseDAO;
 	private OwnerDAO ownDAO;
@@ -52,6 +64,12 @@ public class Controller implements ActionListener {
 		selUpdateVenOwn = new SelectUpdateVenueWindow();
 		updateVenueOwn = new UpdateVenueByOwnerWindow();
 		selDeleteVenueOwn = new SelectDeleteVenueOwnWindow();
+		gamManageOwn = new GamblerManagmentByOwnerWindow();
+		createGamblerWinOwn = new CreateGamblerWindow(); 
+		selShowGamblerOwn = new SelectShowGamblerWindow();
+		selUpdateGamblerOwn = new SelectUpdateGamblerWindow();
+		selDeleteGamblerOwn = new SelectDeleteGamblerOwnWindow();
+		betManOwn = new BetManagmentByOwnerWindow();
 		agregarLectores();
 
 	}
@@ -101,6 +119,12 @@ public class Controller implements ActionListener {
 
 		ownWind.getMod2Btn().addActionListener(this);
 		ownWind.getMod2Btn().setActionCommand("BOTONMOD2OWN");
+		
+		ownWind.getMod3Btn().addActionListener(this);
+		ownWind.getMod3Btn().setActionCommand("BOTONMOD3OWN");
+		
+		ownWind.getMod4Btn().addActionListener(this);
+		ownWind.getMod4Btn().setActionCommand("BOTONMOD4OWN");
 
 		// BOTONES MODULO 1 (OWNER)
 
@@ -179,7 +203,7 @@ public class Controller implements ActionListener {
 		updateVenueOwn.getBack().addActionListener(this);
 		updateVenueOwn.getBack().setActionCommand("BACKUPDATEVENUEOWN");
 
-		// BOTONES MENU SELECCION SEDE ACTUALIZAR (OWNER)
+		// BOTONES MENU SELECCION SEDE ELIMINAR (OWNER)
 
 		selDeleteVenueOwn.getExit().addActionListener(this);
 		selDeleteVenueOwn.getExit().setActionCommand("EXITSELECTDELETEOWN");
@@ -189,7 +213,84 @@ public class Controller implements ActionListener {
 
 		selDeleteVenueOwn.getNext().addActionListener(this);
 		selDeleteVenueOwn.getNext().setActionCommand("DELETEVENUEOWN");
+		
+		// BOTONES MENU APOSTADORES (OWNER)
+		
+		gamManageOwn.getExit().addActionListener(this);
+		gamManageOwn.getExit().setActionCommand("EXITMENUGAMBLEROWN");
 
+		gamManageOwn.getBack().addActionListener(this);
+		gamManageOwn.getBack().setActionCommand("BACKMENUGAMBLEROWN");
+		
+		gamManageOwn.getCreate().addActionListener(this);
+		gamManageOwn.getCreate().setActionCommand("CREATEGAMBLER");
+
+		gamManageOwn.getRead().addActionListener(this);
+		gamManageOwn.getRead().setActionCommand("SELECTGAMBLERSHOWOWN");
+
+		gamManageOwn.getUpdate().addActionListener(this);
+		gamManageOwn.getUpdate().setActionCommand("SELECTGAMBLERUPDATEOWN");
+
+		gamManageOwn.getDelete().addActionListener(this);
+		gamManageOwn.getDelete().setActionCommand("SELECTGAMBLERDELETEOWN");
+		
+		//BOTONES CREAR APOSTADOR (OWNER)
+		
+		createGamblerWinOwn.getExit().addActionListener(this);
+		createGamblerWinOwn.getExit().setActionCommand("EXITCREATEGAMBLEROWN");
+
+		createGamblerWinOwn.getBack().addActionListener(this);
+		createGamblerWinOwn.getBack().setActionCommand("BACKCREATEGAMBLEROWN");
+		
+		//BOTONES MENU SELECCION APOSTADOR MOSTRAR (OWNER)
+		
+		selShowGamblerOwn.getExit().addActionListener(this);
+		selShowGamblerOwn.getExit().setActionCommand("EXITSELECTSHOWGAMOWN");
+
+		selShowGamblerOwn.getBack().addActionListener(this);
+		selShowGamblerOwn.getBack().setActionCommand("BACKSELECTSHOWGAMOWN");
+		
+		// BOTONES MENU SELECCION APOSTADOR ACTUALIZAR (OWNER)
+		
+		selUpdateGamblerOwn.getExit().addActionListener(this);
+		selUpdateGamblerOwn.getExit().setActionCommand("EXITSELECTUPDATEGAMOWN");
+
+		selUpdateGamblerOwn.getBack().addActionListener(this);
+		selUpdateGamblerOwn.getBack().setActionCommand("BACKSELECTUPDATEGAMOWN");
+
+		selUpdateGamblerOwn.getNext().addActionListener(this);
+		selUpdateGamblerOwn.getNext().setActionCommand("MENUUPDATESELECTEDGAMOWN");
+		
+		//BOTONES MENU SELECCION APOSTADOR ELIMINAR (OWNER)
+		
+		selDeleteGamblerOwn.getExit().addActionListener(this);
+		selDeleteGamblerOwn.getExit().setActionCommand("EXITSELECTDELETEOWN");
+
+		selDeleteGamblerOwn.getBack().addActionListener(this);
+		selDeleteGamblerOwn.getBack().setActionCommand("BACKSELECTDELETEOWN");
+
+		selDeleteGamblerOwn.getNext().addActionListener(this);
+		selDeleteGamblerOwn.getNext().setActionCommand("DELETEVENUEOWN");
+		
+		//BOTONES MODULO 4 (OWNER)}
+		
+		betManOwn.getExit().addActionListener(this);
+		betManOwn.getExit().setActionCommand("EXITMENUBETOWN");
+
+		betManOwn.getBack().addActionListener(this);
+		betManOwn.getBack().setActionCommand("BACKMENUBETOWN");
+		
+		betManOwn.getCreate().addActionListener(this);
+		betManOwn.getCreate().setActionCommand("CREATEBET");
+
+		betManOwn.getRead().addActionListener(this);
+		betManOwn.getRead().setActionCommand("SELECTBETSHOWOWN");
+
+		betManOwn.getUpdate().addActionListener(this);
+		betManOwn.getUpdate().setActionCommand("SELECTBETRUPDATEOWN");
+
+		betManOwn.getDelete().addActionListener(this);
+		betManOwn.getDelete().setActionCommand("SELECTBETDELETEOWN");
 	}
 
 	@Override
@@ -328,6 +429,17 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
+		case "EXITMENUGAMBLEROWN": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
+		
 		case "EXITSELECTDELETEOWN": {
 
 			boolean confirm = exitConfirm();
@@ -338,6 +450,51 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
+		
+		case "EXITCREATEGAMBLEROWN": {
+			
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+			
+		}
+		
+		case "EXITSELECTSHOWGAMOWN": {
+			
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
+		
+		case "EXITSELECTUPDATEGAMOWN": {
+			
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
+		
+		case "EXITMENUBETOWN": {
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
+		
 		case "BOTONMOD1OWN": {
 
 			logWind.setVisible(false);
@@ -363,6 +520,19 @@ public class Controller implements ActionListener {
 			venueManageOwn.setVisible(true);
 			break;
 		}
+		
+		case "BOTONMOD3OWN": {
+			ownWind.setVisible(false);
+			gamManageOwn.setVisible(true);
+			break;
+		}
+		
+		case "BOTONMOD4OWN": {
+			ownWind.setVisible(false);
+			betManOwn.setVisible(true);
+			break;
+		}
+		
 		case "BACKVENUEOWN": {
 			venueManageOwn.setVisible(false);
 			ownWind.setVisible(true);
@@ -467,6 +637,83 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		
+		case "BACKMENUGAMBLEROWN": {
+
+			gamManageOwn.setVisible(false);
+			ownWind.setVisible(true);
+			break;
+
+		}
+		
+		case "CREATEGAMBLER": {
+			
+			gamManageOwn.setVisible(false);
+			createGamblerWinOwn.setVisible(true);
+			break;
+
+		}
+		
+		case "BACKCREATEGAMBLEROWN": {
+			
+			createGamblerWinOwn.setVisible(false);
+			gamManageOwn.setVisible(true);
+			break;
+			
+		}
+		
+		case "BACKSELECTSHOWGAMOWN": {
+			
+			selShowGamblerOwn.setVisible(false);
+			gamManageOwn.setVisible(true);
+			break;
+			
+		}
+		
+		case "BACKSELECTUPDATEGAMOWN": {
+			
+			selUpdateGamblerOwn.setVisible(false);
+			gamManageOwn.setVisible(true);
+			break;
+			
+		}
+		
+		case "SELECTGAMBLERSHOWOWN": {
+			
+			gamManageOwn.setVisible(false);
+			selShowGamblerOwn.setVisible(true);
+			break;
+		}
+		
+		case "SELECTGAMBLERUPDATEOWN": {
+			
+			gamManageOwn.setVisible(false);
+			selUpdateGamblerOwn.setVisible(true);
+			break;
+		}
+		
+		case "SELECTGAMBLERDELETEOWN":{
+			
+			gamManageOwn.setVisible(false);
+			selDeleteGamblerOwn.setVisible(true);
+			break;
+		}
+		
+		case "BACKMENUBETOWN":{
+			
+			betManOwn.setVisible(false);
+			ownWind.setVisible(true);
+			break;
+		}
+		
+		case "CREATEBET":{
+			
+			betManOwn.setVisible(false);
+			createGamblerWinOwn.setVisible(true);
+			break;
+			
+		}
+		
 		default:
 
 			break;
