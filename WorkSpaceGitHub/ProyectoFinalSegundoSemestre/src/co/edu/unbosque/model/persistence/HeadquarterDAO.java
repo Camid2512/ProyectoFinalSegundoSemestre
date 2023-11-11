@@ -14,7 +14,7 @@ public class HeadquarterDAO implements CRUDOperation {
 	 * @version 1.0
 	 * @since 25/09/2023
 	 */
-	private final String FILENAME;
+	private final String FILENAME = "headquarter.csv";
 	/**
 	 * Este es el atributo de el nombre serial de archivo
 	 * 
@@ -22,13 +22,11 @@ public class HeadquarterDAO implements CRUDOperation {
 	 * @version 1.0
 	 * @since 25/09/2023
 	 */
-	private final String SERIAL_FILENAME;
+	private final String SERIAL_FILENAME = "headquarterserialized.csv";
 
 	public HeadquarterDAO() {
 		// TODO Auto-generated constructor stub
 		headquarterList = new ArrayList<HeadquarterDTO>();
-		FILENAME = "headquarter.csv";
-		SERIAL_FILENAME = "headquarterserialized.csv";
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
@@ -46,8 +44,10 @@ public class HeadquarterDAO implements CRUDOperation {
 
 		HeadquarterDTO headquarter = new HeadquarterDTO();
 
-		headquarter.setLocation(attribs[0]);
-		headquarter.setEmployeesNumber(Integer.parseInt(attribs[1]));
+		headquarter.setVenueName(attribs[0]);
+		headquarter.setLocationVenue(attribs[1]);
+		headquarter.setEmployeesNumber(Integer.parseInt(attribs[2]));
+		headquarter.setId(attribs[3]);
 
 		headquarterList.add(headquarter);
 
@@ -89,10 +89,16 @@ public class HeadquarterDAO implements CRUDOperation {
 			return false;
 		} else {
 			if (!newData[0].isEmpty() || !newData[0].equals("") || newData[0].length() != 0) {
-				headquarterList.get(index).setLocation(newData[0]);
+				headquarterList.get(index).setVenueName(newData[0]);
 			}
 			if (!newData[1].isEmpty() || !newData[1].equals("") || newData[1].length() != 0) {
-				headquarterList.get(index).setEmployeesNumber(Integer.parseInt(newData[1]));
+				headquarterList.get(index).setLocationVenue(newData[1]);
+			}
+			if (!newData[2].isEmpty() || !newData[2].equals("") || newData[2].length() != 0) {
+				headquarterList.get(index).setEmployeesNumber(Integer.parseInt(newData[2]));
+			}
+			if (!newData[3].isEmpty() || !newData[3].equals("") || newData[3].length() != 0) {
+				headquarterList.get(index).setId(newData[3]);
 			}
 			writeFile();
 			writeSerializable();
@@ -137,10 +143,12 @@ public class HeadquarterDAO implements CRUDOperation {
 		String[] lines = content.split("\n");
 		for (int i = 0; i < lines.length; i++) {
 			String[] cols = lines[i].split(";");
-			String location = cols[0];
-			int numEmployees = Integer.parseInt(cols[1]);
+			String venueName = cols[0];
+			String locationVenue = cols[1];
+			int numEmployees = Integer.parseInt(cols[2]);
+			String id = cols[3];
 
-			headquarterList.add(new HeadquarterDTO(location, numEmployees));
+			headquarterList.add(new HeadquarterDTO(venueName, locationVenue, numEmployees, id));
 
 		}
 	}
@@ -152,8 +160,10 @@ public class HeadquarterDAO implements CRUDOperation {
 		// TODO Auto-generated method stub
 		content = "";
 		headquarterList.forEach(headquarterManager -> {
-			content += headquarterManager.getLocation() + ";";
-			content += headquarterManager.getEmployeesNumber() + ";HEAD\n";
+			content += headquarterManager.getVenueName() + ";";
+			content += headquarterManager.getLocationVenue() + ";";
+			content += headquarterManager.getEmployeesNumber() + ";";
+			content += headquarterManager.getId() + ";HEAD\n";
 		});
 		FileHandler.openAndWriteFile(FILENAME, content);
 	}

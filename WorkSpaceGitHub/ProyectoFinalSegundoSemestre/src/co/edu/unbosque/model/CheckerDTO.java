@@ -8,7 +8,7 @@ package co.edu.unbosque.model;
  * Clase de Cajero que extiende de gerente de sede
  * 
  */
-public class CheckerDTO extends HeadquarterManagerDTO {
+public class CheckerDTO {
 
 	/*
 	 * 
@@ -21,28 +21,52 @@ public class CheckerDTO extends HeadquarterManagerDTO {
 	 */
 	private static final long serialVersionUID = -283480740690058403L;
 
+	private String user;
+	private String password;
+	private String id;
+
 	public CheckerDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * 
-	 * super constructor de la clase cajero
-	 * 
-	 */
-	public CheckerDTO(String username, String password) {
-		super(username, password);
-		// TODO Auto-generated constructor stub
+	public CheckerDTO(String user, String password, String id) {
+		super();
+		this.user = user;
+		this.password = password;
+		this.id = id;
 	}
 
-	/*
-	 * 
-	 * toString de la clase cajero
-	 * 
-	 */
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "CheckerDTO []" + super.toString();
+		return "CheckerDTO [user=" + user + ", password=" + password + ", id=" + id + "]";
 	}
 
 }

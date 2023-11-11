@@ -48,8 +48,9 @@ public class CheckerDAO implements CRUDOperation {
 
 		CheckerDTO checker = new CheckerDTO();
 
-		checker.setUsername(attribs[0]);
+		checker.setUser(attribs[0]);
 		checker.setPassword(attribs[1]);
+		checker.setId(attribs[3]);
 
 		checkerList.add(checker);
 		writeFile();
@@ -88,10 +89,13 @@ public class CheckerDAO implements CRUDOperation {
 			return false;
 		} else {
 			if (!newData[0].isEmpty() || !newData[0].equals("") || newData[0].length() != 0) {
-				checkerList.get(index).setUsername(newData[1]);
+				checkerList.get(index).setUser(newData[1]);
 			}
 			if (!newData[1].isEmpty() || !newData[1].equals("") || newData[1].length() != 0) {
 				checkerList.get(index).setPassword(newData[1]);
+			}
+			if (!newData[2].isEmpty() || !newData[2].equals("") || newData[2].length() != 0) {
+				checkerList.get(index).setId(newData[2]);
 			}
 			writeFile();
 			writeSerializable();
@@ -138,8 +142,9 @@ public class CheckerDAO implements CRUDOperation {
 			String[] cols = lines[i].split(";");
 			String username = cols[0];
 			String password = cols[1];
+			String id = cols[2];
 
-			checkerList.add(new CheckerDTO(username, password));
+			checkerList.add(new CheckerDTO(username, password, id));
 
 		}
 	}
@@ -152,8 +157,9 @@ public class CheckerDAO implements CRUDOperation {
 
 		content = "";
 		checkerList.forEach(headquarterManager -> {
-			content += headquarterManager.getUsername() + ";";
-			content += headquarterManager.getPassword() + ";CHECK\n";
+			content += headquarterManager.getUser() + ";";
+			content += headquarterManager.getPassword() + ";";
+			content += headquarterManager.getId() + ";CHECK\n";
 		});
 		FileHandler.openAndWriteFile(FILENAME, content);
 

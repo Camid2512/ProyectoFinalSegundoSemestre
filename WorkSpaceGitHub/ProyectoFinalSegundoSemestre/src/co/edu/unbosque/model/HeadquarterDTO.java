@@ -2,31 +2,44 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 
-public class HeadquarterDTO implements Serializable{
+public class HeadquarterDTO implements Serializable {
 
+	private static final long serialVersionUID = -5608596886658828976L;
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7926887290023177109L;
-	private String location;
+
+	private String venueName;
+	private String locationVenue;
 	private int employeesNumber;
+	private String id;
 
 	public HeadquarterDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public HeadquarterDTO(String location, int employeesNumber) {
+	public HeadquarterDTO(String venueName, String locationVenue, int employeesNumber, String id) {
 		super();
-		this.location = location;
+		this.venueName = venueName;
+		this.locationVenue = locationVenue;
 		this.employeesNumber = employeesNumber;
+		this.id = id;
 	}
 
-	public String getLocation() {
-		return location;
+	public String getVenueName() {
+		return venueName;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setVenueName(String venueName) {
+		this.venueName = venueName;
+	}
+
+	public String getLocationVenue() {
+		return locationVenue;
+	}
+
+	public void setLocationVenue(String locationVenue) {
+		this.locationVenue = locationVenue;
 	}
 
 	public int getEmployeesNumber() {
@@ -37,9 +50,22 @@ public class HeadquarterDTO implements Serializable{
 		this.employeesNumber = employeesNumber;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "HeadquarterDTO [location=" + location + ", employeesNumber=" + employeesNumber + "]";
+		return "HeadquarterDTO [venueName=" + venueName + ", locationVenue=" + locationVenue + ", employeesNumber="
+				+ employeesNumber + ", id=" + id + "]";
 	}
 
 }

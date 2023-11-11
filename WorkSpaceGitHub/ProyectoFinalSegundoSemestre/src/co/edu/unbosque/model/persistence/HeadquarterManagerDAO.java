@@ -14,7 +14,7 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 	 * @version 1.0
 	 * @since 25/09/2023
 	 */
-	private final String FILENAME;
+	private final String FILENAME = "managerlogin.csv";
 	/**
 	 * Este es el atributo de el nombre serial de archivo
 	 * 
@@ -22,13 +22,11 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 	 * @version 1.0
 	 * @since 25/09/2023
 	 */
-	private final String SERIAL_FILENAME;
+	private final String SERIAL_FILENAME = "managerloginserialized.csv";
 
 	public HeadquarterManagerDAO() {
 
 		headquarterManagerList = new ArrayList<HeadquarterManagerDTO>();
-		FILENAME = "managerlogin.csv";
-		SERIAL_FILENAME = "managerloginserialized.csv";
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
@@ -48,9 +46,9 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 
 		HeadquarterManagerDTO manager = new HeadquarterManagerDTO();
 
-		manager.setUsername(attribs[0]);
+		manager.setUser(attribs[0]);
 		manager.setPassword(attribs[1]);
-		manager.setNombreSede(attribs[2]);
+		manager.setId(attribs[2]);
 
 		headquarterManagerList.add(manager);
 		writeFile();
@@ -89,13 +87,13 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 			return false;
 		} else {
 			if (!newData[0].isEmpty() || !newData[0].equals("") || newData[0].length() != 0) {
-				headquarterManagerList.get(index).setUsername(newData[1]);
+				headquarterManagerList.get(index).setUser(newData[0]);
 			}
 			if (!newData[1].isEmpty() || !newData[1].equals("") || newData[1].length() != 0) {
 				headquarterManagerList.get(index).setPassword(newData[1]);
 			}
 			if (!newData[2].isEmpty() || !newData[2].equals("") || newData[2].length() != 0) {
-				headquarterManagerList.get(index).setNombreSede(newData[2]);
+				headquarterManagerList.get(index).setId(newData[2]);
 			}
 			writeFile();
 			writeSerializable();
@@ -157,9 +155,9 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 
 		content = "";
 		headquarterManagerList.forEach(headquarterManager -> {
-			content += headquarterManager.getUsername() + ";";
+			content += headquarterManager.getUser() + ";";
 			content += headquarterManager.getPassword() + ";";
-			content += headquarterManager.getNombreSede() + ";MAN\n";
+			content += headquarterManager.getId() + ";MAN\n";
 		});
 		FileHandler.openAndWriteFile(FILENAME, content);
 
@@ -172,6 +170,38 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, headquarterManagerList);
 
+	}
+
+	public ArrayList<HeadquarterManagerDTO> getHeadquarterManagerList() {
+		return headquarterManagerList;
+	}
+
+	public void setHeadquarterManagerList(ArrayList<HeadquarterManagerDTO> headquarterManagerList) {
+		this.headquarterManagerList = headquarterManagerList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
 	}
 
 }

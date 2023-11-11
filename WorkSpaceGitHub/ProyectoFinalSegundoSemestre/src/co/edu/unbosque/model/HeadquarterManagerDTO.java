@@ -3,10 +3,12 @@
  */
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * Clase de gerente de sede que extiende de dueño
  */
-public class HeadquarterManagerDTO extends OwnerDTO {
+public class HeadquarterManagerDTO implements Serializable {
 	/*
 	 * 
 	 * Constructor vacio de la clase gerente de sede
@@ -17,38 +19,54 @@ public class HeadquarterManagerDTO extends OwnerDTO {
 	 * 
 	 */
 	private static final long serialVersionUID = 6385667339937525680L;
-	private String headquerterName;
+
+	private String user;
+	private String password;
+
+	private String id;
 
 	public HeadquarterManagerDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public HeadquarterManagerDTO(String username, String password) {
-		super(username, password);
-		// TODO Auto-generated constructor stub
-	}
-
-	public HeadquarterManagerDTO(String nombreSede) {
+	public HeadquarterManagerDTO(String user, String password, String id) {
 		super();
-		this.headquerterName = nombreSede;
+		this.user = user;
+		this.password = password;
+		this.id = id;
 	}
 
-	public HeadquarterManagerDTO(String username, String password, String nombreSede) {
-		super(username, password);
-		this.headquerterName = nombreSede;
+	public String getUser() {
+		return user;
 	}
 
-	public String getNombreSede() {
-		return headquerterName;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
-	public void setNombreSede(String nombreSede) {
-		this.headquerterName = nombreSede;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "HeadquarterManagerDTO [nombreSede=" + headquerterName + "]" + super.toString();
+		return "HeadquarterManagerDTO [user=" + user + ", password=" + password + ", id=" + id + "]";
 	}
 
 }
