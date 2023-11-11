@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
 
+/** 
+ * Esta es la clase ventana de gestion de apostador
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
+
 import java.awt.Color;
 import java.awt.Image;
 
@@ -11,12 +18,45 @@ import javax.swing.JLabel;
 public class GamblerManagmentByOwnerWindow extends JFrame {
 
 	/**
+	 * Este es el atributo de la version serial
 	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
+	
 	private static final long serialVersionUID = 415700271536832498L;
+	
+	/**
+	 * Estos son los atributos de los botones
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	private JButton exit, back, create, read, update, delete;
+	
+	/**
+	 * Estos son los atributos de las imagenes
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JLabel mainImage;
+	
+	/** 
+	 * Este es el constructor vacio de la clase ventana de gestion de apostador
+	 * @author Cristhian Diaz 
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	public GamblerManagmentByOwnerWindow() {
 		// TODO Auto-generated constructor stub
@@ -98,62 +138,197 @@ public class GamblerManagmentByOwnerWindow extends JFrame {
 		add(mainImage);
 
 	}
+	
+	/**
+	 * Este es el getter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getExit() {
 		return exit;
 	}
+	
+	/**
+	 * Este es el setter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
+	
+	/**
+	 * Este es el getter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getBack() {
 		return back;
 	}
+	
+	/**
+	 * Este es el setter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setBack(JButton back) {
 		this.back = back;
 	}
+	
+	/**
+	 * Este es el getter del boton para crear apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getCreate() {
 		return create;
 	}
+	
+	/**
+	 * Este es el setter del boton para crear apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setCreate(JButton create) {
 		this.create = create;
 	}
+	
+	/**
+	 * Este es el getter del boton para mostrar apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getRead() {
 		return read;
 	}
+	
+	/**
+	 * Este es el setter del boton para mostrar apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setRead(JButton read) {
 		this.read = read;
 	}
+	
+	/**
+	 * Este es el getter del boton para actualizar apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getUpdate() {
 		return update;
 	}
+	
+	/**
+	 * Este es el setter del boton para actualizar apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setUpdate(JButton update) {
 		this.update = update;
 	}
+	
+	/**
+	 * Este es el getter del boton para eleminar apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getDelete() {
 		return delete;
 	}
+	
+	/**
+	 * Este es el setter del boton para actualizar apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setDelete(JButton delete) {
 		this.delete = delete;
 	}
+	
+	/**
+	 * Este es el getter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JLabel getMainImage() {
 		return mainImage;
 	}
+	
+	/**
+	 * Este es el setter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
+	
+	/**
+	 * Este es el getter del serial
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

@@ -70,7 +70,7 @@ public class SelectUpdateGamblerWindow extends JFrame {
 		mainImage.setBounds(0, 0, 1280, 720);
 
 		Image temporal1;
-		temporal1 = new ImageIcon("src/Images/selectshowvenue.png").getImage();
+		temporal1 = new ImageIcon("src/Images/selectvenuegambler.png").getImage();
 
 		ImageIcon img1;
 		img1 = new ImageIcon(

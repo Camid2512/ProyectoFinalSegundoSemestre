@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
 
+/** 
+ * Esta es la clase ventana de crear cuenta jefe de sede
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -14,13 +21,56 @@ import javax.swing.border.EmptyBorder;
 public class ManagerCreationWindow extends JFrame {
 
 	/**
+	 * Este es el atributo de la version serial
 	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
+	
 	private static final long serialVersionUID = -931051843069676671L;
+	
+	/**
+	 * Estos son los atributos de los botones
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	private JButton exit, back, createAccount;
+	
+	/**
+	 * Estos son los atributos de las imagenes
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JLabel mainImage;
+	
+	/**
+	 * Estos son los atributos de los campos de texto
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 	private JTextField user, password;
+	
+	/**
+	 * Este es el constructor vacio de la clase ventana de crear cuenta jefe de sede
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	public ManagerCreationWindow() {
 		// TODO Auto-generated constructor stub
@@ -92,54 +142,171 @@ public class ManagerCreationWindow extends JFrame {
 		add(mainImage);
 
 	}
+	
+	/**
+	 * Este es el getter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getExit() {
 		return exit;
 	}
+	
+	/**
+	 * Este es el setter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
+	
+	/**
+	 * Este es el getter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getBack() {
 		return back;
 	}
+	
+	/**
+	 * Este es el setter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setBack(JButton back) {
 		this.back = back;
 	}
+	
+	/**
+	 * Este es el getter del boton crear cuenta
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getCreateAccount() {
 		return createAccount;
 	}
+	
+	/**
+	 * Este es el setter del boton crear cuenta
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setCreateAccount(JButton createAccount) {
 		this.createAccount = createAccount;
 	}
+	
+	/**
+	 * Este es el getter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JLabel getMainImage() {
 		return mainImage;
 	}
+	
+	/**
+	 * Este es el setter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
+	
+	/**
+	 * Este es el getter del campo usuario
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JTextField getUser() {
 		return user;
 	}
+	
+	/**
+	 * Este es el setter del campo usuario
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setUser(JTextField user) {
 		this.user = user;
 	}
+	
+	/**
+	 * Este es el getter del campo contrasena
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JTextField getPassword() {
 		return password;
 	}
+	
+	/**
+	 * Este es el setter del campo contrasena
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setPassword(JTextField password) {
 		this.password = password;
 	}
+	
+	/**
+	 * Este es el getter del serial
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

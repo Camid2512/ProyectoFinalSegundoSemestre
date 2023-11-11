@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
 
+/** 
+ * Esta es la clase ventana dueno
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
+
 import java.awt.Color;
 import java.awt.Image;
 
@@ -11,12 +18,46 @@ import javax.swing.JLabel;
 public class OwnerWindow extends JFrame {
 
 	/**
+	 * Este es el atributo de la version serial
 	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = -6815774728024611601L;
+	
+	/**
+	 * Estos son los atributos de las imagenes
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	private JLabel mainImage;
+	
+	/**
+	 * Estos son los atributos de los botones
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JButton mod1Btn, mod2Btn, mod3Btn, mod4Btn, mod5Btn, exit, back;
+	
+	/**
+	 * Este es el constructor vacio de la clase ventana dueno
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	public OwnerWindow() {
 		// TODO Auto-generated constructor stub
@@ -106,70 +147,223 @@ public class OwnerWindow extends JFrame {
 		add(mainImage);
 
 	}
+	
+	/**
+	 * Este es el getter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JLabel getMainImage() {
 		return mainImage;
 	}
+	
+	/**
+	 * Este es el setter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
+	
+	/**
+	 * Este es el getter del boton modulo 1
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getMod1Btn() {
 		return mod1Btn;
 	}
+	
+	/**
+	 * Este es el setter del boton modulo 1
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMod1Btn(JButton mod1Btn) {
 		this.mod1Btn = mod1Btn;
 	}
+	
+	/**
+	 * Este es el getter del boton modulo 2
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getMod2Btn() {
 		return mod2Btn;
 	}
+	
+	/**
+	 * Este es el setter del boton modulo 2
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMod2Btn(JButton mod2Btn) {
 		this.mod2Btn = mod2Btn;
 	}
+	
+	/**
+	 * Este es el getter del boton modulo 3
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getMod3Btn() {
 		return mod3Btn;
 	}
+	
+	/**
+	 * Este es el setter del boton modulo 3
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMod3Btn(JButton mod3Btn) {
 		this.mod3Btn = mod3Btn;
 	}
+	
+	/**
+	 * Este es el getter del boton modulo 4
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getMod4Btn() {
 		return mod4Btn;
 	}
+	
+	/**
+	 * Este es el setter del boton modulo 4
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMod4Btn(JButton mod4Btn) {
 		this.mod4Btn = mod4Btn;
 	}
+	
+	/**
+	 * Este es el getter del boton modulo 5
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getMod5Btn() {
 		return mod5Btn;
 	}
+	
+	/**
+	 * Este es el setter del boton modulo 5
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMod5Btn(JButton mod5Btn) {
 		this.mod5Btn = mod5Btn;
 	}
+	
+	/**
+	 * Este es el getter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getExit() {
 		return exit;
 	}
+	
+	/**
+	 * Este es el setter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
+	
+	/**
+	 * Este es el getter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getBack() {
 		return back;
 	}
+	
+	/**
+	 * Este es el setter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setBack(JButton back) {
 		this.back = back;
 	}
+	
+	/**
+	 * Este es el getter del serial
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

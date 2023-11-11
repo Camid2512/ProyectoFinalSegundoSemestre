@@ -18,7 +18,7 @@ public class SelectCreateBetWindow extends JFrame {
 	private static final long serialVersionUID = 7976763735079298830L;
 
 	private JButton exit, back, next;
-	private JComboBox<String> comboVenue, comboGambler;
+	private JComboBox<String> comboVenue;
 	private JLabel mainImage;
 
 	public SelectCreateBetWindow() {
@@ -77,7 +77,7 @@ public class SelectCreateBetWindow extends JFrame {
 		mainImage.setBounds(0, 0, 1280, 720);
 
 		Image temporal1;
-		temporal1 = new ImageIcon("src/Images/selectshowvenue.png").getImage();
+		temporal1 = new ImageIcon("src/Images/selectvenuegambler.png").getImage();
 
 		ImageIcon img1;
 		img1 = new ImageIcon(

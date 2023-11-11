@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
 
+/** 
+ * Esta es la clase ventana de crear apostador
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -17,16 +24,89 @@ import javax.swing.border.EmptyBorder;
 public class CreateGamblerWindow extends JFrame {
 
 	/**
+	 * Este es el atributo de la version serial
 	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
+	
 	private static final long serialVersionUID = -2874008353487983310L;
+	
+	/**
+	 * Estos son los atributos de los botones
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	private JButton exit, back, createGambler;
+	
+	/**
+	 * Estos son los atributos de las imagenes
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JLabel mainImage;
+	
+	/**
+	 * Estos son los atributos de los campos de texto
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JTextField venueName;
+	
+	/**
+	 * Estos son los atributos de los ComboBox
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JComboBox<String> comboLocation;
+	
+	/**
+	 * Estos son los atributos de los spinner
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JSpinner numEmployes;
+	
+	/**
+	 * Estos son los atributos del numero de modelo del spinner
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private SpinnerNumberModel n;
+	
+	/** 
+	 * Este es el constructor vacio de la clase ventana de crear apostador
+	 * @author Cristhian Diaz 
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	public CreateGamblerWindow() {
 		// TODO Auto-generated constructor stub
@@ -119,7 +199,7 @@ public class CreateGamblerWindow extends JFrame {
 		mainImage.setBounds(0, 0, 1280, 720);
 
 		Image temporal1;
-		temporal1 = new ImageIcon("src/Images/createvenue.png").getImage();
+		temporal1 = new ImageIcon("src/Images/creategambler.png").getImage();
 
 		ImageIcon img1;
 		img1 = new ImageIcon(
@@ -130,70 +210,223 @@ public class CreateGamblerWindow extends JFrame {
 		add(mainImage);
 
 	}
+	
+	/**
+	 * Este es el getter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getExit() {
 		return exit;
 	}
+	
+	/**
+	 * Este es el setter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
+	
+	/**
+	 * Este es el getter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getBack() {
 		return back;
 	}
+	
+	/**
+	 * Este es el setter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setBack(JButton back) {
 		this.back = back;
 	}
+	
+	/**
+	 * Este es el getter del boton crear apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getCreateGambler() {
 		return createGambler;
 	}
+	
+	/**
+	 * Este es el setter del boton crear apostador
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setCreateGambler(JButton createVenue) {
 		this.createGambler = createVenue;
 	}
+	
+	/**
+	 * Este es el getter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JLabel getMainImage() {
 		return mainImage;
 	}
+	
+	/**
+	 * Este es el setter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
+	
+	/**
+	 * Este es el getter del campo del nombre de la sede
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JTextField getVenueName() {
 		return venueName;
 	}
+	
+	/**
+	 * Este es el setter del campo del nombre de la sede
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setVenueName(JTextField venueName) {
 		this.venueName = venueName;
 	}
+	
+	/**
+	 * Este es el getter del ComboBox de localidad
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JComboBox<String> getComboLocation() {
 		return comboLocation;
 	}
+	
+	/**
+	 * Este es el setter del ComboBox de localidad
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setComboLocation(JComboBox<String> comboLocation) {
 		this.comboLocation = comboLocation;
 	}
+	
+	/**
+	 * Este es el getter del Spinner del numero de empleados
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JSpinner getNumEmployes() {
 		return numEmployes;
 	}
+	
+	/**
+	 * Este es el setter del Spinner del numero de empleados
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setNumEmployes(JSpinner numEmployes) {
 		this.numEmployes = numEmployes;
 	}
+	
+	/**
+	 * Este es el getter del numero de modelo del spinner
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public SpinnerNumberModel getN() {
 		return n;
 	}
+	
+	/**
+	 * Este es el setter del numero de modelo del spinner
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setN(SpinnerNumberModel n) {
 		this.n = n;
 	}
+	
+	/**
+	 * Este es el getter del serial
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

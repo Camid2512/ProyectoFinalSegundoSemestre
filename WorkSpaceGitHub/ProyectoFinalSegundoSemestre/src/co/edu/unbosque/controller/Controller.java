@@ -15,6 +15,7 @@ import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
 import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
+import co.edu.unbosque.view.SelectCreateBetWindow;
 import co.edu.unbosque.view.SelectDeleteGamblerOwnWindow;
 import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
 import co.edu.unbosque.view.SelectShowGamblerWindow;
@@ -44,6 +45,7 @@ public class Controller implements ActionListener {
 	private SelectUpdateGamblerWindow selUpdateGamblerOwn;
 	private SelectDeleteGamblerOwnWindow selDeleteGamblerOwn;
 	private BetManagmentByOwnerWindow betManOwn;
+	private SelectCreateBetWindow selcreatebet;
 
 	private HouseSettingDAO houseDAO;
 	private OwnerDAO ownDAO;
@@ -70,6 +72,7 @@ public class Controller implements ActionListener {
 		selUpdateGamblerOwn = new SelectUpdateGamblerWindow();
 		selDeleteGamblerOwn = new SelectDeleteGamblerOwnWindow();
 		betManOwn = new BetManagmentByOwnerWindow();
+		selcreatebet = new SelectCreateBetWindow();
 		agregarLectores();
 
 	}
@@ -209,7 +212,7 @@ public class Controller implements ActionListener {
 		selDeleteVenueOwn.getExit().setActionCommand("EXITSELECTDELETEOWN");
 
 		selDeleteVenueOwn.getBack().addActionListener(this);
-		selDeleteVenueOwn.getBack().setActionCommand("BACKSELECTDELETEOWN");
+		selDeleteVenueOwn.getBack().setActionCommand("BACKSELECTDELETEVENUEOWN");
 
 		selDeleteVenueOwn.getNext().addActionListener(this);
 		selDeleteVenueOwn.getNext().setActionCommand("DELETEVENUEOWN");
@@ -264,13 +267,13 @@ public class Controller implements ActionListener {
 		//BOTONES MENU SELECCION APOSTADOR ELIMINAR (OWNER)
 		
 		selDeleteGamblerOwn.getExit().addActionListener(this);
-		selDeleteGamblerOwn.getExit().setActionCommand("EXITSELECTDELETEOWN");
+		selDeleteGamblerOwn.getExit().setActionCommand("EXITSELECTDELETEGAMBLEROWN");
 
 		selDeleteGamblerOwn.getBack().addActionListener(this);
-		selDeleteGamblerOwn.getBack().setActionCommand("BACKSELECTDELETEOWN");
+		selDeleteGamblerOwn.getBack().setActionCommand("BACKSELECTDELETEGAMBLEROWN");
 
 		selDeleteGamblerOwn.getNext().addActionListener(this);
-		selDeleteGamblerOwn.getNext().setActionCommand("DELETEVENUEOWN");
+		selDeleteGamblerOwn.getNext().setActionCommand("DELETEGAMBLEROWN");
 		
 		//BOTONES MODULO 4 (OWNER)}
 		
@@ -291,6 +294,14 @@ public class Controller implements ActionListener {
 
 		betManOwn.getDelete().addActionListener(this);
 		betManOwn.getDelete().setActionCommand("SELECTBETDELETEOWN");
+		
+		//BOTONES SELECCIONAR SEDE CREAR APUESTA
+		
+		selcreatebet.getBack().addActionListener(this);
+		selcreatebet.getBack().setActionCommand("BACKSELECTVENUEBETOWN");
+		
+		selcreatebet.getExit().addActionListener(this);
+		selcreatebet.getExit().setActionCommand("EXITSELECTVENUEBETOWN");
 	}
 
 	@Override
@@ -495,6 +506,18 @@ public class Controller implements ActionListener {
 			break;
 		}
 		
+		case "EXITSELECTVENUEBETOWN": {
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
+		
+		
+		
 		case "BOTONMOD1OWN": {
 
 			logWind.setVisible(false);
@@ -630,7 +653,7 @@ public class Controller implements ActionListener {
 			break;
 
 		}
-		case "BACKSELECTDELETEOWN": {
+		case "BACKSELECTDELETEVENUEOWN": {
 
 			selDeleteVenueOwn.setVisible(false);
 			venueManageOwn.setVisible(true);
@@ -699,6 +722,13 @@ public class Controller implements ActionListener {
 			break;
 		}
 		
+		case "BACKSELECTDELETEGAMBLEROWN":{
+			
+			selDeleteGamblerOwn.setVisible(false);
+			gamManageOwn.setVisible(true);
+			break;
+		}
+		
 		case "BACKMENUBETOWN":{
 			
 			betManOwn.setVisible(false);
@@ -709,9 +739,15 @@ public class Controller implements ActionListener {
 		case "CREATEBET":{
 			
 			betManOwn.setVisible(false);
-			createGamblerWinOwn.setVisible(true);
+			selcreatebet.setVisible(true);
 			break;
 			
+		}
+		
+		case "BACKSELECTVENUEBETOWN":{
+			 
+			selcreatebet.setVisible(false);
+			betManOwn.setVisible(true);
 		}
 		
 		default:

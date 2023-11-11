@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
 
+/** 
+ * Esta es la clase ventana de iniciar sesion
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -15,17 +22,68 @@ import javax.swing.border.EmptyBorder;
 public class LoginWindow extends JFrame {
 
 	/**
+	 * Este es el atributo de la version serial
 	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -1518185821545289498L;
+	
+	/**
+	 * Estos son los atributos de las imagenes
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	private JLabel titulo, mainImage;
+	
+	/**
+	 * Estos son los atributos de los campos de texto
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JTextField usuario;
+	
+	/**
+	 * Estos son los atributos de los campos de contrasena
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JPasswordField password;
+	
+	/**
+	 * Estos son los atributos de los botones
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JButton register, login, exit;
+	
+	/**
+	 * Este es el constructor vacio de la ventana de iniciar sesion
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	public LoginWindow() {
 		setSize(1280, 720);
@@ -95,62 +153,197 @@ public class LoginWindow extends JFrame {
 		mainImage.setVisible(true);
 		add(mainImage);
 	}
+	
+	/**
+	 * Este es el getter de la imagen titulo
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JLabel getTitulo() {
 		return titulo;
 	}
+	
+	/**
+	 * Este es el setter de la imagen titulo
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setTitulo(JLabel titulo) {
 		this.titulo = titulo;
 	}
+	
+	/**
+	 * Este es el getter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JLabel getMainImage() {
 		return mainImage;
 	}
+	
+	/**
+	 * Este es el setter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
+	
+	/**
+	 * Este es el getter del campo nombre de usuario
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JTextField getUsuario() {
 		return usuario;
 	}
+	
+	/**
+	 * Este es el setter del campo nombre de usuario
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setUsuario(JTextField usuario) {
 		this.usuario = usuario;
 	}
+	
+	/**
+	 * Este es el getter del campo de contrasena de la contrasena
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JPasswordField getPassword() {
 		return password;
 	}
+	
+	/**
+	 * Este es el setter del campo de contrasena de la contrasena
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setPassword(JPasswordField password) {
 		this.password = password;
 	}
+	
+	/**
+	 * Este es el getter del boton registrar
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getRegister() {
 		return register;
 	}
+	
+	/**
+	 * Este es el setter del boton registrar
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setRegister(JButton register) {
 		this.register = register;
 	}
+	
+	/**
+	 * Este es el getter del boton iniciar sesion
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getLogin() {
 		return login;
 	}
+	
+	/**
+	 * Este es el setter del boton iniciar sesion
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setLogin(JButton login) {
 		this.login = login;
 	}
+	
+	/**
+	 * Este es el getter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getExit() {
 		return exit;
 	}
+	
+	/**
+	 * Este es el setter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
+	
+	/**
+	 * Este es el getter del serial
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

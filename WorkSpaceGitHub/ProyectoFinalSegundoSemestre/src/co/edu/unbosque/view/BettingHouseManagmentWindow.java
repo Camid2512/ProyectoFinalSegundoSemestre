@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
 
+/** 
+ * Esta es la clase ventana de gestion de la casa de apuestas
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -16,15 +23,81 @@ import javax.swing.border.EmptyBorder;
 public class BettingHouseManagmentWindow extends JFrame {
 
 	/**
+	 * Este es el atributo de la version serial
 	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = 8196911760891375266L;
+	
+	/**
+	 * Estos son los atributos de los botones
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	private JButton createBtn, exit, back;
+	
+
+	/**
+	 * Estos son los atributos de las imagenes
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JLabel mainImage;
+	
+
+	/**
+	 * Estos son los atributos de los campos de texto
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JTextField nameHouse, totalBudget;
+	
+	/**
+	 * Estos son los atributos de los spinner
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private JSpinner numberVenue;
+	
+	/**
+	 * Estos son los atributos del numero de modelo del spinner
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
 	private SpinnerNumberModel n;
+	
+	/**
+	 * Este es el constructor vacio de la ventana de gestion de la casa de apuestas
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
 
 	public BettingHouseManagmentWindow() {
 		setSize(1280, 720);
@@ -107,70 +180,224 @@ public class BettingHouseManagmentWindow extends JFrame {
 		add(mainImage);
 
 	}
+	
+	/**
+	 * Este es el getter del boton crear
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getCreateBtn() {
 		return createBtn;
 	}
+	
+	/**
+	 * Este es el setter del boton crear
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setCreateBtn(JButton createBtn) {
 		this.createBtn = createBtn;
 	}
+	
+	/**
+	 * Este es el getter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getExit() {
 		return exit;
 	}
+	
+	/**
+	 * Este es el setter del boton salir
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
+	
+	/**
+	 * Este es el getter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JButton getBack() {
 		return back;
 	}
+	
+	/**
+	 * Este es el setter del boton atras
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setBack(JButton back) {
 		this.back = back;
 	}
+	
+	/**
+	 * Este es el getter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JLabel getMainImage() {
 		return mainImage;
 	}
+	
+	/**
+	 * Este es el setter de la imagen principal
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
+	
+	/**
+	 * Este es el getter del campo del nombre de la casa de apuestas
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JTextField getNameHouse() {
 		return nameHouse;
 	}
+	
+	/**
+	 * Este es el setter del campo del nombre de la casa de apuestas
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
+	
 
 	public void setNameHouse(JTextField nameHouse) {
 		this.nameHouse = nameHouse;
 	}
+	
+	/**
+	 * Este es el getter del campo del presupuesto de la casa de apuestas
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JTextField getTotalBudget() {
 		return totalBudget;
 	}
+	
+	/**
+	 * Este es el setter del campo del presupuesto de la casa de apuestas
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setTotalBudget(JTextField totalBudget) {
 		this.totalBudget = totalBudget;
 	}
+	
+	/**
+	 * Este es el getter del campo del numero de sedes de la casa de apuestas
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public JSpinner getNumberVenue() {
 		return numberVenue;
 	}
+	
+	/**
+	 * Este es el setter del campo del numero de sedes de la casa de apuestas
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setNumberVenue(JSpinner numberVenue) {
 		this.numberVenue = numberVenue;
 	}
+	
+	/**
+	 * Este es el getter del numero de modelo del spinner
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public SpinnerNumberModel getN() {
 		return n;
 	}
+	
+	/**
+	 * Este es el setter del numero de modelo del spinner
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public void setN(SpinnerNumberModel n) {
 		this.n = n;
 	}
+	
+	/**
+	 * Este es el getter del serial
+	 * 
+	 * @author Cristhian Diaz
+	 * @author Santiago Rueda
+	 * @version 1.0
+	 * @since 11/10/2023
+	 */
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
