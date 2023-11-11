@@ -97,4 +97,22 @@ public class GamblerDAO implements CRUDOperation {
 
 	}
 
+	public ArrayList<GamblerDTO> getGamblerList() {
+		return gamblerList;
+	}
+
+	public void setGamblerList(ArrayList<GamblerDTO> gamblerList) {
+		this.gamblerList = gamblerList;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
+	}
+	
+	
+
 }

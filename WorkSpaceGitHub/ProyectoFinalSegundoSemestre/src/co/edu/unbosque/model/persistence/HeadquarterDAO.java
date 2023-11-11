@@ -174,4 +174,38 @@ public class HeadquarterDAO implements CRUDOperation {
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, headquarterList);
 	}
 
+	public ArrayList<HeadquarterDTO> getHeadquarterList() {
+		return headquarterList;
+	}
+
+	public void setHeadquarterList(ArrayList<HeadquarterDTO> headquarterList) {
+		this.headquarterList = headquarterList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
+	}
+	
+	
+
 }

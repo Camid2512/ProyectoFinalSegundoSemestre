@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.persistence.GamblerDAO;
 import co.edu.unbosque.model.persistence.HeadquarterDAO;
 import co.edu.unbosque.model.persistence.HeadquarterManagerDAO;
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
@@ -53,6 +54,7 @@ public class Controller implements ActionListener {
 	private HouseSettingDAO houseDAO;
 	private OwnerDAO ownDAO;
 	private HeadquarterManagerDAO bossDAO;
+	private GamblerDAO gamDAO;
 	private HeadquarterDAO venueDAO;
 
 	public Controller() {
@@ -60,6 +62,7 @@ public class Controller implements ActionListener {
 		houseDAO = new HouseSettingDAO();
 		ownDAO = new OwnerDAO();
 		bossDAO = new HeadquarterManagerDAO();
+		gamDAO = new GamblerDAO();
 		venueDAO = new HeadquarterDAO();
 
 		logWind = new LoginWindow();
@@ -159,7 +162,7 @@ public class Controller implements ActionListener {
 		venueManageOwn.getCreate().setActionCommand("CREATEVENUE");
 
 		venueManageOwn.getRead().addActionListener(this);
-		venueManageOwn.getRead().setActionCommand("SELECTVENUEOWN");
+		venueManageOwn.getRead().setActionCommand("SELECTVENUESHOWOWN");
 
 		venueManageOwn.getUpdate().addActionListener(this);
 		venueManageOwn.getUpdate().setActionCommand("SELECTVENUEUPDATEOWN");
@@ -196,6 +199,9 @@ public class Controller implements ActionListener {
 
 		selShowVenOwn.getBack().addActionListener(this);
 		selShowVenOwn.getBack().setActionCommand("BACKSELECTSHOWOWN");
+		
+		selShowVenOwn.getNext().addActionListener(this);
+		selShowVenOwn.getNext().setActionCommand("NEXTSELECTSHOWOWN");
 
 		// BOTONES MENU SELECCION SEDE ACTUALIZAR (OWNER)
 
@@ -589,9 +595,10 @@ public class Controller implements ActionListener {
 			break;
 
 		}
-		case "SELECTVENUEOWN": {
+		case "SELECTVENUESHOWOWN": {
 
 			venueManageOwn.setVisible(false);
+			updateBoxSelectShowVenue();
 			selShowVenOwn.setVisible(true);
 			break;
 
@@ -599,6 +606,7 @@ public class Controller implements ActionListener {
 		case "SELECTVENUEUPDATEOWN": {
 
 			venueManageOwn.setVisible(false);
+			updateBoxSelectUpdateVenue();
 			selUpdateVenOwn.setVisible(true);
 			break;
 
@@ -606,6 +614,7 @@ public class Controller implements ActionListener {
 		case "SELECTVENUEDELETEOWN": {
 
 			venueManageOwn.setVisible(false);
+			updateBoxSelectDeleteVenue();
 			selDeleteVenueOwn.setVisible(true);
 			break;
 
@@ -630,6 +639,12 @@ public class Controller implements ActionListener {
 			venueManageOwn.setVisible(true);
 
 		}
+		
+//		case "NEXTSELECTSHOWOWN": {
+//			
+//			selShowVenOwn.setVisible(false);
+//			
+//		}
 		case "BACKCREATEBOSS": {
 
 			managerCreationWin.setVisible(false);
@@ -715,6 +730,7 @@ public class Controller implements ActionListener {
 		case "SELECTGAMBLERSHOWOWN": {
 
 			gamManageOwn.setVisible(false);
+			updateBoxSelectShowVenueGambler();
 			selShowGamblerOwn.setVisible(true);
 			break;
 		}
@@ -722,6 +738,7 @@ public class Controller implements ActionListener {
 		case "SELECTGAMBLERUPDATEOWN": {
 
 			gamManageOwn.setVisible(false);
+			updateBoxSelectUpdateVenueGambler();
 			selUpdateGamblerOwn.setVisible(true);
 			break;
 		}
@@ -729,6 +746,7 @@ public class Controller implements ActionListener {
 		case "SELECTGAMBLERDELETEOWN": {
 
 			gamManageOwn.setVisible(false);
+			updateBoxSelectDeleteVenueGambler();
 			selDeleteGamblerOwn.setVisible(true);
 			break;
 		}
@@ -943,6 +961,66 @@ public class Controller implements ActionListener {
 			confirmation = true;
 		}
 		return confirmation;
+
+	}
+	
+	public void updateBoxSelectShowVenue() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selShowVenOwn.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selShowVenOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+		}
+
+	}
+	
+	public void updateBoxSelectUpdateVenue() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selUpdateVenOwn.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selUpdateVenOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+		}
+
+	}
+	
+	public void updateBoxSelectDeleteVenue() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selDeleteVenueOwn.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selDeleteVenueOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+		}
+
+	}
+	
+	public void updateBoxSelectShowVenueGambler() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selShowGamblerOwn.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selShowGamblerOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+		}
+
+	}
+	
+	public void updateBoxSelectUpdateVenueGambler() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selUpdateGamblerOwn.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selUpdateGamblerOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+		}
+
+	}
+	
+	public void updateBoxSelectDeleteVenueGambler() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selDeleteGamblerOwn.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selDeleteGamblerOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+		}
 
 	}
 }
