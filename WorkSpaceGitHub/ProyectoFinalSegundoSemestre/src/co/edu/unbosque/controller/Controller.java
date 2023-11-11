@@ -2,6 +2,7 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
@@ -199,7 +200,7 @@ public class Controller implements ActionListener {
 
 		selShowVenOwn.getBack().addActionListener(this);
 		selShowVenOwn.getBack().setActionCommand("BACKSELECTSHOWOWN");
-		
+
 		selShowVenOwn.getNext().addActionListener(this);
 		selShowVenOwn.getNext().setActionCommand("NEXTSELECTSHOWOWN");
 
@@ -221,6 +222,9 @@ public class Controller implements ActionListener {
 
 		updateVenueOwn.getBack().addActionListener(this);
 		updateVenueOwn.getBack().setActionCommand("BACKUPDATEVENUEOWN");
+
+		updateVenueOwn.getCreateVenue().addActionListener(this);
+		updateVenueOwn.getCreateVenue().setActionCommand("UPDATEVENUEOWN");
 
 		// BOTONES MENU SELECCION SEDE ELIMINAR (OWNER)
 
@@ -630,6 +634,7 @@ public class Controller implements ActionListener {
 
 			selUpdateVenOwn.setVisible(false);
 			updateVenueOwn.setVisible(true);
+			setDataToUpdate();
 			break;
 
 		}
@@ -639,7 +644,7 @@ public class Controller implements ActionListener {
 			venueManageOwn.setVisible(true);
 
 		}
-		
+
 //		case "NEXTSELECTSHOWOWN": {
 //			
 //			selShowVenOwn.setVisible(false);
@@ -790,6 +795,15 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "UPDATEVENUEOWN": {
+
+			updateVenueOwn();
+			updateVenueOwn.setVisible(false);
+			selUpdateVenOwn.setVisible(true);
+			updateBoxSelectUpdateVenue();
+			break;
+
+		}
 		default:
 
 			break;
@@ -914,7 +928,7 @@ public class Controller implements ActionListener {
 	public void createVenue() {
 
 		String name = createVenueWin.getVenueName().getText();
-		String locationVenue = createVenueWin.getComboLocation().getItemAt(15);
+		String locationVenue = createVenueWin.getComboLocation().getSelectedItem().toString();
 		String numEmployes = createVenueWin.getNumEmployes().getValue().toString();
 		String id = "";
 
@@ -963,7 +977,7 @@ public class Controller implements ActionListener {
 		return confirmation;
 
 	}
-	
+
 	public void updateBoxSelectShowVenue() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selShowVenOwn.getComboVenue().removeAllItems();
@@ -973,7 +987,7 @@ public class Controller implements ActionListener {
 		}
 
 	}
-	
+
 	public void updateBoxSelectUpdateVenue() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selUpdateVenOwn.getComboVenue().removeAllItems();
@@ -983,7 +997,7 @@ public class Controller implements ActionListener {
 		}
 
 	}
-	
+
 	public void updateBoxSelectDeleteVenue() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selDeleteVenueOwn.getComboVenue().removeAllItems();
@@ -993,7 +1007,7 @@ public class Controller implements ActionListener {
 		}
 
 	}
-	
+
 	public void updateBoxSelectShowVenueGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selShowGamblerOwn.getComboVenue().removeAllItems();
@@ -1003,7 +1017,7 @@ public class Controller implements ActionListener {
 		}
 
 	}
-	
+
 	public void updateBoxSelectUpdateVenueGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selUpdateGamblerOwn.getComboVenue().removeAllItems();
@@ -1013,7 +1027,7 @@ public class Controller implements ActionListener {
 		}
 
 	}
-	
+
 	public void updateBoxSelectDeleteVenueGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selDeleteGamblerOwn.getComboVenue().removeAllItems();
@@ -1021,6 +1035,41 @@ public class Controller implements ActionListener {
 				selDeleteGamblerOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
 			}
 		}
+	}
+
+	public void setDataToUpdate() {
+		updateVenueOwn.getVenueName().setText(selUpdateVenOwn.getComboVenue().getSelectedItem().toString());
+		String venue = selUpdateVenOwn.getComboVenue().getSelectedItem().toString();
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			if (venue.equals(venueDAO.getHeadquarterList().get(i).getVenueName())) {
+
+				String selLocation = venueDAO.getHeadquarterList().get(i).getLocationVenue();
+				int numEmployes = venueDAO.getHeadquarterList().get(i).getEmployeesNumber();
+
+				updateVenueOwn.getComboLocation().setSelectedItem(selLocation);
+				updateVenueOwn.getNumEmployes().setValue(numEmployes);
+
+			}
+
+		}
 
 	}
+
+	public void updateVenueOwn() {
+
+		String nameVenue = updateVenueOwn.getVenueName().getText();
+		String updateLocation = updateVenueOwn.getComboLocation().getSelectedItem().toString();
+		String numEmployes = updateVenueOwn.getNumEmployes().getValue().toString();
+
+		int index = selUpdateGamblerOwn.getComboVenue().getSelectedIndex();
+
+		System.out.println(index);
+
+		venueDAO.updateByIndex(index, nameVenue, updateLocation, numEmployes);
+
+		JOptionPane.showMessageDialog(updateVenueOwn, "HAS ACTUALIZADO CON EXITO LA SEDE: " + nameVenue);
+
+	}
+
 }
