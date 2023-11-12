@@ -16,9 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
 public class CreateGamblerWindow extends JFrame {
@@ -65,7 +63,7 @@ public class CreateGamblerWindow extends JFrame {
 	 * @since 10/11/2023
 	 */
 	
-	private JTextField venueName;
+	private JTextField completeName, document, adress, phoneNumber;
 	
 	/**
 	 * Estos son los atributos de los ComboBox
@@ -77,28 +75,6 @@ public class CreateGamblerWindow extends JFrame {
 	 */
 	
 	private JComboBox<String> comboLocation;
-	
-	/**
-	 * Estos son los atributos de los spinner
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
-	
-	private JSpinner numEmployes;
-	
-	/**
-	 * Estos son los atributos del numero de modelo del spinner
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
-	
-	private SpinnerNumberModel n;
 	
 	/** 
 	 * Este es el constructor vacio de la clase ventana de crear apostador
@@ -114,7 +90,7 @@ public class CreateGamblerWindow extends JFrame {
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("CREAR SEDE");
+		setTitle("CREAR APOSTADOR");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -137,58 +113,52 @@ public class CreateGamblerWindow extends JFrame {
 		back.setBorderPainted(false);
 		add(back);
 
-		venueName = new JTextField();
-		venueName.setBounds(330, 154, 622, 68);
-		venueName.setBackground(new Color(0, 0, 0, 0));
-		venueName.setOpaque(false);
-		venueName.setBorder(new EmptyBorder(15, 15, 15, 15));
-		venueName.setFont(new Font("Arial", 1, 25));
-		venueName.setForeground(Color.white);
-		add(venueName);
+		completeName = new JTextField();
+		completeName.setBounds(329, 118, 622, 68);
+		completeName.setBackground(new Color(0, 0, 0, 0));
+		completeName.setOpaque(false);
+		completeName.setBorder(new EmptyBorder(15, 15, 15, 15));
+		completeName.setFont(new Font("Arial", 1, 25));
+		completeName.setForeground(Color.white);
+		add(completeName);
+		
+		document = new JTextField();
+		document.setBounds(329, 215, 622, 68);
+		document.setBackground(new Color(0, 0, 0, 0));
+		document.setOpaque(false);
+		document.setBorder(new EmptyBorder(15, 15, 15, 15));
+		document.setFont(new Font("Arial", 1, 25));
+		document.setForeground(Color.white);
+		add(document);
+		
+		adress = new JTextField();
+		adress.setBounds(329, 313, 622, 68);
+		adress.setBackground(new Color(0, 0, 0, 0));
+		adress.setOpaque(false);
+		adress.setBorder(new EmptyBorder(15, 15, 15, 15));
+		adress.setFont(new Font("Arial", 1, 25));
+		adress.setForeground(Color.white);
+		add(adress);
+		
+		phoneNumber = new JTextField();
+		phoneNumber.setBounds(329, 414, 622, 68);
+		phoneNumber.setBackground(new Color(0, 0, 0, 0));
+		phoneNumber.setOpaque(false);
+		phoneNumber.setBorder(new EmptyBorder(15, 15, 15, 15));
+		phoneNumber.setFont(new Font("Arial", 1, 25));
+		phoneNumber.setForeground(Color.white);
+		add(phoneNumber);
 
 		comboLocation = new JComboBox<>();
-		comboLocation.setBounds(330, 279, 622, 68);
+		comboLocation.setBounds(438, 520, 405, 70);
 		comboLocation.setBackground(new Color(225, 223, 228));
 		comboLocation.setForeground(Color.black);
 		comboLocation.setFont(new Font("Arial", 1, 25));
-		comboLocation.addItem("");
-		comboLocation.addItem("ANTONIO NARIÑO");
-		comboLocation.addItem("BARRIOS UNIDOS");
-		comboLocation.addItem("BOSA");
-		comboLocation.addItem("CHAPINERO");
-		comboLocation.addItem("CIUDAD BOLIVAR");
-		comboLocation.addItem("ENGATIVA");
-		comboLocation.addItem("FONTIBON");
-		comboLocation.addItem("KENNEDY");
-		comboLocation.addItem("LA CANDELARIA");
-		comboLocation.addItem("LOS MARTIRES");
-		comboLocation.addItem("PUENTE ARANDA");
-		comboLocation.addItem("RAFAEL URIBE URIBE");
-		comboLocation.addItem("SAN CRISTOBAL");
-		comboLocation.addItem("SANTA FE");
-		comboLocation.addItem("SUBA");
-		comboLocation.addItem("SUMAPAZ");
-		comboLocation.addItem("TEUSAQUILLO");
-		comboLocation.addItem("TUNJUELITO");
-		comboLocation.addItem("USAQUEN");
-		comboLocation.addItem("USME");
 		add(comboLocation);
 
-		numEmployes = new JSpinner();
-		numEmployes.setBounds(330, 402, 622, 68);
-		n = new SpinnerNumberModel();
-		n.setMinimum(0);
-		numEmployes.setModel(n);
-		numEmployes.setBorder(new EmptyBorder(20, 200, 20, 20));
-		numEmployes.setFont(new Font("Arial", 1, 25));
-		numEmployes.setForeground(new Color(188, 186, 190));
-		numEmployes.setBackground(new Color(188, 186, 190));
-		numEmployes.getEditor().getComponent(0).setBackground(new Color(188, 186, 190));
-		add(numEmployes);
-
 		createGambler = new JButton();
-		createGambler.setBounds(444, 527, 401, 75);
-		createGambler.setToolTipText("Crear sede nueva");
+		createGambler.setBounds(978, 520, 220, 88);
+		createGambler.setToolTipText("Crear nuevo apostador");
 		createGambler.setBackground(new Color(0, 0, 0, 0));
 		createGambler.setOpaque(false);
 		createGambler.setContentAreaFilled(false);
@@ -314,33 +284,7 @@ public class CreateGamblerWindow extends JFrame {
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
-	
-	/**
-	 * Este es el getter del campo del nombre de la sede
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 11/10/2023
-	 */
-
-	public JTextField getVenueName() {
-		return venueName;
-	}
-	
-	/**
-	 * Este es el setter del campo del nombre de la sede
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 11/10/2023
-	 */
-
-	public void setVenueName(JTextField venueName) {
-		this.venueName = venueName;
-	}
-	
+		
 	/**
 	 * Este es el getter del ComboBox de localidad
 	 * 
@@ -368,58 +312,6 @@ public class CreateGamblerWindow extends JFrame {
 	}
 	
 	/**
-	 * Este es el getter del Spinner del numero de empleados
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 11/10/2023
-	 */
-
-	public JSpinner getNumEmployes() {
-		return numEmployes;
-	}
-	
-	/**
-	 * Este es el setter del Spinner del numero de empleados
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 11/10/2023
-	 */
-
-	public void setNumEmployes(JSpinner numEmployes) {
-		this.numEmployes = numEmployes;
-	}
-	
-	/**
-	 * Este es el getter del numero de modelo del spinner
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 11/10/2023
-	 */
-
-	public SpinnerNumberModel getN() {
-		return n;
-	}
-	
-	/**
-	 * Este es el setter del numero de modelo del spinner
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 11/10/2023
-	 */
-
-	public void setN(SpinnerNumberModel n) {
-		this.n = n;
-	}
-	
-	/**
 	 * Este es el getter del serial
 	 * 
 	 * @author Cristhian Diaz
@@ -431,5 +323,39 @@ public class CreateGamblerWindow extends JFrame {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public JTextField getCompleteName() {
+		return completeName;
+	}
+
+	public void setCompleteName(JTextField completeName) {
+		this.completeName = completeName;
+	}
+
+	public JTextField getDocument() {
+		return document;
+	}
+
+	public void setDocument(JTextField document) {
+		this.document = document;
+	}
+
+	public JTextField getAdress() {
+		return adress;
+	}
+
+	public void setAdress(JTextField adress) {
+		this.adress = adress;
+	}
+
+	public JTextField getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(JTextField phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	
 
 }

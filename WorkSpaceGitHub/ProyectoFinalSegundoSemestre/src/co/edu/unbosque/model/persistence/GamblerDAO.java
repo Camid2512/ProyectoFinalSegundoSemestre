@@ -46,6 +46,9 @@ public class GamblerDAO implements CRUDOperation {
 		gambler.setGamingVenue(attribs[2]);
 		gambler.setAddres(attribs[3]);
 		gambler.setPhoneNumber(Long.parseLong(attribs[4]));
+		
+		writeFile();
+		writeSerializable();
 
 	}
 

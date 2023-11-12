@@ -6,6 +6,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.persistence.GamblerDAO;
+import co.edu.unbosque.model.persistence.GameDAO;
 import co.edu.unbosque.model.persistence.HeadquarterDAO;
 import co.edu.unbosque.model.persistence.HeadquarterManagerDAO;
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
@@ -53,16 +55,20 @@ public class Controller implements ActionListener {
 	private GamesSettingWindow gamesSettingWin;
 
 	private HouseSettingDAO houseDAO;
+	private GameDAO gameDAO;
 	private OwnerDAO ownDAO;
 	private HeadquarterManagerDAO bossDAO;
 	private HeadquarterDAO venueDAO;
+	private GamblerDAO gamDAO;
 
 	public Controller() {
 
 		houseDAO = new HouseSettingDAO();
+		gameDAO = new GameDAO();
 		ownDAO = new OwnerDAO();
 		bossDAO = new HeadquarterManagerDAO();
 		venueDAO = new HeadquarterDAO();
+		gamDAO = new GamblerDAO();
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
@@ -149,9 +155,17 @@ public class Controller implements ActionListener {
 
 		houseManageWindow.getCreateBtn().addActionListener(this);
 		houseManageWindow.getCreateBtn().setActionCommand("CREATEHOUSE");
-
+		
+		//BOTONES MODULO 1 VENTANA 2 (OWNER)
+		
 		gamesSettingWin.getExit().addActionListener(this);
 		gamesSettingWin.getExit().setActionCommand("EXITGAMESSETING");
+		
+		gamesSettingWin.getBack().addActionListener(this);
+		gamesSettingWin.getBack().setActionCommand("BACKGAMESSETING");
+		
+		gamesSettingWin.getConfirmData().addActionListener(this);
+		gamesSettingWin.getConfirmData().setActionCommand("CONFIRMGAMESSETING");
 
 		// BOTONES MODULO 2 (OWNER)
 
@@ -266,6 +280,9 @@ public class Controller implements ActionListener {
 
 		createGamblerWinOwn.getBack().addActionListener(this);
 		createGamblerWinOwn.getBack().setActionCommand("BACKCREATEGAMBLEROWN");
+		
+		createGamblerWinOwn.getCreateGambler().addActionListener(this);
+		createGamblerWinOwn.getCreateGambler().setActionCommand("CREATEGAMBLEROWN");
 
 		// BOTONES MENU SELECCION APOSTADOR MOSTRAR (OWNER)
 
@@ -362,6 +379,9 @@ public class Controller implements ActionListener {
 
 			signWind.setVisible(false);
 			logWind.setVisible(true);
+			
+			signWind.getUsuario().setText(null);
+			signWind.getPassword().setText(null);
 			break;
 
 		}
@@ -453,6 +473,18 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		
+		case "EXITGAMESSETING":{
+			
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+			
+		}
 		case "EXITUPDATEVENUEOWN": {
 			boolean confirm = exitConfirm();
 			if (confirm) {
@@ -540,281 +572,284 @@ public class Controller implements ActionListener {
 
 		case "BOTONMOD1OWN": {
 
+			houseManageWindow.setVisible(true);
 			logWind.setVisible(false);
 			ownWind.setVisible(false);
-			houseManageWindow.setVisible(true);
+			
 			break;
 		}
 
 		case "CREATEHOUSE": {
 
 			createHouse();
-			houseManageWindow.getNameHouse().setText("");
-			houseManageWindow.getTotalBudget().setText("");
-			int aux = 0;
-			houseManageWindow.getNumberVenue().setValue(aux);
 
-			houseManageWindow.setVisible(false);
 			gamesSettingWin.setVisible(true);
+			houseManageWindow.setVisible(false);
+			
 
 			break;
 		}
 
 		case "BOTONMOD2OWN": {
 
-			ownWind.setVisible(false);
 			venueManageOwn.setVisible(true);
+			ownWind.setVisible(false);
+			
 			break;
 		}
 
 		case "BOTONMOD3OWN": {
-			ownWind.setVisible(false);
 			gamManageOwn.setVisible(true);
+			ownWind.setVisible(false);	
 			break;
 		}
 
 		case "BOTONMOD4OWN": {
-			ownWind.setVisible(false);
 			betManOwn.setVisible(true);
+			ownWind.setVisible(false);
 			break;
 		}
 
 		case "BACKVENUEOWN": {
-			venueManageOwn.setVisible(false);
 			ownWind.setVisible(true);
+			venueManageOwn.setVisible(false);
 			break;
 		}
 
 		case "CREATEVENUE": {
-
-			venueManageOwn.setVisible(false);
 			managerCreationWin.setVisible(true);
-
+			venueManageOwn.setVisible(false);
 			break;
 
 		}
 
 		case "CREATENEWVENUE": {
-
+			createVenueWin.setVisible(true);
 			managerCreationWin.setVisible(false);
 			createBoss();
 			managerCreationWin.getUser().setText("");
 			managerCreationWin.getPassword().setText("");
-			createVenueWin.setVisible(true);
 			break;
 
 		}
 		case "SELECTVENUESHOWOWN": {
-
+			selShowVenOwn.setVisible(true);
 			venueManageOwn.setVisible(false);
 			updateBoxSelectShowVenue();
-			selShowVenOwn.setVisible(true);
 			break;
 
 		}
 		case "SELECTVENUEUPDATEOWN": {
-
+			selUpdateVenOwn.setVisible(true);
 			venueManageOwn.setVisible(false);
 			updateBoxSelectUpdateVenue();
-			selUpdateVenOwn.setVisible(true);
-
 			break;
 
 		}
 		case "SELECTVENUEDELETEOWN": {
-
+			selDeleteVenueOwn.setVisible(true);
 			venueManageOwn.setVisible(false);
 			updateBoxSelectDeleteVenue();
-			selDeleteVenueOwn.setVisible(true);
 			break;
-
 		}
 		case "BACKSELECTUPDATEOWN": {
-
-			selUpdateVenOwn.setVisible(false);
 			venueManageOwn.setVisible(true);
+			selUpdateVenOwn.setVisible(false);
 			break;
 
 		}
 		case "MENUUPDATESELECTED": {
-
-			selUpdateVenOwn.setVisible(false);
 			updateVenueOwn.setVisible(true);
+			selUpdateVenOwn.setVisible(false);
 			setDataToUpdate();
 			break;
 
 		}
 		case "BACKSELECTSHOWOWN": {
-
-			selShowVenOwn.setVisible(false);
 			venueManageOwn.setVisible(true);
-
+			selShowVenOwn.setVisible(false);		
 		}
-
-//		case "NEXTSELECTSHOWOWN": {
-//			
-//			selShowVenOwn.setVisible(false);
-//			
-//		}
 		case "BACKCREATEBOSS": {
-
-			managerCreationWin.setVisible(false);
 			venueManageOwn.setVisible(true);
+			managerCreationWin.setVisible(false);
+			
+			managerCreationWin.getUser().setText(null);
+			managerCreationWin.getPassword().setText(null);
 			break;
 
 		}
 
 		case "BACKOWN": {
-
-			ownWind.setVisible(false);
 			logWind.setVisible(true);
+			ownWind.setVisible(false);	
 			break;
 
 		}
 		case "BACKHOUSEMANAGE": {
-
-			houseManageWindow.setVisible(false);
 			ownWind.setVisible(true);
+			houseManageWindow.setVisible(false);
 			break;
 		}
 		case "BACKCREATEVENUE": {
-
-			createVenueWin.setVisible(false);
 			venueManageOwn.setVisible(true);
+			createVenueWin.setVisible(false);
+			
+			createVenueWin.getVenueName().setText(null);
+			createVenueWin.getComboLocation().setSelectedIndex(0);;
+			createVenueWin.getNumEmployes().setValue(0);
+			
 			break;
 		}
 		case "BACKUPDATEVENUEOWN": {
-
-			updateVenueOwn.setVisible(false);
 			selUpdateVenOwn.setVisible(true);
+			updateVenueOwn.setVisible(false);
+			
+			updateVenueOwn.getVenueName().setText(null);
+			updateVenueOwn.getComboLocation().setSelectedIndex(0);
+			updateVenueOwn.getNumEmployes().setValue(0);
 			break;
 
 		}
 		case "BACKSELECTDELETEVENUEOWN": {
-
-			selDeleteVenueOwn.setVisible(false);
 			venueManageOwn.setVisible(true);
+			selDeleteVenueOwn.setVisible(false);
 			break;
-
 		}
 
 		case "BACKMENUGAMBLEROWN": {
-
-			gamManageOwn.setVisible(false);
 			ownWind.setVisible(true);
+			gamManageOwn.setVisible(false);
 			break;
-
 		}
 
 		case "CREATEGAMBLER": {
-
-			gamManageOwn.setVisible(false);
 			createGamblerWinOwn.setVisible(true);
+			gamManageOwn.setVisible(false);
+			updateBoxCreateGambler();
 			break;
-
 		}
 
 		case "BACKCREATEGAMBLEROWN": {
-
-			createGamblerWinOwn.setVisible(false);
 			gamManageOwn.setVisible(true);
+			createGamblerWinOwn.setVisible(false);
+			
+			createGamblerWinOwn.getCompleteName().setText(null);
+			createGamblerWinOwn.getDocument().setText(null);
+			createGamblerWinOwn.getAdress().setText(null);
+			createGamblerWinOwn.getPhoneNumber().setText(null);
+			
+			
 			break;
 
 		}
 
 		case "BACKSELECTSHOWGAMOWN": {
-
-			selShowGamblerOwn.setVisible(false);
 			gamManageOwn.setVisible(true);
+			selShowGamblerOwn.setVisible(false);
 			break;
 
 		}
 
 		case "BACKSELECTUPDATEGAMOWN": {
-
-			selUpdateGamblerOwn.setVisible(false);
 			gamManageOwn.setVisible(true);
+			selUpdateGamblerOwn.setVisible(false);
 			break;
 
 		}
 
 		case "SELECTGAMBLERSHOWOWN": {
-
+			selShowGamblerOwn.setVisible(true);
 			gamManageOwn.setVisible(false);
 			updateBoxSelectShowVenueGambler();
-			selShowGamblerOwn.setVisible(true);
 			break;
 		}
 
 		case "SELECTGAMBLERUPDATEOWN": {
-
+			selUpdateGamblerOwn.setVisible(true);
 			gamManageOwn.setVisible(false);
 			updateBoxSelectUpdateVenueGambler();
-			selUpdateGamblerOwn.setVisible(true);
 			break;
 		}
 
 		case "SELECTGAMBLERDELETEOWN": {
-
-			gamManageOwn.setVisible(false);
-			updateBoxSelectDeleteVenueGambler();
 			selDeleteGamblerOwn.setVisible(true);
+			gamManageOwn.setVisible(false);
+			updateBoxSelectDeleteVenueGambler();			
 			break;
 		}
 
 		case "BACKSELECTDELETEGAMBLEROWN": {
-
-			selDeleteGamblerOwn.setVisible(false);
 			gamManageOwn.setVisible(true);
+			selDeleteGamblerOwn.setVisible(false);
 			break;
 		}
 
 		case "BACKMENUBETOWN": {
-
-			betManOwn.setVisible(false);
 			ownWind.setVisible(true);
+			betManOwn.setVisible(false);
 			break;
 		}
 
 		case "CREATEBET": {
-
-			betManOwn.setVisible(false);
 			selcreatebet.setVisible(true);
+			betManOwn.setVisible(false);		
 			break;
 
 		}
 
 		case "BACKSELECTVENUEBETOWN": {
-
-			selcreatebet.setVisible(false);
 			betManOwn.setVisible(true);
+			selcreatebet.setVisible(false);		
 			break;
 		}
 		case "CREATENEWNEWVENUE": {
-
+			venueManageOwn.setVisible(true);
 			String item = "";
 			int itemN = 0;
 			createVenue();
 			createVenueWin.getVenueName().setText("");
 			createVenueWin.getComboLocation().setSelectedItem(item);
 			createVenueWin.getNumEmployes().setValue(itemN);
+			createVenueWin.setVisible(false);
 			break;
 
 		}
 		case "UPDATEVENUEOWN": {
-
+			selUpdateVenOwn.setVisible(true);
 			updateVenueOwn();
 			updateVenueOwn.setVisible(false);
-			selUpdateVenOwn.setVisible(true);
 			updateBoxSelectUpdateVenue();
 			break;
-
 		}
 		case "DELETEVENUEOWN": {
+			venueManageOwn.setVisible(true);
 			deleteVenueOwn();
 			selDeleteVenueOwn.setVisible(false);
-			venueManageOwn.setVisible(true);
 			break;
+		}
+		
+		case "BACKGAMESSETING": {
+			houseManageWindow.setVisible(true);
+			gamesSettingWin.setVisible(false);
+			break;
+		}
+		
+		case "CONFIRMGAMESSETING":{
+			
+			setGameSettings();
+			
+			break;
+		}
+		
+		case "CREATEGAMBLEROWN":{
+			
+			createGamblerOwner();
+			 createGamblerWinOwn.getCompleteName().setText(null);
+			 createGamblerWinOwn.getDocument().setText(null);
+			 createGamblerWinOwn.getAdress().setText(null);
+			 createGamblerWinOwn.getPhoneNumber().setText(null);
+			break;
+			
 		}
 		default:
 
@@ -1132,6 +1167,44 @@ public class Controller implements ActionListener {
 
 		}
 
+	}
+	
+	public void setGameSettings() {
+		
+		double budget1 = Double.parseDouble(gamesSettingWin.getBudget1().getText());
+		double budget2 = Double.parseDouble(gamesSettingWin.getBudget2().getText());
+		double budget3 = Double.parseDouble(gamesSettingWin.getBudget3().getText());
+		double budget4 = Double.parseDouble(gamesSettingWin.getBudget4().getText());
+		double budget5 = Double.parseDouble(gamesSettingWin.getBudget5().getText());
+		
+		double temp =  Double.parseDouble(houseManageWindow.getTotalBudget().getText());
+		if(gameDAO.totalBudgetCalculated(budget1, budget2, budget3, budget4, budget5)==temp) {
+			gameDAO.create(budget1, budget2, budget3, budget4, budget5);
+			JOptionPane.showMessageDialog(gamesSettingWin, "HAS ESTABLECIDO CORRECTAMENTE TODOS LOS PARAMETROS DE TU CASA DE APUESTAS");
+		}else {
+			JOptionPane.showMessageDialog(gamesSettingWin, "ALGUNO DE LOS PRESUPUESTOS NO COINCIDE CON EL PRESUPUESTO TOTAL", "error", 0);
+
+		}
+	}
+	
+	public void updateBoxCreateGambler() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			createGamblerWinOwn.getComboLocation().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				createGamblerWinOwn.getComboLocation().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+		}
+	}
+	
+	public void createGamblerOwner() {
+		String fullname = createGamblerWinOwn.getCompleteName().getText();
+		String document = createGamblerWinOwn.getDocument().getText();
+		String gamingVenue = createGamblerWinOwn.getComboLocation().getSelectedItem().toString();
+		String adress = createGamblerWinOwn.getAdress().getText();
+		String phoneNumber = createGamblerWinOwn.getPhoneNumber().getText();
+		
+		gamDAO.create(fullname, document, gamingVenue, adress, phoneNumber);
+		JOptionPane.showMessageDialog(gamesSettingWin, "EL APOSTADOR "+ fullname + " HA SIDO CREADO");
 	}
 
 }

@@ -127,7 +127,7 @@ public class BettingHouseManagmentWindow extends JFrame {
 		add(back);
 
 		createBtn = new JButton();
-		createBtn.setBounds(453, 508, 377, 75);
+		createBtn.setBounds(453, 527, 377, 75);
 		createBtn.setToolTipText("Crear datos de la casa de apuestas");
 		createBtn.setBackground(new Color(0, 0, 0, 0));
 		createBtn.setOpaque(false);
@@ -145,7 +145,7 @@ public class BettingHouseManagmentWindow extends JFrame {
 		add(nameHouse);
 
 		numberVenue = new JSpinner();
-		numberVenue.setBounds(432, 409, 414, 69);
+		numberVenue.setBounds(433, 433, 414, 69);
 		n = new SpinnerNumberModel();
 		n.setMinimum(0);
 		numberVenue.setModel(n);

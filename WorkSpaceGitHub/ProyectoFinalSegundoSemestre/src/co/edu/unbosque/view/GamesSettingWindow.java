@@ -1,6 +1,7 @@
 package co.edu.unbosque.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -8,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class GamesSettingWindow extends JFrame {
 
@@ -50,28 +52,57 @@ public class GamesSettingWindow extends JFrame {
 		add(back);
 
 		confirmData = new JButton();
-		confirmData.setBounds(336, 600, 335, 88);
+		confirmData.setBounds(507, 624, 266, 71);
 		confirmData.setToolTipText("CONFIRMAR");
+		confirmData.setBackground(new Color(0, 0, 0, 0));
+		confirmData.setOpaque(false);
+		confirmData.setContentAreaFilled(false);
+		confirmData.setBorderPainted(false);
 		add(confirmData);
 
 		budget1 = new JTextField();
-		budget1.setBounds(668, 172, 430, 80);
+		budget1.setBounds(666, 185, 450, 67);
+		budget1.setBackground(new Color(0, 0, 0, 0));
+		budget1.setOpaque(false);
+		budget1.setBorder(new EmptyBorder(15, 15, 15, 15));
+		budget1.setFont(new Font("Arial", 1, 25));
+		budget1.setForeground(Color.white);
 		add(budget1);
 
 		budget2 = new JTextField();
-		budget2.setBounds(833, 340, 563, 80);
+		budget2.setBounds(666, 271, 450, 67);
+		budget2.setBackground(new Color(0, 0, 0, 0));
+		budget2.setOpaque(false);
+		budget2.setBorder(new EmptyBorder(15, 15, 15, 15));
+		budget2.setFont(new Font("Arial", 1, 25));
+		budget2.setForeground(Color.white);		
 		add(budget2);
 
 		budget3 = new JTextField();
-		budget3.setBounds(833, 449, 563, 80);
+		budget3.setBounds(666, 358, 450, 67);
+		budget3.setBackground(new Color(0, 0, 0, 0));
+		budget3.setOpaque(false);
+		budget3.setBorder(new EmptyBorder(15, 15, 15, 15));
+		budget3.setFont(new Font("Arial", 1, 25));
+		budget3.setForeground(Color.white);
 		add(budget3);
 
 		budget4 = new JTextField();
-		budget4.setBounds(833, 556, 563, 80);
+		budget4.setBounds(666, 444, 450, 67);
+		budget4.setBackground(new Color(0, 0, 0, 0));
+		budget4.setOpaque(false);
+		budget4.setBorder(new EmptyBorder(15, 15, 15, 15));
+		budget4.setFont(new Font("Arial", 1, 25));
+		budget4.setForeground(Color.white);		
 		add(budget4);
 
 		budget5 = new JTextField();
-		budget5.setBounds(833, 639, 563, 80);
+		budget5.setBounds(666, 531, 450, 67);
+		budget5.setBackground(new Color(0, 0, 0, 0));
+		budget5.setOpaque(false);
+		budget5.setBorder(new EmptyBorder(15, 15, 15, 15));
+		budget5.setFont(new Font("Arial", 1, 25));
+		budget5.setForeground(Color.white);
 		add(budget5);
 
 		mainImage = new JLabel();
