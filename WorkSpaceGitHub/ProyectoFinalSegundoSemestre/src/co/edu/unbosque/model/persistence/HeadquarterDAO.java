@@ -205,7 +205,5 @@ public class HeadquarterDAO implements CRUDOperation {
 	public String getSERIAL_FILENAME() {
 		return SERIAL_FILENAME;
 	}
-	
-	
 
 }

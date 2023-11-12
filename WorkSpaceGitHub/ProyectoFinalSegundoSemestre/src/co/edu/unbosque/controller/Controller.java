@@ -2,12 +2,10 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
-import co.edu.unbosque.model.persistence.GamblerDAO;
 import co.edu.unbosque.model.persistence.HeadquarterDAO;
 import co.edu.unbosque.model.persistence.HeadquarterManagerDAO;
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
@@ -17,6 +15,7 @@ import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
 import co.edu.unbosque.view.CreateVenueWindow;
 import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
+import co.edu.unbosque.view.GamesSettingWindow;
 import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
@@ -51,11 +50,11 @@ public class Controller implements ActionListener {
 	private SelectDeleteGamblerOwnWindow selDeleteGamblerOwn;
 	private BetManagmentByOwnerWindow betManOwn;
 	private SelectCreateBetWindow selcreatebet;
+	private GamesSettingWindow gamesSettingWin;
 
 	private HouseSettingDAO houseDAO;
 	private OwnerDAO ownDAO;
 	private HeadquarterManagerDAO bossDAO;
-	private GamblerDAO gamDAO;
 	private HeadquarterDAO venueDAO;
 
 	public Controller() {
@@ -63,7 +62,6 @@ public class Controller implements ActionListener {
 		houseDAO = new HouseSettingDAO();
 		ownDAO = new OwnerDAO();
 		bossDAO = new HeadquarterManagerDAO();
-		gamDAO = new GamblerDAO();
 		venueDAO = new HeadquarterDAO();
 
 		logWind = new LoginWindow();
@@ -84,6 +82,7 @@ public class Controller implements ActionListener {
 		selDeleteGamblerOwn = new SelectDeleteGamblerOwnWindow();
 		betManOwn = new BetManagmentByOwnerWindow();
 		selcreatebet = new SelectCreateBetWindow();
+		gamesSettingWin = new GamesSettingWindow();
 		agregarLectores();
 
 	}
@@ -150,6 +149,9 @@ public class Controller implements ActionListener {
 
 		houseManageWindow.getCreateBtn().addActionListener(this);
 		houseManageWindow.getCreateBtn().setActionCommand("CREATEHOUSE");
+
+		gamesSettingWin.getExit().addActionListener(this);
+		gamesSettingWin.getExit().setActionCommand("EXITGAMESSETING");
 
 		// BOTONES MODULO 2 (OWNER)
 
@@ -552,6 +554,9 @@ public class Controller implements ActionListener {
 			int aux = 0;
 			houseManageWindow.getNumberVenue().setValue(aux);
 
+			houseManageWindow.setVisible(false);
+			gamesSettingWin.setVisible(true);
+
 			break;
 		}
 
@@ -612,6 +617,7 @@ public class Controller implements ActionListener {
 			venueManageOwn.setVisible(false);
 			updateBoxSelectUpdateVenue();
 			selUpdateVenOwn.setVisible(true);
+
 			break;
 
 		}
@@ -804,6 +810,12 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "DELETEVENUEOWN": {
+			deleteVenueOwn();
+			selDeleteVenueOwn.setVisible(false);
+			venueManageOwn.setVisible(true);
+			break;
+		}
 		default:
 
 			break;
@@ -818,20 +830,23 @@ public class Controller implements ActionListener {
 		String passToCheck = logWind.getPassword().getText();
 
 		boolean checked = false;
+		ciclocheck: while (true) {
 
-		for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
+			for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
 
-			if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
-					&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
+				if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
+						&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
+					checked = true;
+					break ciclocheck;
 
-				checked = true;
+				} else {
 
-			} else {
+					checked = false;
+				}
 
-				checked = false;
 			}
-
 		}
+
 		if (checked) {
 			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
 			ownWind.setVisible(true);
@@ -992,6 +1007,7 @@ public class Controller implements ActionListener {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selUpdateVenOwn.getComboVenue().removeAllItems();
 			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
 				selUpdateVenOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
 			}
 		}
@@ -1061,14 +1077,60 @@ public class Controller implements ActionListener {
 		String nameVenue = updateVenueOwn.getVenueName().getText();
 		String updateLocation = updateVenueOwn.getComboLocation().getSelectedItem().toString();
 		String numEmployes = updateVenueOwn.getNumEmployes().getValue().toString();
+		int index = 0;
 
-		int index = selUpdateGamblerOwn.getComboVenue().getSelectedIndex();
+		String id = "";
+
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			String aux = selUpdateVenOwn.getComboVenue().getSelectedItem().toString();
+
+			if (aux.equals(venueDAO.getHeadquarterList().get(i).getVenueName())) {
+				index = i;
+				id = venueDAO.getHeadquarterList().get(i).getId();
+			}
+
+		}
 
 		System.out.println(index);
 
-		venueDAO.updateByIndex(index, nameVenue, updateLocation, numEmployes);
+		venueDAO.updateByIndex(index, nameVenue, updateLocation, numEmployes, id);
 
 		JOptionPane.showMessageDialog(updateVenueOwn, "HAS ACTUALIZADO CON EXITO LA SEDE: " + nameVenue);
+
+	}
+
+	public void deleteVenueOwn() {
+		int index = 0;
+
+		String aux = "";
+
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			aux = selDeleteVenueOwn.getComboVenue().getSelectedItem().toString();
+
+			if (aux.equals(venueDAO.getHeadquarterList().get(i).getVenueName())) {
+				index = i;
+			}
+
+		}
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE ELIMINAR LA SEDE: " + aux + "?",
+				"DELETE_OPTION", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+				new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+			venueDAO.delete(index);
+		} else {
+
+		}
 
 	}
 

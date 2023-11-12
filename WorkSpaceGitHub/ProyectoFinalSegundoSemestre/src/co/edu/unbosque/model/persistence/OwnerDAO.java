@@ -50,7 +50,7 @@ public class OwnerDAO implements CRUDOperation {
 		owner.setPassword(attribs[1]);
 
 		ownerList.add(owner);
-//		writeFile();
+		writeFile();
 		writeSerializable();
 
 	}
@@ -59,7 +59,7 @@ public class OwnerDAO implements CRUDOperation {
 	public void create(Object obj) {
 		// TODO Auto-generated method stub
 		ownerList.add((OwnerDTO) obj);
-//		writeFile();
+		writeFile();
 		writeSerializable();
 
 	}
@@ -91,7 +91,7 @@ public class OwnerDAO implements CRUDOperation {
 			if (!newData[1].isEmpty() || !newData[1].equals("") || newData[1].length() != 0) {
 				ownerList.get(index).setPassword(newData[1]);
 			}
-//			writeFile();
+			writeFile();
 			writeSerializable();
 			return true;
 		}
@@ -104,7 +104,7 @@ public class OwnerDAO implements CRUDOperation {
 			return false;
 		} else {
 			ownerList.remove(index);
-//			writeFile();
+			writeFile();
 			writeSerializable();
 			return true;
 		}
@@ -116,7 +116,7 @@ public class OwnerDAO implements CRUDOperation {
 		if (obj == null) {
 			return false;
 		} else if (ownerList.remove((OwnerDTO) obj)) {
-//			writeFile();
+			writeFile();
 			writeSerializable();
 			return true;
 		} else {
