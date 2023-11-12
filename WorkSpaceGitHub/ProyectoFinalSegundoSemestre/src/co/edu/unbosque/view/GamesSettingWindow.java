@@ -55,7 +55,7 @@ public class GamesSettingWindow extends JFrame {
 		add(confirmData);
 
 		budget1 = new JTextField();
-		budget1.setBounds(654, 233, 563, 80);
+		budget1.setBounds(670, 172, 563, 80);
 		add(budget1);
 
 		budget2 = new JTextField();
