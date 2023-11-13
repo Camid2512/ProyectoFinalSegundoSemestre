@@ -25,8 +25,11 @@ import co.edu.unbosque.view.SelectCreateBetWindow;
 import co.edu.unbosque.view.SelectDeleteGamblerOwnWindow;
 import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindow;
+import co.edu.unbosque.view.SelectGamblerAfterVenueWindowToDelete;
+import co.edu.unbosque.view.SelectShowBetWindow;
 import co.edu.unbosque.view.SelectShowGamblerWindow;
 import co.edu.unbosque.view.SelectShowVenueWindow;
+import co.edu.unbosque.view.SelectUpdateBetWindow;
 import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
 import co.edu.unbosque.view.SignUpWindow;
@@ -55,7 +58,9 @@ public class Controller implements ActionListener {
 	private SelectCreateBetWindow selcreatebet;
 	private GamesSettingWindow gamesSettingWin;
 	private SelectGamblerAfterVenueWindow selGamToUpdateWinOwn;
-
+	private SelectGamblerAfterVenueWindowToDelete selGamToUpdateWinOwntoDelete;
+	private SelectShowBetWindow selShowBetWinOwn;
+	private SelectUpdateBetWindow selUpdBetWinOwn;
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
 	private OwnerDAO ownDAO;
@@ -92,6 +97,9 @@ public class Controller implements ActionListener {
 		selcreatebet = new SelectCreateBetWindow();
 		gamesSettingWin = new GamesSettingWindow();
 		selGamToUpdateWinOwn = new SelectGamblerAfterVenueWindow();
+		selGamToUpdateWinOwntoDelete = new SelectGamblerAfterVenueWindowToDelete();
+		selShowBetWinOwn = new SelectShowBetWindow();
+		selUpdBetWinOwn = new SelectUpdateBetWindow();
 		agregarLectores();
 
 	}
@@ -314,7 +322,7 @@ public class Controller implements ActionListener {
 		selGamToUpdateWinOwn.getBack().addActionListener(this);
 		selGamToUpdateWinOwn.getBack().setActionCommand("BACKGAMBLERTOUPDATESELECT");
 
-		// BOTONES MENU SELECCION APOSTADOR ELIMINAR (OWNER)
+		// BOTONES MENU SELECCION APOSTADOR ELIMINAR VENTANA 1(OWNER)
 
 		selDeleteGamblerOwn.getExit().addActionListener(this);
 		selDeleteGamblerOwn.getExit().setActionCommand("EXITSELECTDELETEGAMBLEROWN");
@@ -323,7 +331,15 @@ public class Controller implements ActionListener {
 		selDeleteGamblerOwn.getBack().setActionCommand("BACKSELECTDELETEGAMBLEROWN");
 
 		selDeleteGamblerOwn.getNext().addActionListener(this);
-		selDeleteGamblerOwn.getNext().setActionCommand("DELETEGAMBLEROWN");
+		selDeleteGamblerOwn.getNext().setActionCommand("NEXTDELETEGAMBLEROWN");
+
+		// BOTONES MENU SELECCION APOSTADOR ELIMINAR VENTANA 2(OWNER)
+
+		selGamToUpdateWinOwntoDelete.getExit().addActionListener(this);
+		selGamToUpdateWinOwntoDelete.getExit().setActionCommand("EXITSELECTDELETEGAMBLEROWN2");
+
+		selGamToUpdateWinOwntoDelete.getBack().addActionListener(this);
+		selGamToUpdateWinOwntoDelete.getBack().setActionCommand("BACKSELECTDELETEGAMBLEROWN2");
 
 		// BOTONES MODULO 4 (OWNER)}
 
@@ -352,6 +368,14 @@ public class Controller implements ActionListener {
 
 		selcreatebet.getExit().addActionListener(this);
 		selcreatebet.getExit().setActionCommand("EXITSELECTVENUEBETOWN");
+
+		// BOTONES SELECCIONAR SEDE MOSTRAR APUESTA
+
+		selShowBetWinOwn.getBack().addActionListener(this);
+		selShowBetWinOwn.getBack().setActionCommand("BACKSELECTVENUESHOWBETOWN");
+
+		selShowBetWinOwn.getExit().addActionListener(this);
+		selShowBetWinOwn.getExit().setActionCommand("EXITSELECTVENUESHOWBETOWN");
 	}
 
 	@Override
@@ -360,11 +384,12 @@ public class Controller implements ActionListener {
 		switch (e.getActionCommand()) {
 		case "BOTONREGISTRO": {
 
-			logWind.setVisible(false);
 			signWind.setVisible(true);
+			logWind.setVisible(false);
 
 			break;
 		}
+
 		case "BOTONLOGIN": {
 
 			logWind.setVisible(false);
@@ -388,13 +413,24 @@ public class Controller implements ActionListener {
 
 		case "BACKSIGN": {
 
-			signWind.setVisible(false);
 			logWind.setVisible(true);
+			signWind.setVisible(false);
 
 			signWind.getUsuario().setText(null);
 			signWind.getPassword().setText(null);
 			break;
 
+		}
+
+		case "EXITSELECTDELETEGAMBLEROWN2": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
 		}
 
 		case "EXITSIGNUP": {
@@ -409,6 +445,16 @@ public class Controller implements ActionListener {
 
 		}
 		case "EXITLOGIN": {
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
+		case "EXITSELECTVENUESHOWBETOWN": {
 			boolean confirm = exitConfirm();
 			if (confirm) {
 				System.exit(1);
@@ -447,6 +493,16 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "EXITCREATEBOSS": {
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+		}
+
+		case "EXITSELECTDELETEGAMBLEROWN": {
 			boolean confirm = exitConfirm();
 			if (confirm) {
 				System.exit(1);
@@ -717,7 +773,7 @@ public class Controller implements ActionListener {
 
 			createVenueWin.getVenueName().setText(null);
 			createVenueWin.getComboLocation().setSelectedIndex(0);
-			;
+
 			createVenueWin.getNumEmployes().setValue(0);
 
 			break;
@@ -814,6 +870,7 @@ public class Controller implements ActionListener {
 		case "CREATEBET": {
 			selcreatebet.setVisible(true);
 			betManOwn.setVisible(false);
+			updateBoxCreateBet();
 			break;
 
 		}
@@ -876,7 +933,8 @@ public class Controller implements ActionListener {
 
 			selGamToUpdateWinOwn.setVisible(true);
 			selUpdateGamblerOwn.setVisible(false);
-			updateSelectGamblerUpdate();
+			String venueAux = selUpdateGamblerOwn.getComboVenue().getSelectedItem().toString();
+			updateSelectGamblerUpdate(venueAux);
 			break;
 		}
 		case "BACKGAMBLERTOUPDATESELECT": {
@@ -885,6 +943,33 @@ public class Controller implements ActionListener {
 			selGamToUpdateWinOwn.setVisible(false);
 			break;
 
+		}
+		case "NEXTDELETEGAMBLEROWN": {
+			selGamToUpdateWinOwntoDelete.setVisible(true);
+			selDeleteGamblerOwn.setVisible(false);
+			String venueAux = selDeleteGamblerOwn.getComboVenue().getSelectedItem().toString();
+			updateSelectGamblerDelete(venueAux);
+			break;
+		}
+
+		case "BACKSELECTDELETEGAMBLEROWN2": {
+			selDeleteGamblerOwn.setVisible(true);
+			selGamToUpdateWinOwntoDelete.setVisible(false);
+			break;
+		}
+
+		case "SELECTBETSHOWOWN": {
+
+			selShowBetWinOwn.setVisible(true);
+			betManOwn.setVisible(false);
+			updateBoxShowBet();
+			break;
+		}
+
+		case "BACKSELECTVENUESHOWBETOWN": {
+			betManOwn.setVisible(true);
+			selShowBetWinOwn.setVisible(false);
+			break;
 		}
 		default:
 
@@ -900,27 +985,25 @@ public class Controller implements ActionListener {
 		String passToCheck = logWind.getPassword().getText();
 
 		boolean checked = false;
-		ciclocheck: while (true) {
-
+		
+           int cont = 0;
 			for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
 
-				if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
-						&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
-					checked = true;
-					break ciclocheck;
-
-				} else {
-
-					checked = false;
+				if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
+					cont++;
+					
+				} else if(i >= ownDAO.getOwnerList().size() && checked == false) {
+				
+					
 				}
 
 			}
-		}
+		
 
-		if (checked) {
+		if (cont > 0) {
 			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
 			ownWind.setVisible(true);
-		} else {
+		}if (cont == 0) {
 			JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
 			logWind.setVisible(true);
 		}
@@ -1109,7 +1192,9 @@ public class Controller implements ActionListener {
 			selUpdateGamblerOwn.getComboVenue().removeAllItems();
 			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
 				selUpdateGamblerOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+
 			}
+
 		}
 
 	}
@@ -1224,20 +1309,57 @@ public class Controller implements ActionListener {
 		}
 	}
 
-	public void updateBoxCreateGambler() {
+	public String updateBoxCreateGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			createGamblerWinOwn.getComboLocation().removeAllItems();
 			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
 				createGamblerWinOwn.getComboLocation().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
 			}
+
+		}
+		String opcion = createGamblerWinOwn.getComboLocation().getSelectedItem().toString();
+		return opcion;
+	}
+
+	public void updateBoxCreateBet() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selcreatebet.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selcreatebet.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
 		}
 	}
 
-	public void updateSelectGamblerUpdate() {
+	public void updateBoxShowBet() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selShowBetWinOwn.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selShowBetWinOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+
+		}
+
+	}
+
+	public void updateSelectGamblerUpdate(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGamToUpdateWinOwn.getComboGambler().removeAllItems();
 			for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
-				selGamToUpdateWinOwn.getComboGambler().addItem(gamDAO.getGamblerList().get(i).getDocumentId());
+				if (data.equals(gamDAO.getGamblerList().get(i).getGamingVenue())) {
+					selGamToUpdateWinOwn.getComboGambler().addItem(gamDAO.getGamblerList().get(i).getDocumentId());
+				}
+			}
+		}
+	}
+
+	public void updateSelectGamblerDelete(String data) {
+		if (!gamDAO.getGamblerList().isEmpty()) {
+			selGamToUpdateWinOwntoDelete.getComboGambler().removeAllItems();
+			for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+				if (data.equals(gamDAO.getGamblerList().get(i).getGamingVenue())) {
+					selGamToUpdateWinOwntoDelete.getComboGambler()
+							.addItem(gamDAO.getGamblerList().get(i).getDocumentId());
+				}
 			}
 		}
 	}

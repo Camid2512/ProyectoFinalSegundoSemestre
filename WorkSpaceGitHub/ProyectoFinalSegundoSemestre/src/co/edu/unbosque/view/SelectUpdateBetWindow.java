@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class SelectCreateBetWindow extends JFrame {
+public class SelectUpdateBetWindow extends JFrame {
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class SelectCreateBetWindow extends JFrame {
 	private JComboBox<String> comboVenue;
 	private JLabel mainImage;
 
-	public SelectCreateBetWindow() {
+	public SelectUpdateBetWindow() {
 		// TODO Auto-generated constructor stub
 
 		setSize(1280, 720);
@@ -59,6 +59,13 @@ public class SelectCreateBetWindow extends JFrame {
 		next.setBorderPainted(false);
 		add(next);
 
+		comboVenue = new JComboBox<>();
+		comboVenue.setBounds(313, 270, 657, 133);
+		comboVenue.setBackground(new Color(225, 223, 228));
+		comboVenue.setForeground(Color.black);
+		comboVenue.setFont(new Font("Arial", 1, 25));
+		add(comboVenue);
+		
 		comboVenue = new JComboBox<>();
 		comboVenue.setBounds(313, 270, 657, 133);
 		comboVenue.setBackground(new Color(225, 223, 228));

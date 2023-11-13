@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class SelectCreateBetWindow extends JFrame {
+public class SelectShowBetWindow extends JFrame {
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class SelectCreateBetWindow extends JFrame {
 	private JComboBox<String> comboVenue;
 	private JLabel mainImage;
 
-	public SelectCreateBetWindow() {
+	public SelectShowBetWindow() {
 		// TODO Auto-generated constructor stub
 
 		setSize(1280, 720);
