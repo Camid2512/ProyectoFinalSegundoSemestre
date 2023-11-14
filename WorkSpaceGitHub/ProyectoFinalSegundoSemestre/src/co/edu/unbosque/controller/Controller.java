@@ -360,6 +360,9 @@ public class Controller implements ActionListener {
 		selGamToDeleteWinOwn.getBack().addActionListener(this);
 		selGamToDeleteWinOwn.getBack().setActionCommand("BACKSELECTDELETEGAMBLEROWN2");
 
+		selGamToDeleteWinOwn.getNextStep().addActionListener(this);
+		selGamToDeleteWinOwn.getNextStep().setActionCommand("DELETE GAMBLEROWN");
+
 		// BOTONES MODULO 4 (OWNER)
 
 		betManOwn.getExit().addActionListener(this);
@@ -1024,6 +1027,13 @@ public class Controller implements ActionListener {
 			gamUpdateWinOwn.setVisible(false);
 			break;
 		}
+		case "DELETE GAMBLEROWN": {
+
+			gamManageOwn.setVisible(true);
+			selGamToDeleteWinOwn.setVisible(false);
+			updateBoxSelectDeleteVenueGambler();
+			deleteGamblerOwner();
+		}
 		default:
 
 			break;
@@ -1509,6 +1519,24 @@ public class Controller implements ActionListener {
 		System.out.println(index);
 
 		gamDAO.updateByIndex(index, fullName, document, gamingVenue, addres, phoneNumber);
+
+	}
+
+	public void deleteGamblerOwner() {
+
+		int index = 0;
+
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+
+			long aux = Long.parseLong(selGamToDeleteWinOwn.getComboGambler().getSelectedItem().toString());
+
+			if (aux == gamDAO.getGamblerList().get(i).getDocumentId()) {
+				index = i;
+			}
+
+		}
+
+		gamDAO.delete(index);
 
 	}
 
