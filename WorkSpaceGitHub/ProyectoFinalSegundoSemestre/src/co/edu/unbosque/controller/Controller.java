@@ -12,11 +12,13 @@ import co.edu.unbosque.model.persistence.HeadquarterDAO;
 import co.edu.unbosque.model.persistence.HeadquarterManagerDAO;
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
 import co.edu.unbosque.model.persistence.OwnerDAO;
+import co.edu.unbosque.util.SameDocumentException;
 import co.edu.unbosque.view.BetManagmentByOwnerWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
 import co.edu.unbosque.view.CreateVenueWindow;
 import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
+import co.edu.unbosque.view.GamblerUpdateOwnWindow;
 import co.edu.unbosque.view.GamesSettingWindow;
 import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.ManagerCreationWindow;
@@ -53,14 +55,16 @@ public class Controller implements ActionListener {
 	private CreateGamblerWindow createGamblerWinOwn;
 	private SelectShowGamblerWindow selShowGamblerOwn;
 	private SelectUpdateGamblerWindow selUpdateGamblerOwn;
+	private GamblerUpdateOwnWindow gamUpdateWinOwn;
 	private SelectDeleteGamblerOwnWindow selDeleteGamblerOwn;
 	private BetManagmentByOwnerWindow betManOwn;
 	private SelectCreateBetWindow selcreatebet;
 	private GamesSettingWindow gamesSettingWin;
 	private SelectGamblerAfterVenueWindow selGamToUpdateWinOwn;
-	private SelectGamblerAfterVenueWindowToDelete selGamToUpdateWinOwntoDelete;
+	private SelectGamblerAfterVenueWindowToDelete selGamToDeleteWinOwn;
 	private SelectShowBetWindow selShowBetWinOwn;
 	private SelectUpdateBetWindow selUpdBetWinOwn;
+
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
 	private OwnerDAO ownDAO;
@@ -97,9 +101,10 @@ public class Controller implements ActionListener {
 		selcreatebet = new SelectCreateBetWindow();
 		gamesSettingWin = new GamesSettingWindow();
 		selGamToUpdateWinOwn = new SelectGamblerAfterVenueWindow();
-		selGamToUpdateWinOwntoDelete = new SelectGamblerAfterVenueWindowToDelete();
+		selGamToDeleteWinOwn = new SelectGamblerAfterVenueWindowToDelete();
 		selShowBetWinOwn = new SelectShowBetWindow();
 		selUpdBetWinOwn = new SelectUpdateBetWindow();
+		gamUpdateWinOwn = new GamblerUpdateOwnWindow();
 		agregarLectores();
 
 	}
@@ -322,6 +327,20 @@ public class Controller implements ActionListener {
 		selGamToUpdateWinOwn.getBack().addActionListener(this);
 		selGamToUpdateWinOwn.getBack().setActionCommand("BACKGAMBLERTOUPDATESELECT");
 
+		selGamToUpdateWinOwn.getNextStep().addActionListener(this);
+		selGamToUpdateWinOwn.getNextStep().setActionCommand("ACTUALIZAR APOSTADOROWN");
+
+		// BOTONES ACTUALIZAR APOSTADOR (OWNER)
+
+		gamUpdateWinOwn.getExit().addActionListener(this);
+		gamUpdateWinOwn.getExit().setActionCommand("EXITUPDATEGAMBLEROWN");
+
+		gamUpdateWinOwn.getBack().addActionListener(this);
+		gamUpdateWinOwn.getBack().setActionCommand("BACKUPDATEGAMBLEROWN");
+
+		gamUpdateWinOwn.getCreateGambler().addActionListener(this);
+		gamUpdateWinOwn.getCreateGambler().setActionCommand("BOTONACTUALIZAR APOSTADOROWN");
+
 		// BOTONES MENU SELECCION APOSTADOR ELIMINAR VENTANA 1(OWNER)
 
 		selDeleteGamblerOwn.getExit().addActionListener(this);
@@ -335,13 +354,13 @@ public class Controller implements ActionListener {
 
 		// BOTONES MENU SELECCION APOSTADOR ELIMINAR VENTANA 2(OWNER)
 
-		selGamToUpdateWinOwntoDelete.getExit().addActionListener(this);
-		selGamToUpdateWinOwntoDelete.getExit().setActionCommand("EXITSELECTDELETEGAMBLEROWN2");
+		selGamToDeleteWinOwn.getExit().addActionListener(this);
+		selGamToDeleteWinOwn.getExit().setActionCommand("EXITSELECTDELETEGAMBLEROWN2");
 
-		selGamToUpdateWinOwntoDelete.getBack().addActionListener(this);
-		selGamToUpdateWinOwntoDelete.getBack().setActionCommand("BACKSELECTDELETEGAMBLEROWN2");
+		selGamToDeleteWinOwn.getBack().addActionListener(this);
+		selGamToDeleteWinOwn.getBack().setActionCommand("BACKSELECTDELETEGAMBLEROWN2");
 
-		// BOTONES MODULO 4 (OWNER)}
+		// BOTONES MODULO 4 (OWNER)
 
 		betManOwn.getExit().addActionListener(this);
 		betManOwn.getExit().setActionCommand("EXITMENUBETOWN");
@@ -647,6 +666,17 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "EXITUPDATEGAMBLEROWN": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
 
 		case "BOTONMOD1OWN": {
 
@@ -738,7 +768,7 @@ public class Controller implements ActionListener {
 		case "MENUUPDATESELECTED": {
 			updateVenueOwn.setVisible(true);
 			selUpdateVenOwn.setVisible(false);
-			setDataToUpdate();
+			setDataToUpdateVenue();
 			break;
 
 		}
@@ -945,7 +975,7 @@ public class Controller implements ActionListener {
 
 		}
 		case "NEXTDELETEGAMBLEROWN": {
-			selGamToUpdateWinOwntoDelete.setVisible(true);
+			selGamToDeleteWinOwn.setVisible(true);
 			selDeleteGamblerOwn.setVisible(false);
 			String venueAux = selDeleteGamblerOwn.getComboVenue().getSelectedItem().toString();
 			updateSelectGamblerDelete(venueAux);
@@ -954,7 +984,7 @@ public class Controller implements ActionListener {
 
 		case "BACKSELECTDELETEGAMBLEROWN2": {
 			selDeleteGamblerOwn.setVisible(true);
-			selGamToUpdateWinOwntoDelete.setVisible(false);
+			selGamToDeleteWinOwn.setVisible(false);
 			break;
 		}
 
@@ -971,6 +1001,29 @@ public class Controller implements ActionListener {
 			selShowBetWinOwn.setVisible(false);
 			break;
 		}
+		case "ACTUALIZAR APOSTADOROWN": {
+
+			gamUpdateWinOwn.setVisible(true);
+			selGamToUpdateWinOwn.setVisible(false);
+			setDataToUpdateGambler();
+			updateBoxUpdateVenueGamblerUpdate();
+			break;
+
+		}
+		case "BACKUPDATEGAMBLEROWN": {
+
+			selGamToUpdateWinOwn.setVisible(true);
+			gamUpdateWinOwn.setVisible(false);
+			break;
+
+		}
+		case "BOTONACTUALIZAR APOSTADOROWN": {
+			updateGamblerOwner();
+
+			gamManageOwn.setVisible(true);
+			gamUpdateWinOwn.setVisible(false);
+			break;
+		}
 		default:
 
 			break;
@@ -985,25 +1038,25 @@ public class Controller implements ActionListener {
 		String passToCheck = logWind.getPassword().getText();
 
 		boolean checked = false;
-		
-           int cont = 0;
-			for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
 
-				if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
-					cont++;
-					
-				} else if(i >= ownDAO.getOwnerList().size() && checked == false) {
-				
-					
-				}
+		int cont = 0;
+		for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
+
+			if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
+					&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
+				cont++;
+
+			} else if (i >= ownDAO.getOwnerList().size() && checked == false) {
 
 			}
-		
+
+		}
 
 		if (cont > 0) {
 			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
 			ownWind.setVisible(true);
-		}if (cont == 0) {
+		}
+		if (cont == 0) {
 			JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
 			logWind.setVisible(true);
 		}
@@ -1199,6 +1252,18 @@ public class Controller implements ActionListener {
 
 	}
 
+	public void updateBoxUpdateVenueGamblerUpdate() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			gamUpdateWinOwn.getComboLocation().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				gamUpdateWinOwn.getComboLocation().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+
+			}
+
+		}
+
+	}
+
 	public void updateBoxSelectDeleteVenueGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selDeleteGamblerOwn.getComboVenue().removeAllItems();
@@ -1208,7 +1273,7 @@ public class Controller implements ActionListener {
 		}
 	}
 
-	public void setDataToUpdate() {
+	public void setDataToUpdateVenue() {
 		updateVenueOwn.getVenueName().setText(selUpdateVenOwn.getComboVenue().getSelectedItem().toString());
 		String venue = selUpdateVenOwn.getComboVenue().getSelectedItem().toString();
 		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
@@ -1220,6 +1285,31 @@ public class Controller implements ActionListener {
 
 				updateVenueOwn.getComboLocation().setSelectedItem(selLocation);
 				updateVenueOwn.getNumEmployes().setValue(numEmployes);
+
+			}
+
+		}
+
+	}
+
+	public void setDataToUpdateGambler() {
+
+		gamUpdateWinOwn.getDocument().setText(selGamToUpdateWinOwn.getComboGambler().getSelectedItem().toString());
+
+		long gambler = Long.parseLong(selGamToUpdateWinOwn.getComboGambler().getSelectedItem().toString());
+
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+
+			if (gambler == gamDAO.getGamblerList().get(i).getDocumentId()) {
+				String fullName = String.valueOf(gamDAO.getGamblerList().get(i).getFullName());
+				String addres = gamDAO.getGamblerList().get(i).getAddres();
+				String phoneNumber = String.valueOf(gamDAO.getGamblerList().get(i).getPhoneNumber());
+				String gamingVenue = gamDAO.getGamblerList().get(i).getGamingVenue();
+
+				gamUpdateWinOwn.getCompleteName().setText(fullName);
+				gamUpdateWinOwn.getAdress().setText(addres);
+				gamUpdateWinOwn.getPhoneNumber().setText(phoneNumber);
+				gamUpdateWinOwn.getComboLocation().setSelectedItem(gamingVenue);
 
 			}
 
@@ -1354,25 +1444,99 @@ public class Controller implements ActionListener {
 
 	public void updateSelectGamblerDelete(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
-			selGamToUpdateWinOwntoDelete.getComboGambler().removeAllItems();
+			selGamToDeleteWinOwn.getComboGambler().removeAllItems();
 			for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
 				if (data.equals(gamDAO.getGamblerList().get(i).getGamingVenue())) {
-					selGamToUpdateWinOwntoDelete.getComboGambler()
-							.addItem(gamDAO.getGamblerList().get(i).getDocumentId());
+					selGamToDeleteWinOwn.getComboGambler().addItem(gamDAO.getGamblerList().get(i).getDocumentId());
 				}
 			}
 		}
 	}
 
 	public void createGamblerOwner() {
-		String fullname = createGamblerWinOwn.getCompleteName().getText();
-		String document = createGamblerWinOwn.getDocument().getText();
-		String gamingVenue = createGamblerWinOwn.getComboLocation().getSelectedItem().toString();
-		String adress = createGamblerWinOwn.getAdress().getText();
-		String phoneNumber = createGamblerWinOwn.getPhoneNumber().getText();
 
-		gamDAO.create(fullname, document, gamingVenue, adress, phoneNumber);
-		JOptionPane.showMessageDialog(gamesSettingWin, "EL APOSTADOR " + fullname + " HA SIDO CREADO");
+		String fullName = "";
+		String document = "";
+		String gamingVenue = "";
+		String adress = "";
+		String phoneNumber = "";
+		while (true) {
+			try {
+				fullName = createGamblerWinOwn.getCompleteName().getText();
+				document = createGamblerWinOwn.getDocument().getText();
+				checkDuplicatedDocument(document);
+				gamingVenue = createGamblerWinOwn.getComboLocation().getSelectedItem().toString();
+				adress = createGamblerWinOwn.getAdress().getText();
+				phoneNumber = createGamblerWinOwn.getPhoneNumber().getText();
+
+				if (checkDuplicatedDocument(document) == true) {
+					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
+					JOptionPane.showMessageDialog(gamesSettingWin, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
+				} else {
+
+				}
+
+			} catch (SameDocumentException e) {
+				// TODO: handle exception
+
+				createGamblerWinOwn.getDocument().setText("");
+				gamDAO.delete(0);
+
+			}
+			break;
+		}
+	}
+
+	public void updateGamblerOwner() {
+
+		String fullName = gamUpdateWinOwn.getCompleteName().getText();
+		String document = gamUpdateWinOwn.getDocument().getText();
+		String addres = gamUpdateWinOwn.getAdress().getText();
+		String phoneNumber = gamUpdateWinOwn.getPhoneNumber().getText();
+		String gamingVenue = gamUpdateWinOwn.getComboLocation().getSelectedItem().toString();
+		int index = 0;
+
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+
+			long aux = Long.parseLong(gamUpdateWinOwn.getDocument().getText());
+
+			if (aux == gamDAO.getGamblerList().get(i).getDocumentId()) {
+				index = i;
+			}
+
+		}
+
+		System.out.println(index);
+
+		gamDAO.updateByIndex(index, fullName, document, gamingVenue, addres, phoneNumber);
+
+	}
+
+	public boolean checkDuplicatedDocument(String document) throws SameDocumentException {
+
+		boolean check = true;
+
+		long documentToCheck = Long.parseLong(document);
+		int cont = 0;
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+
+			if (documentToCheck == gamDAO.getGamblerList().get(i).getDocumentId()) {
+
+				cont++;
+
+			} else {
+
+			}
+
+		}
+		if (cont > 0) {
+			JOptionPane.showMessageDialog(logWind, "NO PUEDEN EXISTIR 2 DOCUMENTOS IGUALES", "EXCEPTION", 0);
+			check = false;
+		} else if (cont == 0) {
+			check = true;
+
+		}
+		return check;
 	}
 
 }

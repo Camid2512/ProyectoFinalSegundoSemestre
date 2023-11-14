@@ -26,7 +26,7 @@ public class SelectGamblerAfterVenueWindowToDelete extends JFrame {
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("SELECCIONAR APOSTADOR PARA ACTUALIZAR");
+		setTitle("ELIMINAR APOSTADOR");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
