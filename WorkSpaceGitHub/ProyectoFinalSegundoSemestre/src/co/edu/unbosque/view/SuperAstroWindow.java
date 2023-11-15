@@ -6,6 +6,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -13,25 +14,29 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
-public class BalotoWindow extends JFrame {
+public class SuperAstroWindow extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -769680791092189359L;
+	private static final long serialVersionUID = 5898606968191455247L;
 
-	private JTextField betAmount;
-	private JSpinner num1, num2, num3, num4, num5, num6;
-	private SpinnerNumberModel n1, n2, n3, n4, n5, n6;
-	private JLabel mainImage;
 	private JButton exit, back, next;
 
-	public BalotoWindow() {
+	private JTextField betAmount;
 
+	private JSpinner num1, num2, num3, num4;
+	private SpinnerNumberModel n1, n2, n3, n4;
+	private JComboBox<String> zodiacSign;
+
+	private JLabel mainImage;
+
+	public SuperAstroWindow() {
+		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("BALOTO");
+		setTitle("SUPERASTRO");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -64,7 +69,7 @@ public class BalotoWindow extends JFrame {
 		add(next);
 
 		betAmount = new JTextField();
-		betAmount.setBounds(148, 193, 643, 73);
+		betAmount.setBounds(111, 140, 685, 77);
 		betAmount.setBackground(new Color(0, 0, 0, 0));
 		betAmount.setOpaque(false);
 		betAmount.setBorder(new EmptyBorder(15, 15, 15, 15));
@@ -73,31 +78,23 @@ public class BalotoWindow extends JFrame {
 		add(betAmount);
 
 		n1 = new SpinnerNumberModel();
-		n1.setMinimum(1);
-		n1.setMaximum(45);
+		n1.setMinimum(0);
+		n1.setMaximum(9);
 
 		n2 = new SpinnerNumberModel();
-		n2.setMinimum(1);
-		n2.setMaximum(45);
+		n2.setMinimum(0);
+		n2.setMaximum(9);
 
 		n3 = new SpinnerNumberModel();
-		n3.setMinimum(1);
-		n3.setMaximum(45);
+		n3.setMinimum(0);
+		n3.setMaximum(9);
 
 		n4 = new SpinnerNumberModel();
-		n4.setMinimum(1);
-		n4.setMaximum(45);
-
-		n5 = new SpinnerNumberModel();
-		n5.setMinimum(1);
-		n5.setMaximum(45);
-
-		n6 = new SpinnerNumberModel();
-		n6.setMinimum(1);
-		n6.setMaximum(45);
+		n4.setMinimum(0);
+		n4.setMaximum(9);
 
 		num1 = new JSpinner();
-		num1.setBounds(167, 405, 90, 90);
+		num1.setBounds(166, 360, 89, 90);
 		num1.setModel(n1);
 		num1.setEditor(new JSpinner.DefaultEditor(num1));
 		num1.setBorder(new EmptyBorder(20, 10, 20, 20));
@@ -108,8 +105,9 @@ public class BalotoWindow extends JFrame {
 		add(num1);
 
 		num2 = new JSpinner();
-		num2.setBounds(330, 405, 90, 90);
+		num2.setBounds(329, 360, 89, 90);
 		num2.setModel(n2);
+		num2.setEditor(new JSpinner.DefaultEditor(num2));
 		num2.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num2.setFont(new Font("Arial", 1, 25));
 		num2.setForeground(new Color(188, 186, 190));
@@ -118,8 +116,9 @@ public class BalotoWindow extends JFrame {
 		add(num2);
 
 		num3 = new JSpinner();
-		num3.setBounds(492, 405, 90, 90);
+		num3.setBounds(492, 360, 89, 90);
 		num3.setModel(n3);
+		num3.setEditor(new JSpinner.DefaultEditor(num3));
 		num3.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num3.setFont(new Font("Arial", 1, 25));
 		num3.setForeground(new Color(188, 186, 190));
@@ -128,8 +127,9 @@ public class BalotoWindow extends JFrame {
 		add(num3);
 
 		num4 = new JSpinner();
-		num4.setBounds(657, 405, 90, 90);
+		num4.setBounds(653, 360, 89, 90);
 		num4.setModel(n4);
+		num4.setEditor(new JSpinner.DefaultEditor(num4));
 		num4.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num4.setFont(new Font("Arial", 1, 25));
 		num4.setForeground(new Color(188, 186, 190));
@@ -137,31 +137,30 @@ public class BalotoWindow extends JFrame {
 		num4.getEditor().getComponent(0).setBackground(new Color(188, 186, 190));
 		add(num4);
 
-		num5 = new JSpinner();
-		num5.setBounds(817, 405, 90, 90);
-		num5.setModel(n5);
-		num5.setBorder(new EmptyBorder(20, 10, 20, 20));
-		num5.setFont(new Font("Arial", 1, 25));
-		num5.setForeground(new Color(188, 186, 190));
-		num5.setBackground(new Color(188, 186, 190));
-		num5.getEditor().getComponent(0).setBackground(new Color(188, 186, 190));
-		add(num5);
-
-		num6 = new JSpinner();
-		num6.setBounds(975, 405, 90, 90);
-		num6.setModel(n6);
-		num6.setBorder(new EmptyBorder(20, 10, 20, 20));
-		num6.setFont(new Font("Arial", 1, 25));
-		num6.setForeground(new Color(188, 186, 190));
-		num6.setBackground(new Color(188, 186, 190));
-		num6.getEditor().getComponent(0).setBackground(new Color(188, 186, 190));
-		add(num6);
+		zodiacSign = new JComboBox<String>();
+		zodiacSign.setBounds(111, 250, 685, 77);
+		zodiacSign.setBackground(new Color(225, 223, 228));
+		zodiacSign.setForeground(Color.black);
+		zodiacSign.setFont(new Font("Arial", 1, 25));
+		zodiacSign.addItem("ARIES");
+		zodiacSign.addItem("TAURO");
+		zodiacSign.addItem("GEMINIS");
+		zodiacSign.addItem("CANCER");
+		zodiacSign.addItem("LEO");
+		zodiacSign.addItem("VIRGO");
+		zodiacSign.addItem("LIBRA");
+		zodiacSign.addItem("ESCORPIO");
+		zodiacSign.addItem("SAGITARIO");
+		zodiacSign.addItem("CAPRICORNIO");
+		zodiacSign.addItem("ACUARIO");
+		zodiacSign.addItem("PISCIS");
+		add(zodiacSign);
 
 		mainImage = new JLabel();
 		mainImage.setBounds(0, 0, 1280, 720);
 
 		Image temporal1;
-		temporal1 = new ImageIcon("src/Images/baloto.png").getImage();
+		temporal1 = new ImageIcon("src/Images/superastro.png").getImage();
 
 		ImageIcon img1;
 		img1 = new ImageIcon(
@@ -171,6 +170,30 @@ public class BalotoWindow extends JFrame {
 		mainImage.setVisible(true);
 		add(mainImage);
 
+	}
+
+	public JButton getExit() {
+		return exit;
+	}
+
+	public void setExit(JButton exit) {
+		this.exit = exit;
+	}
+
+	public JButton getBack() {
+		return back;
+	}
+
+	public void setBack(JButton back) {
+		this.back = back;
+	}
+
+	public JButton getNext() {
+		return next;
+	}
+
+	public void setNext(JButton next) {
+		this.next = next;
 	}
 
 	public JTextField getBetAmount() {
@@ -213,22 +236,6 @@ public class BalotoWindow extends JFrame {
 		this.num4 = num4;
 	}
 
-	public JSpinner getNum5() {
-		return num5;
-	}
-
-	public void setNum5(JSpinner num5) {
-		this.num5 = num5;
-	}
-
-	public JSpinner getNum6() {
-		return num6;
-	}
-
-	public void setNum6(JSpinner num6) {
-		this.num6 = num6;
-	}
-
 	public SpinnerNumberModel getN1() {
 		return n1;
 	}
@@ -261,20 +268,12 @@ public class BalotoWindow extends JFrame {
 		this.n4 = n4;
 	}
 
-	public SpinnerNumberModel getN5() {
-		return n5;
+	public JComboBox<String> getZodiacSign() {
+		return zodiacSign;
 	}
 
-	public void setN5(SpinnerNumberModel n5) {
-		this.n5 = n5;
-	}
-
-	public SpinnerNumberModel getN6() {
-		return n6;
-	}
-
-	public void setN6(SpinnerNumberModel n6) {
-		this.n6 = n6;
+	public void setZodiacSign(JComboBox<String> zodiacSign) {
+		this.zodiacSign = zodiacSign;
 	}
 
 	public JLabel getMainImage() {

@@ -39,6 +39,7 @@ import co.edu.unbosque.view.SelectUpdateBetWindow;
 import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
 import co.edu.unbosque.view.SignUpWindow;
+import co.edu.unbosque.view.SuperAstroWindow;
 import co.edu.unbosque.view.UpdateVenueByOwnerWindow;
 import co.edu.unbosque.view.VenueManagmentByOwnerWindow;
 
@@ -72,6 +73,7 @@ public class Controller implements ActionListener {
 	private BetMenuOwnerWindow betMenuOwn;
 	private LoteriaWindow loteriaWin;
 	private BalotoWindow balotoWin;
+	private SuperAstroWindow superastroWin;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -118,6 +120,7 @@ public class Controller implements ActionListener {
 		loteriaWin = new LoteriaWindow();
 		balotoWin = new BalotoWindow();
 		balotoWin = new BalotoWindow();
+		superastroWin = new SuperAstroWindow();
 
 		agregarLectores();
 
@@ -432,6 +435,9 @@ public class Controller implements ActionListener {
 
 		betMenuOwn.getBaloto().addActionListener(this);
 		betMenuOwn.getBaloto().setActionCommand("BALOTOOWNER");
+
+		betMenuOwn.getSuperAstro().addActionListener(this);
+		betMenuOwn.getSuperAstro().setActionCommand("SUPERASTROOWNER");
 
 		// BOTONES SELECCIONAR SEDE MOSTRAR APUESTA
 
@@ -1133,6 +1139,13 @@ public class Controller implements ActionListener {
 		case "BALOTOOWNER": {
 
 			balotoWin.setVisible(true);
+			betMenuOwn.setVisible(false);
+			break;
+
+		}
+		case "SUPERASTROOWNER": {
+
+			superastroWin.setVisible(true);
 			betMenuOwn.setVisible(false);
 			break;
 
