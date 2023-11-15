@@ -14,7 +14,7 @@ public class HeadquarterDAO implements CRUDOperation {
 	 * @version 1.0
 	 * @since 25/09/2023
 	 */
-	private final String FILENAME = "headquarter.csv";
+	private final String FILENAME = "headquarter.dat";
 	/**
 	 * Este es el atributo de el nombre serial de archivo
 	 * 
@@ -22,7 +22,7 @@ public class HeadquarterDAO implements CRUDOperation {
 	 * @version 1.0
 	 * @since 25/09/2023
 	 */
-	private final String SERIAL_FILENAME = "headquarterserialized.csv";
+	private final String SERIAL_FILENAME = "headquarterserialized.dat";
 
 	public HeadquarterDAO() {
 		// TODO Auto-generated constructor stub

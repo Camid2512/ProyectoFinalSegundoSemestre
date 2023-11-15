@@ -29,8 +29,8 @@ public class BetPlayDAO implements CRUDOperation {
 		// TODO Auto-generated constructor stub
 
 		betPlayList = new ArrayList<BetPlayDTO>();
-		FILENAME = "betplay.dat";
-		SERIAL_FILENAME = "betplayserializable.csv";
+		FILENAME = "apuestas-betplay.dat";
+		SERIAL_FILENAME = "apuestas-betplay.csv";
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);

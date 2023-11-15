@@ -29,8 +29,8 @@ public class SuperAstroDAO implements CRUDOperation {
 		// TODO Auto-generated constructor stub
 
 		superAstroList = new ArrayList<SuperAstroDTO>();
-		FILENAME = "superastro.dat";
-		SERIAL_FILENAME = "superastroserialized.dat";
+		FILENAME = "apuestas-superastro.dat";
+		SERIAL_FILENAME = "apuestas-superastro.dat";
 
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {

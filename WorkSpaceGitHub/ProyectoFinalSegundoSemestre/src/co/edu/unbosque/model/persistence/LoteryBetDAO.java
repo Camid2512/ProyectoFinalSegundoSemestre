@@ -30,8 +30,8 @@ public class LoteryBetDAO implements CRUDOperation {
 		// TODO Auto-generated constructor stub
 
 		loteryBetList = new ArrayList<LoteryBetDTO>();
-		FILENAME = "loterybet.dat";
-		SERIAL_FILENAME = "loterybetserialized.dat";
+		FILENAME = "apuestas-loteria.dat";
+		SERIAL_FILENAME = "apuestas-loteriaserialized.dat";
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);

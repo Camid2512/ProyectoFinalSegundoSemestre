@@ -29,8 +29,8 @@ public class BallotDAO implements CRUDOperation {
 		// TODO Auto-generated constructor stub
 
 		ballotList = new ArrayList<BallotDTO>();
-		FILENAME = "ballot.dat";
-		SERIAL_FILENAME = "ballotserialized.dat";
+		FILENAME = "apuestas-baloto.dat";
+		SERIAL_FILENAME = "apuestas-balotoserialized.dat";
 
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {

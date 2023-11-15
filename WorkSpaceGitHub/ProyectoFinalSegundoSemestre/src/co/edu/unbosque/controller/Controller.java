@@ -13,7 +13,9 @@ import co.edu.unbosque.model.persistence.HeadquarterManagerDAO;
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
 import co.edu.unbosque.model.persistence.OwnerDAO;
 import co.edu.unbosque.util.SameDocumentException;
+import co.edu.unbosque.view.BalotoWindow;
 import co.edu.unbosque.view.BetManagmentByOwnerWindow;
+import co.edu.unbosque.view.BetMenuOwnerWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
 import co.edu.unbosque.view.CreateVenueWindow;
@@ -21,8 +23,10 @@ import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
 import co.edu.unbosque.view.GamblerUpdateOwnWindow;
 import co.edu.unbosque.view.GamesSettingWindow;
 import co.edu.unbosque.view.LoginWindow;
+import co.edu.unbosque.view.LoteriaWindow;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
+import co.edu.unbosque.view.SelGamblerCreateBetOwnWindow;
 import co.edu.unbosque.view.SelectCreateBetWindow;
 import co.edu.unbosque.view.SelectDeleteGamblerOwnWindow;
 import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
@@ -59,11 +63,15 @@ public class Controller implements ActionListener {
 	private SelectDeleteGamblerOwnWindow selDeleteGamblerOwn;
 	private BetManagmentByOwnerWindow betManOwn;
 	private SelectCreateBetWindow selcreatebet;
+	private SelGamblerCreateBetOwnWindow selGamCreateBetOwn;
 	private GamesSettingWindow gamesSettingWin;
 	private SelectGamblerAfterVenueWindow selGamToUpdateWinOwn;
 	private SelectGamblerAfterVenueWindowToDelete selGamToDeleteWinOwn;
 	private SelectShowBetWindow selShowBetWinOwn;
 	private SelectUpdateBetWindow selUpdBetWinOwn;
+	private BetMenuOwnerWindow betMenuOwn;
+	private LoteriaWindow loteriaWin;
+	private BalotoWindow balotoWin;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -105,6 +113,12 @@ public class Controller implements ActionListener {
 		selShowBetWinOwn = new SelectShowBetWindow();
 		selUpdBetWinOwn = new SelectUpdateBetWindow();
 		gamUpdateWinOwn = new GamblerUpdateOwnWindow();
+		selGamCreateBetOwn = new SelGamblerCreateBetOwnWindow();
+		betMenuOwn = new BetMenuOwnerWindow();
+		loteriaWin = new LoteriaWindow();
+		balotoWin = new BalotoWindow();
+		balotoWin = new BalotoWindow();
+
 		agregarLectores();
 
 	}
@@ -391,6 +405,34 @@ public class Controller implements ActionListener {
 		selcreatebet.getExit().addActionListener(this);
 		selcreatebet.getExit().setActionCommand("EXITSELECTVENUEBETOWN");
 
+		selcreatebet.getNext().addActionListener(this);
+		selcreatebet.getNext().setActionCommand("NEXTOPTIONSELECTGAMBLERTOBET");
+
+		// BOTONES SELECCIONAR APOSTADOR PARA CREAR APUESTA
+
+		selGamCreateBetOwn.getExit().addActionListener(this);
+		selGamCreateBetOwn.getExit().setActionCommand("EXITSELECTGAMBLERBETOWN");
+
+		selGamCreateBetOwn.getBack().addActionListener(this);
+		selGamCreateBetOwn.getBack().setActionCommand("BACKSELECTGAMBLERBETOWN");
+
+		selGamCreateBetOwn.getNextStep().addActionListener(this);
+		selGamCreateBetOwn.getNextStep().setActionCommand("SELECTBETTODOOWN");
+
+		// BOTONES MENU DE APUESTAS OWNER
+
+		betMenuOwn.getExit().addActionListener(this);
+		betMenuOwn.getExit().setActionCommand("EXITMENUBETTODOOWN");
+
+		betMenuOwn.getBack().addActionListener(this);
+		betMenuOwn.getBack().setActionCommand("BACKMENUBETTODOOWN");
+
+		betMenuOwn.getLoteria().addActionListener(this);
+		betMenuOwn.getLoteria().setActionCommand("LOTERIAOWNER");
+
+		betMenuOwn.getBaloto().addActionListener(this);
+		betMenuOwn.getBaloto().setActionCommand("BALOTOOWNER");
+
 		// BOTONES SELECCIONAR SEDE MOSTRAR APUESTA
 
 		selShowBetWinOwn.getBack().addActionListener(this);
@@ -671,6 +713,27 @@ public class Controller implements ActionListener {
 		}
 		case "EXITUPDATEGAMBLEROWN": {
 
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
+		case "EXITSELECTGAMBLERBETOWN": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
+		case "EXITMENUBETTODOOWN": {
 			boolean confirm = exitConfirm();
 			if (confirm) {
 				System.exit(1);
@@ -1033,6 +1096,46 @@ public class Controller implements ActionListener {
 			selGamToDeleteWinOwn.setVisible(false);
 			updateBoxSelectDeleteVenueGambler();
 			deleteGamblerOwner();
+		}
+		case "NEXTOPTIONSELECTGAMBLERTOBET": {
+
+			selGamCreateBetOwn.setVisible(true);
+			selcreatebet.setVisible(false);
+			String aux = selcreatebet.getComboVenue().getSelectedItem().toString();
+			updateSelectGamblerCreateBet(aux);
+			break;
+		}
+		case "BACKSELECTGAMBLERBETOWN": {
+
+			selcreatebet.setVisible(true);
+			selGamCreateBetOwn.setVisible(false);
+			break;
+
+		}
+		case "SELECTBETTODOOWN": {
+
+			selGamCreateBetOwn.setVisible(false);
+			betMenuOwn.setVisible(true);
+			break;
+		}
+		case "BACKMENUBETTODOOWN": {
+			betMenuOwn.setVisible(false);
+			selGamCreateBetOwn.setVisible(true);
+			break;
+		}
+		case "LOTERIAOWNER": {
+
+			loteriaWin.setVisible(true);
+			betMenuOwn.setVisible(false);
+			break;
+
+		}
+		case "BALOTOOWNER": {
+
+			balotoWin.setVisible(true);
+			betMenuOwn.setVisible(false);
+			break;
+
 		}
 		default:
 
@@ -1447,6 +1550,17 @@ public class Controller implements ActionListener {
 			for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
 				if (data.equals(gamDAO.getGamblerList().get(i).getGamingVenue())) {
 					selGamToUpdateWinOwn.getComboGambler().addItem(gamDAO.getGamblerList().get(i).getDocumentId());
+				}
+			}
+		}
+	}
+
+	public void updateSelectGamblerCreateBet(String data) {
+		if (!gamDAO.getGamblerList().isEmpty()) {
+			selGamCreateBetOwn.getComboGambler().removeAllItems();
+			for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+				if (data.equals(gamDAO.getGamblerList().get(i).getGamingVenue())) {
+					selGamCreateBetOwn.getComboGambler().addItem(gamDAO.getGamblerList().get(i).getDocumentId());
 				}
 			}
 		}
