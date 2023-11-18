@@ -289,4 +289,28 @@ public class BalotoWindow extends JFrame {
 		return serialVersionUID;
 	}
 
+	public JButton getExit() {
+		return exit;
+	}
+
+	public void setExit(JButton exit) {
+		this.exit = exit;
+	}
+
+	public JButton getBack() {
+		return back;
+	}
+
+	public void setBack(JButton back) {
+		this.back = back;
+	}
+
+	public JButton getNext() {
+		return next;
+	}
+
+	public void setNext(JButton next) {
+		this.next = next;
+	}
+
 }
