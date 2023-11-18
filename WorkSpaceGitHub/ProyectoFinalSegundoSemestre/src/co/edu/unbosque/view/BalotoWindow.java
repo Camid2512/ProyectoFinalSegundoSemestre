@@ -99,6 +99,7 @@ public class BalotoWindow extends JFrame {
 		num1 = new JSpinner();
 		num1.setBounds(167, 405, 90, 90);
 		num1.setModel(n1);
+		num1.setValue(1);
 		num1.setEditor(new JSpinner.DefaultEditor(num1));
 		num1.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num1.setFont(new Font("Arial", 1, 25));
@@ -110,6 +111,7 @@ public class BalotoWindow extends JFrame {
 		num2 = new JSpinner();
 		num2.setBounds(330, 405, 90, 90);
 		num2.setModel(n2);
+		num2.setValue(1);
 		num2.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num2.setFont(new Font("Arial", 1, 25));
 		num2.setForeground(new Color(188, 186, 190));
@@ -120,6 +122,7 @@ public class BalotoWindow extends JFrame {
 		num3 = new JSpinner();
 		num3.setBounds(492, 405, 90, 90);
 		num3.setModel(n3);
+		num3.setValue(1);
 		num3.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num3.setFont(new Font("Arial", 1, 25));
 		num3.setForeground(new Color(188, 186, 190));
@@ -130,6 +133,7 @@ public class BalotoWindow extends JFrame {
 		num4 = new JSpinner();
 		num4.setBounds(657, 405, 90, 90);
 		num4.setModel(n4);
+		num4.setValue(1);
 		num4.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num4.setFont(new Font("Arial", 1, 25));
 		num4.setForeground(new Color(188, 186, 190));
@@ -140,6 +144,7 @@ public class BalotoWindow extends JFrame {
 		num5 = new JSpinner();
 		num5.setBounds(817, 405, 90, 90);
 		num5.setModel(n5);
+		num5.setValue(1);
 		num5.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num5.setFont(new Font("Arial", 1, 25));
 		num5.setForeground(new Color(188, 186, 190));
@@ -150,6 +155,7 @@ public class BalotoWindow extends JFrame {
 		num6 = new JSpinner();
 		num6.setBounds(975, 405, 90, 90);
 		num6.setModel(n6);
+		num6.setValue(1);
 		num6.setBorder(new EmptyBorder(20, 10, 20, 20));
 		num6.setFont(new Font("Arial", 1, 25));
 		num6.setForeground(new Color(188, 186, 190));

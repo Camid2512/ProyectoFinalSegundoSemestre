@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
-public class LoteriaWindow extends JFrame {
+public class LoteriaWindowOwner extends JFrame {
 
 	/**
 	 * 
@@ -31,7 +31,7 @@ public class LoteriaWindow extends JFrame {
 	private JSpinner num1, num2, num3, num4;
 	private SpinnerNumberModel n1, n2, n3, n4;
 
-	public LoteriaWindow() {
+	public LoteriaWindowOwner() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
 		setResizable(false);

@@ -2,16 +2,22 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.persistence.BallotDAO;
 import co.edu.unbosque.model.persistence.GamblerDAO;
 import co.edu.unbosque.model.persistence.GameDAO;
 import co.edu.unbosque.model.persistence.HeadquarterDAO;
 import co.edu.unbosque.model.persistence.HeadquarterManagerDAO;
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
+import co.edu.unbosque.model.persistence.LoteryBetDAO;
 import co.edu.unbosque.model.persistence.OwnerDAO;
+import co.edu.unbosque.model.persistence.SuperAstroDAO;
 import co.edu.unbosque.util.SameDocumentException;
 import co.edu.unbosque.view.BalotoWindow;
 import co.edu.unbosque.view.BetManagmentByOwnerWindow;
@@ -24,7 +30,7 @@ import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
 import co.edu.unbosque.view.GamblerUpdateOwnWindow;
 import co.edu.unbosque.view.GamesSettingWindow;
 import co.edu.unbosque.view.LoginWindow;
-import co.edu.unbosque.view.LoteriaWindow;
+import co.edu.unbosque.view.LoteriaWindowOwner;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
 import co.edu.unbosque.view.SelGamblerCreateBetOwnWindow;
@@ -72,7 +78,7 @@ public class Controller implements ActionListener {
 	private SelectShowBetWindow selShowBetWinOwn;
 	private SelectUpdateBetWindow selUpdBetWinOwn;
 	private BetMenuOwnerWindow betMenuOwn;
-	private LoteriaWindow loteriaWin;
+	private LoteriaWindowOwner loteriaWin;
 	private BalotoWindow balotoWin;
 	private SuperAstroWindow superastroWin;
 	private ChanceWindow chanceWin;
@@ -83,6 +89,9 @@ public class Controller implements ActionListener {
 	private HeadquarterManagerDAO bossDAO;
 	private HeadquarterDAO venueDAO;
 	private GamblerDAO gamDAO;
+	private LoteryBetDAO loteriaDAO;
+	private BallotDAO balotoDAO;
+	private SuperAstroDAO superAstroDAO;
 
 	public Controller() {
 
@@ -92,6 +101,9 @@ public class Controller implements ActionListener {
 		bossDAO = new HeadquarterManagerDAO();
 		venueDAO = new HeadquarterDAO();
 		gamDAO = new GamblerDAO();
+		loteriaDAO = new LoteryBetDAO();
+		balotoDAO = new BallotDAO();
+		superAstroDAO = new SuperAstroDAO();
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
@@ -119,7 +131,7 @@ public class Controller implements ActionListener {
 		gamUpdateWinOwn = new GamblerUpdateOwnWindow();
 		selGamCreateBetOwn = new SelGamblerCreateBetOwnWindow();
 		betMenuOwn = new BetMenuOwnerWindow();
-		loteriaWin = new LoteriaWindow();
+		loteriaWin = new LoteriaWindowOwner();
 		balotoWin = new BalotoWindow();
 		balotoWin = new BalotoWindow();
 		superastroWin = new SuperAstroWindow();
@@ -144,7 +156,7 @@ public class Controller implements ActionListener {
 		// BOTONES DE VENTANA REGISTER
 
 		signWind.getExit().addActionListener(this);
-		signWind.getExit().setActionCommand("EXITSIGNUP");
+		signWind.getExit().setActionCommand("EXIT");
 		signWind.getBack().addActionListener(this);
 		signWind.getBack().setActionCommand("BACKSIGN");
 
@@ -159,7 +171,7 @@ public class Controller implements ActionListener {
 		logWind.getLogin().setActionCommand("BOTONLOGIN");
 
 		logWind.getExit().addActionListener(this);
-		logWind.getExit().setActionCommand("EXITLOGIN");
+		logWind.getExit().setActionCommand("EXIT");
 
 		// BOTONES DE VENTANA DUENO
 
@@ -167,7 +179,7 @@ public class Controller implements ActionListener {
 		ownWind.getMod1Btn().setActionCommand("BOTONMOD1OWN");
 
 		ownWind.getExit().addActionListener(this);
-		ownWind.getExit().setActionCommand("EXITOWN");
+		ownWind.getExit().setActionCommand("EXIT");
 
 		ownWind.getBack().addActionListener(this);
 		ownWind.getBack().setActionCommand("BACKOWN");
@@ -184,7 +196,7 @@ public class Controller implements ActionListener {
 		// BOTONES MODULO 1 (OWNER)
 
 		houseManageWindow.getExit().addActionListener(this);
-		houseManageWindow.getExit().setActionCommand("EXITHOUSEMANAGE");
+		houseManageWindow.getExit().setActionCommand("EXIT");
 
 		houseManageWindow.getBack().addActionListener(this);
 		houseManageWindow.getBack().setActionCommand("BACKHOUSEMANAGE");
@@ -195,7 +207,7 @@ public class Controller implements ActionListener {
 		// BOTONES MODULO 1 VENTANA 2 (OWNER)
 
 		gamesSettingWin.getExit().addActionListener(this);
-		gamesSettingWin.getExit().setActionCommand("EXITGAMESSETING");
+		gamesSettingWin.getExit().setActionCommand("EXIT");
 
 		gamesSettingWin.getBack().addActionListener(this);
 		gamesSettingWin.getBack().setActionCommand("BACKGAMESSETING");
@@ -206,7 +218,7 @@ public class Controller implements ActionListener {
 		// BOTONES MODULO 2 (OWNER)
 
 		venueManageOwn.getExit().addActionListener(this);
-		venueManageOwn.getExit().setActionCommand("EXITVENUEOWN");
+		venueManageOwn.getExit().setActionCommand("EXIT");
 
 		venueManageOwn.getBack().addActionListener(this);
 		venueManageOwn.getBack().setActionCommand("BACKVENUEOWN");
@@ -226,7 +238,7 @@ public class Controller implements ActionListener {
 		// BOTONES CREAR JEFE DE SEDE
 
 		managerCreationWin.getExit().addActionListener(this);
-		managerCreationWin.getExit().setActionCommand("EXITCREATEBOSS");
+		managerCreationWin.getExit().setActionCommand("EXIT");
 
 		managerCreationWin.getBack().addActionListener(this);
 		managerCreationWin.getBack().setActionCommand("BACKCREATEBOSS");
@@ -237,7 +249,7 @@ public class Controller implements ActionListener {
 		// BOTONES CREAR SEDE (OWNER)
 
 		createVenueWin.getExit().addActionListener(this);
-		createVenueWin.getExit().setActionCommand("EXITCREATEVENUE");
+		createVenueWin.getExit().setActionCommand("EXIT");
 
 		createVenueWin.getBack().addActionListener(this);
 		createVenueWin.getBack().setActionCommand("BACKCREATEVENUE");
@@ -248,7 +260,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU SELECCION SEDE MOSTRAR (OWNER)
 
 		selShowVenOwn.getExit().addActionListener(this);
-		selShowVenOwn.getExit().setActionCommand("EXITSELECTSHOWOWN");
+		selShowVenOwn.getExit().setActionCommand("EXIT");
 
 		selShowVenOwn.getBack().addActionListener(this);
 		selShowVenOwn.getBack().setActionCommand("BACKSELECTSHOWOWN");
@@ -259,7 +271,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU SELECCION SEDE ACTUALIZAR (OWNER)
 
 		selUpdateVenOwn.getExit().addActionListener(this);
-		selUpdateVenOwn.getExit().setActionCommand("EXITSELECTUPDATEOWN");
+		selUpdateVenOwn.getExit().setActionCommand("EXIT");
 
 		selUpdateVenOwn.getBack().addActionListener(this);
 		selUpdateVenOwn.getBack().setActionCommand("BACKSELECTUPDATEOWN");
@@ -270,7 +282,7 @@ public class Controller implements ActionListener {
 		// BOTONES ACTUALIZAR SEDE (OWNER)
 
 		updateVenueOwn.getExit().addActionListener(this);
-		updateVenueOwn.getExit().setActionCommand("EXITUPDATEVENUEOWN");
+		updateVenueOwn.getExit().setActionCommand("EXIT");
 
 		updateVenueOwn.getBack().addActionListener(this);
 		updateVenueOwn.getBack().setActionCommand("BACKUPDATEVENUEOWN");
@@ -281,7 +293,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU SELECCION SEDE ELIMINAR (OWNER)
 
 		selDeleteVenueOwn.getExit().addActionListener(this);
-		selDeleteVenueOwn.getExit().setActionCommand("EXITSELECTDELETEOWN");
+		selDeleteVenueOwn.getExit().setActionCommand("EXIT");
 
 		selDeleteVenueOwn.getBack().addActionListener(this);
 		selDeleteVenueOwn.getBack().setActionCommand("BACKSELECTDELETEVENUEOWN");
@@ -292,7 +304,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU APOSTADORES (OWNER)
 
 		gamManageOwn.getExit().addActionListener(this);
-		gamManageOwn.getExit().setActionCommand("EXITMENUGAMBLEROWN");
+		gamManageOwn.getExit().setActionCommand("EXIT");
 
 		gamManageOwn.getBack().addActionListener(this);
 		gamManageOwn.getBack().setActionCommand("BACKMENUGAMBLEROWN");
@@ -312,7 +324,7 @@ public class Controller implements ActionListener {
 		// BOTONES CREAR APOSTADOR (OWNER)
 
 		createGamblerWinOwn.getExit().addActionListener(this);
-		createGamblerWinOwn.getExit().setActionCommand("EXITCREATEGAMBLEROWN");
+		createGamblerWinOwn.getExit().setActionCommand("EXIT");
 
 		createGamblerWinOwn.getBack().addActionListener(this);
 		createGamblerWinOwn.getBack().setActionCommand("BACKCREATEGAMBLEROWN");
@@ -323,7 +335,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU SELECCION APOSTADOR MOSTRAR (OWNER)
 
 		selShowGamblerOwn.getExit().addActionListener(this);
-		selShowGamblerOwn.getExit().setActionCommand("EXITSELECTSHOWGAMOWN");
+		selShowGamblerOwn.getExit().setActionCommand("EXIT");
 
 		selShowGamblerOwn.getBack().addActionListener(this);
 		selShowGamblerOwn.getBack().setActionCommand("BACKSELECTSHOWGAMOWN");
@@ -331,7 +343,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU SELECCION APOSTADOR ACTUALIZAR (OWNER)
 
 		selUpdateGamblerOwn.getExit().addActionListener(this);
-		selUpdateGamblerOwn.getExit().setActionCommand("EXITSELECTUPDATEGAMOWN");
+		selUpdateGamblerOwn.getExit().setActionCommand("EXIT");
 
 		selUpdateGamblerOwn.getBack().addActionListener(this);
 		selUpdateGamblerOwn.getBack().setActionCommand("BACKSELECTUPDATEGAMOWN");
@@ -342,7 +354,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU SELECCIONAR APOSTADOR DE SEDE PARA ACTUALIZAR (OWNER)
 
 		selGamToUpdateWinOwn.getExit().addActionListener(this);
-		selGamToUpdateWinOwn.getExit().setActionCommand("EXITGAMBLERTOUPDATESELECT");
+		selGamToUpdateWinOwn.getExit().setActionCommand("EXIT");
 
 		selGamToUpdateWinOwn.getBack().addActionListener(this);
 		selGamToUpdateWinOwn.getBack().setActionCommand("BACKGAMBLERTOUPDATESELECT");
@@ -353,7 +365,7 @@ public class Controller implements ActionListener {
 		// BOTONES ACTUALIZAR APOSTADOR (OWNER)
 
 		gamUpdateWinOwn.getExit().addActionListener(this);
-		gamUpdateWinOwn.getExit().setActionCommand("EXITUPDATEGAMBLEROWN");
+		gamUpdateWinOwn.getExit().setActionCommand("EXIT");
 
 		gamUpdateWinOwn.getBack().addActionListener(this);
 		gamUpdateWinOwn.getBack().setActionCommand("BACKUPDATEGAMBLEROWN");
@@ -364,7 +376,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU SELECCION APOSTADOR ELIMINAR VENTANA 1(OWNER)
 
 		selDeleteGamblerOwn.getExit().addActionListener(this);
-		selDeleteGamblerOwn.getExit().setActionCommand("EXITSELECTDELETEGAMBLEROWN");
+		selDeleteGamblerOwn.getExit().setActionCommand("EXIT");
 
 		selDeleteGamblerOwn.getBack().addActionListener(this);
 		selDeleteGamblerOwn.getBack().setActionCommand("BACKSELECTDELETEGAMBLEROWN");
@@ -375,7 +387,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU SELECCION APOSTADOR ELIMINAR VENTANA 2(OWNER)
 
 		selGamToDeleteWinOwn.getExit().addActionListener(this);
-		selGamToDeleteWinOwn.getExit().setActionCommand("EXITSELECTDELETEGAMBLEROWN2");
+		selGamToDeleteWinOwn.getExit().setActionCommand("EXIT");
 
 		selGamToDeleteWinOwn.getBack().addActionListener(this);
 		selGamToDeleteWinOwn.getBack().setActionCommand("BACKSELECTDELETEGAMBLEROWN2");
@@ -386,7 +398,7 @@ public class Controller implements ActionListener {
 		// BOTONES MODULO 4 (OWNER)
 
 		betManOwn.getExit().addActionListener(this);
-		betManOwn.getExit().setActionCommand("EXITMENUBETOWN");
+		betManOwn.getExit().setActionCommand("EXIT");
 
 		betManOwn.getBack().addActionListener(this);
 		betManOwn.getBack().setActionCommand("BACKMENUBETOWN");
@@ -409,7 +421,7 @@ public class Controller implements ActionListener {
 		selcreatebet.getBack().setActionCommand("BACKSELECTVENUEBETOWN");
 
 		selcreatebet.getExit().addActionListener(this);
-		selcreatebet.getExit().setActionCommand("EXITSELECTVENUEBETOWN");
+		selcreatebet.getExit().setActionCommand("EXIT");
 
 		selcreatebet.getNext().addActionListener(this);
 		selcreatebet.getNext().setActionCommand("NEXTOPTIONSELECTGAMBLERTOBET");
@@ -417,7 +429,7 @@ public class Controller implements ActionListener {
 		// BOTONES SELECCIONAR APOSTADOR PARA CREAR APUESTA
 
 		selGamCreateBetOwn.getExit().addActionListener(this);
-		selGamCreateBetOwn.getExit().setActionCommand("EXITSELECTGAMBLERBETOWN");
+		selGamCreateBetOwn.getExit().setActionCommand("EXIT");
 
 		selGamCreateBetOwn.getBack().addActionListener(this);
 		selGamCreateBetOwn.getBack().setActionCommand("BACKSELECTGAMBLERBETOWN");
@@ -428,7 +440,7 @@ public class Controller implements ActionListener {
 		// BOTONES MENU DE APUESTAS OWNER
 
 		betMenuOwn.getExit().addActionListener(this);
-		betMenuOwn.getExit().setActionCommand("EXITMENUBETTODOOWN");
+		betMenuOwn.getExit().setActionCommand("EXIT");
 
 		betMenuOwn.getBack().addActionListener(this);
 		betMenuOwn.getBack().setActionCommand("BACKMENUBETTODOOWN");
@@ -451,43 +463,51 @@ public class Controller implements ActionListener {
 		selShowBetWinOwn.getBack().setActionCommand("BACKSELECTVENUESHOWBETOWN");
 
 		selShowBetWinOwn.getExit().addActionListener(this);
-		selShowBetWinOwn.getExit().setActionCommand("EXITSELECTVENUESHOWBETOWN");
+		selShowBetWinOwn.getExit().setActionCommand("EXIT");
 
-		// BOTONES LOTERIA
+		// BOTONES LOTERIA OWNER
 
 		loteriaWin.getExit().addActionListener(this);
-		loteriaWin.getExit().setActionCommand("EXITLOTERIAWIN");
+		loteriaWin.getExit().setActionCommand("EXIT");
 
-		// PENSAR ESTA
-		loteriaWin.getExit().addActionListener(this);
-		loteriaWin.getExit().setActionCommand("BACKLOTERIAWIN");
+		loteriaWin.getBack().addActionListener(this);
+		loteriaWin.getBack().setActionCommand("BACKLOTERIAWIN");
 
-		// BOTONES BALOTO
+		loteriaWin.getNext().addActionListener(this);
+		loteriaWin.getNext().setActionCommand("NEXTLOTERIAWIN");
+
+		// BOTONES BALOTO OWNER
 
 		balotoWin.getExit().addActionListener(this);
-		balotoWin.getExit().setActionCommand("EXITBALOTOWIN");
+		balotoWin.getExit().setActionCommand("EXIT");
 
-		// PENSAR
 		balotoWin.getBack().addActionListener(this);
 		balotoWin.getBack().setActionCommand("BACKBALOTOWIN");
 
-		// BOTONES SUPERASTRO
+		balotoWin.getNext().addActionListener(this);
+		balotoWin.getNext().setActionCommand("NEXTBALOTOWIN");
+
+		// BOTONES SUPERASTRO OWNER
 
 		superastroWin.getExit().addActionListener(this);
-		superastroWin.getExit().setActionCommand("EXITSUPERASTROWIN");
+		superastroWin.getExit().setActionCommand("EXIT");
 
-		// PENSAR
 		superastroWin.getBack().addActionListener(this);
 		superastroWin.getBack().setActionCommand("BACKSUPERASTROWIN");
+
+		superastroWin.getNext().addActionListener(this);
+		superastroWin.getNext().setActionCommand("NEXTSUPERASTROWIN");
 
 		// BOTONES CHANCE
 
 		chanceWin.getExit().addActionListener(this);
-		chanceWin.getExit().setActionCommand("EXITCHANCEWIN");
+		chanceWin.getExit().setActionCommand("EXIT");
 
-		// PENSAR
 		chanceWin.getBack().addActionListener(this);
 		chanceWin.getBack().setActionCommand("BACKCHANCEWIN");
+
+		chanceWin.getNext().addActionListener(this);
+		chanceWin.getNext().setActionCommand("NEXTCHANCEWIN");
 
 	}
 
@@ -535,8 +555,7 @@ public class Controller implements ActionListener {
 
 		}
 
-		case "EXITSELECTDELETEGAMBLEROWN2": {
-
+		case "EXIT": {
 			boolean confirm = exitConfirm();
 			if (confirm) {
 				System.exit(1);
@@ -544,299 +563,6 @@ public class Controller implements ActionListener {
 
 			}
 			break;
-		}
-
-		case "EXITSIGNUP": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITLOGIN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITSELECTVENUESHOWBETOWN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITOWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-		case "EXITHOUSEMANAGE": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-		case "EXITVENUEOWN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-		case "EXITCREATEBOSS": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-
-		case "EXITSELECTDELETEGAMBLEROWN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-		case "EXITCREATEVENUE": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-		case "EXITSELECTSHOWOWN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-		case "EXITSELECTUPDATEOWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-
-		case "EXITGAMESSETING": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITUPDATEVENUEOWN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-		case "EXITMENUGAMBLEROWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-
-		case "EXITSELECTDELETEOWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-
-		case "EXITCREATEGAMBLEROWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-
-		case "EXITSELECTSHOWGAMOWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-
-		case "EXITSELECTUPDATEGAMOWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-
-		case "EXITMENUBETOWN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-
-		case "EXITSELECTVENUEBETOWN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-		}
-		case "EXITGAMBLERTOUPDATESELECT": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITUPDATEGAMBLEROWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITSELECTGAMBLERBETOWN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITMENUBETTODOOWN": {
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITLOTERIAWIN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-		case "EXITBALOTOWIN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-
-		case "EXITSUPERASTROWIN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
-		}
-
-		case "EXITCHANCEWIN": {
-
-			boolean confirm = exitConfirm();
-			if (confirm) {
-				System.exit(1);
-			} else {
-
-			}
-			break;
-
 		}
 
 		case "BOTONMOD1OWN": {
@@ -1221,30 +947,97 @@ public class Controller implements ActionListener {
 		case "LOTERIAOWNER": {
 
 			loteriaWin.setVisible(true);
-			betMenuOwn.setVisible(false);
 			break;
 
 		}
 		case "BALOTOOWNER": {
 
 			balotoWin.setVisible(true);
-			betMenuOwn.setVisible(false);
 			break;
 
 		}
 		case "SUPERASTROOWNER": {
 
 			superastroWin.setVisible(true);
-			betMenuOwn.setVisible(false);
 			break;
 
 		}
 		case "CHANCEOWNER": {
 
 			chanceWin.setVisible(true);
-			betMenuOwn.setVisible(false);
 			break;
 		}
+		case "BACKLOTERIAWIN": {
+
+			loteriaWin.setVisible(false);
+			break;
+
+		}
+		case "BACKBALOTOWIN": {
+
+			balotoWin.setVisible(false);
+			break;
+
+		}
+		case "BACKSUPERASTROWIN": {
+
+			superastroWin.setVisible(false);
+			break;
+
+		}
+		case "BACKCHANCEWIN": {
+
+			chanceWin.setVisible(false);
+			break;
+
+		}
+
+		case "NEXTLOTERIAWIN": {
+
+			makeLoteryBetOwn();
+
+			loteriaWin.getBetAmount().setText("");
+			loteriaWin.getNum1().setValue(0);
+			loteriaWin.getNum2().setValue(0);
+			loteriaWin.getNum3().setValue(0);
+			loteriaWin.getNum4().setValue(0);
+
+			break;
+
+		}
+		case "NEXTBALOTOWIN": {
+
+			makeBalotoBetOwn();
+
+			balotoWin.getBetAmount().setText("");
+			balotoWin.getNum1().setValue(1);
+			balotoWin.getNum2().setValue(1);
+			balotoWin.getNum3().setValue(1);
+			balotoWin.getNum4().setValue(1);
+			balotoWin.getNum5().setValue(1);
+			balotoWin.getNum6().setValue(1);
+			break;
+
+		}
+		case "NEXTSUPERASTROWIN": {
+
+			makeSuperAstroBetOwn();
+
+			superastroWin.getBetAmount().setText("");
+			superastroWin.getNum1().setValue(0);
+			superastroWin.getNum2().setValue(0);
+			superastroWin.getNum3().setValue(0);
+			superastroWin.getNum4().setValue(0);
+			break;
+		}
+
+		case "NEXTCHANCEWIN": {
+
+			makeChanceBetOwn();
+			break;
+
+		}
+
 		default:
 
 			break;
@@ -1787,6 +1580,163 @@ public class Controller implements ActionListener {
 
 		}
 		return check;
+	}
+
+	public void makeLoteryBetOwn() {
+
+		LocalDate actualDate = LocalDate.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String betPlaced = loteriaWin.getBetAmount().getText();
+
+		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
+
+		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
+
+		String loteryName = loteriaWin.getLoteryType().getSelectedItem().toString();
+
+		String num1 = loteriaWin.getNum1().getValue().toString();
+		String num2 = loteriaWin.getNum2().getValue().toString();
+		String num3 = loteriaWin.getNum3().getValue().toString();
+		String num4 = loteriaWin.getNum4().getValue().toString();
+
+		String numbers = num1 + num2 + num3 + num4;
+
+		String serialNum = loteriaWin.getSerialNumber().getSelectedItem().toString();
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+			loteriaDAO.create(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers, serialNum);
+			JOptionPane.showMessageDialog(loteriaWin,
+					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+		} else {
+
+		}
+
+	}
+
+	public void makeBalotoBetOwn() {
+
+		LocalDate actualDate = LocalDate.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String betPlaced = balotoWin.getBetAmount().getText();
+
+		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
+
+		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
+
+		String num1 = balotoWin.getNum1().getValue().toString();
+		String num2 = balotoWin.getNum2().getValue().toString();
+		String num3 = balotoWin.getNum3().getValue().toString();
+		String num4 = balotoWin.getNum4().getValue().toString();
+		String num5 = balotoWin.getNum5().getValue().toString();
+		String num6 = balotoWin.getNum6().getValue().toString();
+
+		String numbers = num1 + num2 + num3 + num4 + num5 + num6;
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+			balotoDAO.create(day, month, year, betPlaced, headQuarterName, document, numbers);
+			JOptionPane.showMessageDialog(balotoWin, "HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2
+					+ "-" + num3 + "-" + num4 + "-" + num5 + "-" + num6);
+		} else {
+
+		}
+
+	}
+
+	public void makeSuperAstroBetOwn() {
+
+		LocalDate actualDate = LocalDate.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String betPlaced = superastroWin.getBetAmount().getText();
+
+		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
+
+		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
+
+		String num1 = superastroWin.getNum1().getValue().toString();
+		String num2 = superastroWin.getNum2().getValue().toString();
+		String num3 = superastroWin.getNum3().getValue().toString();
+		String num4 = superastroWin.getNum4().getValue().toString();
+
+		String numbers = num1 + num2 + num3 + num4;
+
+		String zodiacSign = superastroWin.getZodiacSign().getSelectedItem().toString();
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+			superAstroDAO.create(day, month, year, betPlaced, headQuarterName, document, numbers, zodiacSign);
+			JOptionPane.showMessageDialog(superastroWin,
+					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+		} else {
+
+		}
+
+	}
+
+	public void generateRandomNumber() {
+
+		Random rand1 = new Random();
+		Random rand2 = new Random();
+		Random rand3 = new Random();
+		Random rand4 = new Random();
+		int num1 = rand1.nextInt(99);
+		int num2 = rand2.nextInt(99);
+		int num3 = rand3.nextInt(99);
+		int num4 = rand4.nextInt(99);
+
+		for (int i = 0; i < 5; i++) {
+
+			chanceWin.getNum1().addItem(num1);
+			chanceWin.getNum2().addItem(num2);
+			chanceWin.getNum3().addItem(num3);
+			chanceWin.getNum4().addItem(num4);
+
+		}
+
+	}
+
+	public void makeChanceBetOwn() {
+
 	}
 
 }

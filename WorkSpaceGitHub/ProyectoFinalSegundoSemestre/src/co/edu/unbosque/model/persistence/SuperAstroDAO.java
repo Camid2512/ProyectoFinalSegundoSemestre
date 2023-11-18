@@ -30,7 +30,7 @@ public class SuperAstroDAO implements CRUDOperation {
 
 		superAstroList = new ArrayList<SuperAstroDTO>();
 		FILENAME = "apuestas-superastro.dat";
-		SERIAL_FILENAME = "apuestas-superastro.dat";
+		SERIAL_FILENAME = "apuestas-superastroserialized.dat";
 
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
