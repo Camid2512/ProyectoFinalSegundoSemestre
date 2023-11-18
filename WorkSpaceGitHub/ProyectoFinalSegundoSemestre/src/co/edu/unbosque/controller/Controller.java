@@ -17,6 +17,7 @@ import co.edu.unbosque.view.BalotoWindow;
 import co.edu.unbosque.view.BetManagmentByOwnerWindow;
 import co.edu.unbosque.view.BetMenuOwnerWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
+import co.edu.unbosque.view.ChanceWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
 import co.edu.unbosque.view.CreateVenueWindow;
 import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
@@ -74,6 +75,7 @@ public class Controller implements ActionListener {
 	private LoteriaWindow loteriaWin;
 	private BalotoWindow balotoWin;
 	private SuperAstroWindow superastroWin;
+	private ChanceWindow chanceWin;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -121,6 +123,7 @@ public class Controller implements ActionListener {
 		balotoWin = new BalotoWindow();
 		balotoWin = new BalotoWindow();
 		superastroWin = new SuperAstroWindow();
+		chanceWin = new ChanceWindow();
 
 		agregarLectores();
 
@@ -439,6 +442,9 @@ public class Controller implements ActionListener {
 		betMenuOwn.getSuperAstro().addActionListener(this);
 		betMenuOwn.getSuperAstro().setActionCommand("SUPERASTROOWNER");
 
+		betMenuOwn.getChance().addActionListener(this);
+		betMenuOwn.getChance().setActionCommand("CHANCEOWNER");
+
 		// BOTONES SELECCIONAR SEDE MOSTRAR APUESTA
 
 		selShowBetWinOwn.getBack().addActionListener(this);
@@ -446,6 +452,43 @@ public class Controller implements ActionListener {
 
 		selShowBetWinOwn.getExit().addActionListener(this);
 		selShowBetWinOwn.getExit().setActionCommand("EXITSELECTVENUESHOWBETOWN");
+
+		// BOTONES LOTERIA
+
+		loteriaWin.getExit().addActionListener(this);
+		loteriaWin.getExit().setActionCommand("EXITLOTERIAWIN");
+
+		// PENSAR ESTA
+		loteriaWin.getExit().addActionListener(this);
+		loteriaWin.getExit().setActionCommand("BACKLOTERIAWIN");
+
+		// BOTONES BALOTO
+
+		balotoWin.getExit().addActionListener(this);
+		balotoWin.getExit().setActionCommand("EXITBALOTOWIN");
+
+		// PENSAR
+		balotoWin.getBack().addActionListener(this);
+		balotoWin.getBack().setActionCommand("BACKBALOTOWIN");
+
+		// BOTONES SUPERASTRO
+
+		superastroWin.getExit().addActionListener(this);
+		superastroWin.getExit().setActionCommand("EXITSUPERASTROWIN");
+
+		// PENSAR
+		superastroWin.getBack().addActionListener(this);
+		superastroWin.getBack().setActionCommand("BACKSUPERASTROWIN");
+
+		// BOTONES CHANCE
+
+		chanceWin.getExit().addActionListener(this);
+		chanceWin.getExit().setActionCommand("EXITCHANCEWIN");
+
+		// PENSAR
+		chanceWin.getBack().addActionListener(this);
+		chanceWin.getBack().setActionCommand("BACKCHANCEWIN");
+
 	}
 
 	@Override
@@ -740,6 +783,52 @@ public class Controller implements ActionListener {
 
 		}
 		case "EXITMENUBETTODOOWN": {
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
+		case "EXITLOTERIAWIN": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
+		case "EXITBALOTOWIN": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
+
+		case "EXITSUPERASTROWIN": {
+
+			boolean confirm = exitConfirm();
+			if (confirm) {
+				System.exit(1);
+			} else {
+
+			}
+			break;
+
+		}
+
+		case "EXITCHANCEWIN": {
+
 			boolean confirm = exitConfirm();
 			if (confirm) {
 				System.exit(1);
@@ -1149,6 +1238,12 @@ public class Controller implements ActionListener {
 			betMenuOwn.setVisible(false);
 			break;
 
+		}
+		case "CHANCEOWNER": {
+
+			chanceWin.setVisible(true);
+			betMenuOwn.setVisible(false);
+			break;
 		}
 		default:
 

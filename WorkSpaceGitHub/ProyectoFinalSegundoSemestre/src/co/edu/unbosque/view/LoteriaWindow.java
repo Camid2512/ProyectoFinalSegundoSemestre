@@ -117,19 +117,19 @@ public class LoteriaWindow extends JFrame {
 
 		n1 = new SpinnerNumberModel();
 		n1.setMinimum(0);
-		n1.setMaximum(9);
+		n1.setMaximum(99);
 
 		n2 = new SpinnerNumberModel();
 		n2.setMinimum(0);
-		n2.setMaximum(9);
+		n2.setMaximum(99);
 
 		n3 = new SpinnerNumberModel();
 		n3.setMinimum(0);
-		n3.setMaximum(9);
+		n3.setMaximum(99);
 
 		n4 = new SpinnerNumberModel();
 		n4.setMinimum(0);
-		n4.setMaximum(9);
+		n4.setMaximum(99);
 
 		num1 = new JSpinner();
 		num1.setBounds(166, 360, 89, 90);
