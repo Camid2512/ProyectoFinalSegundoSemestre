@@ -18,6 +18,7 @@ import co.edu.unbosque.model.persistence.HeadquarterManagerDAO;
 import co.edu.unbosque.model.persistence.HouseSettingDAO;
 import co.edu.unbosque.model.persistence.LoteryBetDAO;
 import co.edu.unbosque.model.persistence.OwnerDAO;
+import co.edu.unbosque.model.persistence.ReceiptDAO;
 import co.edu.unbosque.model.persistence.SuperAstroDAO;
 import co.edu.unbosque.util.SameDocumentException;
 import co.edu.unbosque.view.BalotoWindow;
@@ -35,6 +36,7 @@ import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.LoteriaWindowOwner;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
+import co.edu.unbosque.view.ReceiptWindow;
 import co.edu.unbosque.view.SelGamblerCreateBetOwnWindow;
 import co.edu.unbosque.view.SelectCreateBetWindow;
 import co.edu.unbosque.view.SelectDeleteGamblerOwnWindow;
@@ -85,6 +87,7 @@ public class Controller implements ActionListener {
 	private SuperAstroWindow superastroWin;
 	private ChanceWindow chanceWin;
 	private BetPlayWindow betplayWin;
+	private ReceiptWindow receiptWindow;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -97,6 +100,7 @@ public class Controller implements ActionListener {
 	private SuperAstroDAO superAstroDAO;
 	private ChanceDAO chanceDAO;
 	private BetPlayDAO betPlayDAO;
+	private ReceiptDAO receiptDAO;
 
 	public Controller() {
 
@@ -111,6 +115,7 @@ public class Controller implements ActionListener {
 		superAstroDAO = new SuperAstroDAO();
 		chanceDAO = new ChanceDAO();
 		betPlayDAO = new BetPlayDAO();
+		receiptDAO = new ReceiptDAO();
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
@@ -144,6 +149,7 @@ public class Controller implements ActionListener {
 		superastroWin = new SuperAstroWindow();
 		chanceWin = new ChanceWindow();
 		betplayWin = new BetPlayWindow();
+		receiptWindow = new ReceiptWindow();
 
 		agregarLectores();
 
@@ -160,6 +166,10 @@ public class Controller implements ActionListener {
 	}
 
 	public void agregarLectores() {
+		// BOTON RECIBO
+
+		receiptWindow.getExit().addActionListener(this);
+		receiptWindow.getExit().setActionCommand("EXITRECEIPT");
 
 		// BOTONES DE VENTANA REGISTER
 
@@ -544,6 +554,12 @@ public class Controller implements ActionListener {
 			break;
 		}
 
+		case "EXITRECEIPT": {
+
+			receiptWindow.setVisible(false);
+			break;
+
+		}
 		case "BOTONLOGIN": {
 
 			logWind.setVisible(false);
@@ -1117,7 +1133,6 @@ public class Controller implements ActionListener {
 		case "NEXTCHANCEWIN": {
 
 			makeChanceBetOwn();
-
 			chanceWin.getBetAmount().setText(null);
 			chanceWin.getNum1().removeAllItems();
 			chanceWin.getNum2().removeAllItems();
@@ -1701,13 +1716,19 @@ public class Controller implements ActionListener {
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
+		String date = day + "/" + month + "/" + year;
+
 		String betPlaced = loteriaWin.getBetAmount().getText();
 
 		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
 
 		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
 
+		String name = searchNameByDocument(document);
+
 		String loteryName = loteriaWin.getLoteryType().getSelectedItem().toString();
+
+		String typeBet = "LOTERIA";
 
 		String num1 = loteriaWin.getNum1().getValue().toString();
 		String num2 = loteriaWin.getNum2().getValue().toString();
@@ -1732,6 +1753,13 @@ public class Controller implements ActionListener {
 			loteriaDAO.create(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers, serialNum);
 			JOptionPane.showMessageDialog(loteriaWin,
 					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+			receiptDAO.create(date, name, document, headQuarterName, typeBet);
+			receiptWindow.setVisible(true);
+			receiptWindow.getDate().setText(date);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
 		} else {
 
 		}
@@ -1746,11 +1774,17 @@ public class Controller implements ActionListener {
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
+		String date = day + "/" + month + "/" + year;
+
 		String betPlaced = balotoWin.getBetAmount().getText();
 
 		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
 
 		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String typeBet = "LOTERIA";
 
 		String num1 = balotoWin.getNum1().getValue().toString();
 		String num2 = balotoWin.getNum2().getValue().toString();
@@ -1775,6 +1809,13 @@ public class Controller implements ActionListener {
 			balotoDAO.create(day, month, year, betPlaced, headQuarterName, document, numbers);
 			JOptionPane.showMessageDialog(balotoWin, "HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2
 					+ "-" + num3 + "-" + num4 + "-" + num5 + "-" + num6);
+			receiptDAO.create(date, name, document, headQuarterName, typeBet);
+			receiptWindow.setVisible(true);
+			receiptWindow.getDate().setText(date);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
 		} else {
 
 		}
@@ -1789,11 +1830,17 @@ public class Controller implements ActionListener {
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
+		String date = day + "/" + month + "/" + year;
+
 		String betPlaced = superastroWin.getBetAmount().getText();
 
 		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
 
 		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String typeBet = "LOTERIA";
 
 		String num1 = superastroWin.getNum1().getValue().toString();
 		String num2 = superastroWin.getNum2().getValue().toString();
@@ -1818,6 +1865,13 @@ public class Controller implements ActionListener {
 			superAstroDAO.create(day, month, year, betPlaced, headQuarterName, document, numbers, zodiacSign);
 			JOptionPane.showMessageDialog(superastroWin,
 					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+			receiptDAO.create(date, name, document, headQuarterName, typeBet);
+			receiptWindow.setVisible(true);
+			receiptWindow.getDate().setText(date);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
 		} else {
 
 		}
@@ -1849,13 +1903,19 @@ public class Controller implements ActionListener {
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
+		String date = day + "/" + month + "/" + year;
+
 		String betPlaced = chanceWin.getBetAmount().getText();
 
 		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
 
 		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
 
+		String name = searchNameByDocument(document);
+
 		String loteryName = "SANTI HACE ESTO POR FAVOR NO SE TE OLVIDE";
+
+		String typeBet = "CHANCE";
 
 		String num1 = chanceWin.getNum1().getSelectedItem().toString();
 		String num2 = chanceWin.getNum2().getSelectedItem().toString();
@@ -1871,15 +1931,25 @@ public class Controller implements ActionListener {
 
 		if (JOptionPane.NO_OPTION == response) {
 			confirmation = false;
+
 		} else if (JOptionPane.OK_OPTION == response) {
 			confirmation = true;
+		} else if (JOptionPane.CANCEL_OPTION == response) {
+			confirmation = false;
 		}
 		if (confirmation) {
 			chanceDAO.create(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers);
 			JOptionPane.showMessageDialog(chanceWin,
 					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
-		} else {
+			receiptDAO.create(date, name, document, headQuarterName, typeBet);
+			receiptWindow.setVisible(true);
+			receiptWindow.getDate().setText(date);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
 
+		} else {
 		}
 
 	}
@@ -1891,11 +1961,17 @@ public class Controller implements ActionListener {
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
+		String date = day + "/" + month + "/" + year;
+
 		String betPlaced = betplayWin.getBetAmount().getText();
 
 		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
 
 		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String typeBet = "DEPORTIVO";
 
 		String match1 = betplayWin.getMatch1().getValue().toString();
 		String match2 = betplayWin.getMatch2().getValue().toString();
@@ -1928,9 +2004,33 @@ public class Controller implements ActionListener {
 					match5, match6, match7, match8, match9, match10, match11, match12, match13, match14);
 
 			JOptionPane.showMessageDialog(betplayWin, "HAS REALIZADO LA APUESTA CON EXITO");
+
+			receiptDAO.create(date, name, document, headQuarterName, typeBet);
+			receiptWindow.setVisible(true);
+			receiptWindow.getDate().setText(date);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
 		} else {
 
 		}
+
+	}
+
+	public String searchNameByDocument(String document) {
+
+		long documentToSearch = Long.parseLong(document);
+
+		String name = "";
+
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+			if (documentToSearch == gamDAO.getGamblerList().get(i).getDocumentId()) {
+				name = gamDAO.getGamblerList().get(i).getFullName();
+			}
+		}
+
+		return name;
 
 	}
 
