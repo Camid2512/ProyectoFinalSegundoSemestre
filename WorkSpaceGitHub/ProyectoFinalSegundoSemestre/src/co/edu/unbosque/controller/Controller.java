@@ -1177,22 +1177,28 @@ public class Controller implements ActionListener {
 		@SuppressWarnings("deprecation")
 		String passToCheck = logWind.getPassword().getText();
 
-		boolean checked = false;
-
 		int cont = 0;
 		for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
 
 			if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
 					&& passToCheck.equals(ownDAO.getOwnerList().get(i).getPassword())) {
-				cont++;
+				cont = 1;
 
-			} else if (i >= ownDAO.getOwnerList().size() && checked == false) {
+			} else {
+				for (int j = 0; j < bossDAO.getHeadquarterManagerList().size(); j++) {
+					if (nameToCheck.equals(bossDAO.getHeadquarterManagerList().get(j).getUser())
+							&& passToCheck.equals(bossDAO.getHeadquarterManagerList().get(j).getPassword())) {
+						cont = 2;
+					} else {
+
+					}
+				}
 
 			}
 
 		}
 
-		if (cont > 0) {
+		if (cont == 1) {
 			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
 			ownWind.setVisible(true);
 		}
@@ -1200,36 +1206,11 @@ public class Controller implements ActionListener {
 			JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
 			logWind.setVisible(true);
 		}
+		if (cont == 2) {
 
-	}
+			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
+			balotoWin.setVisible(true);
 
-	public void checkLoginBoss() {
-
-		String nameToCheck = logWind.getUsuario().getText();
-		@SuppressWarnings("deprecation")
-		String passToCheck = logWind.getPassword().getText();
-
-		boolean checked = false;
-
-		for (int i = 0; i < bossDAO.getHeadquarterManagerList().size(); i++) {
-
-			if (nameToCheck.equals(bossDAO.getHeadquarterManagerList().get(i).getUser())
-					&& passToCheck.equals(bossDAO.getHeadquarterManagerList().get(i).getPassword())) {
-
-				checked = true;
-
-			} else {
-
-				checked = false;
-			}
-
-		}
-		if (checked) {
-			JOptionPane.showMessageDialog(logWind, "----INGRESANDO JEFE SEDE----");
-			createVenueWin.setVisible(true);
-		} else {
-			JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
-			logWind.setVisible(true);
 		}
 
 	}
