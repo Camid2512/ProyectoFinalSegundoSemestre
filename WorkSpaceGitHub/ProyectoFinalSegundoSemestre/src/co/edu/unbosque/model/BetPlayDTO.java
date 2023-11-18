@@ -6,86 +6,62 @@ public class BetPlayDTO extends BetDTO {
 	 * 
 	 */
 	private static final long serialVersionUID = -6649047852911984639L;
-	private String team1;
-	private String team2;
-	private String team3;
-	private String team4;
-	private String team5;
-	private String team6;
-	private String team7;
-	private String team8;
-	private String team9;
-	private String team10;
-	private String team11;
-	private String team12;
-	private String team13;
-	private String team14;
-	private String team15;
-	private String team16;
-	private String team17;
-	private String team18;
-	private String team19;
-	private String team20;
-
-	private int gameResult;
+	private int match1;
+	private int match2;
+	private int match3;
+	private int match4;
+	private int match5;
+	private int match6;
+	private int match7;
+	private int match8;
+	private int match9;
+	private int match10;
+	private int match11;
+	private int match12;
+	private int match13;
+	private int match14;
 
 	public BetPlayDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BetPlayDTO(String team1, String team2, String team3, String team4, String team5, String team6, String team7,
-			String team8, String team9, String team10, String team11, String team12, String team13, String team14,
-			String team15, String team16, String team17, String team18, String team19, String team20, int gameResult) {
+	public BetPlayDTO(int match1, int match2, int match3, int match4, int match5, int match6, int match7, int match8,
+			int match9, int match10, int match11, int match12, int match13, int match14) {
 		super();
-		this.team1 = team1;
-		this.team2 = team2;
-		this.team3 = team3;
-		this.team4 = team4;
-		this.team5 = team5;
-		this.team6 = team6;
-		this.team7 = team7;
-		this.team8 = team8;
-		this.team9 = team9;
-		this.team10 = team10;
-		this.team11 = team11;
-		this.team12 = team12;
-		this.team13 = team13;
-		this.team14 = team14;
-		this.team15 = team15;
-		this.team16 = team16;
-		this.team17 = team17;
-		this.team18 = team18;
-		this.team19 = team19;
-		this.team20 = team20;
-		this.gameResult = gameResult;
+		this.match1 = match1;
+		this.match2 = match2;
+		this.match3 = match3;
+		this.match4 = match4;
+		this.match5 = match5;
+		this.match6 = match6;
+		this.match7 = match7;
+		this.match8 = match8;
+		this.match9 = match9;
+		this.match10 = match10;
+		this.match11 = match11;
+		this.match12 = match12;
+		this.match13 = match13;
+		this.match14 = match14;
 	}
 
-	public BetPlayDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document,
-			String team1, String team2, String team3, String team4, String team5, String team6, String team7,
-			String team8, String team9, String team10, String team11, String team12, String team13, String team14,
-			String team15, String team16, String team17, String team18, String team19, String team20, int gameResult) {
+	public BetPlayDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document, int match1,
+			int match2, int match3, int match4, int match5, int match6, int match7, int match8, int match9, int match10,
+			int match11, int match12, int match13, int match14) {
 		super(day, month, year, betPlaced, headQuarterName, document);
-		this.team1 = team1;
-		this.team2 = team2;
-		this.team3 = team3;
-		this.team4 = team4;
-		this.team5 = team5;
-		this.team6 = team6;
-		this.team7 = team7;
-		this.team8 = team8;
-		this.team9 = team9;
-		this.team10 = team10;
-		this.team11 = team11;
-		this.team12 = team12;
-		this.team13 = team13;
-		this.team14 = team14;
-		this.team15 = team15;
-		this.team16 = team16;
-		this.team17 = team17;
-		this.team18 = team18;
-		this.team19 = team19;
-		this.team20 = team20;
-		this.gameResult = gameResult;
+		this.match1 = match1;
+		this.match2 = match2;
+		this.match3 = match3;
+		this.match4 = match4;
+		this.match5 = match5;
+		this.match6 = match6;
+		this.match7 = match7;
+		this.match8 = match8;
+		this.match9 = match9;
+		this.match10 = match10;
+		this.match11 = match11;
+		this.match12 = match12;
+		this.match13 = match13;
+		this.match14 = match14;
 	}
 
 	public BetPlayDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document) {
@@ -93,182 +69,128 @@ public class BetPlayDTO extends BetDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getTeam1() {
-		return team1;
+	public int getMatch1() {
+		return match1;
 	}
 
-	public void setTeam1(String team1) {
-		this.team1 = team1;
+	public void setMatch1(int match1) {
+		this.match1 = match1;
 	}
 
-	public String getTeam2() {
-		return team2;
+	public int getMatch2() {
+		return match2;
 	}
 
-	public void setTeam2(String team2) {
-		this.team2 = team2;
+	public void setMatch2(int match2) {
+		this.match2 = match2;
 	}
 
-	public String getTeam3() {
-		return team3;
+	public int getMatch3() {
+		return match3;
 	}
 
-	public void setTeam3(String team3) {
-		this.team3 = team3;
+	public void setMatch3(int match3) {
+		this.match3 = match3;
 	}
 
-	public String getTeam4() {
-		return team4;
+	public int getMatch4() {
+		return match4;
 	}
 
-	public void setTeam4(String team4) {
-		this.team4 = team4;
+	public void setMatch4(int match4) {
+		this.match4 = match4;
 	}
 
-	public String getTeam5() {
-		return team5;
+	public int getMatch5() {
+		return match5;
 	}
 
-	public void setTeam5(String team5) {
-		this.team5 = team5;
+	public void setMatch5(int match5) {
+		this.match5 = match5;
 	}
 
-	public String getTeam6() {
-		return team6;
+	public int getMatch6() {
+		return match6;
 	}
 
-	public void setTeam6(String team6) {
-		this.team6 = team6;
+	public void setMatch6(int match6) {
+		this.match6 = match6;
 	}
 
-	public String getTeam7() {
-		return team7;
+	public int getMatch7() {
+		return match7;
 	}
 
-	public void setTeam7(String team7) {
-		this.team7 = team7;
+	public void setMatch7(int match7) {
+		this.match7 = match7;
 	}
 
-	public String getTeam8() {
-		return team8;
+	public int getMatch8() {
+		return match8;
 	}
 
-	public void setTeam8(String team8) {
-		this.team8 = team8;
+	public void setMatch8(int match8) {
+		this.match8 = match8;
 	}
 
-	public String getTeam9() {
-		return team9;
+	public int getMatch9() {
+		return match9;
 	}
 
-	public void setTeam9(String team9) {
-		this.team9 = team9;
+	public void setMatch9(int match9) {
+		this.match9 = match9;
 	}
 
-	public String getTeam10() {
-		return team10;
+	public int getMatch10() {
+		return match10;
 	}
 
-	public void setTeam10(String team10) {
-		this.team10 = team10;
+	public void setMatch10(int match10) {
+		this.match10 = match10;
 	}
 
-	public String getTeam11() {
-		return team11;
+	public int getMatch11() {
+		return match11;
 	}
 
-	public void setTeam11(String team11) {
-		this.team11 = team11;
+	public void setMatch11(int match11) {
+		this.match11 = match11;
 	}
 
-	public String getTeam12() {
-		return team12;
+	public int getMatch12() {
+		return match12;
 	}
 
-	public void setTeam12(String team12) {
-		this.team12 = team12;
+	public void setMatch12(int match12) {
+		this.match12 = match12;
 	}
 
-	public String getTeam13() {
-		return team13;
+	public int getMatch13() {
+		return match13;
 	}
 
-	public void setTeam13(String team13) {
-		this.team13 = team13;
+	public void setMatch13(int match13) {
+		this.match13 = match13;
 	}
 
-	public String getTeam14() {
-		return team14;
+	public int getMatch14() {
+		return match14;
 	}
 
-	public void setTeam14(String team14) {
-		this.team14 = team14;
+	public void setMatch14(int match14) {
+		this.match14 = match14;
 	}
 
-	public String getTeam15() {
-		return team15;
-	}
-
-	public void setTeam15(String team15) {
-		this.team15 = team15;
-	}
-
-	public String getTeam16() {
-		return team16;
-	}
-
-	public void setTeam16(String team16) {
-		this.team16 = team16;
-	}
-
-	public String getTeam17() {
-		return team17;
-	}
-
-	public void setTeam17(String team17) {
-		this.team17 = team17;
-	}
-
-	public String getTeam18() {
-		return team18;
-	}
-
-	public void setTeam18(String team18) {
-		this.team18 = team18;
-	}
-
-	public String getTeam19() {
-		return team19;
-	}
-
-	public void setTeam19(String team19) {
-		this.team19 = team19;
-	}
-
-	public String getTeam20() {
-		return team20;
-	}
-
-	public void setTeam20(String team20) {
-		this.team20 = team20;
-	}
-
-	public int getGameResult() {
-		return gameResult;
-	}
-
-	public void setGameResult(int gameResult) {
-		this.gameResult = gameResult;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "BetPlayDTO [team1=" + team1 + ", team2=" + team2 + ", team3=" + team3 + ", team4=" + team4 + ", team5="
-				+ team5 + ", team6=" + team6 + ", team7=" + team7 + ", team8=" + team8 + ", team9=" + team9
-				+ ", team10=" + team10 + ", team11=" + team11 + ", team12=" + team12 + ", team13=" + team13
-				+ ", team14=" + team14 + ", team15=" + team15 + ", team16=" + team16 + ", team17=" + team17
-				+ ", team18=" + team18 + ", team19=" + team19 + ", team20=" + team20 + ", gameResult=" + gameResult
-				+ "]" + super.toString();
+		return "BetPlayDTO [match1=" + match1 + ", match2=" + match2 + ", match3=" + match3 + ", match4=" + match4
+				+ ", match5=" + match5 + ", match6=" + match6 + ", match7=" + match7 + ", match8=" + match8
+				+ ", match9=" + match9 + ", match10=" + match10 + ", match11=" + match11 + ", match12=" + match12
+				+ ", match13=" + match13 + ", match14=" + match14 + "]";
 	}
 
 }

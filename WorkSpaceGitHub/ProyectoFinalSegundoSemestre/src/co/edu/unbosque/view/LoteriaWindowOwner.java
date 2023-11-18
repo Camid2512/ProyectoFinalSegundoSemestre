@@ -103,16 +103,16 @@ public class LoteriaWindowOwner extends JFrame {
 		serialNumber.setBackground(new Color(225, 223, 228));
 		serialNumber.setForeground(Color.black);
 		serialNumber.setFont(new Font("Arial", 1, 25));
-		serialNumber.addItem(10);
-		serialNumber.addItem(11);
-		serialNumber.addItem(12);
-		serialNumber.addItem(13);
-		serialNumber.addItem(14);
-		serialNumber.addItem(15);
-		serialNumber.addItem(16);
-		serialNumber.addItem(17);
-		serialNumber.addItem(18);
-		serialNumber.addItem(19);
+		serialNumber.addItem(101);
+		serialNumber.addItem(111);
+		serialNumber.addItem(121);
+		serialNumber.addItem(131);
+		serialNumber.addItem(141);
+		serialNumber.addItem(151);
+		serialNumber.addItem(161);
+		serialNumber.addItem(171);
+		serialNumber.addItem(181);
+		serialNumber.addItem(191);
 		add(serialNumber);
 
 		n1 = new SpinnerNumberModel();

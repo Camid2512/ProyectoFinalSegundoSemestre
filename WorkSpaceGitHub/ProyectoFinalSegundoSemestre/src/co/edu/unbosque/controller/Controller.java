@@ -9,6 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.persistence.BallotDAO;
+import co.edu.unbosque.model.persistence.BetPlayDAO;
 import co.edu.unbosque.model.persistence.ChanceDAO;
 import co.edu.unbosque.model.persistence.GamblerDAO;
 import co.edu.unbosque.model.persistence.GameDAO;
@@ -22,6 +23,7 @@ import co.edu.unbosque.util.SameDocumentException;
 import co.edu.unbosque.view.BalotoWindow;
 import co.edu.unbosque.view.BetManagmentByOwnerWindow;
 import co.edu.unbosque.view.BetMenuOwnerWindow;
+import co.edu.unbosque.view.BetPlayWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.ChanceWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
@@ -82,6 +84,7 @@ public class Controller implements ActionListener {
 	private BalotoWindow balotoWin;
 	private SuperAstroWindow superastroWin;
 	private ChanceWindow chanceWin;
+	private BetPlayWindow betplayWin;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -93,6 +96,7 @@ public class Controller implements ActionListener {
 	private BallotDAO balotoDAO;
 	private SuperAstroDAO superAstroDAO;
 	private ChanceDAO chanceDAO;
+	private BetPlayDAO betPlayDAO;
 
 	public Controller() {
 
@@ -106,6 +110,7 @@ public class Controller implements ActionListener {
 		balotoDAO = new BallotDAO();
 		superAstroDAO = new SuperAstroDAO();
 		chanceDAO = new ChanceDAO();
+		betPlayDAO = new BetPlayDAO();
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
@@ -138,6 +143,7 @@ public class Controller implements ActionListener {
 		balotoWin = new BalotoWindow();
 		superastroWin = new SuperAstroWindow();
 		chanceWin = new ChanceWindow();
+		betplayWin = new BetPlayWindow();
 
 		agregarLectores();
 
@@ -459,6 +465,9 @@ public class Controller implements ActionListener {
 		betMenuOwn.getChance().addActionListener(this);
 		betMenuOwn.getChance().setActionCommand("CHANCEOWNER");
 
+		betMenuOwn.getBetPlay().addActionListener(this);
+		betMenuOwn.getBetPlay().setActionCommand("BETPLAYOWNER");
+
 		// BOTONES SELECCIONAR SEDE MOSTRAR APUESTA
 
 		selShowBetWinOwn.getBack().addActionListener(this);
@@ -511,6 +520,16 @@ public class Controller implements ActionListener {
 		chanceWin.getNext().addActionListener(this);
 		chanceWin.getNext().setActionCommand("NEXTCHANCEWIN");
 
+		// BOTONES BETPLAY
+
+		betplayWin.getExit().addActionListener(this);
+		betplayWin.getExit().setActionCommand("EXIT");
+
+		betplayWin.getBack().addActionListener(this);
+		betplayWin.getBack().setActionCommand("BACKBETPLAYWIN");
+
+		betplayWin.getNext().addActionListener(this);
+		betplayWin.getNext().setActionCommand("NEXTBETPLAYWIN");
 	}
 
 	@Override
@@ -978,9 +997,21 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
+		case "BETPLAYOWNER": {
+
+			betplayWin.setVisible(true);
+			betMenuOwn.setVisible(false);
+			break;
+
+		}
 		case "BACKLOTERIAWIN": {
 			betMenuOwn.setVisible(true);
 			loteriaWin.setVisible(false);
+			loteriaWin.getBetAmount().setText("");
+			loteriaWin.getNum1().setValue(0);
+			loteriaWin.getNum2().setValue(0);
+			loteriaWin.getNum3().setValue(0);
+			loteriaWin.getNum4().setValue(0);
 			break;
 
 		}
@@ -988,6 +1019,13 @@ public class Controller implements ActionListener {
 
 			betMenuOwn.setVisible(true);
 			balotoWin.setVisible(false);
+			balotoWin.getBetAmount().setText("");
+			balotoWin.getNum1().setValue(1);
+			balotoWin.getNum2().setValue(1);
+			balotoWin.getNum3().setValue(1);
+			balotoWin.getNum4().setValue(1);
+			balotoWin.getNum5().setValue(1);
+			balotoWin.getNum6().setValue(1);
 			break;
 
 		}
@@ -995,6 +1033,11 @@ public class Controller implements ActionListener {
 
 			betMenuOwn.setVisible(true);
 			superastroWin.setVisible(false);
+			superastroWin.getBetAmount().setText("");
+			superastroWin.getNum1().setValue(0);
+			superastroWin.getNum2().setValue(0);
+			superastroWin.getNum3().setValue(0);
+			superastroWin.getNum4().setValue(0);
 			break;
 
 		}
@@ -1002,8 +1045,34 @@ public class Controller implements ActionListener {
 
 			betMenuOwn.setVisible(true);
 			chanceWin.setVisible(false);
+			chanceWin.getBetAmount().setText(null);
+			chanceWin.getNum1().removeAllItems();
+			chanceWin.getNum2().removeAllItems();
+			chanceWin.getNum3().removeAllItems();
+			chanceWin.getNum4().removeAllItems();
 			break;
 
+		}
+		case "BACKBETPLAYWIN": {
+
+			betMenuOwn.setVisible(true);
+			betplayWin.setVisible(false);
+			betplayWin.getBetAmount().setText(null);
+			betplayWin.getMatch1().setValue(0);
+			betplayWin.getMatch2().setValue(0);
+			betplayWin.getMatch3().setValue(0);
+			betplayWin.getMatch4().setValue(0);
+			betplayWin.getMatch5().setValue(0);
+			betplayWin.getMatch6().setValue(0);
+			betplayWin.getMatch7().setValue(0);
+			betplayWin.getMatch8().setValue(0);
+			betplayWin.getMatch9().setValue(0);
+			betplayWin.getMatch10().setValue(0);
+			betplayWin.getMatch11().setValue(0);
+			betplayWin.getMatch12().setValue(0);
+			betplayWin.getMatch13().setValue(0);
+			betplayWin.getMatch14().setValue(0);
+			break;
 		}
 
 		case "NEXTLOTERIAWIN": {
@@ -1057,6 +1126,27 @@ public class Controller implements ActionListener {
 
 			break;
 
+		}
+		case "NEXTBETPLAYWIN": {
+
+			makeBetPlayBetOwn();
+			betplayWin.getBetAmount().setText(null);
+			betplayWin.getMatch1().setValue(0);
+			betplayWin.getMatch2().setValue(0);
+			betplayWin.getMatch3().setValue(0);
+			betplayWin.getMatch4().setValue(0);
+			betplayWin.getMatch5().setValue(0);
+			betplayWin.getMatch6().setValue(0);
+			betplayWin.getMatch7().setValue(0);
+			betplayWin.getMatch8().setValue(0);
+			betplayWin.getMatch9().setValue(0);
+			betplayWin.getMatch10().setValue(0);
+			betplayWin.getMatch11().setValue(0);
+			betplayWin.getMatch12().setValue(0);
+			betplayWin.getMatch13().setValue(0);
+			betplayWin.getMatch14().setValue(0);
+
+			break;
 		}
 
 		default:
@@ -1788,6 +1878,56 @@ public class Controller implements ActionListener {
 			chanceDAO.create(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers);
 			JOptionPane.showMessageDialog(chanceWin,
 					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+		} else {
+
+		}
+
+	}
+
+	public void makeBetPlayBetOwn() {
+		LocalDate actualDate = LocalDate.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String betPlaced = betplayWin.getBetAmount().getText();
+
+		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
+
+		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
+
+		String match1 = betplayWin.getMatch1().getValue().toString();
+		String match2 = betplayWin.getMatch2().getValue().toString();
+		String match3 = betplayWin.getMatch3().getValue().toString();
+		String match4 = betplayWin.getMatch4().getValue().toString();
+		String match5 = betplayWin.getMatch5().getValue().toString();
+		String match6 = betplayWin.getMatch6().getValue().toString();
+		String match7 = betplayWin.getMatch7().getValue().toString();
+		String match8 = betplayWin.getMatch8().getValue().toString();
+		String match9 = betplayWin.getMatch9().getValue().toString();
+		String match10 = betplayWin.getMatch10().getValue().toString();
+		String match11 = betplayWin.getMatch11().getValue().toString();
+		String match12 = betplayWin.getMatch12().getValue().toString();
+		String match13 = betplayWin.getMatch13().getValue().toString();
+		String match14 = betplayWin.getMatch14().getValue().toString();
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+
+			betPlayDAO.create(day, month, year, betPlaced, headQuarterName, document, match1, match2, match3, match4,
+					match5, match6, match7, match8, match9, match10, match11, match12, match13, match14);
+
+			JOptionPane.showMessageDialog(betplayWin, "HAS REALIZADO LA APUESTA CON EXITO");
 		} else {
 
 		}

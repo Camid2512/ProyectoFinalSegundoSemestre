@@ -1,5 +1,8 @@
 package co.edu.unbosque.model.persistence;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.BetPlayDTO;
@@ -30,7 +33,7 @@ public class BetPlayDAO implements CRUDOperation {
 
 		betPlayList = new ArrayList<BetPlayDTO>();
 		FILENAME = "apuestas-betplay.dat";
-		SERIAL_FILENAME = "apuestas-betplay.csv";
+		SERIAL_FILENAME = "apuestas-betplayserializable.dat";
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
@@ -54,31 +57,25 @@ public class BetPlayDAO implements CRUDOperation {
 		bet.setBetPlaced(Double.parseDouble(attribs[3]));
 		bet.setHeadQuarterName(attribs[4]);
 		bet.setDocument(Long.parseLong(attribs[5]));
-		bet.setTeam1(attribs[6]);
-		bet.setTeam2(attribs[7]);
-		bet.setTeam3(attribs[8]);
-		bet.setTeam4(attribs[9]);
-		bet.setTeam5(attribs[10]);
-		bet.setTeam6(attribs[11]);
-		bet.setTeam7(attribs[12]);
-		bet.setTeam8(attribs[13]);
-		bet.setTeam9(attribs[14]);
-		bet.setTeam10(attribs[15]);
-		bet.setTeam11(attribs[16]);
-		bet.setTeam12(attribs[17]);
-		bet.setTeam13(attribs[18]);
-		bet.setTeam14(attribs[19]);
-		bet.setTeam15(attribs[20]);
-		bet.setTeam16(attribs[21]);
-		bet.setTeam17(attribs[22]);
-		bet.setTeam18(attribs[23]);
-		bet.setTeam19(attribs[24]);
-		bet.setTeam20(attribs[25]);
-		bet.setGameResult(Integer.parseInt(attribs[26]));
+		bet.setMatch1(Integer.parseInt(attribs[6]));
+		bet.setMatch2(Integer.parseInt(attribs[7]));
+		bet.setMatch3(Integer.parseInt(attribs[8]));
+		bet.setMatch4(Integer.parseInt(attribs[9]));
+		bet.setMatch5(Integer.parseInt(attribs[10]));
+		bet.setMatch6(Integer.parseInt(attribs[11]));
+		bet.setMatch7(Integer.parseInt(attribs[12]));
+		bet.setMatch8(Integer.parseInt(attribs[13]));
+		bet.setMatch9(Integer.parseInt(attribs[14]));
+		bet.setMatch10(Integer.parseInt(attribs[15]));
+		bet.setMatch11(Integer.parseInt(attribs[16]));
+		bet.setMatch12(Integer.parseInt(attribs[17]));
+		bet.setMatch13(Integer.parseInt(attribs[18]));
+		bet.setMatch14(Integer.parseInt(attribs[19]));
 
 		betPlayList.add(bet);
 		writeFile();
 		writeSerializable();
+		createListMatches();
 	}
 
 	@Override
@@ -87,6 +84,7 @@ public class BetPlayDAO implements CRUDOperation {
 		betPlayList.add((BetPlayDTO) obj);
 		writeFile();
 		writeSerializable();
+		createListMatches();
 	}
 
 	int index = 0;
@@ -128,68 +126,48 @@ public class BetPlayDAO implements CRUDOperation {
 				betPlayList.get(index).setDocument(Long.parseLong(newData[5]));
 			}
 			if (!newData[6].isEmpty() || !newData[6].equals("") || newData[6].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[6]);
+				betPlayList.get(index).setMatch1(Integer.parseInt(newData[6]));
 			}
 			if (!newData[7].isEmpty() || !newData[7].equals("") || newData[7].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[7]);
+				betPlayList.get(index).setMatch2(Integer.parseInt(newData[7]));
 			}
 			if (!newData[8].isEmpty() || !newData[8].equals("") || newData[8].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[8]);
+				betPlayList.get(index).setMatch3(Integer.parseInt(newData[8]));
 			}
 			if (!newData[9].isEmpty() || !newData[9].equals("") || newData[9].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[9]);
+				betPlayList.get(index).setMatch4(Integer.parseInt(newData[9]));
 			}
 			if (!newData[10].isEmpty() || !newData[10].equals("") || newData[10].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[10]);
+				betPlayList.get(index).setMatch5(Integer.parseInt(newData[10]));
 			}
 			if (!newData[11].isEmpty() || !newData[11].equals("") || newData[11].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[11]);
+				betPlayList.get(index).setMatch6(Integer.parseInt(newData[11]));
 			}
 			if (!newData[12].isEmpty() || !newData[12].equals("") || newData[12].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[12]);
+				betPlayList.get(index).setMatch7(Integer.parseInt(newData[12]));
 			}
 			if (!newData[13].isEmpty() || !newData[13].equals("") || newData[13].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[13]);
+				betPlayList.get(index).setMatch8(Integer.parseInt(newData[13]));
 			}
 			if (!newData[14].isEmpty() || !newData[14].equals("") || newData[14].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[14]);
+				betPlayList.get(index).setMatch9(Integer.parseInt(newData[14]));
 			}
 			if (!newData[15].isEmpty() || !newData[15].equals("") || newData[15].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[15]);
+				betPlayList.get(index).setMatch10(Integer.parseInt(newData[15]));
 			}
 			if (!newData[16].isEmpty() || !newData[16].equals("") || newData[16].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[16]);
+				betPlayList.get(index).setMatch11(Integer.parseInt(newData[16]));
 			}
 			if (!newData[17].isEmpty() || !newData[17].equals("") || newData[17].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[17]);
+				betPlayList.get(index).setMatch12(Integer.parseInt(newData[17]));
 			}
 			if (!newData[18].isEmpty() || !newData[18].equals("") || newData[18].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[18]);
+				betPlayList.get(index).setMatch13(Integer.parseInt(newData[18]));
 			}
 			if (!newData[19].isEmpty() || !newData[19].equals("") || newData[19].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[19]);
+				betPlayList.get(index).setMatch14(Integer.parseInt(newData[19]));
 			}
-			if (!newData[20].isEmpty() || !newData[20].equals("") || newData[20].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[20]);
-			}
-			if (!newData[21].isEmpty() || !newData[21].equals("") || newData[21].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[21]);
-			}
-			if (!newData[22].isEmpty() || !newData[22].equals("") || newData[22].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[22]);
-			}
-			if (!newData[23].isEmpty() || !newData[23].equals("") || newData[23].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[23]);
-			}
-			if (!newData[24].isEmpty() || !newData[24].equals("") || newData[24].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[24]);
-			}
-			if (!newData[25].isEmpty() || !newData[25].equals("") || newData[25].length() != 0) {
-				betPlayList.get(index).setTeam1(newData[25]);
-			}
-			if (!newData[26].isEmpty() || !newData[26].equals("") || newData[26].length() != 0) {
-				betPlayList.get(index).setGameResult(Integer.parseInt(newData[26]));
-			}
+
 			writeFile();
 			writeSerializable();
 			return true;
@@ -240,32 +218,24 @@ public class BetPlayDAO implements CRUDOperation {
 			double betPlaced = Double.parseDouble(cols[3]);
 			String headQuarterName = cols[4];
 			long document = Long.parseLong(cols[5]);
-			String team1 = cols[6];
-			String team2 = cols[7];
-			String team3 = cols[8];
-			String team4 = cols[9];
-			String team5 = cols[10];
-			String team6 = cols[11];
-			String team7 = cols[12];
-			String team8 = cols[13];
-			String team9 = cols[14];
-			String team10 = cols[15];
-			String team11 = cols[16];
-			String team12 = cols[17];
-			String team13 = cols[18];
-			String team14 = cols[19];
-			String team15 = cols[20];
-			String team16 = cols[21];
-			String team17 = cols[22];
-			String team18 = cols[23];
-			String team19 = cols[24];
-			String team20 = cols[25];
-			int gameResult = Integer.parseInt(cols[26]);
+			int match1 = Integer.parseInt(cols[6]);
+			int match2 = Integer.parseInt(cols[7]);
+			int match3 = Integer.parseInt(cols[8]);
+			int match4 = Integer.parseInt(cols[9]);
+			int match5 = Integer.parseInt(cols[10]);
+			int match6 = Integer.parseInt(cols[11]);
+			int match7 = Integer.parseInt(cols[12]);
+			int match8 = Integer.parseInt(cols[13]);
+			int match9 = Integer.parseInt(cols[14]);
+			int match10 = Integer.parseInt(cols[15]);
+			int match11 = Integer.parseInt(cols[16]);
+			int match12 = Integer.parseInt(cols[17]);
+			int match13 = Integer.parseInt(cols[18]);
+			int match14 = Integer.parseInt(cols[19]);
 
-			betPlayList.add(new BetPlayDTO(day, month, year, betPlaced, headQuarterName, document, team1, team2, team3,
-					team4, team5, team6, team7, team8, team9, team10, team11, team12, team13, team14, team15, team16,
-					team17, team18, team19, team20, gameResult));
-
+			betPlayList.add(new BetPlayDTO(day, month, year, betPlaced, headQuarterName, document, match1, match2,
+					match3, match4, match5, match6, match7, match8, match9, match10, match11, match12, match13,
+					match14));
 		}
 	}
 
@@ -283,27 +253,20 @@ public class BetPlayDAO implements CRUDOperation {
 			content += bet.getBetPlaced() + ";";
 			content += bet.getHeadQuarterName() + ";";
 			content += bet.getDocument() + ";";
-			content += bet.getTeam1() + ";";
-			content += bet.getTeam2() + ";";
-			content += bet.getTeam3() + ";";
-			content += bet.getTeam4() + ";";
-			content += bet.getTeam5() + ";";
-			content += bet.getTeam6() + ";";
-			content += bet.getTeam7() + ";";
-			content += bet.getTeam8() + ";";
-			content += bet.getTeam9() + ";";
-			content += bet.getTeam10() + ";";
-			content += bet.getTeam11() + ";";
-			content += bet.getTeam12() + ";";
-			content += bet.getTeam13() + ";";
-			content += bet.getTeam14() + ";";
-			content += bet.getTeam15() + ";";
-			content += bet.getTeam16() + ";";
-			content += bet.getTeam17() + ";";
-			content += bet.getTeam18() + ";";
-			content += bet.getTeam19() + ";";
-			content += bet.getTeam20() + ";";
-			content += bet.getGameResult() + ";BETPLAY\n";
+			content += bet.getMatch1() + ";";
+			content += bet.getMatch2() + ";";
+			content += bet.getMatch3() + ";";
+			content += bet.getMatch4() + ";";
+			content += bet.getMatch5() + ";";
+			content += bet.getMatch6() + ";";
+			content += bet.getMatch7() + ";";
+			content += bet.getMatch8() + ";";
+			content += bet.getMatch9() + ";";
+			content += bet.getMatch10() + ";";
+			content += bet.getMatch11() + ";";
+			content += bet.getMatch12() + ";";
+			content += bet.getMatch13() + ";";
+			content += bet.getMatch14() + ";BETPLAY\n";
 
 		});
 		FileHandler.openAndWriteFile(FILENAME, content);
@@ -314,6 +277,30 @@ public class BetPlayDAO implements CRUDOperation {
 	public void writeSerializable() {
 		// TODO Auto-generated method stub
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, betPlayList);
+	}
+
+	public void createListMatches() {
+		File myFile;
+		PrintWriter fileWriter;
+		myFile = new File("src/co/edu/unbosque/model/persistence/listapartidos.csv");
+		myFile.delete();
+
+		try {
+			if (!myFile.exists()) {
+				myFile.createNewFile();
+				fileWriter = new PrintWriter(myFile);
+				fileWriter.write(
+						"1) USA VS NETHERLAND \n2) ENGLAND VS SENEGAL \n3) NETHERLAND VS ARGENTINA \n4) AUSTRALIA VS ARGENTINA \n5) FRANCE VS POLAND \n6) CROATIA VS BRASIL \n7) JAPON VS CROATIA \n8) MARROCO VS SPAIN \n9) ENGLAND VS FRANCE \n10) BRASIL VS SOUTH KOREA \n11) PORTUGAL VS SWEDEEN \n12) PORTUGAL VS MARROCO \n13) MARROCO VS FRANCE \n14) ARGENTINA VS CROATIA");
+				fileWriter.close();
+			}
+			fileWriter = new PrintWriter(myFile);
+			fileWriter.write(
+					"1) USA VS NETHERLAND \n2) ENGLAND VS SENEGAL \n3) NETHERLAND VS ARGENTINA \n4) AUSTRALIA VS ARGENTINA \n5) FRANCE VS POLAND \n6) CROATIA VS BRASIL \n7) JAPON VS CROATIA \n8) MARROCO VS SPAIN \n9) ENGLAND VS FRANCE \n10) BRASIL VS SOUTH KOREA \n11) PORTUGAL VS SWEDEEN \n12) PORTUGAL VS MARROCO \n13) MARROCO VS FRANCE \n14) ARGENTINA VS CROATIA");
+			fileWriter.close();
+		} catch (IOException e) {
+			System.out.println("Problema al crear el archivo, revise problemas de acceso.");
+		}
+
 	}
 
 }
