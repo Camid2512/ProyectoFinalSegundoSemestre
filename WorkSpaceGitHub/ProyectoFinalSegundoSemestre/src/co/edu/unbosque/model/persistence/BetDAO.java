@@ -188,4 +188,36 @@ public class BetDAO implements CRUDOperation {
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, betList);
 	}
 
+	public ArrayList<BetDTO> getBetList() {
+		return betList;
+	}
+
+	public void setBetList(ArrayList<BetDTO> betList) {
+		this.betList = betList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
+	}
+
 }

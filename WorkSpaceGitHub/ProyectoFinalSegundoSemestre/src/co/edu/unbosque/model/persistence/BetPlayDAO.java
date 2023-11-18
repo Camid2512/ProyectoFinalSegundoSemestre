@@ -303,4 +303,36 @@ public class BetPlayDAO implements CRUDOperation {
 
 	}
 
+	public ArrayList<BetPlayDTO> getBetPlayList() {
+		return betPlayList;
+	}
+
+	public void setBetPlayList(ArrayList<BetPlayDTO> betPlayList) {
+		this.betPlayList = betPlayList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
+	}
+
 }

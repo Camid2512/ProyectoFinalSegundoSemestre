@@ -204,4 +204,36 @@ public class SuperAstroDAO implements CRUDOperation {
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, superAstroList);
 	}
 
+	public ArrayList<SuperAstroDTO> getSuperAstroList() {
+		return superAstroList;
+	}
+
+	public void setSuperAstroList(ArrayList<SuperAstroDTO> superAstroList) {
+		this.superAstroList = superAstroList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
+	}
+
 }

@@ -209,4 +209,60 @@ public class FileHandler {
 		}
 	}
 
+	public static Scanner getFileReader() {
+		return fileReader;
+	}
+
+	public static void setFileReader(Scanner fileReader) {
+		FileHandler.fileReader = fileReader;
+	}
+
+	public static PrintWriter getFileWriter() {
+		return fileWriter;
+	}
+
+	public static void setFileWriter(PrintWriter fileWriter) {
+		FileHandler.fileWriter = fileWriter;
+	}
+
+	public static File getMyFile() {
+		return myFile;
+	}
+
+	public static void setMyFile(File myFile) {
+		FileHandler.myFile = myFile;
+	}
+
+	public static FileOutputStream getFos() {
+		return fos;
+	}
+
+	public static void setFos(FileOutputStream fos) {
+		FileHandler.fos = fos;
+	}
+
+	public static ObjectInputStream getOis() {
+		return ois;
+	}
+
+	public static void setOis(ObjectInputStream ois) {
+		FileHandler.ois = ois;
+	}
+
+	public static FileInputStream getFis() {
+		return fis;
+	}
+
+	public static void setFis(FileInputStream fis) {
+		FileHandler.fis = fis;
+	}
+
+	public static ObjectOutputStream getOos() {
+		return oos;
+	}
+
+	public static void setOos(ObjectOutputStream oos) {
+		FileHandler.oos = oos;
+	}
+
 }

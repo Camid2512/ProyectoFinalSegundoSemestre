@@ -58,4 +58,28 @@ public class GameDAO {
 		return total;
 
 	}
+
+	public File getMyFile() {
+		return myFile;
+	}
+
+	public void setMyFile(File myFile) {
+		this.myFile = myFile;
+	}
+
+	public PrintWriter getFileWriter() {
+		return fileWriter;
+	}
+
+	public void setFileWriter(PrintWriter fileWriter) {
+		this.fileWriter = fileWriter;
+	}
+
+	public String getGAME_FILENAME() {
+		return GAME_FILENAME;
+	}
+
+	public String getROOT() {
+		return ROOT;
+	}
 }

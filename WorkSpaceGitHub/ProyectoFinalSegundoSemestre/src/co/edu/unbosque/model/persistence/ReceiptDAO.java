@@ -55,4 +55,24 @@ public class ReceiptDAO {
 		}
 	}
 
+	public File getMyFile() {
+		return myFile;
+	}
+
+	public void setMyFile(File myFile) {
+		this.myFile = myFile;
+	}
+
+	public PrintWriter getFileWriter() {
+		return fileWriter;
+	}
+
+	public void setFileWriter(PrintWriter fileWriter) {
+		this.fileWriter = fileWriter;
+	}
+
+	public String getRECIEPT_FILENAME() {
+		return RECIEPT_FILENAME;
+	}
+
 }

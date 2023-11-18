@@ -198,4 +198,36 @@ public class BallotDAO implements CRUDOperation {
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, ballotList);
 	}
 
+	public ArrayList<BallotDTO> getBallotList() {
+		return ballotList;
+	}
+
+	public void setBallotList(ArrayList<BallotDTO> ballotList) {
+		this.ballotList = ballotList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
+	}
+
 }

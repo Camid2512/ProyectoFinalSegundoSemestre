@@ -200,4 +200,36 @@ public class ChanceDAO implements CRUDOperation {
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, chanceList);
 	}
 
+	public ArrayList<ChanceDTO> getChanceList() {
+		return chanceList;
+	}
+
+	public void setChanceList(ArrayList<ChanceDTO> chanceList) {
+		this.chanceList = chanceList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
+	}
+
 }

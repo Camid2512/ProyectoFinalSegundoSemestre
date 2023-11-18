@@ -174,4 +174,36 @@ public class CheckerDAO implements CRUDOperation {
 
 	}
 
+	public ArrayList<CheckerDTO> getCheckerList() {
+		return checkerList;
+	}
+
+	public void setCheckerList(ArrayList<CheckerDTO> checkerList) {
+		this.checkerList = checkerList;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFILENAME() {
+		return FILENAME;
+	}
+
+	public String getSERIAL_FILENAME() {
+		return SERIAL_FILENAME;
+	}
+
 }
