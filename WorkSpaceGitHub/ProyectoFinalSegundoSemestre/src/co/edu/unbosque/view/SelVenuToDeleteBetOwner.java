@@ -10,24 +10,23 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class SelectShowGamblerWindow extends JFrame {
+public class SelVenuToDeleteBetOwner extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7976763735079298830L;
+	private static final long serialVersionUID = -9206446675511622182L;
 
 	private JButton exit, back, next;
 	private JComboBox<String> comboVenue;
 	private JLabel mainImage;
 
-	public SelectShowGamblerWindow() {
+	public SelVenuToDeleteBetOwner() {
 		// TODO Auto-generated constructor stub
-
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("SELECCIONAR SEDE A MOSTRAR");
+		setTitle("SELECCIONAR SEDE PARA APUESTA A ELIMINAR");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -79,7 +78,6 @@ public class SelectShowGamblerWindow extends JFrame {
 		mainImage.setIcon(img1);
 		mainImage.setVisible(true);
 		add(mainImage);
-
 	}
 
 	public JButton getExit() {

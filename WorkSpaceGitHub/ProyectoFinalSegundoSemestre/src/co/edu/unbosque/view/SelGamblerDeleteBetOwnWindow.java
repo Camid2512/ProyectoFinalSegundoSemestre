@@ -10,24 +10,24 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class SelectShowVenueWindow extends JFrame {
+public class SelGamblerDeleteBetOwnWindow extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7976763735079298830L;
+	private static final long serialVersionUID = -661143292381395598L;
 
-	private JButton exit, back, next;
-	private JComboBox<String> comboVenue;
+	private JComboBox<Long> comboGambler;
+	private JButton exit, back, nextStep;
 	private JLabel mainImage;
 
-	public SelectShowVenueWindow() {
+	public SelGamblerDeleteBetOwnWindow() {
 		// TODO Auto-generated constructor stub
 
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("SELECCIONAR SEDE A MOSTRAR");
+		setTitle("SELECCIONAR APOSTADOR PARA ELIMNAR APUESTA");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -50,27 +50,27 @@ public class SelectShowVenueWindow extends JFrame {
 		back.setBorderPainted(false);
 		add(back);
 
-		next = new JButton();
-		next.setBounds(858, 498, 298, 99);
-		next.setToolTipText("MOSTRAR SELECCIONADO");
-		next.setBackground(new Color(0, 0, 0, 0));
-		next.setOpaque(false);
-		next.setContentAreaFilled(false);
-		next.setBorderPainted(false);
-		add(next);
+		nextStep = new JButton();
+		nextStep.setBounds(858, 498, 298, 99);
+		nextStep.setToolTipText("SELECCIONAR");
+		nextStep.setBackground(new Color(0, 0, 0, 0));
+		nextStep.setOpaque(false);
+		nextStep.setContentAreaFilled(false);
+		nextStep.setBorderPainted(false);
+		add(nextStep);
 
-		comboVenue = new JComboBox<>();
-		comboVenue.setBounds(313, 270, 657, 133);
-		comboVenue.setBackground(new Color(225, 223, 228));
-		comboVenue.setForeground(Color.black);
-		comboVenue.setFont(new Font("Arial", 1, 25));
-		add(comboVenue);
+		comboGambler = new JComboBox<>();
+		comboGambler.setBounds(313, 270, 657, 133);
+		comboGambler.setBackground(new Color(225, 223, 228));
+		comboGambler.setForeground(Color.black);
+		comboGambler.setFont(new Font("Arial", 1, 25));
+		add(comboGambler);
 
 		mainImage = new JLabel();
 		mainImage.setBounds(0, 0, 1280, 720);
 
 		Image temporal1;
-		temporal1 = new ImageIcon("src/Images/selectshowvenue.png").getImage();
+		temporal1 = new ImageIcon("src/Images/selectapostador.png").getImage();
 
 		ImageIcon img1;
 		img1 = new ImageIcon(
@@ -80,6 +80,14 @@ public class SelectShowVenueWindow extends JFrame {
 		mainImage.setVisible(true);
 		add(mainImage);
 
+	}
+
+	public JComboBox<Long> getComboGambler() {
+		return comboGambler;
+	}
+
+	public void setComboGambler(JComboBox<Long> comboGambler) {
+		this.comboGambler = comboGambler;
 	}
 
 	public JButton getExit() {
@@ -98,20 +106,12 @@ public class SelectShowVenueWindow extends JFrame {
 		this.back = back;
 	}
 
-	public JButton getNext() {
-		return next;
+	public JButton getNextStep() {
+		return nextStep;
 	}
 
-	public void setNext(JButton next) {
-		this.next = next;
-	}
-
-	public JComboBox<String> getComboVenue() {
-		return comboVenue;
-	}
-
-	public void setComboVenue(JComboBox<String> comboVenue) {
-		this.comboVenue = comboVenue;
+	public void setNextStep(JButton nextStep) {
+		this.nextStep = nextStep;
 	}
 
 	public JLabel getMainImage() {

@@ -25,9 +25,9 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	 * @version 1.0
 	 * @since 10/11/2023
 	 */
-	
+
 	private static final long serialVersionUID = 415700271536832498L;
-	
+
 	/**
 	 * Estos son los atributos de los botones
 	 * 
@@ -37,8 +37,8 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	 * @since 10/11/2023
 	 */
 
-	private JButton exit, back, create, read, update, delete;
-	
+	private JButton exit, back, create, read, delete;
+
 	/**
 	 * Estos son los atributos de las imagenes
 	 * 
@@ -47,9 +47,9 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	 * @version 1.0
 	 * @since 10/11/2023
 	 */
-	
+
 	private JLabel mainImage;
-	
+
 	/**
 	 * Este es el constructor vacio de la ventana de gestion de apuesta del dueno
 	 * 
@@ -65,7 +65,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("MODULO 3");
+		setTitle("MODULO 4");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -106,17 +106,8 @@ public class BetManagmentByOwnerWindow extends JFrame {
 		read.setBorderPainted(false);
 		add(read);
 
-		update = new JButton();
-		update.setBounds(161, 385, 424, 157);
-		update.setToolTipText("Actualizar apostador");
-		update.setBackground(new Color(0, 0, 0, 0));
-		update.setOpaque(false);
-		update.setContentAreaFilled(false);
-		update.setBorderPainted(false);
-		add(update);
-
 		delete = new JButton();
-		delete.setBounds(699, 385, 424, 157);
+		delete.setBounds(429, 397, 424, 157);
 		delete.setToolTipText("Eliminar apostador");
 		delete.setBackground(new Color(0, 0, 0, 0));
 		delete.setOpaque(false);
@@ -139,7 +130,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 		add(mainImage);
 
 	}
-	
+
 	/**
 	 * Este es el getter del boton salir
 	 * 
@@ -152,7 +143,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public JButton getExit() {
 		return exit;
 	}
-	
+
 	/**
 	 * Este es el setter del boton salir
 	 * 
@@ -165,7 +156,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
-	
+
 	/**
 	 * Este es el getter del boton atras
 	 * 
@@ -178,7 +169,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public JButton getBack() {
 		return back;
 	}
-	
+
 	/**
 	 * Este es el setter del boton atras
 	 * 
@@ -191,7 +182,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public void setBack(JButton back) {
 		this.back = back;
 	}
-	
+
 	/**
 	 * Este es el getter del boton crear
 	 * 
@@ -204,7 +195,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public JButton getCreate() {
 		return create;
 	}
-	
+
 	/**
 	 * Este es el setter del boton crear
 	 * 
@@ -217,7 +208,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public void setCreate(JButton create) {
 		this.create = create;
 	}
-	
+
 	/**
 	 * Este es el getter del boton mostrar
 	 * 
@@ -230,7 +221,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public JButton getRead() {
 		return read;
 	}
-	
+
 	/**
 	 * Este es el setter del boton mostrar
 	 * 
@@ -243,33 +234,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public void setRead(JButton read) {
 		this.read = read;
 	}
-	
-	/**
-	 * Este es el getter del boton actualizar
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 11/10/2023
-	 */
 
-	public JButton getUpdate() {
-		return update;
-	}
-	
-	/**
-	 * Este es el setter del boton actualizar
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 11/10/2023
-	 */
-
-	public void setUpdate(JButton update) {
-		this.update = update;
-	}
-	
 	/**
 	 * Este es el getter del boton eliminar
 	 * 
@@ -282,7 +247,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public JButton getDelete() {
 		return delete;
 	}
-	
+
 	/**
 	 * Este es el setter del boton eliminar
 	 * 
@@ -295,7 +260,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public void setDelete(JButton delete) {
 		this.delete = delete;
 	}
-	
+
 	/**
 	 * Este es el getter de la imagen principal
 	 * 
@@ -308,7 +273,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public JLabel getMainImage() {
 		return mainImage;
 	}
-	
+
 	/**
 	 * Este es el setter de la imagen principal
 	 * 
@@ -321,7 +286,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
-	
+
 	/**
 	 * Este es el getter del serial
 	 * 

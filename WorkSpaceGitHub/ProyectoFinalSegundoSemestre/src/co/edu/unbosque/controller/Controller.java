@@ -37,18 +37,20 @@ import co.edu.unbosque.view.LoteriaWindowOwner;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
 import co.edu.unbosque.view.ReceiptWindow;
+import co.edu.unbosque.view.SelBetToDeleteOwn;
 import co.edu.unbosque.view.SelGamblerCreateBetOwnWindow;
+import co.edu.unbosque.view.SelGamblerDeleteBetOwnWindow;
+import co.edu.unbosque.view.SelVenuToDeleteBetOwner;
 import co.edu.unbosque.view.SelectCreateBetWindow;
 import co.edu.unbosque.view.SelectDeleteGamblerOwnWindow;
 import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindowToDelete;
-import co.edu.unbosque.view.SelectShowBetWindow;
-import co.edu.unbosque.view.SelectShowGamblerWindow;
-import co.edu.unbosque.view.SelectShowVenueWindow;
-import co.edu.unbosque.view.SelectUpdateBetWindow;
 import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
+import co.edu.unbosque.view.ShowBetOwn;
+import co.edu.unbosque.view.ShowGamblerOwn;
+import co.edu.unbosque.view.ShowVenueOwn;
 import co.edu.unbosque.view.SignUpWindow;
 import co.edu.unbosque.view.SuperAstroWindow;
 import co.edu.unbosque.view.UpdateVenueByOwnerWindow;
@@ -63,13 +65,11 @@ public class Controller implements ActionListener {
 	private VenueManagmentByOwnerWindow venueManageOwn;
 	private ManagerCreationWindow managerCreationWin;
 	private CreateVenueWindow createVenueWin;
-	private SelectShowVenueWindow selShowVenOwn;
 	private SelectUpdateVenueWindow selUpdateVenOwn;
 	private UpdateVenueByOwnerWindow updateVenueOwn;
 	private SelectDeleteVenueOwnWindow selDeleteVenueOwn;
 	private GamblerManagmentByOwnerWindow gamManageOwn;
 	private CreateGamblerWindow createGamblerWinOwn;
-	private SelectShowGamblerWindow selShowGamblerOwn;
 	private SelectUpdateGamblerWindow selUpdateGamblerOwn;
 	private GamblerUpdateOwnWindow gamUpdateWinOwn;
 	private SelectDeleteGamblerOwnWindow selDeleteGamblerOwn;
@@ -79,8 +79,6 @@ public class Controller implements ActionListener {
 	private GamesSettingWindow gamesSettingWin;
 	private SelectGamblerAfterVenueWindow selGamToUpdateWinOwn;
 	private SelectGamblerAfterVenueWindowToDelete selGamToDeleteWinOwn;
-	private SelectShowBetWindow selShowBetWinOwn;
-	private SelectUpdateBetWindow selUpdBetWinOwn;
 	private BetMenuOwnerWindow betMenuOwn;
 	private LoteriaWindowOwner loteriaWin;
 	private BalotoWindow balotoWin;
@@ -88,6 +86,12 @@ public class Controller implements ActionListener {
 	private ChanceWindow chanceWin;
 	private BetPlayWindow betplayWin;
 	private ReceiptWindow receiptWindow;
+	private ShowVenueOwn showVenueOwn;
+	private ShowGamblerOwn showGamOwn;
+	private ShowBetOwn showBetOwn;
+	private SelVenuToDeleteBetOwner selVenDelBetOwn;
+	private SelGamblerDeleteBetOwnWindow selGamDelBetOwn;
+	private SelBetToDeleteOwn selBetDeleteOwn;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -124,13 +128,11 @@ public class Controller implements ActionListener {
 		venueManageOwn = new VenueManagmentByOwnerWindow();
 		managerCreationWin = new ManagerCreationWindow();
 		createVenueWin = new CreateVenueWindow();
-		selShowVenOwn = new SelectShowVenueWindow();
 		selUpdateVenOwn = new SelectUpdateVenueWindow();
 		updateVenueOwn = new UpdateVenueByOwnerWindow();
 		selDeleteVenueOwn = new SelectDeleteVenueOwnWindow();
 		gamManageOwn = new GamblerManagmentByOwnerWindow();
 		createGamblerWinOwn = new CreateGamblerWindow();
-		selShowGamblerOwn = new SelectShowGamblerWindow();
 		selUpdateGamblerOwn = new SelectUpdateGamblerWindow();
 		selDeleteGamblerOwn = new SelectDeleteGamblerOwnWindow();
 		betManOwn = new BetManagmentByOwnerWindow();
@@ -138,8 +140,6 @@ public class Controller implements ActionListener {
 		gamesSettingWin = new GamesSettingWindow();
 		selGamToUpdateWinOwn = new SelectGamblerAfterVenueWindow();
 		selGamToDeleteWinOwn = new SelectGamblerAfterVenueWindowToDelete();
-		selShowBetWinOwn = new SelectShowBetWindow();
-		selUpdBetWinOwn = new SelectUpdateBetWindow();
 		gamUpdateWinOwn = new GamblerUpdateOwnWindow();
 		selGamCreateBetOwn = new SelGamblerCreateBetOwnWindow();
 		betMenuOwn = new BetMenuOwnerWindow();
@@ -150,6 +150,12 @@ public class Controller implements ActionListener {
 		chanceWin = new ChanceWindow();
 		betplayWin = new BetPlayWindow();
 		receiptWindow = new ReceiptWindow();
+		showVenueOwn = new ShowVenueOwn();
+		showGamOwn = new ShowGamblerOwn();
+		showBetOwn = new ShowBetOwn();
+		selVenDelBetOwn = new SelVenuToDeleteBetOwner();
+		selGamDelBetOwn = new SelGamblerDeleteBetOwnWindow();
+		selBetDeleteOwn = new SelBetToDeleteOwn();
 
 		agregarLectores();
 
@@ -277,14 +283,11 @@ public class Controller implements ActionListener {
 
 		// BOTONES MENU SELECCION SEDE MOSTRAR (OWNER)
 
-		selShowVenOwn.getExit().addActionListener(this);
-		selShowVenOwn.getExit().setActionCommand("EXIT");
+		showVenueOwn.getExit().addActionListener(this);
+		showVenueOwn.getExit().setActionCommand("EXIT");
 
-		selShowVenOwn.getBack().addActionListener(this);
-		selShowVenOwn.getBack().setActionCommand("BACKSELECTSHOWOWN");
-
-		selShowVenOwn.getNext().addActionListener(this);
-		selShowVenOwn.getNext().setActionCommand("NEXTSELECTSHOWOWN");
+		showVenueOwn.getBack().addActionListener(this);
+		showVenueOwn.getBack().setActionCommand("BACKSELECTSHOWOWN");
 
 		// BOTONES MENU SELECCION SEDE ACTUALIZAR (OWNER)
 
@@ -352,11 +355,11 @@ public class Controller implements ActionListener {
 
 		// BOTONES MENU SELECCION APOSTADOR MOSTRAR (OWNER)
 
-		selShowGamblerOwn.getExit().addActionListener(this);
-		selShowGamblerOwn.getExit().setActionCommand("EXIT");
+		showGamOwn.getExit().addActionListener(this);
+		showGamOwn.getExit().setActionCommand("EXIT");
 
-		selShowGamblerOwn.getBack().addActionListener(this);
-		selShowGamblerOwn.getBack().setActionCommand("BACKSELECTSHOWGAMOWN");
+		showGamOwn.getBack().addActionListener(this);
+		showGamOwn.getBack().setActionCommand("BACKSELECTSHOWGAMOWN");
 
 		// BOTONES MENU SELECCION APOSTADOR ACTUALIZAR (OWNER)
 
@@ -427,9 +430,6 @@ public class Controller implements ActionListener {
 		betManOwn.getRead().addActionListener(this);
 		betManOwn.getRead().setActionCommand("SELECTBETSHOWOWN");
 
-		betManOwn.getUpdate().addActionListener(this);
-		betManOwn.getUpdate().setActionCommand("SELECTBETRUPDATEOWN");
-
 		betManOwn.getDelete().addActionListener(this);
 		betManOwn.getDelete().setActionCommand("SELECTBETDELETEOWN");
 
@@ -480,11 +480,11 @@ public class Controller implements ActionListener {
 
 		// BOTONES SELECCIONAR SEDE MOSTRAR APUESTA
 
-		selShowBetWinOwn.getBack().addActionListener(this);
-		selShowBetWinOwn.getBack().setActionCommand("BACKSELECTVENUESHOWBETOWN");
+		showBetOwn.getBack().addActionListener(this);
+		showBetOwn.getBack().setActionCommand("BACKSELECTVENUESHOWBETOWN");
 
-		selShowBetWinOwn.getExit().addActionListener(this);
-		selShowBetWinOwn.getExit().setActionCommand("EXIT");
+		showBetOwn.getExit().addActionListener(this);
+		showBetOwn.getExit().setActionCommand("EXIT");
 
 		// BOTONES LOTERIA OWNER
 
@@ -540,6 +540,37 @@ public class Controller implements ActionListener {
 
 		betplayWin.getNext().addActionListener(this);
 		betplayWin.getNext().setActionCommand("NEXTBETPLAYWIN");
+
+		// BOTONES SELECCIONAR SEDE PARA ELIMINAR APUESTA
+
+		selVenDelBetOwn.getExit().addActionListener(this);
+		selVenDelBetOwn.getExit().setActionCommand("EXIT");
+
+		selVenDelBetOwn.getBack().addActionListener(this);
+		selVenDelBetOwn.getBack().setActionCommand("BACKSELECTVENUEDELETEBETOWN");
+
+		selVenDelBetOwn.getNext().addActionListener(this);
+		selVenDelBetOwn.getNext().setActionCommand("NEXTSELECTVENUEDELETEBETOWN");
+
+		// BOTONES SELECCIONAR APOSTADOR PARA ELIMINAR APUESTA
+
+		selGamDelBetOwn.getExit().addActionListener(this);
+		selGamDelBetOwn.getExit().setActionCommand("EXIT");
+
+		selGamDelBetOwn.getBack().addActionListener(this);
+		selGamDelBetOwn.getBack().setActionCommand("BACKSELECTGAMBLERDELETEBETOWN");
+
+		selGamDelBetOwn.getNextStep().addActionListener(this);
+		selGamDelBetOwn.getNextStep().setActionCommand("NEXTSELECTGAMBLERDELETEBETOWN");
+
+		// BOTONES SELECCIONAR APUESTA A ELIMINAR OWNER
+
+		selBetDeleteOwn.getExit().addActionListener(this);
+		selBetDeleteOwn.getExit().setActionCommand("EXIT");
+
+		selBetDeleteOwn.getBack().addActionListener(this);
+		selBetDeleteOwn.getBack().setActionCommand("BACKSELBETTODELETEOWN");
+
 	}
 
 	@Override
@@ -664,9 +695,9 @@ public class Controller implements ActionListener {
 
 		}
 		case "SELECTVENUESHOWOWN": {
-			selShowVenOwn.setVisible(true);
+			showVenueOwn.setVisible(true);
 			venueManageOwn.setVisible(false);
-			updateBoxSelectShowVenue();
+			showTableVenue();
 			break;
 
 		}
@@ -698,7 +729,8 @@ public class Controller implements ActionListener {
 		}
 		case "BACKSELECTSHOWOWN": {
 			venueManageOwn.setVisible(true);
-			selShowVenOwn.setVisible(false);
+			showVenueOwn.setVisible(false);
+			updateTableVenue();
 		}
 		case "BACKCREATEBOSS": {
 			venueManageOwn.setVisible(true);
@@ -776,7 +808,8 @@ public class Controller implements ActionListener {
 
 		case "BACKSELECTSHOWGAMOWN": {
 			gamManageOwn.setVisible(true);
-			selShowGamblerOwn.setVisible(false);
+			showGamOwn.setVisible(false);
+			updateTableGambler();
 			break;
 
 		}
@@ -789,9 +822,9 @@ public class Controller implements ActionListener {
 		}
 
 		case "SELECTGAMBLERSHOWOWN": {
-			selShowGamblerOwn.setVisible(true);
+			showGamOwn.setVisible(true);
 			gamManageOwn.setVisible(false);
-			updateBoxSelectShowVenueGambler();
+			showTableGambler();
 			break;
 		}
 
@@ -914,15 +947,16 @@ public class Controller implements ActionListener {
 
 		case "SELECTBETSHOWOWN": {
 
-			selShowBetWinOwn.setVisible(true);
+			showBetOwn.setVisible(true);
 			betManOwn.setVisible(false);
-			updateBoxShowBet();
+			showTableBet();
 			break;
 		}
 
 		case "BACKSELECTVENUESHOWBETOWN": {
 			betManOwn.setVisible(true);
-			selShowBetWinOwn.setVisible(false);
+			showBetOwn.setVisible(false);
+			updateTableBet();
 			break;
 		}
 		case "ACTUALIZAR APOSTADOROWN": {
@@ -1163,6 +1197,51 @@ public class Controller implements ActionListener {
 
 			break;
 		}
+		case "BACKSELECTVENUEDELETEBETOWN": {
+
+			betManOwn.setVisible(true);
+			selVenDelBetOwn.setVisible(false);
+
+			break;
+		}
+		case "SELECTBETDELETEOWN": {
+
+			selVenDelBetOwn.setVisible(true);
+			betManOwn.setVisible(false);
+			updateBoxSelectDeleteVenueBet();
+
+			break;
+		}
+		case "NEXTSELECTVENUEDELETEBETOWN": {
+
+			selGamDelBetOwn.setVisible(true);
+			selVenDelBetOwn.setVisible(false);
+			String aux = selVenDelBetOwn.getComboVenue().getSelectedItem().toString();
+			updateSelectGamblerDeleteBet(aux);
+			break;
+
+		}
+		case "BACKSELECTGAMBLERDELETEBETOWN": {
+
+			selVenDelBetOwn.setVisible(true);
+			selGamDelBetOwn.setVisible(false);
+
+			break;
+		}
+		case "NEXTSELECTGAMBLERDELETEBETOWN": {
+
+			selBetDeleteOwn.setVisible(true);
+			selGamDelBetOwn.setVisible(false);
+			break;
+
+		}
+		case "BACKSELBETTODELETEOWN": {
+
+			selGamDelBetOwn.setVisible(true);
+			selBetDeleteOwn.setVisible(false);
+			break;
+
+		}
 
 		default:
 
@@ -1320,16 +1399,6 @@ public class Controller implements ActionListener {
 
 	}
 
-	public void updateBoxSelectShowVenue() {
-		if (!venueDAO.getHeadquarterList().isEmpty()) {
-			selShowVenOwn.getComboVenue().removeAllItems();
-			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
-				selShowVenOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
-			}
-		}
-
-	}
-
 	public void updateBoxSelectUpdateVenue() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selUpdateVenOwn.getComboVenue().removeAllItems();
@@ -1351,21 +1420,23 @@ public class Controller implements ActionListener {
 
 	}
 
-	public void updateBoxSelectShowVenueGambler() {
-		if (!venueDAO.getHeadquarterList().isEmpty()) {
-			selShowGamblerOwn.getComboVenue().removeAllItems();
-			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
-				selShowGamblerOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
-			}
-		}
-
-	}
-
 	public void updateBoxSelectUpdateVenueGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selUpdateGamblerOwn.getComboVenue().removeAllItems();
 			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
 				selUpdateGamblerOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+
+			}
+
+		}
+
+	}
+
+	public void updateBoxSelectDeleteVenueBet() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			selVenDelBetOwn.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				selVenDelBetOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
 
 			}
 
@@ -1541,17 +1612,6 @@ public class Controller implements ActionListener {
 		}
 	}
 
-	public void updateBoxShowBet() {
-		if (!venueDAO.getHeadquarterList().isEmpty()) {
-			selShowBetWinOwn.getComboVenue().removeAllItems();
-			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
-				selShowBetWinOwn.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
-			}
-
-		}
-
-	}
-
 	public void updateSelectGamblerUpdate(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGamToUpdateWinOwn.getComboGambler().removeAllItems();
@@ -1569,6 +1629,17 @@ public class Controller implements ActionListener {
 			for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
 				if (data.equals(gamDAO.getGamblerList().get(i).getGamingVenue())) {
 					selGamCreateBetOwn.getComboGambler().addItem(gamDAO.getGamblerList().get(i).getDocumentId());
+				}
+			}
+		}
+	}
+
+	public void updateSelectGamblerDeleteBet(String data) {
+		if (!gamDAO.getGamblerList().isEmpty()) {
+			selGamDelBetOwn.getComboGambler().removeAllItems();
+			for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+				if (data.equals(gamDAO.getGamblerList().get(i).getGamingVenue())) {
+					selGamDelBetOwn.getComboGambler().addItem(gamDAO.getGamblerList().get(i).getDocumentId());
 				}
 			}
 		}
@@ -1732,6 +1803,10 @@ public class Controller implements ActionListener {
 		}
 		if (confirmation) {
 			loteriaDAO.create(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers, serialNum);
+
+			betManOwn.setVisible(true);
+			loteriaWin.setVisible(false);
+
 			JOptionPane.showMessageDialog(loteriaWin,
 					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
 			receiptDAO.create(date, name, document, headQuarterName, typeBet);
@@ -1797,6 +1872,10 @@ public class Controller implements ActionListener {
 			receiptWindow.getDocument().setText(document);
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
+
+			betManOwn.setVisible(true);
+			balotoWin.setVisible(false);
+
 		} else {
 
 		}
@@ -1853,6 +1932,10 @@ public class Controller implements ActionListener {
 			receiptWindow.getDocument().setText(document);
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
+
+			betManOwn.setVisible(true);
+			superastroWin.setVisible(false);
+
 		} else {
 
 		}
@@ -1930,6 +2013,9 @@ public class Controller implements ActionListener {
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
 
+			betManOwn.setVisible(true);
+			chanceWin.setVisible(false);
+
 		} else {
 		}
 
@@ -1993,6 +2079,10 @@ public class Controller implements ActionListener {
 			receiptWindow.getDocument().setText(document);
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
+
+			betManOwn.setVisible(true);
+			betplayWin.setVisible(false);
+
 		} else {
 
 		}
@@ -2013,6 +2103,167 @@ public class Controller implements ActionListener {
 
 		return name;
 
+	}
+
+	/**
+	 * Funcion que muestra la tabla de sedes
+	 * 
+	 * @author Santiago Rueda
+	 * 
+	 */
+	public void showTableVenue() {
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			String name = venueDAO.getHeadquarterList().get(i).getVenueName();
+			String location = venueDAO.getHeadquarterList().get(i).getLocationVenue();
+			int num = venueDAO.getHeadquarterList().get(i).getEmployeesNumber();
+
+			Object[] data = { name, location, num };
+			showVenueOwn.getTablePanel().getModel().addRow(data);
+
+		}
+
+	}
+
+	/**
+	 * Funcion que actualiza la tabla de sedes
+	 * 
+	 * @author Santiago Rueda
+	 */
+	public void updateTableVenue() {
+		for (int i = venueDAO.getHeadquarterList().size() - 1; i >= 0; i--) {
+
+			showVenueOwn.getTablePanel().getModel().removeRow(i);
+
+		}
+	}
+
+	/**
+	 * Funcion que muestra la tabla de apostadores
+	 * 
+	 * @author Santiago Rueda
+	 */
+	public void showTableGambler() {
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+
+			String name = gamDAO.getGamblerList().get(i).getFullName();
+			long documento = gamDAO.getGamblerList().get(i).getDocumentId();
+			String sede = gamDAO.getGamblerList().get(i).getGamingVenue();
+			String direccion = gamDAO.getGamblerList().get(i).getAddres();
+			long num = gamDAO.getGamblerList().get(i).getPhoneNumber();
+
+			Object[] data = { name, documento, num, sede, direccion, num };
+			showGamOwn.getTablePanel().getModel().addRow(data);
+
+		}
+
+	}
+
+	/**
+	 * Funcion que actualiza la tabla de apostadores
+	 * 
+	 * @author Santiago Rueda
+	 */
+	public void updateTableGambler() {
+		for (int i = gamDAO.getGamblerList().size() - 1; i >= 0; i--) {
+
+			showGamOwn.getTablePanel().getModel().removeRow(i);
+
+		}
+	}
+
+	/**
+	 * Funcion que muestra la tabla de apuestas
+	 * 
+	 * @author Santiago Rueda
+	 */
+	public void showTableBet() {
+		for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+
+			int dia = loteriaDAO.getLoteryBetList().get(i).getDay();
+			int mes = loteriaDAO.getLoteryBetList().get(i).getMonth();
+			int ano = loteriaDAO.getLoteryBetList().get(i).getYear();
+			double valorapostado = loteriaDAO.getLoteryBetList().get(i).getBetPlaced();
+			String sede = loteriaDAO.getLoteryBetList().get(i).getHeadQuarterName();
+			long documento = loteriaDAO.getLoteryBetList().get(i).getDocument();
+			String juego = "Loteria";
+
+			Object[] data = { dia, mes, ano, valorapostado, sede, documento, juego };
+			showBetOwn.getTablePanel().getModel().addRow(data);
+
+		}
+		for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+
+			int dia = loteriaDAO.getLoteryBetList().get(i).getDay();
+			int mes = loteriaDAO.getLoteryBetList().get(i).getMonth();
+			int ano = loteriaDAO.getLoteryBetList().get(i).getYear();
+			double valorapostado = loteriaDAO.getLoteryBetList().get(i).getBetPlaced();
+			String sede = loteriaDAO.getLoteryBetList().get(i).getHeadQuarterName();
+			long documento = loteriaDAO.getLoteryBetList().get(i).getDocument();
+			String juego = "Baloto";
+
+			Object[] data = { dia, mes, ano, valorapostado, sede, documento, juego };
+			showBetOwn.getTablePanel().getModel().addRow(data);
+
+		}
+		for (int i = 0; i < superAstroDAO.getSuperAstroList().size(); i++) {
+
+			int dia = superAstroDAO.getSuperAstroList().get(i).getDay();
+			int mes = superAstroDAO.getSuperAstroList().get(i).getMonth();
+			int ano = superAstroDAO.getSuperAstroList().get(i).getYear();
+			double valorapostado = superAstroDAO.getSuperAstroList().get(i).getBetPlaced();
+			String sede = superAstroDAO.getSuperAstroList().get(i).getHeadQuarterName();
+			long documento = superAstroDAO.getSuperAstroList().get(i).getDocument();
+			String juego = "Super astro";
+
+			Object[] data = { dia, mes, ano, valorapostado, sede, documento, juego };
+			showBetOwn.getTablePanel().getModel().addRow(data);
+
+		}
+		for (int i = 0; i < chanceDAO.getChanceList().size(); i++) {
+
+			int dia = chanceDAO.getChanceList().get(i).getDay();
+			int mes = chanceDAO.getChanceList().get(i).getMonth();
+			int ano = chanceDAO.getChanceList().get(i).getYear();
+			double valorapostado = chanceDAO.getChanceList().get(i).getBetPlaced();
+			String sede = chanceDAO.getChanceList().get(i).getHeadQuarterName();
+			long documento = chanceDAO.getChanceList().get(i).getDocument();
+			String juego = "Chance";
+
+			Object[] data = { dia, mes, ano, valorapostado, sede, documento, juego };
+			showBetOwn.getTablePanel().getModel().addRow(data);
+
+		}
+		for (int i = 0; i < betPlayDAO.getBetPlayList().size(); i++) {
+
+			int dia = betPlayDAO.getBetPlayList().get(i).getDay();
+			int mes = betPlayDAO.getBetPlayList().get(i).getMonth();
+			int ano = betPlayDAO.getBetPlayList().get(i).getYear();
+			double valorapostado = betPlayDAO.getBetPlayList().get(i).getBetPlaced();
+			String sede = betPlayDAO.getBetPlayList().get(i).getHeadQuarterName();
+			long documento = betPlayDAO.getBetPlayList().get(i).getDocument();
+			String juego = "Bet play";
+
+			Object[] data = { dia, mes, ano, valorapostado, sede, documento, juego };
+			showBetOwn.getTablePanel().getModel().addRow(data);
+
+		}
+
+	}
+
+	/**
+	 * Funcion que actualiza la tabla de apuestas
+	 * 
+	 * @author Santiago Rueda
+	 */
+	public void updateTableBet() {
+		for (int i = loteriaDAO.getLoteryBetList().size() + balotoDAO.getBallotList().size()
+				+ superAstroDAO.getSuperAstroList().size() + chanceDAO.getChanceList().size()
+				+ betPlayDAO.getBetPlayList().size() - 1; i >= 0; i--) {
+
+			showBetOwn.getTablePanel().getModel().removeRow(i);
+
+		}
 	}
 
 }

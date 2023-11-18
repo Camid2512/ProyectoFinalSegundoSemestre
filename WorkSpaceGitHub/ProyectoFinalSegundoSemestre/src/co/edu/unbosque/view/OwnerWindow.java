@@ -25,9 +25,9 @@ public class OwnerWindow extends JFrame {
 	 * @version 1.0
 	 * @since 10/11/2023
 	 */
-	
+
 	private static final long serialVersionUID = -6815774728024611601L;
-	
+
 	/**
 	 * Estos son los atributos de las imagenes
 	 * 
@@ -38,7 +38,7 @@ public class OwnerWindow extends JFrame {
 	 */
 
 	private JLabel mainImage;
-	
+
 	/**
 	 * Estos son los atributos de los botones
 	 * 
@@ -47,9 +47,9 @@ public class OwnerWindow extends JFrame {
 	 * @version 1.0
 	 * @since 10/11/2023
 	 */
-	
+
 	private JButton mod1Btn, mod2Btn, mod3Btn, mod4Btn, mod5Btn, exit, back;
-	
+
 	/**
 	 * Este es el constructor vacio de la clase ventana dueno
 	 * 
@@ -87,7 +87,7 @@ public class OwnerWindow extends JFrame {
 		back.setBorderPainted(false);
 		add(back);
 
-		mod1Btn = new JButton("MOD 1");
+		mod1Btn = new JButton();
 		mod1Btn.setBounds(154, 191, 435, 69);
 		mod1Btn.setToolTipText("Boton gestion casa de apuestas");
 		mod1Btn.setBackground(new Color(0, 0, 0, 0));
@@ -96,7 +96,7 @@ public class OwnerWindow extends JFrame {
 		mod1Btn.setBorderPainted(false);
 		add(mod1Btn);
 
-		mod2Btn = new JButton("MOD 2");
+		mod2Btn = new JButton();
 		mod2Btn.setBounds(657, 191, 435, 69);
 		mod2Btn.setToolTipText("Boton gestion sedes");
 		mod2Btn.setBackground(new Color(0, 0, 0, 0));
@@ -105,7 +105,7 @@ public class OwnerWindow extends JFrame {
 		mod2Btn.setBorderPainted(false);
 		add(mod2Btn);
 
-		mod3Btn = new JButton("MOD 3");
+		mod3Btn = new JButton();
 		mod3Btn.setBounds(154, 337, 435, 69);
 		mod3Btn.setToolTipText("Boton gestion apostadores");
 		mod3Btn.setBackground(new Color(0, 0, 0, 0));
@@ -114,7 +114,7 @@ public class OwnerWindow extends JFrame {
 		mod3Btn.setBorderPainted(false);
 		add(mod3Btn);
 
-		mod4Btn = new JButton("MOD4");
+		mod4Btn = new JButton();
 		mod4Btn.setBounds(657, 337, 435, 69);
 		mod4Btn.setToolTipText("Boton gestion apuestas");
 		mod4Btn.setBackground(new Color(0, 0, 0, 0));
@@ -123,7 +123,7 @@ public class OwnerWindow extends JFrame {
 		mod4Btn.setBorderPainted(false);
 		add(mod4Btn);
 
-		mod5Btn = new JButton("MOD 5");
+		mod5Btn = new JButton();
 		mod5Btn.setBounds(428, 482, 394, 75);
 		mod5Btn.setToolTipText("Boton para consultas");
 		mod5Btn.setBackground(new Color(0, 0, 0, 0));
@@ -147,7 +147,7 @@ public class OwnerWindow extends JFrame {
 		add(mainImage);
 
 	}
-	
+
 	/**
 	 * Este es el getter de la imagen principal
 	 * 
@@ -160,7 +160,7 @@ public class OwnerWindow extends JFrame {
 	public JLabel getMainImage() {
 		return mainImage;
 	}
-	
+
 	/**
 	 * Este es el setter de la imagen principal
 	 * 
@@ -173,7 +173,7 @@ public class OwnerWindow extends JFrame {
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
-	
+
 	/**
 	 * Este es el getter del boton modulo 1
 	 * 
@@ -186,7 +186,7 @@ public class OwnerWindow extends JFrame {
 	public JButton getMod1Btn() {
 		return mod1Btn;
 	}
-	
+
 	/**
 	 * Este es el setter del boton modulo 1
 	 * 
@@ -199,7 +199,7 @@ public class OwnerWindow extends JFrame {
 	public void setMod1Btn(JButton mod1Btn) {
 		this.mod1Btn = mod1Btn;
 	}
-	
+
 	/**
 	 * Este es el getter del boton modulo 2
 	 * 
@@ -212,7 +212,7 @@ public class OwnerWindow extends JFrame {
 	public JButton getMod2Btn() {
 		return mod2Btn;
 	}
-	
+
 	/**
 	 * Este es el setter del boton modulo 2
 	 * 
@@ -225,7 +225,7 @@ public class OwnerWindow extends JFrame {
 	public void setMod2Btn(JButton mod2Btn) {
 		this.mod2Btn = mod2Btn;
 	}
-	
+
 	/**
 	 * Este es el getter del boton modulo 3
 	 * 
@@ -238,7 +238,7 @@ public class OwnerWindow extends JFrame {
 	public JButton getMod3Btn() {
 		return mod3Btn;
 	}
-	
+
 	/**
 	 * Este es el setter del boton modulo 3
 	 * 
@@ -251,7 +251,7 @@ public class OwnerWindow extends JFrame {
 	public void setMod3Btn(JButton mod3Btn) {
 		this.mod3Btn = mod3Btn;
 	}
-	
+
 	/**
 	 * Este es el getter del boton modulo 4
 	 * 
@@ -264,7 +264,7 @@ public class OwnerWindow extends JFrame {
 	public JButton getMod4Btn() {
 		return mod4Btn;
 	}
-	
+
 	/**
 	 * Este es el setter del boton modulo 4
 	 * 
@@ -277,7 +277,7 @@ public class OwnerWindow extends JFrame {
 	public void setMod4Btn(JButton mod4Btn) {
 		this.mod4Btn = mod4Btn;
 	}
-	
+
 	/**
 	 * Este es el getter del boton modulo 5
 	 * 
@@ -290,7 +290,7 @@ public class OwnerWindow extends JFrame {
 	public JButton getMod5Btn() {
 		return mod5Btn;
 	}
-	
+
 	/**
 	 * Este es el setter del boton modulo 5
 	 * 
@@ -303,7 +303,7 @@ public class OwnerWindow extends JFrame {
 	public void setMod5Btn(JButton mod5Btn) {
 		this.mod5Btn = mod5Btn;
 	}
-	
+
 	/**
 	 * Este es el getter del boton salir
 	 * 
@@ -316,7 +316,7 @@ public class OwnerWindow extends JFrame {
 	public JButton getExit() {
 		return exit;
 	}
-	
+
 	/**
 	 * Este es el setter del boton salir
 	 * 
@@ -329,7 +329,7 @@ public class OwnerWindow extends JFrame {
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
-	
+
 	/**
 	 * Este es el getter del boton atras
 	 * 
@@ -342,7 +342,7 @@ public class OwnerWindow extends JFrame {
 	public JButton getBack() {
 		return back;
 	}
-	
+
 	/**
 	 * Este es el setter del boton atras
 	 * 
@@ -355,7 +355,7 @@ public class OwnerWindow extends JFrame {
 	public void setBack(JButton back) {
 		this.back = back;
 	}
-	
+
 	/**
 	 * Este es el getter del serial
 	 * 

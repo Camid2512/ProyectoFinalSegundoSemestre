@@ -27,7 +27,7 @@ public class SelectCreateBetWindow extends JFrame {
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("SELECCIONAR SEDE A MOSTRAR");
+		setTitle("SELECCIONAR SEDE A MOSTRAR PARA APUESTA");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
