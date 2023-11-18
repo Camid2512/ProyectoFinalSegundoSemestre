@@ -29,8 +29,8 @@ public class ChanceDAO implements CRUDOperation {
 		// TODO Auto-generated constructor stub
 
 		chanceList = new ArrayList<ChanceDTO>();
-		FILENAME = "apuestas-chance.csv";
-		SERIAL_FILENAME = "apuestas-chanceserializable.csv";
+		FILENAME = "apuestas-chance.dat";
+		SERIAL_FILENAME = "apuestas-chanceserializable.dat";
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);

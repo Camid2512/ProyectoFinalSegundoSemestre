@@ -3,13 +3,13 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.persistence.BallotDAO;
+import co.edu.unbosque.model.persistence.ChanceDAO;
 import co.edu.unbosque.model.persistence.GamblerDAO;
 import co.edu.unbosque.model.persistence.GameDAO;
 import co.edu.unbosque.model.persistence.HeadquarterDAO;
@@ -92,6 +92,7 @@ public class Controller implements ActionListener {
 	private LoteryBetDAO loteriaDAO;
 	private BallotDAO balotoDAO;
 	private SuperAstroDAO superAstroDAO;
+	private ChanceDAO chanceDAO;
 
 	public Controller() {
 
@@ -104,6 +105,7 @@ public class Controller implements ActionListener {
 		loteriaDAO = new LoteryBetDAO();
 		balotoDAO = new BallotDAO();
 		superAstroDAO = new SuperAstroDAO();
+		chanceDAO = new ChanceDAO();
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
@@ -947,46 +949,58 @@ public class Controller implements ActionListener {
 		case "LOTERIAOWNER": {
 
 			loteriaWin.setVisible(true);
+			betMenuOwn.setVisible(false);
 			break;
 
 		}
 		case "BALOTOOWNER": {
 
 			balotoWin.setVisible(true);
+			betMenuOwn.setVisible(false);
 			break;
 
 		}
 		case "SUPERASTROOWNER": {
 
 			superastroWin.setVisible(true);
+			betMenuOwn.setVisible(false);
 			break;
 
 		}
 		case "CHANCEOWNER": {
 
 			chanceWin.setVisible(true);
+			betMenuOwn.setVisible(false);
+			for (int i = 0; i < 5; i++) {
+
+				generateRandomNumber();
+
+			}
 			break;
 		}
 		case "BACKLOTERIAWIN": {
-
+			betMenuOwn.setVisible(true);
 			loteriaWin.setVisible(false);
 			break;
 
 		}
 		case "BACKBALOTOWIN": {
 
+			betMenuOwn.setVisible(true);
 			balotoWin.setVisible(false);
 			break;
 
 		}
 		case "BACKSUPERASTROWIN": {
 
+			betMenuOwn.setVisible(true);
 			superastroWin.setVisible(false);
 			break;
 
 		}
 		case "BACKCHANCEWIN": {
 
+			betMenuOwn.setVisible(true);
 			chanceWin.setVisible(false);
 			break;
 
@@ -1034,6 +1048,13 @@ public class Controller implements ActionListener {
 		case "NEXTCHANCEWIN": {
 
 			makeChanceBetOwn();
+
+			chanceWin.getBetAmount().setText(null);
+			chanceWin.getNum1().removeAllItems();
+			chanceWin.getNum2().removeAllItems();
+			chanceWin.getNum3().removeAllItems();
+			chanceWin.getNum4().removeAllItems();
+
 			break;
 
 		}
@@ -1724,18 +1745,52 @@ public class Controller implements ActionListener {
 		int num3 = rand3.nextInt(99);
 		int num4 = rand4.nextInt(99);
 
-		for (int i = 0; i < 5; i++) {
-
-			chanceWin.getNum1().addItem(num1);
-			chanceWin.getNum2().addItem(num2);
-			chanceWin.getNum3().addItem(num3);
-			chanceWin.getNum4().addItem(num4);
-
-		}
+		chanceWin.getNum1().addItem(num1);
+		chanceWin.getNum2().addItem(num2);
+		chanceWin.getNum3().addItem(num3);
+		chanceWin.getNum4().addItem(num4);
 
 	}
 
 	public void makeChanceBetOwn() {
+		LocalDate actualDate = LocalDate.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String betPlaced = chanceWin.getBetAmount().getText();
+
+		String headQuarterName = selcreatebet.getComboVenue().getSelectedItem().toString();
+
+		String document = selGamCreateBetOwn.getComboGambler().getSelectedItem().toString();
+
+		String loteryName = "SANTI HACE ESTO POR FAVOR NO SE TE OLVIDE";
+
+		String num1 = chanceWin.getNum1().getSelectedItem().toString();
+		String num2 = chanceWin.getNum2().getSelectedItem().toString();
+		String num3 = chanceWin.getNum3().getSelectedItem().toString();
+		String num4 = chanceWin.getNum4().getSelectedItem().toString();
+
+		String numbers = num1 + num2 + num3 + num4;
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+			chanceDAO.create(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers);
+			JOptionPane.showMessageDialog(chanceWin,
+					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+		} else {
+
+		}
 
 	}
 
