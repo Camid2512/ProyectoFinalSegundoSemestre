@@ -53,11 +53,14 @@ public class SuperAstroDAO implements CRUDOperation {
 		superAstro.setDay(Integer.parseInt(attribs[0]));
 		superAstro.setMonth(Integer.parseInt(attribs[1]));
 		superAstro.setYear(Integer.parseInt(attribs[2]));
-		superAstro.setBetPlaced(Double.parseDouble(attribs[3]));
-		superAstro.setHeadQuarterName(attribs[4]);
-		superAstro.setDocument(Long.parseLong(attribs[5]));
-		superAstro.setNumber(Integer.parseInt(attribs[6]));
-		superAstro.setZodiacSign(attribs[7]);
+		superAstro.setHour(Integer.parseInt(attribs[3]));
+		superAstro.setMinute(Integer.parseInt(attribs[4]));
+		superAstro.setSecond(Integer.parseInt(attribs[5]));
+		superAstro.setBetPlaced(Double.parseDouble(attribs[6]));
+		superAstro.setHeadQuarterName(attribs[7]);
+		superAstro.setDocument(Long.parseLong(attribs[8]));
+		superAstro.setNumber(Integer.parseInt(attribs[9]));
+		superAstro.setZodiacSign(attribs[10]);
 
 		superAstroList.add(superAstro);
 		writeFile();
@@ -164,14 +167,17 @@ public class SuperAstroDAO implements CRUDOperation {
 			int day = Integer.parseInt(cols[0]);
 			int month = Integer.parseInt(cols[1]);
 			int year = Integer.parseInt(cols[2]);
-			double betPlaced = Double.parseDouble(cols[3]);
-			String headQuarterName = cols[4];
-			long document = Long.parseLong(cols[5]);
-			int number = Integer.parseInt(cols[6]);
-			String zodiacSign = cols[7];
+			int hour = Integer.parseInt(cols[3]);
+			int minute = Integer.parseInt(cols[4]);
+			int second = Integer.parseInt(cols[5]);
+			double betPlaced = Double.parseDouble(cols[6]);
+			String headQuarterName = cols[7];
+			long document = Long.parseLong(cols[8]);
+			int number = Integer.parseInt(cols[9]);
+			String zodiacSign = cols[10];
 
 			superAstroList
-					.add(new SuperAstroDTO(day, month, year, betPlaced, headQuarterName, document, number, zodiacSign));
+					.add(new SuperAstroDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, number, zodiacSign));
 
 		}
 	}
@@ -187,6 +193,9 @@ public class SuperAstroDAO implements CRUDOperation {
 			content += superAstro.getDay() + ";";
 			content += superAstro.getMonth() + ";";
 			content += superAstro.getYear() + ";";
+			content += superAstro.getHour() + ";";
+			content += superAstro.getMinute() + ";";
+			content += superAstro.getSecond() + ";";
 			content += superAstro.getBetPlaced() + ";";
 			content += superAstro.getHeadQuarterName() + ";";
 			content += superAstro.getDocument() + ";";

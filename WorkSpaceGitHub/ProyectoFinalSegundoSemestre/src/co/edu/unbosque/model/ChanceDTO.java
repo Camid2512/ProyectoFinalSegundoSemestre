@@ -20,16 +20,17 @@ public class ChanceDTO extends BetDTO {
 		this.numbers = numbers;
 	}
 
-	public ChanceDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document,
-			String loteryName, int numbers) {
-		super(day, month, year, betPlaced, headQuarterName, document);
-		this.loteryName = loteryName;
-		this.numbers = numbers;
+	public ChanceDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document) {
+		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
+		// TODO Auto-generated constructor stub
 	}
 
-	public ChanceDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document) {
-		super(day, month, year, betPlaced, headQuarterName, document);
-		// TODO Auto-generated constructor stub
+	public ChanceDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document, String loteryName, int numbers) {
+		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
+		this.loteryName = loteryName;
+		this.numbers = numbers;
 	}
 
 	public String getLoteryName() {

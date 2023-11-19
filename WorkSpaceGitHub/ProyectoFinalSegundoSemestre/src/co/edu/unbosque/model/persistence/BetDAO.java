@@ -51,9 +51,13 @@ public class BetDAO implements CRUDOperation {
 		bet.setDay(Integer.parseInt(attribs[0]));
 		bet.setMonth(Integer.parseInt(attribs[1]));
 		bet.setYear(Integer.parseInt(attribs[2]));
-		bet.setBetPlaced(Double.parseDouble(attribs[3]));
-		bet.setHeadQuarterName(attribs[4]);
-		bet.setDocument(Long.parseLong(attribs[5]));
+		bet.setHour(Integer.parseInt(attribs[3]));
+		bet.setMinute(Integer.parseInt(attribs[4]));
+		bet.setSecond(Integer.parseInt(attribs[5]));
+		bet.setBetPlaced(Double.parseDouble(attribs[6]));
+		bet.setHeadQuarterName(attribs[7]);
+		bet.setDocument(Long.parseLong(attribs[8]));
+
 
 		betList.add(bet);
 		writeFile();
@@ -153,11 +157,14 @@ public class BetDAO implements CRUDOperation {
 			int day = Integer.parseInt(cols[0]);
 			int month = Integer.parseInt(cols[1]);
 			int year = Integer.parseInt(cols[2]);
-			double betPlaced = Double.parseDouble(cols[3]);
-			String headQuarterName = cols[4];
-			long document = Long.parseLong(cols[5]);
+			int hour = Integer.parseInt(cols[3]);
+			int minute = Integer.parseInt(cols[4]);
+			int second = Integer.parseInt(cols[5]);
+			double betPlaced = Double.parseDouble(cols[6]);
+			String headQuarterName = cols[7];
+			long document = Long.parseLong(cols[8]);
 
-			betList.add(new BetDTO(day, month, year, betPlaced, headQuarterName, document));
+			betList.add(new BetDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document));
 
 		}
 	}
@@ -173,6 +180,9 @@ public class BetDAO implements CRUDOperation {
 			content += bet.getDay() + ";";
 			content += bet.getMonth() + ";";
 			content += bet.getYear() + ";";
+			content += bet.getHour() + ";";
+			content += bet.getMinute() + ";";
+			content += bet.getSecond() + ";";
 			content += bet.getBetPlaced() + ";";
 			content += bet.getHeadQuarterName() + ";";
 			content += bet.getDocument() + ";BET\n";

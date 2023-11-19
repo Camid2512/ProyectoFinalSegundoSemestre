@@ -3,6 +3,7 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -54,6 +55,7 @@ import co.edu.unbosque.view.ShowVenueOwn;
 import co.edu.unbosque.view.SignUpWindow;
 import co.edu.unbosque.view.SuperAstroWindow;
 import co.edu.unbosque.view.UpdateVenueByOwnerWindow;
+import co.edu.unbosque.view.VenueManagerMenu;
 import co.edu.unbosque.view.VenueManagmentByOwnerWindow;
 
 public class Controller implements ActionListener {
@@ -92,6 +94,7 @@ public class Controller implements ActionListener {
 	private SelVenuToDeleteBetOwner selVenDelBetOwn;
 	private SelGamblerDeleteBetOwnWindow selGamDelBetOwn;
 	private SelBetToDeleteOwn selBetDeleteOwn;
+	private VenueManagerMenu managerMenuWin;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -156,6 +159,7 @@ public class Controller implements ActionListener {
 		selVenDelBetOwn = new SelVenuToDeleteBetOwner();
 		selGamDelBetOwn = new SelGamblerDeleteBetOwnWindow();
 		selBetDeleteOwn = new SelBetToDeleteOwn();
+		managerMenuWin = new VenueManagerMenu();
 
 		agregarLectores();
 
@@ -1232,6 +1236,8 @@ public class Controller implements ActionListener {
 
 			selBetDeleteOwn.setVisible(true);
 			selGamDelBetOwn.setVisible(false);
+			Long aux = Long.parseLong(selGamDelBetOwn.getComboGambler().getSelectedItem().toString());
+			updateSelectBetDeleteBet(aux);
 			break;
 
 		}
@@ -1257,6 +1263,7 @@ public class Controller implements ActionListener {
 		String passToCheck = logWind.getPassword().getText();
 
 		int cont = 0;
+		String id = "";
 		for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
 
 			if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
@@ -1268,6 +1275,7 @@ public class Controller implements ActionListener {
 					if (nameToCheck.equals(bossDAO.getHeadquarterManagerList().get(j).getUser())
 							&& passToCheck.equals(bossDAO.getHeadquarterManagerList().get(j).getPassword())) {
 						cont = 2;
+						id = bossDAO.getHeadquarterManagerList().get(j).getId();
 					} else {
 
 					}
@@ -1288,7 +1296,19 @@ public class Controller implements ActionListener {
 		if (cont == 2) {
 
 			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
-			balotoWin.setVisible(true);
+
+			for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
+
+				if (id.equals(venueDAO.getHeadquarterList().get(j).getId())) {
+
+					managerMenuWin.getNameVenue()
+							.setText("      " + venueDAO.getHeadquarterList().get(j).getVenueName());
+
+				}
+
+			}
+
+			managerMenuWin.setVisible(true);
 
 		}
 
@@ -1645,6 +1665,49 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	public void updateSelectBetDeleteBet(long data) {
+		if (!loteriaDAO.getLoteryBetList().isEmpty() || !balotoDAO.getBallotList().isEmpty()
+				|| !superAstroDAO.getSuperAstroList().isEmpty() || !chanceDAO.getChanceList().isEmpty()
+				|| !betPlayDAO.getBetPlayList().isEmpty()) {
+			selBetDeleteOwn.getComboGambler().removeAllItems();
+			for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+				if (data == (loteriaDAO.getLoteryBetList().get(i).getDocument())) {
+					selBetDeleteOwn.getComboGambler().addItem(
+							"Apuesta en loteria de valor " + loteriaDAO.getLoteryBetList().get(i).getBetPlaced());
+				}
+			}
+			for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+				if (data == (balotoDAO.getBallotList().get(i).getDocument())) {
+					selBetDeleteOwn.getComboGambler()
+							.addItem("Apuesta en baloto de valor " + balotoDAO.getBallotList().get(i).getBetPlaced());
+				}
+			}
+			for (int i = 0; i < superAstroDAO.getSuperAstroList().size(); i++) {
+				if (data == (superAstroDAO.getSuperAstroList().get(i).getDocument())) {
+					selBetDeleteOwn.getComboGambler().addItem("Apuesta en super astro de valor "
+							+ superAstroDAO.getSuperAstroList().get(i).getBetPlaced());
+				}
+			}
+			for (int i = 0; i < chanceDAO.getChanceList().size(); i++) {
+				if (data == (chanceDAO.getChanceList().get(i).getDocument())) {
+					selBetDeleteOwn.getComboGambler()
+							.addItem("Apuesta en chance de valor " + chanceDAO.getChanceList().get(i).getBetPlaced());
+				}
+			}
+			for (int i = 0; i < betPlayDAO.getBetPlayList().size(); i++) {
+				if (data == (betPlayDAO.getBetPlayList().get(i).getDocument())) {
+					selBetDeleteOwn.getComboGambler().addItem(
+							"Apuesta en bet play de valor " + betPlayDAO.getBetPlayList().get(i).getBetPlaced());
+				}
+			}
+
+		}
+	}
+
+//	public void DeleteBet(String data) {
+//		if(data.equals(data))
+//	}
+
 	public void updateSelectGamblerDelete(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGamToDeleteWinOwn.getComboGambler().removeAllItems();
@@ -1762,13 +1825,17 @@ public class Controller implements ActionListener {
 
 	public void makeLoteryBetOwn() {
 
-		LocalDate actualDate = LocalDate.now();
+		LocalDateTime actualDate = LocalDateTime.now();
 
 		String day = String.valueOf(actualDate.getDayOfMonth());
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
-		String date = day + "/" + month + "/" + year;
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
 
 		String betPlaced = loteriaWin.getBetAmount().getText();
 
@@ -1802,20 +1869,24 @@ public class Controller implements ActionListener {
 			confirmation = true;
 		}
 		if (confirmation) {
-			loteriaDAO.create(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers, serialNum);
+			loteriaDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName,
+					numbers, serialNum);
 
 			betManOwn.setVisible(true);
 			loteriaWin.setVisible(false);
 
 			JOptionPane.showMessageDialog(loteriaWin,
 					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
-			receiptDAO.create(date, name, document, headQuarterName, typeBet);
-			receiptWindow.setVisible(true);
-			receiptWindow.getDate().setText(date);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
 			receiptWindow.getFullName().setText(name);
 			receiptWindow.getDocument().setText(document);
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
+			betManOwn.setVisible(true);
+			receiptWindow.setVisible(true);
+			loteriaWin.setVisible(false);
+
 		} else {
 
 		}
@@ -1824,13 +1895,17 @@ public class Controller implements ActionListener {
 
 	public void makeBalotoBetOwn() {
 
-		LocalDate actualDate = LocalDate.now();
+		LocalDateTime actualDate = LocalDateTime.now();
 
 		String day = String.valueOf(actualDate.getDayOfMonth());
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
-		String date = day + "/" + month + "/" + year;
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
 
 		String betPlaced = balotoWin.getBetAmount().getText();
 
@@ -1862,18 +1937,18 @@ public class Controller implements ActionListener {
 			confirmation = true;
 		}
 		if (confirmation) {
-			balotoDAO.create(day, month, year, betPlaced, headQuarterName, document, numbers);
+			balotoDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, numbers);
 			JOptionPane.showMessageDialog(balotoWin, "HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2
 					+ "-" + num3 + "-" + num4 + "-" + num5 + "-" + num6);
-			receiptDAO.create(date, name, document, headQuarterName, typeBet);
-			receiptWindow.setVisible(true);
-			receiptWindow.getDate().setText(date);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
 			receiptWindow.getFullName().setText(name);
 			receiptWindow.getDocument().setText(document);
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
 
 			betManOwn.setVisible(true);
+			receiptWindow.setVisible(true);
 			balotoWin.setVisible(false);
 
 		} else {
@@ -1884,13 +1959,17 @@ public class Controller implements ActionListener {
 
 	public void makeSuperAstroBetOwn() {
 
-		LocalDate actualDate = LocalDate.now();
+		LocalDateTime actualDate = LocalDateTime.now();
 
 		String day = String.valueOf(actualDate.getDayOfMonth());
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
-		String date = day + "/" + month + "/" + year;
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
 
 		String betPlaced = superastroWin.getBetAmount().getText();
 
@@ -1922,18 +2001,19 @@ public class Controller implements ActionListener {
 			confirmation = true;
 		}
 		if (confirmation) {
-			superAstroDAO.create(day, month, year, betPlaced, headQuarterName, document, numbers, zodiacSign);
+			superAstroDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, numbers,
+					zodiacSign);
 			JOptionPane.showMessageDialog(superastroWin,
 					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
-			receiptDAO.create(date, name, document, headQuarterName, typeBet);
-			receiptWindow.setVisible(true);
-			receiptWindow.getDate().setText(date);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
 			receiptWindow.getFullName().setText(name);
 			receiptWindow.getDocument().setText(document);
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
 
 			betManOwn.setVisible(true);
+			receiptWindow.setVisible(true);
 			superastroWin.setVisible(false);
 
 		} else {
@@ -1961,13 +2041,17 @@ public class Controller implements ActionListener {
 	}
 
 	public void makeChanceBetOwn() {
-		LocalDate actualDate = LocalDate.now();
+		LocalDateTime actualDate = LocalDateTime.now();
 
 		String day = String.valueOf(actualDate.getDayOfMonth());
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
-		String date = day + "/" + month + "/" + year;
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
 
 		String betPlaced = chanceWin.getBetAmount().getText();
 
@@ -2002,18 +2086,19 @@ public class Controller implements ActionListener {
 			confirmation = false;
 		}
 		if (confirmation) {
-			chanceDAO.create(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers);
+			chanceDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName,
+					numbers);
 			JOptionPane.showMessageDialog(chanceWin,
 					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
-			receiptDAO.create(date, name, document, headQuarterName, typeBet);
-			receiptWindow.setVisible(true);
-			receiptWindow.getDate().setText(date);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
 			receiptWindow.getFullName().setText(name);
 			receiptWindow.getDocument().setText(document);
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
 
 			betManOwn.setVisible(true);
+			receiptWindow.setVisible(true);
 			chanceWin.setVisible(false);
 
 		} else {
@@ -2022,13 +2107,17 @@ public class Controller implements ActionListener {
 	}
 
 	public void makeBetPlayBetOwn() {
-		LocalDate actualDate = LocalDate.now();
+		LocalDateTime actualDate = LocalDateTime.now();
 
 		String day = String.valueOf(actualDate.getDayOfMonth());
 		String month = String.valueOf(actualDate.getMonthValue());
 		String year = String.valueOf(actualDate.getYear());
 
-		String date = day + "/" + month + "/" + year;
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
 
 		String betPlaced = betplayWin.getBetAmount().getText();
 
@@ -2067,20 +2156,21 @@ public class Controller implements ActionListener {
 		}
 		if (confirmation) {
 
-			betPlayDAO.create(day, month, year, betPlaced, headQuarterName, document, match1, match2, match3, match4,
-					match5, match6, match7, match8, match9, match10, match11, match12, match13, match14);
+			betPlayDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, match1,
+					match2, match3, match4, match5, match6, match7, match8, match9, match10, match11, match12, match13,
+					match14);
 
 			JOptionPane.showMessageDialog(betplayWin, "HAS REALIZADO LA APUESTA CON EXITO");
 
-			receiptDAO.create(date, name, document, headQuarterName, typeBet);
-			receiptWindow.setVisible(true);
-			receiptWindow.getDate().setText(date);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
 			receiptWindow.getFullName().setText(name);
 			receiptWindow.getDocument().setText(document);
 			receiptWindow.getVenueBet().setText(headQuarterName);
 			receiptWindow.getTypeBet().setText(typeBet);
 
 			betManOwn.setVisible(true);
+			receiptWindow.setVisible(true);
 			betplayWin.setVisible(false);
 
 		} else {

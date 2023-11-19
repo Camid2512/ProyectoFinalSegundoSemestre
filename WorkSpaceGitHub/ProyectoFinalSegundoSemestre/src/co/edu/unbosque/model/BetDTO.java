@@ -11,6 +11,9 @@ public class BetDTO implements Serializable{
 	private int day;
 	private int month;
 	private int year;
+	private int hour;
+	private int minute;
+	private int second;
 
 	private double betPlaced;
 
@@ -21,11 +24,15 @@ public class BetDTO implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public BetDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document) {
+	public BetDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document) {
 		super();
 		this.day = day;
 		this.month = month;
 		this.year = year;
+		this.hour = hour;
+		this.minute = minute;
+		this.second = second;
 		this.betPlaced = betPlaced;
 		this.headQuarterName = headQuarterName;
 		this.document = document;
@@ -55,6 +62,30 @@ public class BetDTO implements Serializable{
 		this.year = year;
 	}
 
+	public int getHour() {
+		return hour;
+	}
+
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
+
+	public int getMinute() {
+		return minute;
+	}
+
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
+
+	public int getSecond() {
+		return second;
+	}
+
+	public void setSecond(int second) {
+		this.second = second;
+	}
+
 	public double getBetPlaced() {
 		return betPlaced;
 	}
@@ -79,10 +110,10 @@ public class BetDTO implements Serializable{
 		this.document = document;
 	}
 
-	@Override
-	public String toString() {
-		return "BetDTO [day=" + day + ", month=" + month + ", year=" + year + ", betPlaced=" + betPlaced
-				+ ", headQuarterName=" + headQuarterName + ", document=" + document + "]";
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
+
+	
 
 }

@@ -51,11 +51,14 @@ public class ChanceDAO implements CRUDOperation {
 		cha.setDay(Integer.parseInt(attribs[0]));
 		cha.setMonth(Integer.parseInt(attribs[1]));
 		cha.setYear(Integer.parseInt(attribs[2]));
-		cha.setBetPlaced(Double.parseDouble(attribs[3]));
-		cha.setHeadQuarterName(attribs[4]);
-		cha.setDocument(Long.parseLong(attribs[5]));
-		cha.setLoteryName(attribs[6]);
-		cha.setNumbers(Integer.parseInt(attribs[7]));
+		cha.setHour(Integer.parseInt(attribs[3]));
+		cha.setMinute(Integer.parseInt(attribs[4]));
+		cha.setSecond(Integer.parseInt(attribs[5]));
+		cha.setBetPlaced(Double.parseDouble(attribs[6]));
+		cha.setHeadQuarterName(attribs[7]);
+		cha.setDocument(Long.parseLong(attribs[8]));
+		cha.setLoteryName(attribs[9]);
+		cha.setNumbers(Integer.parseInt(attribs[10]));
 
 		chanceList.add(cha);
 		writeFile();
@@ -161,13 +164,16 @@ public class ChanceDAO implements CRUDOperation {
 			int day = Integer.parseInt(cols[0]);
 			int month = Integer.parseInt(cols[1]);
 			int year = Integer.parseInt(cols[2]);
-			double betPlaced = Double.parseDouble(cols[3]);
-			String headQuarterName = cols[4];
-			long document = Long.parseLong(cols[5]);
-			String loteryName = cols[6];
-			int numbers = Integer.parseInt(cols[7]);
+			int hour = Integer.parseInt(cols[3]);
+			int minute = Integer.parseInt(cols[4]);
+			int second = Integer.parseInt(cols[5]);
+			double betPlaced = Double.parseDouble(cols[6]);
+			String headQuarterName = cols[7];
+			long document = Long.parseLong(cols[8]);
+			String loteryName = cols[9];
+			int numbers = Integer.parseInt(cols[10]);
 
-			chanceList.add(new ChanceDTO(day, month, year, betPlaced, headQuarterName, document, loteryName, numbers));
+			chanceList.add(new ChanceDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName, numbers));
 
 		}
 	}
@@ -183,6 +189,9 @@ public class ChanceDAO implements CRUDOperation {
 			content += bet.getDay() + ";";
 			content += bet.getMonth() + ";";
 			content += bet.getYear() + ";";
+			content += bet.getHour() + ";";
+			content += bet.getMinute() + ";";
+			content += bet.getSecond() + ";";
 			content += bet.getBetPlaced() + ";";
 			content += bet.getHeadQuarterName() + ";";
 			content += bet.getDocument() + ";";

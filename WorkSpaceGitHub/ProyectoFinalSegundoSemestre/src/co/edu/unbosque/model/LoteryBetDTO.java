@@ -21,17 +21,18 @@ public class LoteryBetDTO extends BetDTO {
 		this.serialNum = serialNum;
 	}
 
-	public LoteryBetDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document,
-			String loteryName, int numbers, int serialNum) {
-		super(day, month, year, betPlaced, headQuarterName, document);
+	public LoteryBetDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document) {
+		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
+		// TODO Auto-generated constructor stub
+	}
+
+	public LoteryBetDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document, String loteryName, int numbers, int serialNum) {
+		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
 		this.loteryName = loteryName;
 		this.numbers = numbers;
 		this.serialNum = serialNum;
-	}
-
-	public LoteryBetDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document) {
-		super(day, month, year, betPlaced, headQuarterName, document);
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getLoteryName() {

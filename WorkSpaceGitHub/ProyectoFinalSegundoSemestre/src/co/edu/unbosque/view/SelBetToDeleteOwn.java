@@ -17,7 +17,7 @@ public class SelBetToDeleteOwn extends JFrame {
 	 */
 	private static final long serialVersionUID = -7122147527086186987L;
 
-	private JComboBox<Long> comboGambler;
+	private JComboBox<String> comboGambler;
 	private JButton exit, back, nextStep;
 	private JLabel mainImage;
 
@@ -82,11 +82,11 @@ public class SelBetToDeleteOwn extends JFrame {
 
 	}
 
-	public JComboBox<Long> getComboGambler() {
+	public JComboBox<String> getComboGambler() {
 		return comboGambler;
 	}
 
-	public void setComboGambler(JComboBox<Long> comboGambler) {
+	public void setComboGambler(JComboBox<String> comboGambler) {
 		this.comboGambler = comboGambler;
 	}
 

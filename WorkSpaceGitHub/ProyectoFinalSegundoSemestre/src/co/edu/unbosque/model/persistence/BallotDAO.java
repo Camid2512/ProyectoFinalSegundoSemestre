@@ -53,10 +53,13 @@ public class BallotDAO implements CRUDOperation {
 		ballot.setDay(Integer.parseInt(attribs[0]));
 		ballot.setMonth(Integer.parseInt(attribs[1]));
 		ballot.setYear(Integer.parseInt(attribs[2]));
-		ballot.setBetPlaced(Double.parseDouble(attribs[3]));
-		ballot.setHeadQuarterName(attribs[4]);
-		ballot.setDocument(Long.parseLong(attribs[5]));
-		ballot.setNumber(Integer.parseInt(attribs[6]));
+		ballot.setHour(Integer.parseInt(attribs[3]));
+		ballot.setMinute(Integer.parseInt(attribs[4]));
+		ballot.setSecond(Integer.parseInt(attribs[5]));
+		ballot.setBetPlaced(Double.parseDouble(attribs[6]));
+		ballot.setHeadQuarterName(attribs[7]);
+		ballot.setDocument(Long.parseLong(attribs[8]));
+		ballot.setNumber(Integer.parseInt(attribs[9]));
 
 		ballotList.add(ballot);
 		writeFile();
@@ -161,12 +164,15 @@ public class BallotDAO implements CRUDOperation {
 			int day = Integer.parseInt(cols[0]);
 			int month = Integer.parseInt(cols[1]);
 			int year = Integer.parseInt(cols[2]);
-			double betPlaced = Double.parseDouble(cols[3]);
-			String headQuarterName = cols[4];
-			long document = Long.parseLong(cols[5]);
-			int number = Integer.parseInt(cols[6]);
+			int hour = Integer.parseInt(cols[3]);
+			int minute = Integer.parseInt(cols[4]);
+			int second = Integer.parseInt(cols[5]);
+			double betPlaced = Double.parseDouble(cols[6]);
+			String headQuarterName = cols[7];
+			long document = Long.parseLong(cols[8]);
+			int number = Integer.parseInt(cols[9]);
 
-			ballotList.add(new BallotDTO(day, month, year, betPlaced, headQuarterName, document, number));
+			ballotList.add(new BallotDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, number));
 
 		}
 	}
@@ -182,6 +188,9 @@ public class BallotDAO implements CRUDOperation {
 			content += ballot.getDay() + ";";
 			content += ballot.getMonth() + ";";
 			content += ballot.getYear() + ";";
+			content += ballot.getHour() + ";";
+			content += ballot.getMinute() + ";";
+			content += ballot.getSecond() + ";";
 			content += ballot.getBetPlaced() + ";";
 			content += ballot.getHeadQuarterName() + ";";
 			content += ballot.getDocument() + ";";

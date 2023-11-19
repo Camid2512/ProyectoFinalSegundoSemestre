@@ -49,7 +49,7 @@ public class ReceiptWindow extends JFrame {
 		date.setBackground(new Color(0, 0, 0, 0));
 		date.setOpaque(false);
 		date.setBorder(new EmptyBorder(15, 15, 15, 15));
-		date.setFont(new Font("Arial", 1, 40));
+		date.setFont(new Font("Arial", 1, 35));
 		date.setForeground(Color.black);
 		date.setEditable(false);
 		date.setHighlighter(null);

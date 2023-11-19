@@ -19,15 +19,16 @@ public class BallotDTO extends BetDTO implements Serializable {
 		this.number = number;
 	}
 
-	public BallotDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document,
-			int number) {
-		super(day, month, year, betPlaced, headQuarterName, document);
-		this.number = number;
+	public BallotDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document) {
+		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
+		// TODO Auto-generated constructor stub
 	}
 
-	public BallotDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document) {
-		super(day, month, year, betPlaced, headQuarterName, document);
-		// TODO Auto-generated constructor stub
+	public BallotDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document, int number) {
+		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
+		this.number = number;
 	}
 
 	public int getNumber() {

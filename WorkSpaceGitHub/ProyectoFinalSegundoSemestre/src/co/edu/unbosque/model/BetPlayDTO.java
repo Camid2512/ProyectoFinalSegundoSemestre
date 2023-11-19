@@ -44,10 +44,19 @@ public class BetPlayDTO extends BetDTO {
 		this.match14 = match14;
 	}
 
-	public BetPlayDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document, int match1,
-			int match2, int match3, int match4, int match5, int match6, int match7, int match8, int match9, int match10,
-			int match11, int match12, int match13, int match14) {
-		super(day, month, year, betPlaced, headQuarterName, document);
+	
+
+	public BetPlayDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document) {
+		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
+		// TODO Auto-generated constructor stub
+	}
+
+	public BetPlayDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
+			String headQuarterName, long document, int match1, int match2, int match3, int match4, int match5,
+			int match6, int match7, int match8, int match9, int match10, int match11, int match12, int match13,
+			int match14) {
+		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
 		this.match1 = match1;
 		this.match2 = match2;
 		this.match3 = match3;
@@ -62,11 +71,6 @@ public class BetPlayDTO extends BetDTO {
 		this.match12 = match12;
 		this.match13 = match13;
 		this.match14 = match14;
-	}
-
-	public BetPlayDTO(int day, int month, int year, double betPlaced, String headQuarterName, long document) {
-		super(day, month, year, betPlaced, headQuarterName, document);
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getMatch1() {

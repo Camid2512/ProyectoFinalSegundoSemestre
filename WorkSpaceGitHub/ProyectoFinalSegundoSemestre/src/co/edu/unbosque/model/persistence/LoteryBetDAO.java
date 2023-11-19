@@ -53,12 +53,15 @@ public class LoteryBetDAO implements CRUDOperation {
 		loterybet.setDay(Integer.parseInt(attribs[0]));
 		loterybet.setMonth(Integer.parseInt(attribs[1]));
 		loterybet.setYear(Integer.parseInt(attribs[2]));
-		loterybet.setBetPlaced(Double.parseDouble(attribs[3]));
-		loterybet.setHeadQuarterName(attribs[4]);
-		loterybet.setDocument(Long.parseLong(attribs[5]));
-		loterybet.setLoteryName(attribs[6]);
-		loterybet.setNumbers(Integer.parseInt(attribs[7]));
-		loterybet.setSerialNum(Integer.parseInt(attribs[8]));
+		loterybet.setHour(Integer.parseInt(attribs[3]));
+		loterybet.setMinute(Integer.parseInt(attribs[4]));
+		loterybet.setSecond(Integer.parseInt(attribs[5]));
+		loterybet.setBetPlaced(Double.parseDouble(attribs[6]));
+		loterybet.setHeadQuarterName(attribs[7]);
+		loterybet.setDocument(Long.parseLong(attribs[8]));
+		loterybet.setLoteryName(attribs[9]);
+		loterybet.setNumbers(Integer.parseInt(attribs[10]));
+		loterybet.setSerialNum(Integer.parseInt(attribs[11]));
 
 		loteryBetList.add(loterybet);
 		writeFile();
@@ -167,14 +170,17 @@ public class LoteryBetDAO implements CRUDOperation {
 			int day = Integer.parseInt(cols[0]);
 			int month = Integer.parseInt(cols[1]);
 			int year = Integer.parseInt(cols[2]);
-			double betPlaced = Double.parseDouble(cols[3]);
-			String headQuarterName = cols[4];
-			long document = Long.parseLong(cols[5]);
-			String loteryName = cols[6];
-			int number = Integer.parseInt(cols[7]);
-			int serialNum = Integer.parseInt(cols[8]);
+			int hour = Integer.parseInt(cols[3]);
+			int minute = Integer.parseInt(cols[4]);
+			int second = Integer.parseInt(cols[5]);
+			double betPlaced = Double.parseDouble(cols[6]);
+			String headQuarterName = cols[7];
+			long document = Long.parseLong(cols[8]);
+			String loteryName = cols[9];
+			int number = Integer.parseInt(cols[10]);
+			int serialNum = Integer.parseInt(cols[11]);
 
-			loteryBetList.add(new LoteryBetDTO(day, month, year, betPlaced, headQuarterName, document, loteryName,
+			loteryBetList.add(new LoteryBetDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName,
 					number, serialNum));
 
 		}
@@ -191,6 +197,9 @@ public class LoteryBetDAO implements CRUDOperation {
 			content += loteryBet.getDay() + ";";
 			content += loteryBet.getMonth() + ";";
 			content += loteryBet.getYear() + ";";
+			content += loteryBet.getHour() + ";";
+			content += loteryBet.getMinute() + ";";
+			content += loteryBet.getSecond() + ";";
 			content += loteryBet.getBetPlaced() + ";";
 			content += loteryBet.getHeadQuarterName() + ";";
 			content += loteryBet.getDocument() + ";";
