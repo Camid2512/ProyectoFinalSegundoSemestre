@@ -662,6 +662,17 @@ public class Controller implements ActionListener {
 		createGambManager.getCreateGambler().addActionListener(this);
 		createGambManager.getCreateGambler().setActionCommand("CREATE GAMBLER MANAGER");
 
+		// BOTONES ELEGIR APOSTADOR A ACTUALIZAR POR JEFE DE SEDE
+
+		selGambUpdateManager.getExit().addActionListener(this);
+		selGambUpdateManager.getExit().setActionCommand("EXIT");
+
+		selGambUpdateManager.getBack().addActionListener(this);
+		selGambUpdateManager.getBack().setActionCommand("BACK SELECTGAM UPDATE MANAGER");
+
+		selGambUpdateManager.getNextStep().addActionListener(this);
+		selGambUpdateManager.getNextStep().setActionCommand("NEXT SELECTGAM UPDATE MANAGER");
+
 		// BOTONES ACTUALIZAR APOSTADOR POR JEFE DE SEDE
 
 		updateGambManager.getExit().addActionListener(this);
@@ -1454,9 +1465,23 @@ public class Controller implements ActionListener {
 			break;
 
 		}
-		case "BACK UPDATE GAMBLER MANAGER": {
+		case "BACK SELECTGAM UPDATE MANAGER": {
 
 			gamblerManagManager.setVisible(true);
+			selGambUpdateManager.setVisible(false);
+			break;
+
+		}
+		case "NEXT SELECTGAM UPDATE MANAGER": {
+
+			updateGambManager.setVisible(true);
+			selGambUpdateManager.setVisible(false);
+			break;
+
+		}
+		case "BACK UPDATE GAMBLER MANAGER": {
+
+			selGambUpdateManager.setVisible(true);
 			updateGambManager.setVisible(false);
 			break;
 
