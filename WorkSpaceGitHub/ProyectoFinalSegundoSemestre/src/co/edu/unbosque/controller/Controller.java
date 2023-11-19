@@ -51,6 +51,7 @@ import co.edu.unbosque.view.SelectDeleteGamblerOwnWindow;
 import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindowToDelete;
+import co.edu.unbosque.view.SelectGamblerToUpdateManager;
 import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
 import co.edu.unbosque.view.ShowBetOwn;
@@ -105,6 +106,7 @@ public class Controller implements ActionListener {
 	private GamblerManagmentByManager gamblerManagManager;
 	private CreateGamblerManagerWindow createGambManager;
 	private UpdateGamblerManagerWindow updateGambManager;
+	private SelectGamblerToUpdateManager selGambUpdateManager;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -177,6 +179,7 @@ public class Controller implements ActionListener {
 		gamblerManagManager = new GamblerManagmentByManager();
 		createGambManager = new CreateGamblerManagerWindow();
 		updateGambManager = new UpdateGamblerManagerWindow();
+		selGambUpdateManager = new SelectGamblerToUpdateManager();
 
 		agregarLectores();
 
@@ -1446,7 +1449,7 @@ public class Controller implements ActionListener {
 
 		case "UPDATE MANAGMENT GAMBLER MANAGER": {
 
-			updateGambManager.setVisible(true);
+			selGambUpdateManager.setVisible(true);
 			gamblerManagManager.setVisible(false);
 			break;
 
