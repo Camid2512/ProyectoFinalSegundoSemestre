@@ -2,7 +2,6 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -35,6 +34,7 @@ import co.edu.unbosque.view.GamblerUpdateOwnWindow;
 import co.edu.unbosque.view.GamesSettingWindow;
 import co.edu.unbosque.view.LoginWindow;
 import co.edu.unbosque.view.LoteriaWindowOwner;
+import co.edu.unbosque.view.ManageVenueManager;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
 import co.edu.unbosque.view.ReceiptWindow;
@@ -95,6 +95,7 @@ public class Controller implements ActionListener {
 	private SelGamblerDeleteBetOwnWindow selGamDelBetOwn;
 	private SelBetToDeleteOwn selBetDeleteOwn;
 	private VenueManagerMenu managerMenuWin;
+	private ManageVenueManager manageVenueManager;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -160,6 +161,7 @@ public class Controller implements ActionListener {
 		selGamDelBetOwn = new SelGamblerDeleteBetOwnWindow();
 		selBetDeleteOwn = new SelBetToDeleteOwn();
 		managerMenuWin = new VenueManagerMenu();
+		manageVenueManager = new ManageVenueManager();
 
 		agregarLectores();
 
@@ -585,6 +587,21 @@ public class Controller implements ActionListener {
 
 		managerMenuWin.getBack().addActionListener(this);
 		managerMenuWin.getBack().setActionCommand("BACKMENUMANAGER");
+
+		managerMenuWin.getManageVenue().addActionListener(this);
+		managerMenuWin.getManageVenue().setActionCommand("MANAGE VENUE MANAGER");
+
+		// BOTONES GESTIONAR SEDE JEFE DE SEDE
+
+		manageVenueManager.getExit().addActionListener(this);
+		manageVenueManager.getExit().setActionCommand("EXIT");
+
+		manageVenueManager.getBack().addActionListener(this);
+		manageVenueManager.getBack().setActionCommand("BACK MANAGEVENUE MANAGER");
+
+		manageVenueManager.getCreateVenue().addActionListener(this);
+		manageVenueManager.getCreateVenue().setActionCommand("SAVE MANAGEVENUE MANAGER");
+
 	}
 
 	@Override
@@ -1273,6 +1290,29 @@ public class Controller implements ActionListener {
 			DeleteBet(s);
 			break;
 		}
+		case "MANAGE VENUE MANAGER": {
+
+			manageVenueManager.setVisible(true);
+			managerMenuWin.setVisible(false);
+			setDataVenueManager();
+
+			break;
+
+		}
+		case "BACK MANAGEVENUE MANAGER": {
+
+			managerMenuWin.setVisible(true);
+			manageVenueManager.setVisible(false);
+			break;
+
+		}
+		case "SAVE MANAGEVENUE MANAGER": {
+			saveDataVenueManager();
+			managerMenuWin.setVisible(true);
+			manageVenueManager.setVisible(false);
+			break;
+
+		}
 
 		default:
 
@@ -1289,6 +1329,7 @@ public class Controller implements ActionListener {
 
 		int cont = 0;
 		String id = "";
+
 		for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
 
 			if (nameToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())
@@ -1326,8 +1367,7 @@ public class Controller implements ActionListener {
 
 				if (id.equals(venueDAO.getHeadquarterList().get(j).getId())) {
 
-					managerMenuWin.getNameVenue()
-							.setText("      " + venueDAO.getHeadquarterList().get(j).getVenueName());
+					managerMenuWin.getNameVenue().setText(venueDAO.getHeadquarterList().get(j).getVenueName());
 
 				}
 
@@ -1764,7 +1804,6 @@ public class Controller implements ActionListener {
 				}
 
 			} catch (SameDocumentException e) {
-				// TODO: handle exception
 
 				createGamblerWinOwn.getDocument().setText("");
 				gamDAO.delete(0);
@@ -2129,40 +2168,37 @@ public class Controller implements ActionListener {
 
 	public void DeleteBet(String s) {
 
-		for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
-			if (s.equals("Apuesta en loteria de valor " + loteriaDAO.getLoteryBetList().get(i).getBetPlaced())) {
-				loteriaDAO.delete(i);
-			} else {
-				for (int j = 0; j < balotoDAO.getBallotList().size(); j++) {
-					if (s.equals("Apuesta en loteria de valor " + balotoDAO.getBallotList().get(j).getBetPlaced())) {
-						balotoDAO.delete(j);
-					} else {
-						for (int k = 0; k < superAstroDAO.getSuperAstroList().size(); k++) {
-							if (s.equals("Apuesta en loteria de valor "
-									+ superAstroDAO.getSuperAstroList().get(k).getBetPlaced())) {
-								superAstroDAO.delete(k);
-							} else {
-								for (int l = 0; l < chanceDAO.getChanceList().size(); l++) {
-									if (s.equals("Apuesta en loteria de valor "
-											+ chanceDAO.getChanceList().get(l).getBetPlaced())) {
-										chanceDAO.delete(l);
-									} else {
-										for (int m = 0; m < betPlayDAO.getBetPlayList().size(); m++) {
-											if (s.equals("Apuesta en loteria de valor "
-													+ betPlayDAO.getBetPlayList().get(m).getBetPlaced())) {
-												betPlayDAO.delete(m);
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-
-				}
+		for (int x = 0; x < loteriaDAO.getLoteryBetList().size(); x++) {
+			if (s.equals("Apuesta en loteria de valor " + loteriaDAO.getLoteryBetList().get(x).getBetPlaced())) {
+				loteriaDAO.delete(x);
+				JOptionPane.showMessageDialog(loteriaWin, "ELIMINADO CON EXITO");
 			}
 		}
-
+		for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+			if (s.equals("Apuesta en baloto de valor " + balotoDAO.getBallotList().get(i).getBetPlaced())) {
+				balotoDAO.delete(i);
+				JOptionPane.showMessageDialog(balotoWin, "ELIMINADO CON EXITO");
+			}
+		}
+		for (int j = 0; j < superAstroDAO.getSuperAstroList().size(); j++) {
+			if (s.equals(
+					"Apuesta en super astro de valor " + superAstroDAO.getSuperAstroList().get(j).getBetPlaced())) {
+				superAstroDAO.delete(j);
+				JOptionPane.showMessageDialog(superastroWin, "ELIMINADO CON EXITO");
+			}
+		}
+		for (int k = 0; k < chanceDAO.getChanceList().size(); k++) {
+			if (s.equals("Apuesta en chance de valor " + chanceDAO.getChanceList().get(k).getBetPlaced())) {
+				chanceDAO.delete(k);
+				JOptionPane.showMessageDialog(chanceWin, "ELIMINADO CON EXITO");
+			}
+		}
+		for (int l = 0; l < betPlayDAO.getBetPlayList().size(); l++) {
+			if (s.equals("Apuesta en bet play de valor " + betPlayDAO.getBetPlayList().get(l).getBetPlaced())) {
+				betPlayDAO.delete(l);
+				JOptionPane.showMessageDialog(betplayWin, "ELIMINADO CON EXITO");
+			}
+		}
 	}
 
 	public void makeBetPlayBetOwn() {
@@ -2251,6 +2287,53 @@ public class Controller implements ActionListener {
 		}
 
 		return name;
+
+	}
+
+	public void setDataVenueManager() {
+		String nameCheck = managerMenuWin.getNameVenue().getText();
+
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			if (nameCheck.equals(venueDAO.getHeadquarterList().get(i).getVenueName())) {
+
+				manageVenueManager.getComboLocation().addItem(venueDAO.getHeadquarterList().get(i).getLocationVenue());
+				manageVenueManager.getVenueName().setText(venueDAO.getHeadquarterList().get(i).getVenueName());
+				manageVenueManager.getNumEmployes().setValue(venueDAO.getHeadquarterList().get(i).getEmployeesNumber());
+			}
+		}
+	}
+
+	public void saveDataVenueManager() {
+
+		int index = 0;
+		String id = "";
+
+		String newName = "";
+		String newLocation = "";
+		String newNumEmployes = "";
+
+		String nameCheck = managerMenuWin.getNameVenue().getText();
+
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			if (nameCheck.equals(venueDAO.getHeadquarterList().get(i).getVenueName())) {
+
+				index = i;
+				newLocation = venueDAO.getHeadquarterList().get(i).getLocationVenue();
+				id = venueDAO.getHeadquarterList().get(i).getId();
+
+			}
+
+		}
+
+		newName = manageVenueManager.getVenueName().getText();
+		newNumEmployes = manageVenueManager.getNumEmployes().getValue().toString();
+
+		managerMenuWin.getNameVenue().setText(newName);
+
+		venueDAO.updateByIndex(index, newName, newLocation, newNumEmployes, id);
+		JOptionPane.showMessageDialog(manageVenueManager, "ACTUALIZADO CON EXITO");
 
 	}
 
