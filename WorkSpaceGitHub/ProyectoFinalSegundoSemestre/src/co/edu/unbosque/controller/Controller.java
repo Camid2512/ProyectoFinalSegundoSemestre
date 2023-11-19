@@ -575,6 +575,16 @@ public class Controller implements ActionListener {
 		selBetDeleteOwn.getBack().addActionListener(this);
 		selBetDeleteOwn.getBack().setActionCommand("BACKSELBETTODELETEOWN");
 
+		selBetDeleteOwn.getNextStep().addActionListener(this);
+		selBetDeleteOwn.getNextStep().setActionCommand("DELETEBET");
+
+		// BOTONES MENU PRINCIPAL JEFE DE SEDE
+
+		managerMenuWin.getExit().addActionListener(this);
+		managerMenuWin.getExit().setActionCommand("EXIT");
+
+		managerMenuWin.getBack().addActionListener(this);
+		managerMenuWin.getBack().setActionCommand("BACKMENUMANAGER");
 	}
 
 	@Override
@@ -1248,6 +1258,21 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "BACKMENUMANAGER": {
+
+			logWind.setVisible(true);
+			managerMenuWin.setVisible(false);
+
+			break;
+
+		}
+		case "DELETEBET": {
+			betManOwn.setVisible(true);
+			selBetDeleteOwn.setVisible(false);
+			String s = selBetDeleteOwn.getComboGambler().getSelectedItem().toString();
+			DeleteBet(s);
+			break;
+		}
 
 		default:
 
@@ -1704,10 +1729,6 @@ public class Controller implements ActionListener {
 		}
 	}
 
-//	public void DeleteBet(String data) {
-//		if(data.equals(data))
-//	}
-
 	public void updateSelectGamblerDelete(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGamToDeleteWinOwn.getComboGambler().removeAllItems();
@@ -2102,6 +2123,44 @@ public class Controller implements ActionListener {
 			chanceWin.setVisible(false);
 
 		} else {
+		}
+
+	}
+
+	public void DeleteBet(String s) {
+
+		for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+			if (s.equals("Apuesta en loteria de valor " + loteriaDAO.getLoteryBetList().get(i).getBetPlaced())) {
+				loteriaDAO.delete(i);
+			} else {
+				for (int j = 0; j < balotoDAO.getBallotList().size(); j++) {
+					if (s.equals("Apuesta en loteria de valor " + balotoDAO.getBallotList().get(j).getBetPlaced())) {
+						balotoDAO.delete(j);
+					} else {
+						for (int k = 0; k < superAstroDAO.getSuperAstroList().size(); k++) {
+							if (s.equals("Apuesta en loteria de valor "
+									+ superAstroDAO.getSuperAstroList().get(k).getBetPlaced())) {
+								superAstroDAO.delete(k);
+							} else {
+								for (int l = 0; l < chanceDAO.getChanceList().size(); l++) {
+									if (s.equals("Apuesta en loteria de valor "
+											+ chanceDAO.getChanceList().get(l).getBetPlaced())) {
+										chanceDAO.delete(l);
+									} else {
+										for (int m = 0; m < betPlayDAO.getBetPlayList().size(); m++) {
+											if (s.equals("Apuesta en loteria de valor "
+													+ betPlayDAO.getBetPlayList().get(m).getBetPlaced())) {
+												betPlayDAO.delete(m);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+
+				}
+			}
 		}
 
 	}
