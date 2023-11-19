@@ -140,9 +140,9 @@ public class HeadquarterManagerDAO implements CRUDOperation {
 			String[] cols = lines[i].split(";");
 			String username = cols[0];
 			String password = cols[1];
-			String headquerterName = cols[1];
+			String id = cols[2];
 
-			headquarterManagerList.add(new HeadquarterManagerDTO(username, password, headquerterName));
+			headquarterManagerList.add(new HeadquarterManagerDTO(username, password, id));
 
 		}
 	}

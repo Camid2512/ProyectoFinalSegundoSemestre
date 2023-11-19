@@ -50,7 +50,7 @@ public class CheckerDAO implements CRUDOperation {
 
 		checker.setUser(attribs[0]);
 		checker.setPassword(attribs[1]);
-		checker.setId(attribs[3]);
+		checker.setId(attribs[2]);
 
 		checkerList.add(checker);
 		writeFile();

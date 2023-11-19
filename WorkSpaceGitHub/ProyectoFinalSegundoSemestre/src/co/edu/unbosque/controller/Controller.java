@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import co.edu.unbosque.model.persistence.BallotDAO;
 import co.edu.unbosque.model.persistence.BetPlayDAO;
 import co.edu.unbosque.model.persistence.ChanceDAO;
+import co.edu.unbosque.model.persistence.CheckerDAO;
 import co.edu.unbosque.model.persistence.GamblerDAO;
 import co.edu.unbosque.model.persistence.GameDAO;
 import co.edu.unbosque.model.persistence.HeadquarterDAO;
@@ -27,8 +28,11 @@ import co.edu.unbosque.view.BetMenuOwnerWindow;
 import co.edu.unbosque.view.BetPlayWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.ChanceWindow;
+import co.edu.unbosque.view.CreateCashier;
+import co.edu.unbosque.view.CreateGamblerManagerWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
 import co.edu.unbosque.view.CreateVenueWindow;
+import co.edu.unbosque.view.GamblerManagmentByManager;
 import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
 import co.edu.unbosque.view.GamblerUpdateOwnWindow;
 import co.edu.unbosque.view.GamesSettingWindow;
@@ -54,6 +58,7 @@ import co.edu.unbosque.view.ShowGamblerOwn;
 import co.edu.unbosque.view.ShowVenueOwn;
 import co.edu.unbosque.view.SignUpWindow;
 import co.edu.unbosque.view.SuperAstroWindow;
+import co.edu.unbosque.view.UpdateGamblerManagerWindow;
 import co.edu.unbosque.view.UpdateVenueByOwnerWindow;
 import co.edu.unbosque.view.VenueManagerMenu;
 import co.edu.unbosque.view.VenueManagmentByOwnerWindow;
@@ -96,6 +101,10 @@ public class Controller implements ActionListener {
 	private SelBetToDeleteOwn selBetDeleteOwn;
 	private VenueManagerMenu managerMenuWin;
 	private ManageVenueManager manageVenueManager;
+	private CreateCashier createCashier;
+	private GamblerManagmentByManager gamblerManagManager;
+	private CreateGamblerManagerWindow createGambManager;
+	private UpdateGamblerManagerWindow updateGambManager;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -109,6 +118,7 @@ public class Controller implements ActionListener {
 	private ChanceDAO chanceDAO;
 	private BetPlayDAO betPlayDAO;
 	private ReceiptDAO receiptDAO;
+	private CheckerDAO cashierDAO;
 
 	public Controller() {
 
@@ -124,6 +134,7 @@ public class Controller implements ActionListener {
 		chanceDAO = new ChanceDAO();
 		betPlayDAO = new BetPlayDAO();
 		receiptDAO = new ReceiptDAO();
+		cashierDAO = new CheckerDAO();
 
 		logWind = new LoginWindow();
 		signWind = new SignUpWindow();
@@ -162,6 +173,10 @@ public class Controller implements ActionListener {
 		selBetDeleteOwn = new SelBetToDeleteOwn();
 		managerMenuWin = new VenueManagerMenu();
 		manageVenueManager = new ManageVenueManager();
+		createCashier = new CreateCashier();
+		gamblerManagManager = new GamblerManagmentByManager();
+		createGambManager = new CreateGamblerManagerWindow();
+		updateGambManager = new UpdateGamblerManagerWindow();
 
 		agregarLectores();
 
@@ -591,6 +606,9 @@ public class Controller implements ActionListener {
 		managerMenuWin.getManageVenue().addActionListener(this);
 		managerMenuWin.getManageVenue().setActionCommand("MANAGE VENUE MANAGER");
 
+		managerMenuWin.getGamblers().addActionListener(this);
+		managerMenuWin.getGamblers().setActionCommand("MANAGE GAMBLER MANAGER");
+
 		// BOTONES GESTIONAR SEDE JEFE DE SEDE
 
 		manageVenueManager.getExit().addActionListener(this);
@@ -601,6 +619,57 @@ public class Controller implements ActionListener {
 
 		manageVenueManager.getCreateVenue().addActionListener(this);
 		manageVenueManager.getCreateVenue().setActionCommand("SAVE MANAGEVENUE MANAGER");
+
+		manageVenueManager.getCreateCashier().addActionListener(this);
+		manageVenueManager.getCreateCashier().setActionCommand("CREATE CASHIER");
+
+		// BOTONES CREAR CAJERO
+
+		createCashier.getExit().addActionListener(this);
+		createCashier.getExit().setActionCommand("EXIT");
+
+		createCashier.getBack().addActionListener(this);
+		createCashier.getBack().setActionCommand("BACK CREATECASHIER");
+
+		createCashier.getCreateAccount().addActionListener(this);
+		createCashier.getCreateAccount().setActionCommand("CREATE ACOUNT CASHIER");
+
+		// BOTONES GESTION APOSTADOR POR JEFE DE SEDE
+
+		gamblerManagManager.getExit().addActionListener(this);
+		gamblerManagManager.getExit().setActionCommand("EXIT");
+
+		gamblerManagManager.getBack().addActionListener(this);
+		gamblerManagManager.getBack().setActionCommand("BACK MANAGMENT GAMBLER MANAGER");
+
+		gamblerManagManager.getCreate().addActionListener(this);
+		gamblerManagManager.getCreate().setActionCommand("CREATE MANAGMENT GAMBLER MANAGER");
+
+		gamblerManagManager.getUpdate().addActionListener(this);
+		gamblerManagManager.getUpdate().setActionCommand("UPDATE MANAGMENT GAMBLER MANAGER");
+
+		// BOTONES CREAR APOSTADOR POR JEFE DE SEDE
+
+		createGambManager.getExit().addActionListener(this);
+		createGambManager.getExit().setActionCommand("EXIT");
+
+		createGambManager.getBack().addActionListener(this);
+		createGambManager.getBack().setActionCommand("BACK CREATE GAMBLER MANAGER");
+
+		createGambManager.getCreateGambler().addActionListener(this);
+		createGambManager.getCreateGambler().setActionCommand("CREATE GAMBLER MANAGER");
+
+		// BOTONES ACTUALIZAR APOSTADOR POR JEFE DE SEDE
+
+		updateGambManager.getExit().addActionListener(this);
+		updateGambManager.getExit().setActionCommand("EXIT");
+
+		updateGambManager.getBack().addActionListener(this);
+		updateGambManager.getBack().setActionCommand("BACK UPDATE GAMBLER MANAGER");
+
+		updateGambManager.getCreateGambler().addActionListener(this);
+		updateGambManager.getCreateGambler().setActionCommand("UPDATE GAMBLER MANAGER");
+		;
 
 	}
 
@@ -1313,6 +1382,86 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "CREATE CASHIER": {
+
+			createCashier.setVisible(true);
+			manageVenueManager.setVisible(false);
+			break;
+
+		}
+		case "BACK CREATECASHIER": {
+
+			manageVenueManager.setVisible(true);
+			createCashier.setVisible(false);
+			createCashier.getUser().setText("");
+			createCashier.getPassword().setText("");
+			break;
+
+		}
+		case "CREATE ACOUNT CASHIER": {
+			createCashier();
+			manageVenueManager.setVisible(true);
+			createCashier.setVisible(false);
+			createCashier.getUser().setText("");
+			createCashier.getPassword().setText("");
+			break;
+		}
+		case "MANAGE GAMBLER MANAGER": {
+
+			gamblerManagManager.setVisible(true);
+			managerMenuWin.setVisible(false);
+			break;
+		}
+		case "BACK MANAGMENT GAMBLER MANAGER": {
+
+			managerMenuWin.setVisible(true);
+			gamblerManagManager.setVisible(false);
+			break;
+
+		}
+		case "CREATE MANAGMENT GAMBLER MANAGER": {
+			createGambManager.setVisible(true);
+			gamblerManagManager.setVisible(false);
+			createGambManager.getComboLocation().addItem(managerMenuWin.getNameVenue().getText());
+			break;
+
+		}
+		case "BACK CREATE GAMBLER MANAGER": {
+			gamblerManagManager.setVisible(true);
+			createGambManager.setVisible(false);
+			createGambManager.getComboLocation().removeAllItems();
+			break;
+
+		}
+		case "CREATE GAMBLER MANAGER": {
+			createGamblerManager();
+			createGambManager.getCompleteName().setText(null);
+			createGambManager.getDocument().setText(null);
+			createGambManager.getAdress().setText(null);
+			createGambManager.getPhoneNumber().setText(null);
+			gamblerManagManager.setVisible(true);
+			createGambManager.setVisible(false);
+			break;
+		}
+
+		case "UPDATE MANAGMENT GAMBLER MANAGER": {
+
+			updateGambManager.setVisible(true);
+			gamblerManagManager.setVisible(false);
+			break;
+
+		}
+		case "BACK UPDATE GAMBLER MANAGER": {
+
+			gamblerManagManager.setVisible(true);
+			updateGambManager.setVisible(false);
+			break;
+
+		}
+		case "UPDATE GAMBLER MANAGER": {
+			updateGamblerManager();
+			break;
+		}
 
 		default:
 
@@ -1427,6 +1576,38 @@ public class Controller implements ActionListener {
 		} else if (JOptionPane.OK_OPTION == response) {
 			bossDAO.create(user, password, id);
 			JOptionPane.showMessageDialog(managerCreationWin, "CUENTA CREADA CON EXITO");
+			System.out.println(id);
+		}
+	}
+
+	public void createCashier() {
+
+		String user = "";
+		String password = "";
+		String aux = managerMenuWin.getNameVenue().getText();
+
+		String id = "";
+
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			if (aux.equals(venueDAO.getHeadquarterList().get(i).getVenueName())) {
+
+				id = venueDAO.getHeadquarterList().get(i).getId();
+
+			}
+
+		}
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?", "CONFIRMAR",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+		user = createCashier.getUser().getText();
+		password = createCashier.getPassword().getText();
+
+		if (JOptionPane.NO_OPTION == response) {
+
+		} else if (JOptionPane.OK_OPTION == response) {
+			cashierDAO.create(user, password, id);
+			JOptionPane.showMessageDialog(createCashier, "CUENTA CREADA CON EXITO");
 			System.out.println(id);
 		}
 	}
@@ -1813,6 +1994,40 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	public void createGamblerManager() {
+
+		String fullName = "";
+		String document = "";
+		String gamingVenue = managerMenuWin.getNameVenue().getText();
+		String adress = "";
+		String phoneNumber = "";
+		while (true) {
+			try {
+				fullName = createGambManager.getCompleteName().getText();
+				document = createGambManager.getDocument().getText();
+				checkDuplicatedDocument(document);
+				adress = createGambManager.getAdress().getText();
+				phoneNumber = createGambManager.getPhoneNumber().getText();
+
+				if (checkDuplicatedDocument(document) == true) {
+					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
+					JOptionPane.showMessageDialog(createGambManager, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
+					createGambManager.getComboLocation().removeAllItems();
+
+				} else {
+
+				}
+
+			} catch (SameDocumentException e) {
+
+				createGambManager.getDocument().setText("");
+				gamDAO.delete(0);
+
+			}
+			break;
+		}
+	}
+
 	public void updateGamblerOwner() {
 
 		String fullName = gamUpdateWinOwn.getCompleteName().getText();
@@ -1825,6 +2040,31 @@ public class Controller implements ActionListener {
 		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
 
 			long aux = Long.parseLong(gamUpdateWinOwn.getDocument().getText());
+
+			if (aux == gamDAO.getGamblerList().get(i).getDocumentId()) {
+				index = i;
+			}
+
+		}
+
+		System.out.println(index);
+
+		gamDAO.updateByIndex(index, fullName, document, gamingVenue, addres, phoneNumber);
+
+	}
+
+	public void updateGamblerManager() {
+
+		String fullName = updateGambManager.getCompleteName().getText();
+		String document = updateGambManager.getDocument().getText();
+		String addres = updateGambManager.getAdress().getText();
+		String phoneNumber = updateGambManager.getPhoneNumber().getText();
+		String gamingVenue = managerMenuWin.getNameVenue().getText();
+		int index = 0;
+
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+
+			long aux = Long.parseLong(updateGambManager.getDocument().getText());
 
 			if (aux == gamDAO.getGamblerList().get(i).getDocumentId()) {
 				index = i;

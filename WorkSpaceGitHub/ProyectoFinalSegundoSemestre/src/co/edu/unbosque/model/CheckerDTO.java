@@ -3,12 +3,14 @@
  */
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * 
  * Clase de Cajero que extiende de gerente de sede
  * 
  */
-public class CheckerDTO {
+public class CheckerDTO implements Serializable {
 
 	/*
 	 * 
