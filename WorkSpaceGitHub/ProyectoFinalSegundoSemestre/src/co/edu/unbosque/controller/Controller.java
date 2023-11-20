@@ -28,6 +28,7 @@ import co.edu.unbosque.view.BetMenuOwnerWindow;
 import co.edu.unbosque.view.BetPlayWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.ChanceWindow;
+import co.edu.unbosque.view.ConsultWindow;
 import co.edu.unbosque.view.CreateCashier;
 import co.edu.unbosque.view.CreateGamblerManagerWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
@@ -55,6 +56,7 @@ import co.edu.unbosque.view.SelectGamblerToUpdateManager;
 import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
 import co.edu.unbosque.view.ShowBetOwn;
+import co.edu.unbosque.view.ShowConsult;
 import co.edu.unbosque.view.ShowGamblerOwn;
 import co.edu.unbosque.view.ShowVenueOwn;
 import co.edu.unbosque.view.SignUpWindow;
@@ -107,6 +109,8 @@ public class Controller implements ActionListener {
 	private CreateGamblerManagerWindow createGambManager;
 	private UpdateGamblerManagerWindow updateGambManager;
 	private SelectGamblerToUpdateManager selGambUpdateManager;
+	private ShowConsult showCon;
+	private ConsultWindow consultwin;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -180,6 +184,8 @@ public class Controller implements ActionListener {
 		createGambManager = new CreateGamblerManagerWindow();
 		updateGambManager = new UpdateGamblerManagerWindow();
 		selGambUpdateManager = new SelectGamblerToUpdateManager();
+		consultwin = new ConsultWindow();
+		showCon = new ShowConsult();
 
 		agregarLectores();
 
@@ -240,6 +246,9 @@ public class Controller implements ActionListener {
 
 		ownWind.getMod4Btn().addActionListener(this);
 		ownWind.getMod4Btn().setActionCommand("BOTONMOD4OWN");
+
+		ownWind.getMod5Btn().addActionListener(this);
+		ownWind.getMod5Btn().setActionCommand("BOTONMOD5OWN");
 
 		// BOTONES MODULO 1 (OWNER)
 
@@ -597,6 +606,27 @@ public class Controller implements ActionListener {
 
 		selBetDeleteOwn.getNextStep().addActionListener(this);
 		selBetDeleteOwn.getNextStep().setActionCommand("DELETEBET");
+
+		// BOTONES MODULO 5 SELECCIONAR SEDE
+		consultwin.getExit().addActionListener(this);
+		consultwin.getExit().setActionCommand("EXIT");
+
+		consultwin.getBack().addActionListener(this);
+		consultwin.getBack().setActionCommand("BACKSELECTVENUECONSULT");
+
+		consultwin.getNext().addActionListener(this);
+		consultwin.getNext().setActionCommand("NEXTSELECTVENUECONSULT");
+
+		// BOTONES MODULO 5 TABLA
+
+		showCon.getExit().addActionListener(this);
+		showCon.getExit().setActionCommand("EXIT");
+
+		showCon.getBack().addActionListener(this);
+		showCon.getBack().setActionCommand("BACKTABLECONSULT");
+
+		showCon.getConsultGam().addActionListener(this);
+		showCon.getConsultGam().setActionCommand("CONSULTGAMTOTAL");
 
 		// BOTONES MENU PRINCIPAL JEFE DE SEDE
 
@@ -1488,6 +1518,30 @@ public class Controller implements ActionListener {
 		}
 		case "UPDATE GAMBLER MANAGER": {
 			updateGamblerManager();
+			break;
+		}
+		case "BOTONMOD5OWN": {
+			consultwin.setVisible(true);
+			ownWind.setVisible(false);
+			updateBoxModule5();
+			break;
+		}
+		case "BACKSELECTVENUECONSULT": {
+			ownWind.setVisible(true);
+			consultwin.setVisible(false);
+			break;
+		}
+		case "NEXTSELECTVENUECONSULT": {
+			showCon.setVisible(true);
+			consultwin.setVisible(false);
+			String aux = consultwin.getComboVenue().getSelectedItem().toString();
+			showTableConsult(aux);
+			break;
+		}
+		case "BACKTABLECONSULT": {
+			consultwin.setVisible(true);
+			showCon.setVisible(false);
+			updateTableConsult();
 			break;
 		}
 
@@ -2389,7 +2443,7 @@ public class Controller implements ActionListener {
 
 		String name = searchNameByDocument(document);
 
-		String loteryName = "SANTI HACE ESTO POR FAVOR NO SE TE OLVIDE";
+		String loteryName = chanceWin.getLoteryType().getSelectedItem().toString();
 
 		String typeBet = "CHANCE";
 
@@ -2762,6 +2816,91 @@ public class Controller implements ActionListener {
 				+ betPlayDAO.getBetPlayList().size() - 1; i >= 0; i--) {
 
 			showBetOwn.getTablePanel().getModel().removeRow(i);
+
+		}
+	}
+
+	public void updateBoxModule5() {
+		if (!venueDAO.getHeadquarterList().isEmpty()) {
+			consultwin.getComboVenue().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				consultwin.getComboVenue().addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+			}
+		}
+	}
+
+	public void showTableConsult(String s) {
+		for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+			if (s.equals(loteriaDAO.getLoteryBetList().get(i).getHeadQuarterName())) {
+
+				long documento = loteriaDAO.getLoteryBetList().get(i).getDocument();
+				double valor = loteriaDAO.getLoteryBetList().get(i).getBetPlaced();
+				String juego = "Loteria";
+
+				Object[] data = { documento, juego, juego, valor };
+				showCon.getTablePanel().getModel().addRow(data);
+			}
+		}
+		for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+
+			if (s.equals(balotoDAO.getBallotList().get(i).getHeadQuarterName())) {
+
+				long documento = balotoDAO.getBallotList().get(i).getDocument();
+				double valor = balotoDAO.getBallotList().get(i).getBetPlaced();
+				String juego = "Baloto";
+
+				Object[] data = { documento, juego, "Loteria", valor };
+				showCon.getTablePanel().getModel().addRow(data);
+			}
+
+		}
+		for (int i = 0; i < superAstroDAO.getSuperAstroList().size(); i++) {
+
+			if (s.equals(superAstroDAO.getSuperAstroList().get(i).getHeadQuarterName())) {
+
+				long documento = superAstroDAO.getSuperAstroList().get(i).getDocument();
+				double valor = superAstroDAO.getSuperAstroList().get(i).getBetPlaced();
+				String juego = "Super astro";
+
+				Object[] data = { documento, juego, "Loteria", valor };
+				showCon.getTablePanel().getModel().addRow(data);
+			}
+
+		}
+		for (int i = 0; i < chanceDAO.getChanceList().size(); i++) {
+
+			if (s.equals(chanceDAO.getChanceList().get(i).getHeadQuarterName())) {
+
+				long documento = chanceDAO.getChanceList().get(i).getDocument();
+				double valor = chanceDAO.getChanceList().get(i).getBetPlaced();
+				String juego = "Chance";
+
+				Object[] data = { documento, juego, "Chance", valor };
+				showCon.getTablePanel().getModel().addRow(data);
+			}
+
+		}
+		for (int i = 0; i < betPlayDAO.getBetPlayList().size(); i++) {
+
+			if (s.equals(betPlayDAO.getBetPlayList().get(i).getHeadQuarterName())) {
+
+				long documento = betPlayDAO.getBetPlayList().get(i).getDocument();
+				double valor = betPlayDAO.getBetPlayList().get(i).getBetPlaced();
+				String juego = "Bet play";
+
+				Object[] data = { documento, juego, "Deportivo", valor };
+				showCon.getTablePanel().getModel().addRow(data);
+			}
+
+		}
+
+	}
+
+	public void updateTableConsult() {
+		int aux = showCon.getTablePanel().getModel().getRowCount();
+		for (int i = aux - 1; i >= 0; i--) {
+
+			showCon.getTablePanel().getModel().removeRow(i);
 
 		}
 	}

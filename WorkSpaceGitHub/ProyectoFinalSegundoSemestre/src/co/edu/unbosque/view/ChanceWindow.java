@@ -25,6 +25,8 @@ public class ChanceWindow extends JFrame {
 
 	private JComboBox<Integer> num1, num2, num3, num4;
 
+	private JComboBox<String> loteryType;
+	
 	private JLabel mainImage;
 
 	public ChanceWindow() {
@@ -100,6 +102,27 @@ public class ChanceWindow extends JFrame {
 		num4.setForeground(Color.black);
 		num4.setFont(new Font("Arial", 1, 25));
 		add(num4);
+		
+		loteryType = new JComboBox<String>();
+		loteryType.setBounds(115, 510, 685, 77);
+		loteryType.setBackground(new Color(225, 223, 228));
+		loteryType.setForeground(Color.black);
+		loteryType.setFont(new Font("Arial", 1, 25));
+		loteryType.addItem("LOTERIA DE BOGOTA");
+		loteryType.addItem("LOTERIA DE BOYACA");
+		loteryType.addItem("LOTERIA DEL CAUCA");
+		loteryType.addItem("LOTERIA CRUZ ROJA");
+		loteryType.addItem("LOTERIA DE CUNDINAMARCA");
+		loteryType.addItem("LOTERIA DEL HUILA");
+		loteryType.addItem("LOTERIA DE MANIZALES");
+		loteryType.addItem("LOTERIA DE MEDELLIN");
+		loteryType.addItem("LOTERIA DEL META");
+		loteryType.addItem("LOTERIA DEL QUINDIO");
+		loteryType.addItem("LOTERIA DE RISARALDA");
+		loteryType.addItem("LOTERIA DE SANTANDER");
+		loteryType.addItem("LOTERIA DEL TOLIMA");
+		loteryType.addItem("LOTERIA DEL VALLE");
+		add(loteryType);
 
 		mainImage = new JLabel();
 		mainImage.setBounds(0, 0, 1280, 720);
@@ -192,5 +215,15 @@ public class ChanceWindow extends JFrame {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public JComboBox<String> getLoteryType() {
+		return loteryType;
+	}
+
+	public void setLoteryType(JComboBox<String> loteryType) {
+		this.loteryType = loteryType;
+	}
+	
+	
 
 }
