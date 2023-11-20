@@ -1536,6 +1536,8 @@ public class Controller implements ActionListener {
 			consultwin.setVisible(false);
 			String aux = consultwin.getComboVenue().getSelectedItem().toString();
 			showTableConsult(aux);
+			String totalAmount = sumAllTheBets(aux);
+			showCon.getTotalBetAmount().setText(totalAmount);
 			break;
 		}
 		case "BACKTABLECONSULT": {
@@ -2903,6 +2905,61 @@ public class Controller implements ActionListener {
 			showCon.getTablePanel().getModel().removeRow(i);
 
 		}
+	}
+
+	public String sumAllTheBets(String s) {
+
+		double sum = 0;
+
+		for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+			if (s.equals(loteriaDAO.getLoteryBetList().get(i).getHeadQuarterName())) {
+
+				double valor = loteriaDAO.getLoteryBetList().get(i).getBetPlaced();
+
+				sum = valor + sum;
+			}
+		}
+		for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+
+			if (s.equals(balotoDAO.getBallotList().get(i).getHeadQuarterName())) {
+
+				double valor = balotoDAO.getBallotList().get(i).getBetPlaced();
+				sum = valor + sum;
+			}
+
+		}
+		for (int i = 0; i < superAstroDAO.getSuperAstroList().size(); i++) {
+
+			if (s.equals(superAstroDAO.getSuperAstroList().get(i).getHeadQuarterName())) {
+
+				double valor = superAstroDAO.getSuperAstroList().get(i).getBetPlaced();
+				sum = valor + sum;
+			}
+
+		}
+		for (int i = 0; i < chanceDAO.getChanceList().size(); i++) {
+
+			if (s.equals(chanceDAO.getChanceList().get(i).getHeadQuarterName())) {
+
+				double valor = chanceDAO.getChanceList().get(i).getBetPlaced();
+				sum = valor + sum;
+			}
+
+		}
+		for (int i = 0; i < betPlayDAO.getBetPlayList().size(); i++) {
+
+			if (s.equals(betPlayDAO.getBetPlayList().get(i).getHeadQuarterName())) {
+
+				double valor = betPlayDAO.getBetPlayList().get(i).getBetPlaced();
+
+				sum = valor + sum;
+			}
+
+		}
+
+		String totalSum = Double.toString(sum);
+		return totalSum;
+
 	}
 
 }
