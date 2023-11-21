@@ -67,6 +67,7 @@ import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
 import co.edu.unbosque.view.ShowBetOwn;
 import co.edu.unbosque.view.ShowConsult;
+import co.edu.unbosque.view.ShowGamblerManager;
 import co.edu.unbosque.view.ShowGamblerOwn;
 import co.edu.unbosque.view.ShowVenueOwn;
 import co.edu.unbosque.view.SignUpWindow;
@@ -133,6 +134,7 @@ public class Controller implements ActionListener {
 	private SuperAstroManager superastroMan;
 	private CashierMainMenu cashierMainMenu;
 	private GamblerManagmentByCahier gambManagCashier;
+	private ShowGamblerManager showGamMan;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -220,6 +222,7 @@ public class Controller implements ActionListener {
 		superastroMan = new SuperAstroManager();
 		cashierMainMenu = new CashierMainMenu();
 		gambManagCashier = new GamblerManagmentByCahier();
+		showGamMan = new ShowGamblerManager();
 
 		agregarLectores();
 
@@ -775,6 +778,9 @@ public class Controller implements ActionListener {
 		gamblerManagManager.getDelete().addActionListener(this);
 		gamblerManagManager.getDelete().setActionCommand("DELETE MANAGMENT GAMBLER MANAGER");
 
+		gamblerManagManager.getRead().addActionListener(this);
+		gamblerManagManager.getRead().setActionCommand("READ MANAGMENT GAMBLER MANAGER");
+
 		// BOTONES CREAR APOSTADOR POR JEFE DE SEDE
 
 		createGambManager.getExit().addActionListener(this);
@@ -883,6 +889,14 @@ public class Controller implements ActionListener {
 		gambManagCashier.getBack().addActionListener(this);
 		gambManagCashier.getBack().setActionCommand("BACK MENU GAMBLER CASHIER");
 
+		// BOTONES MOSTRAR GAMBLER MANAGER
+
+		showGamMan.getExit().addActionListener(this);
+		showGamMan.getExit().setActionCommand("EXIT");
+
+		showGamMan.getBack().addActionListener(this);
+		showGamMan.getBack().setActionCommand("BACK MENU GAMBLER SHOW");
+
 	}
 
 	@Override
@@ -905,7 +919,6 @@ public class Controller implements ActionListener {
 		}
 		case "BOTONLOGIN": {
 
-			logWind.setVisible(false);
 			checkLoginOwner();
 			logWind.getUsuario().setText("");
 			logWind.getPassword().setText("");
@@ -1982,11 +1995,21 @@ public class Controller implements ActionListener {
 
 		}
 		case "BACK MENU GAMBLER CASHIER": {
-
 			cashierMainMenu.setVisible(true);
 			gambManagCashier.setVisible(false);
 			break;
 
+		}
+		case "READ MANAGMENT GAMBLER MANAGER": {
+			showGamMan.setVisible(true);
+			betManagmentManager.setVisible(false);
+			showTableGamblerManager(exit);
+			break;
+		}
+		case "BACK MENU GAMBLER SHOW": {
+			gamblerManagManager.setVisible(true);
+			showGamMan.setVisible(false);
+			break;
 		}
 
 		default:
@@ -2034,42 +2057,46 @@ public class Controller implements ActionListener {
 
 			}
 
-			if (cont == 1) {
-				JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
-				ownWind.setVisible(true);
-				exit = "no";
-			}
-			if (cont == 0) {
-				JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
-				logWind.setVisible(true);
-				exit = "no";
-			}
-			if (cont == 2) {
+			System.out.println(exit);
+		}
 
-				JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
+		if (cont == 1) {
+			JOptionPane.showMessageDialog(logWind, "----INGRESANDO DUEÑO----");
+			ownWind.setVisible(true);
+			logWind.setVisible(false);
+			exit = "no";
+		}
+		if (cont == 0) {
+			JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
+			logWind.setVisible(true);
+			exit = "no";
+		}
+		if (cont == 2) {
 
-				for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
+			JOptionPane.showMessageDialog(logWind, "----INGRESANDO JEFE DE SEDE----");
 
-					if (id.equals(venueDAO.getHeadquarterList().get(j).getId())) {
+			for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
 
-						managerMenuWin.getNameVenue().setText(venueDAO.getHeadquarterList().get(j).getVenueName());
-						exit = id;
-					}
+				if (id.equals(venueDAO.getHeadquarterList().get(j).getId())) {
 
+					managerMenuWin.getNameVenue().setText(venueDAO.getHeadquarterList().get(j).getVenueName());
+					exit = id;
 				}
 
-				managerMenuWin.setVisible(true);
-
 			}
-			if (cont == 3) {
 
-				JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
+			managerMenuWin.setVisible(true);
+			logWind.setVisible(false);
 
-				cashierMainMenu.setVisible(true);
-				exit = id;
+		}
+		if (cont == 3) {
 
-			}
-			System.out.println(exit);
+			JOptionPane.showMessageDialog(logWind, "----INGRESANDO CAJERO----");
+
+			cashierMainMenu.setVisible(true);
+			exit = id;
+			logWind.setVisible(false);
+
 		}
 
 	}
@@ -3938,4 +3965,23 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	public void showTableGamblerManager(String s) {
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+			if (s.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+				for (int j = 0; j < gamDAO.getGamblerList().size(); j++) {
+					if (venueDAO.getHeadquarterList().get(i).getVenueName()
+							.equals(gamDAO.getGamblerList().get(j).getGamingVenue())) {
+						String name = gamDAO.getGamblerList().get(j).getFullName();
+						Long id = gamDAO.getGamblerList().get(j).getDocumentId();
+						String addres = gamDAO.getGamblerList().get(j).getAddres();
+						Long phone = gamDAO.getGamblerList().get(j).getPhoneNumber();
+						Object[] data = { name, id, addres, phone };
+						showGamMan.getTablePanel().getModel().addRow(data);
+
+					}
+
+				}
+			}
+		}
+	}
 }
