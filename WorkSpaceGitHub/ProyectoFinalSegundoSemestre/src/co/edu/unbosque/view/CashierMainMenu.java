@@ -28,7 +28,7 @@ public class CashierMainMenu extends JFrame {
 	 * @since 10/11/2023
 	 */
 
-	private JButton exit, back;
+	private JButton exit, back, gamblerManagment, betManagment;
 
 	/**
 	 * Estos son los atributos de las imagenes
@@ -69,6 +69,24 @@ public class CashierMainMenu extends JFrame {
 		back.setBorderPainted(false);
 		add(back);
 
+		gamblerManagment = new JButton();
+		gamblerManagment.setBounds(185, 250, 400, 215);
+		gamblerManagment.setToolTipText("MANEJO APOSTADORES");
+		gamblerManagment.setBackground(new Color(0, 0, 0, 0));
+		gamblerManagment.setOpaque(false);
+		gamblerManagment.setContentAreaFilled(false);
+		gamblerManagment.setBorderPainted(false);
+		add(gamblerManagment);
+
+		betManagment = new JButton();
+		betManagment.setBounds(697, 250, 400, 215);
+		betManagment.setToolTipText("MANEJO APUESTAS");
+		betManagment.setBackground(new Color(0, 0, 0, 0));
+		betManagment.setOpaque(false);
+		betManagment.setContentAreaFilled(false);
+		betManagment.setBorderPainted(false);
+		add(betManagment);
+
 		mainImage = new JLabel();
 		mainImage.setBounds(0, 0, 1280, 720);
 
@@ -84,4 +102,49 @@ public class CashierMainMenu extends JFrame {
 		add(mainImage);
 
 	}
+
+	public JButton getExit() {
+		return exit;
+	}
+
+	public void setExit(JButton exit) {
+		this.exit = exit;
+	}
+
+	public JButton getBack() {
+		return back;
+	}
+
+	public void setBack(JButton back) {
+		this.back = back;
+	}
+
+	public JLabel getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(JLabel mainImage) {
+		this.mainImage = mainImage;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public JButton getGamblerManagment() {
+		return gamblerManagment;
+	}
+
+	public void setGamblerManagment(JButton gamblerManagment) {
+		this.gamblerManagment = gamblerManagment;
+	}
+
+	public JButton getBetManagment() {
+		return betManagment;
+	}
+
+	public void setBetManagment(JButton betManagment) {
+		this.betManagment = betManagment;
+	}
+
 }

@@ -39,6 +39,7 @@ import co.edu.unbosque.view.CreateCashier;
 import co.edu.unbosque.view.CreateGamblerManagerWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
 import co.edu.unbosque.view.CreateVenueWindow;
+import co.edu.unbosque.view.GamblerManagmentByCahier;
 import co.edu.unbosque.view.GamblerManagmentByManager;
 import co.edu.unbosque.view.GamblerManagmentByOwnerWindow;
 import co.edu.unbosque.view.GamblerUpdateOwnWindow;
@@ -131,6 +132,7 @@ public class Controller implements ActionListener {
 	private ChanceManager chanceMan;
 	private SuperAstroManager superastroMan;
 	private CashierMainMenu cashierMainMenu;
+	private GamblerManagmentByCahier gambManagCashier;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -217,6 +219,7 @@ public class Controller implements ActionListener {
 		chanceMan = new ChanceManager();
 		superastroMan = new SuperAstroManager();
 		cashierMainMenu = new CashierMainMenu();
+		gambManagCashier = new GamblerManagmentByCahier();
 
 		agregarLectores();
 
@@ -860,6 +863,25 @@ public class Controller implements ActionListener {
 
 		betMenuManager.getSuperAstro().addActionListener(this);
 		betMenuManager.getSuperAstro().setActionCommand("CREATE SUPERASTRO MANAGER");
+
+		// BOTONES MENU PRINCIPAL CAJERO
+
+		cashierMainMenu.getExit().addActionListener(this);
+		cashierMainMenu.getExit().setActionCommand("EXIT");
+
+		cashierMainMenu.getBack().addActionListener(this);
+		cashierMainMenu.getBack().setActionCommand("BACK MENU CASHIER");
+
+		cashierMainMenu.getGamblerManagment().addActionListener(this);
+		cashierMainMenu.getGamblerManagment().setActionCommand("MENU APOSTADORES CAJERO");
+
+		// BOTONES MENU APOSTADORES CAJERO
+
+		gambManagCashier.getExit().addActionListener(this);
+		gambManagCashier.getExit().setActionCommand("EXIT");
+
+		gambManagCashier.getBack().addActionListener(this);
+		gambManagCashier.getBack().setActionCommand("BACK MENU GAMBLER CASHIER");
 
 	}
 
@@ -1945,6 +1967,27 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "BACK MENU CASHIER": {
+
+			logWind.setVisible(true);
+			cashierMainMenu.setVisible(false);
+			break;
+
+		}
+		case "MENU APOSTADORES CAJERO": {
+
+			gambManagCashier.setVisible(true);
+			cashierMainMenu.setVisible(false);
+			break;
+
+		}
+		case "BACK MENU GAMBLER CASHIER": {
+
+			cashierMainMenu.setVisible(true);
+			gambManagCashier.setVisible(false);
+			break;
+
+		}
 
 		default:
 
@@ -2023,6 +2066,7 @@ public class Controller implements ActionListener {
 				JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
 
 				cashierMainMenu.setVisible(true);
+				exit = id;
 
 			}
 			System.out.println(exit);
