@@ -6,6 +6,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -19,8 +20,9 @@ public class ShowConsult extends JFrame {
 	private static final long serialVersionUID = -3076482943278818043L;
 
 	private JLabel mainImage;
-	private JTextArea totalBetAmount;
+	private JTextArea totalBetAmount, totalBetAmountGambler;
 	private JButton exit, back, consultGam;
+	private JComboBox<Long> ComboGambler;
 	private ConsultTable tablePanel = new ConsultTable();
 
 	public ShowConsult() {
@@ -70,6 +72,24 @@ public class ShowConsult extends JFrame {
 		totalBetAmount.setEditable(false);
 		totalBetAmount.setHighlighter(null);
 		add(totalBetAmount);
+		
+		totalBetAmountGambler = new JTextArea();
+		totalBetAmountGambler.setBounds(911, 552, 280, 68);
+		totalBetAmountGambler.setBackground(new Color(0, 0, 0, 0));
+		totalBetAmountGambler.setOpaque(false);
+		totalBetAmountGambler.setBorder(new EmptyBorder(15, 15, 15, 15));
+		totalBetAmountGambler.setFont(new Font("Arial", 1, 20));
+		totalBetAmountGambler.setForeground(Color.white);
+		totalBetAmountGambler.setEditable(false);
+		totalBetAmountGambler.setHighlighter(null);
+		add(totalBetAmountGambler);
+		
+		ComboGambler = new JComboBox<>();
+		ComboGambler.setBounds(910, 400, 280, 68);
+		ComboGambler.setBackground(new Color(225, 223, 228));
+		ComboGambler.setForeground(Color.black);
+		ComboGambler.setFont(new Font("Arial", 1, 25));
+		add(ComboGambler);
 
 		getContentPane().add(tablePanel);
 		mainImage = new JLabel();
@@ -138,5 +158,23 @@ public class ShowConsult extends JFrame {
 	public void setTotalBetAmount(JTextArea totalBetAmount) {
 		this.totalBetAmount = totalBetAmount;
 	}
+
+	public JTextArea getTotalBetAmountGambler() {
+		return totalBetAmountGambler;
+	}
+
+	public void setTotalBetAmountGambler(JTextArea totalBetAmountGambler) {
+		this.totalBetAmountGambler = totalBetAmountGambler;
+	}
+
+	public JComboBox<Long> getComboGambler() {
+		return ComboGambler;
+	}
+
+	public void setComboGambler(JComboBox<Long> comboGambler) {
+		ComboGambler = comboGambler;
+	}
+	
+	
 
 }

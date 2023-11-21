@@ -125,6 +125,7 @@ public class Controller implements ActionListener {
 	private BetPlayDAO betPlayDAO;
 	private ReceiptDAO receiptDAO;
 	private CheckerDAO cashierDAO;
+	String exit = "";
 
 	public Controller() {
 
@@ -1492,6 +1493,8 @@ public class Controller implements ActionListener {
 
 			selGambUpdateManager.setVisible(true);
 			gamblerManagManager.setVisible(false);
+			System.out.println(exit);
+			updateBoxSelectGamblerManager(exit);
 			break;
 
 		}
@@ -1538,6 +1541,7 @@ public class Controller implements ActionListener {
 			showTableConsult(aux);
 			String totalAmount = sumAllTheBets(aux);
 			showCon.getTotalBetAmount().setText(totalAmount);
+			updateBoxGamblerConsult(aux);
 			break;
 		}
 		case "BACKTABLECONSULT": {
@@ -1545,6 +1549,11 @@ public class Controller implements ActionListener {
 			showCon.setVisible(false);
 			updateTableConsult();
 			break;
+		}
+		case "CONSULTGAMTOTAL": {
+			Long aux = Long.parseLong(showCon.getComboGambler().getSelectedItem().toString());
+			String aux2 = sumAllTheBetsGambler(aux);
+			showCon.getTotalBetAmountGambler().setText("prueba");
 		}
 
 		default:
@@ -1554,7 +1563,7 @@ public class Controller implements ActionListener {
 
 	}
 
-	public void checkLoginOwner() {
+	public String checkLoginOwner() {
 
 		String nameToCheck = logWind.getUsuario().getText();
 		@SuppressWarnings("deprecation")
@@ -1587,10 +1596,12 @@ public class Controller implements ActionListener {
 		if (cont == 1) {
 			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
 			ownWind.setVisible(true);
+			exit = "no";
 		}
 		if (cont == 0) {
 			JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
 			logWind.setVisible(true);
+			exit = "no";
 		}
 		if (cont == 2) {
 
@@ -1601,7 +1612,7 @@ public class Controller implements ActionListener {
 				if (id.equals(venueDAO.getHeadquarterList().get(j).getId())) {
 
 					managerMenuWin.getNameVenue().setText(venueDAO.getHeadquarterList().get(j).getVenueName());
-
+					exit = id;
 				}
 
 			}
@@ -1609,7 +1620,8 @@ public class Controller implements ActionListener {
 			managerMenuWin.setVisible(true);
 
 		}
-
+		System.out.println(exit);
+		return exit;
 	}
 
 	public void createHouse() {
@@ -2960,6 +2972,86 @@ public class Controller implements ActionListener {
 		String totalSum = Double.toString(sum);
 		return totalSum;
 
+	}
+
+	public void updateBoxGamblerConsult(String s) {
+		if (!gamDAO.getGamblerList().isEmpty()) {
+			showCon.getComboGambler().removeAllItems();
+			for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+				if (s.equals(gamDAO.getGamblerList().get(i).getGamingVenue()))
+					showCon.getComboGambler().addItem(gamDAO.getGamblerList().get(i).getDocumentId());
+			}
+		}
+	}
+
+	public String sumAllTheBetsGambler(long l) {
+
+		double sum = 0;
+
+		for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+			if (l == loteriaDAO.getLoteryBetList().get(i).getDocument()) {
+
+				double valor = loteriaDAO.getLoteryBetList().get(i).getBetPlaced();
+
+				sum = valor + sum;
+			}
+		}
+		for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+
+			if (l == balotoDAO.getBallotList().get(i).getDocument()) {
+
+				double valor = balotoDAO.getBallotList().get(i).getBetPlaced();
+				sum = valor + sum;
+			}
+
+		}
+		for (int i = 0; i < superAstroDAO.getSuperAstroList().size(); i++) {
+
+			if (l == superAstroDAO.getSuperAstroList().get(i).getDocument()) {
+
+				double valor = superAstroDAO.getSuperAstroList().get(i).getBetPlaced();
+				sum = valor + sum;
+			}
+
+		}
+		for (int i = 0; i < chanceDAO.getChanceList().size(); i++) {
+
+			if (l == chanceDAO.getChanceList().get(i).getDocument()) {
+
+				double valor = chanceDAO.getChanceList().get(i).getBetPlaced();
+				sum = valor + sum;
+			}
+
+		}
+		for (int i = 0; i < betPlayDAO.getBetPlayList().size(); i++) {
+
+			if (l == betPlayDAO.getBetPlayList().get(i).getDocument()) {
+
+				double valor = betPlayDAO.getBetPlayList().get(i).getBetPlaced();
+
+				sum = valor + sum;
+			}
+
+		}
+
+		String totalSum = Double.toString(sum);
+		return totalSum;
+
+	}
+
+	public void updateBoxSelectGamblerManager(String s) {
+		if (!gamDAO.getGamblerList().isEmpty()) {
+			selGambUpdateManager.getComboGambler().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				if (s.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+					for (int j = 0; j < gamDAO.getGamblerList().size(); j++) {
+						if(venueDAO.getHeadquarterList().get(i).getVenueName().equals(gamDAO.getGamblerList().get(j).getGamingVenue())) {
+						selGambUpdateManager.getComboGambler().addItem(gamDAO.getGamblerList().get(j).getDocumentId());
+						}
+					}
+				}
+			}
+		}
 	}
 
 }
