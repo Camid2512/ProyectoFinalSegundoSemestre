@@ -31,6 +31,7 @@ import co.edu.unbosque.view.BetMenuOwnerWindow;
 import co.edu.unbosque.view.BetPlayManager;
 import co.edu.unbosque.view.BetPlayWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
+import co.edu.unbosque.view.CashierMainMenu;
 import co.edu.unbosque.view.ChanceManager;
 import co.edu.unbosque.view.ChanceWindow;
 import co.edu.unbosque.view.ConsultWindow;
@@ -129,6 +130,7 @@ public class Controller implements ActionListener {
 	private BetPlayManager betPlayMan;
 	private ChanceManager chanceMan;
 	private SuperAstroManager superastroMan;
+	private CashierMainMenu cashierMainMenu;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -214,6 +216,7 @@ public class Controller implements ActionListener {
 		betPlayMan = new BetPlayManager();
 		chanceMan = new ChanceManager();
 		superastroMan = new SuperAstroManager();
+		cashierMainMenu = new CashierMainMenu();
 
 		agregarLectores();
 
@@ -1972,42 +1975,59 @@ public class Controller implements ActionListener {
 						cont = 2;
 						id = bossDAO.getHeadquarterManagerList().get(j).getId();
 					} else {
+						for (int j2 = 0; j2 < cashierDAO.getCheckerList().size(); j2++) {
+							if (nameToCheck.equals(cashierDAO.getCheckerList().get(j2).getUser())
+									&& passToCheck.equals(cashierDAO.getCheckerList().get(j2).getPassword())) {
+								cont = 3;
+								id = cashierDAO.getCheckerList().get(j2).getId();
+							} else {
 
+							}
+
+						}
 					}
+
 				}
 
 			}
 
-		}
+			if (cont == 1) {
+				JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
+				ownWind.setVisible(true);
+				exit = "no";
+			}
+			if (cont == 0) {
+				JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
+				logWind.setVisible(true);
+				exit = "no";
+			}
+			if (cont == 2) {
 
-		if (cont == 1) {
-			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
-			ownWind.setVisible(true);
-			exit = "no";
-		}
-		if (cont == 0) {
-			JOptionPane.showMessageDialog(logWind, "Usuario y/o Contraseña ERRADOS", "NO EXIST", 0);
-			logWind.setVisible(true);
-			exit = "no";
-		}
-		if (cont == 2) {
+				JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
 
-			JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
+				for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
 
-			for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
+					if (id.equals(venueDAO.getHeadquarterList().get(j).getId())) {
 
-				if (id.equals(venueDAO.getHeadquarterList().get(j).getId())) {
+						managerMenuWin.getNameVenue().setText(venueDAO.getHeadquarterList().get(j).getVenueName());
+						exit = id;
+					}
 
-					managerMenuWin.getNameVenue().setText(venueDAO.getHeadquarterList().get(j).getVenueName());
-					exit = id;
 				}
 
+				managerMenuWin.setVisible(true);
+
 			}
+			if (cont == 3) {
 
-			managerMenuWin.setVisible(true);
+				JOptionPane.showMessageDialog(logWind, "----INGRESANDO----");
 
+				cashierMainMenu.setVisible(true);
+
+			}
+			System.out.println(exit);
 		}
-		System.out.println(exit);
+
 	}
 
 	public void createHouse() {
