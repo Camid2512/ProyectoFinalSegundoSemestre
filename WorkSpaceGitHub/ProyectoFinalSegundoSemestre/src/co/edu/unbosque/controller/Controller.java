@@ -1425,6 +1425,19 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "NEXTLOTERIAMAN": {
+
+			makeLoteryBetMan();
+
+			loteriaMan.getBetAmount().setText("");
+			loteriaMan.getNum1().setValue(0);
+			loteriaMan.getNum2().setValue(0);
+			loteriaMan.getNum3().setValue(0);
+			loteriaMan.getNum4().setValue(0);
+
+			break;
+
+		}
 		case "NEXTBALOTOWIN": {
 
 			makeBalotoBetOwn();
@@ -1439,6 +1452,20 @@ public class Controller implements ActionListener {
 			break;
 
 		}
+		case "NEXTBALOTOMAN": {
+
+			makeBalotoBetMan();
+
+			balotoMan.getBetAmount().setText("");
+			balotoMan.getNum1().setValue(1);
+			balotoMan.getNum2().setValue(1);
+			balotoMan.getNum3().setValue(1);
+			balotoMan.getNum4().setValue(1);
+			balotoMan.getNum5().setValue(1);
+			balotoMan.getNum6().setValue(1);
+			break;
+
+		}
 		case "NEXTSUPERASTROWIN": {
 
 			makeSuperAstroBetOwn();
@@ -1450,6 +1477,17 @@ public class Controller implements ActionListener {
 			superastroWin.getNum4().setValue(0);
 			break;
 		}
+		case "NEXTSUPERASTROMAN": {
+
+			makeSuperAstroBetMan();
+
+			superastroMan.getBetAmount().setText("");
+			superastroMan.getNum1().setValue(0);
+			superastroMan.getNum2().setValue(0);
+			superastroMan.getNum3().setValue(0);
+			superastroMan.getNum4().setValue(0);
+			break;
+		}
 
 		case "NEXTCHANCEWIN": {
 
@@ -1459,6 +1497,18 @@ public class Controller implements ActionListener {
 			chanceWin.getNum2().removeAllItems();
 			chanceWin.getNum3().removeAllItems();
 			chanceWin.getNum4().removeAllItems();
+
+			break;
+
+		}
+		case "NEXTCHANCEMAN": {
+
+			makeChanceBetMan();
+			chanceMan.getBetAmount().setText(null);
+			chanceMan.getNum1().removeAllItems();
+			chanceMan.getNum2().removeAllItems();
+			chanceMan.getNum3().removeAllItems();
+			chanceMan.getNum4().removeAllItems();
 
 			break;
 
@@ -1790,6 +1840,11 @@ public class Controller implements ActionListener {
 
 			betMenuManager.setVisible(true);
 			loteriaMan.setVisible(false);
+			loteriaMan.getBetAmount().setText("");
+			loteriaMan.getNum1().setValue(0);
+			loteriaMan.getNum2().setValue(0);
+			loteriaMan.getNum3().setValue(0);
+			loteriaMan.getNum4().setValue(0);
 			break;
 
 		}
@@ -1804,6 +1859,13 @@ public class Controller implements ActionListener {
 
 			betMenuManager.setVisible(true);
 			balotoMan.setVisible(false);
+			balotoMan.getBetAmount().setText("");
+			balotoMan.getNum1().setValue(1);
+			balotoMan.getNum2().setValue(1);
+			balotoMan.getNum3().setValue(1);
+			balotoMan.getNum4().setValue(1);
+			balotoMan.getNum5().setValue(1);
+			balotoMan.getNum6().setValue(1);
 			break;
 
 		}
@@ -1840,6 +1902,11 @@ public class Controller implements ActionListener {
 
 			chanceMan.setVisible(true);
 			betMenuManager.setVisible(false);
+			for (int i = 0; i < 5; i++) {
+
+				generateRandomNumberMan();
+
+			}
 			break;
 
 		}
@@ -1847,6 +1914,11 @@ public class Controller implements ActionListener {
 
 			betMenuManager.setVisible(true);
 			chanceMan.setVisible(false);
+			chanceMan.getBetAmount().setText(null);
+			chanceMan.getNum1().removeAllItems();
+			chanceMan.getNum2().removeAllItems();
+			chanceMan.getNum3().removeAllItems();
+			chanceMan.getNum4().removeAllItems();
 			break;
 
 		}
@@ -1854,6 +1926,7 @@ public class Controller implements ActionListener {
 
 			superastroMan.setVisible(true);
 			betMenuManager.setVisible(false);
+
 			break;
 
 		}
@@ -1861,6 +1934,11 @@ public class Controller implements ActionListener {
 
 			betMenuManager.setVisible(true);
 			superastroMan.setVisible(false);
+			superastroMan.getBetAmount().setText("");
+			superastroMan.getNum1().setValue(0);
+			superastroMan.getNum2().setValue(0);
+			superastroMan.getNum3().setValue(0);
+			superastroMan.getNum4().setValue(0);
 			break;
 
 		}
@@ -2621,6 +2699,73 @@ public class Controller implements ActionListener {
 
 	}
 
+	public void makeLoteryBetMan() {
+
+		LocalDateTime actualDate = LocalDateTime.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
+
+		String betPlaced = loteriaMan.getBetAmount().getText();
+
+		String headQuarterName = managerMenuWin.getNameVenue().getText();
+
+		String document = selGambCreateBetMan.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String loteryName = loteriaMan.getLoteryType().getSelectedItem().toString();
+
+		String typeBet = "LOTERIA";
+
+		String num1 = loteriaMan.getNum1().getValue().toString();
+		String num2 = loteriaMan.getNum2().getValue().toString();
+		String num3 = loteriaMan.getNum3().getValue().toString();
+		String num4 = loteriaMan.getNum4().getValue().toString();
+
+		String numbers = num1 + num2 + num3 + num4;
+
+		String serialNum = loteriaMan.getSerialNumber().getSelectedItem().toString();
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+			loteriaDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName,
+					numbers, serialNum);
+
+			JOptionPane.showMessageDialog(loteriaMan,
+					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
+			betManagmentManager.setVisible(true);
+			receiptWindow.setVisible(true);
+			loteriaMan.setVisible(false);
+
+		} else {
+
+		}
+
+	}
+
 	public void makeBalotoBetOwn() {
 
 		LocalDateTime actualDate = LocalDateTime.now();
@@ -2678,6 +2823,70 @@ public class Controller implements ActionListener {
 			betManOwn.setVisible(true);
 			receiptWindow.setVisible(true);
 			balotoWin.setVisible(false);
+
+		} else {
+
+		}
+
+	}
+
+	public void makeBalotoBetMan() {
+
+		LocalDateTime actualDate = LocalDateTime.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
+
+		String betPlaced = balotoMan.getBetAmount().getText();
+
+		String headQuarterName = managerMenuWin.getNameVenue().getText();
+
+		String document = selGambCreateBetMan.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String typeBet = "LOTERIA";
+
+		String num1 = balotoMan.getNum1().getValue().toString();
+		String num2 = balotoMan.getNum2().getValue().toString();
+		String num3 = balotoMan.getNum3().getValue().toString();
+		String num4 = balotoMan.getNum4().getValue().toString();
+		String num5 = balotoMan.getNum5().getValue().toString();
+		String num6 = balotoMan.getNum6().getValue().toString();
+
+		String numbers = num1 + num2 + num3 + num4 + num5 + num6;
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+			balotoDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, numbers);
+			JOptionPane.showMessageDialog(balotoMan, "HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2
+					+ "-" + num3 + "-" + num4 + "-" + num5 + "-" + num6);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
+
+			betManagmentManager.setVisible(true);
+			receiptWindow.setVisible(true);
+			balotoMan.setVisible(false);
 
 		} else {
 
@@ -2750,6 +2959,71 @@ public class Controller implements ActionListener {
 
 	}
 
+	public void makeSuperAstroBetMan() {
+
+		LocalDateTime actualDate = LocalDateTime.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
+
+		String betPlaced = superastroMan.getBetAmount().getText();
+
+		String headQuarterName = managerMenuWin.getNameVenue().getText();
+
+		String document = selGambCreateBetMan.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String typeBet = "LOTERIA";
+
+		String num1 = superastroMan.getNum1().getValue().toString();
+		String num2 = superastroMan.getNum2().getValue().toString();
+		String num3 = superastroMan.getNum3().getValue().toString();
+		String num4 = superastroMan.getNum4().getValue().toString();
+
+		String numbers = num1 + num2 + num3 + num4;
+
+		String zodiacSign = superastroMan.getZodiacSign().getSelectedItem().toString();
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+			superAstroDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, numbers,
+					zodiacSign);
+			JOptionPane.showMessageDialog(superastroMan,
+					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
+
+			betManagmentManager.setVisible(true);
+			receiptWindow.setVisible(true);
+			superastroMan.setVisible(false);
+
+		} else {
+
+		}
+
+	}
+
 	public void generateRandomNumber() {
 
 		Random rand1 = new Random();
@@ -2765,6 +3039,24 @@ public class Controller implements ActionListener {
 		chanceWin.getNum2().addItem(num2);
 		chanceWin.getNum3().addItem(num3);
 		chanceWin.getNum4().addItem(num4);
+
+	}
+
+	public void generateRandomNumberMan() {
+
+		Random rand1 = new Random();
+		Random rand2 = new Random();
+		Random rand3 = new Random();
+		Random rand4 = new Random();
+		int num1 = rand1.nextInt(99);
+		int num2 = rand2.nextInt(99);
+		int num3 = rand3.nextInt(99);
+		int num4 = rand4.nextInt(99);
+
+		chanceMan.getNum1().addItem(num1);
+		chanceMan.getNum2().addItem(num2);
+		chanceMan.getNum3().addItem(num3);
+		chanceMan.getNum4().addItem(num4);
 
 	}
 
@@ -2828,6 +3120,72 @@ public class Controller implements ActionListener {
 			betManOwn.setVisible(true);
 			receiptWindow.setVisible(true);
 			chanceWin.setVisible(false);
+
+		} else {
+		}
+
+	}
+
+	public void makeChanceBetMan() {
+		LocalDateTime actualDate = LocalDateTime.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
+
+		String betPlaced = chanceMan.getBetAmount().getText();
+
+		String headQuarterName = managerMenuWin.getNameVenue().getText();
+
+		String document = selGambCreateBetMan.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String loteryName = chanceMan.getLoteryType().getSelectedItem().toString();
+
+		String typeBet = "CHANCE";
+
+		String num1 = chanceMan.getNum1().getSelectedItem().toString();
+		String num2 = chanceMan.getNum2().getSelectedItem().toString();
+		String num3 = chanceMan.getNum3().getSelectedItem().toString();
+		String num4 = chanceMan.getNum4().getSelectedItem().toString();
+
+		String numbers = num1 + num2 + num3 + num4;
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		} else if (JOptionPane.CANCEL_OPTION == response) {
+			confirmation = false;
+		}
+		if (confirmation) {
+			chanceDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName,
+					numbers);
+			JOptionPane.showMessageDialog(chanceMan,
+					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
+
+			betManagmentManager.setVisible(true);
+			receiptWindow.setVisible(true);
+			chanceMan.setVisible(false);
 
 		} else {
 		}
