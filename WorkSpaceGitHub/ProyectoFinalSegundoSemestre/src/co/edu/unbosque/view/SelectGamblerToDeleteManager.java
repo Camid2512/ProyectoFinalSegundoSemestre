@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class SelectGamblerAfterVenueWindowToDelete extends JFrame {
+public class SelectGamblerToDeleteManager extends JFrame {
 
 	/**
 	 * 
@@ -21,12 +21,12 @@ public class SelectGamblerAfterVenueWindowToDelete extends JFrame {
 	private JButton exit, back, nextStep;
 	private JLabel mainImage;
 
-	public SelectGamblerAfterVenueWindowToDelete() {
+	public SelectGamblerToDeleteManager() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("ELIMINAR APOSTADOR OWNER");
+		setTitle("ELIMINAR APOSTADOR MANAGER");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);

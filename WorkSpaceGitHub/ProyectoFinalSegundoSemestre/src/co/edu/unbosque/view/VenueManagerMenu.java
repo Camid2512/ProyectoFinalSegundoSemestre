@@ -72,7 +72,6 @@ public class VenueManagerMenu extends JFrame {
 
 		bets = new JButton();
 		bets.setBounds(385, 474, 512, 89);
-		bets.setBounds(385, 317, 512, 89);
 		bets.setToolTipText("GESTION APUESTAS");
 		bets.setBackground(new Color(0, 0, 0, 0));
 		bets.setOpaque(false);

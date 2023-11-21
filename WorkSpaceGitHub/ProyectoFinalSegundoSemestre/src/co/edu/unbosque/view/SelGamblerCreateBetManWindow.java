@@ -10,23 +10,24 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class SelectGamblerAfterVenueWindowToDelete extends JFrame {
+public class SelGamblerCreateBetManWindow extends JFrame {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5261141351305780143L;
+	private static final long serialVersionUID = -2902607414608498023L;
 
 	private JComboBox<Long> comboGambler;
 	private JButton exit, back, nextStep;
 	private JLabel mainImage;
 
-	public SelectGamblerAfterVenueWindowToDelete() {
+	public SelGamblerCreateBetManWindow() {
 		// TODO Auto-generated constructor stub
+
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("ELIMINAR APOSTADOR OWNER");
+		setTitle("SELECCIONAR APOSTADOR QUE HARA APUESTA");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -51,7 +52,7 @@ public class SelectGamblerAfterVenueWindowToDelete extends JFrame {
 
 		nextStep = new JButton();
 		nextStep.setBounds(858, 498, 298, 99);
-		nextStep.setToolTipText("ELIMINAR SELECCIONADO");
+		nextStep.setToolTipText("SELECCIONAR");
 		nextStep.setBackground(new Color(0, 0, 0, 0));
 		nextStep.setOpaque(false);
 		nextStep.setContentAreaFilled(false);
@@ -78,6 +79,7 @@ public class SelectGamblerAfterVenueWindowToDelete extends JFrame {
 		mainImage.setIcon(img1);
 		mainImage.setVisible(true);
 		add(mainImage);
+
 	}
 
 	public JComboBox<Long> getComboGambler() {

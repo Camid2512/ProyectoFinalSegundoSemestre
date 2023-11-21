@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class BetManagmentByOwnerWindow extends JFrame {
+public class BetManagmentByManagerWindow extends JFrame {
 
 	/**
 	 * Este es el atributo de la version serial
@@ -59,7 +59,7 @@ public class BetManagmentByOwnerWindow extends JFrame {
 	 * @since 10/11/2023
 	 */
 
-	public BetManagmentByOwnerWindow() {
+	public BetManagmentByManagerWindow() {
 		// TODO Auto-generated constructor stub
 
 		setSize(1280, 720);

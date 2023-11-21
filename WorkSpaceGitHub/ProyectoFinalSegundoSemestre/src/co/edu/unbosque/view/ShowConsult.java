@@ -54,8 +54,8 @@ public class ShowConsult extends JFrame {
 		add(back);
 
 		consultGam = new JButton();
-		consultGam.setBounds(1199, 500, 74, 72);
-		consultGam.setToolTipText("SALIR DEL PROGRAMA");
+		consultGam.setBounds(965, 475, 175, 37);
+		consultGam.setToolTipText("CONSULTAR GASTADO APOSTADOR");
 		consultGam.setBackground(new Color(0, 0, 0, 0));
 		consultGam.setOpaque(false);
 		consultGam.setContentAreaFilled(false);
@@ -72,7 +72,7 @@ public class ShowConsult extends JFrame {
 		totalBetAmount.setEditable(false);
 		totalBetAmount.setHighlighter(null);
 		add(totalBetAmount);
-		
+
 		totalBetAmountGambler = new JTextArea();
 		totalBetAmountGambler.setBounds(911, 552, 280, 68);
 		totalBetAmountGambler.setBackground(new Color(0, 0, 0, 0));
@@ -83,7 +83,7 @@ public class ShowConsult extends JFrame {
 		totalBetAmountGambler.setEditable(false);
 		totalBetAmountGambler.setHighlighter(null);
 		add(totalBetAmountGambler);
-		
+
 		ComboGambler = new JComboBox<>();
 		ComboGambler.setBounds(910, 400, 280, 68);
 		ComboGambler.setBackground(new Color(225, 223, 228));
@@ -174,7 +174,5 @@ public class ShowConsult extends JFrame {
 	public void setComboGambler(JComboBox<Long> comboGambler) {
 		ComboGambler = comboGambler;
 	}
-	
-	
 
 }
