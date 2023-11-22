@@ -2009,6 +2009,7 @@ public class Controller implements ActionListener {
 		case "BACK MENU GAMBLER SHOW": {
 			gamblerManagManager.setVisible(true);
 			showGamMan.setVisible(false);
+			updateTableGamblerManager();
 			break;
 		}
 
@@ -2428,6 +2429,10 @@ public class Controller implements ActionListener {
 					"ALGUNO DE LOS PRESUPUESTOS NO COINCIDE CON EL PRESUPUESTO TOTAL", "error", 0);
 
 		}
+
+		ownWind.setVisible(true);
+		gamesSettingWin.setVisible(false);
+
 	}
 
 	public String updateBoxCreateGambler() {
@@ -3984,4 +3989,14 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+	
+	public void updateTableGamblerManager() {
+		int aux = showGamMan.getTablePanel().getModel().getRowCount();
+		for (int i = aux - 1; i >= 0; i--) {
+
+			showGamMan.getTablePanel().getModel().removeRow(i);
+
+		}
+	}
+	
 }
