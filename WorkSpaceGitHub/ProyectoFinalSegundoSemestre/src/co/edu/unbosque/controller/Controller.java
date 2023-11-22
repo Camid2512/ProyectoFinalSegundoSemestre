@@ -36,6 +36,7 @@ import co.edu.unbosque.view.ChanceManager;
 import co.edu.unbosque.view.ChanceWindow;
 import co.edu.unbosque.view.ConsultWindow;
 import co.edu.unbosque.view.CreateCashier;
+import co.edu.unbosque.view.CreateGamblerCashierWindow;
 import co.edu.unbosque.view.CreateGamblerManagerWindow;
 import co.edu.unbosque.view.CreateGamblerWindow;
 import co.edu.unbosque.view.CreateVenueWindow;
@@ -51,6 +52,7 @@ import co.edu.unbosque.view.ManageVenueManager;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
 import co.edu.unbosque.view.ReceiptWindow;
+import co.edu.unbosque.view.SelBetToDeleteManager;
 import co.edu.unbosque.view.SelBetToDeleteOwn;
 import co.edu.unbosque.view.SelGamblerCreateBetManWindow;
 import co.edu.unbosque.view.SelGamblerCreateBetOwnWindow;
@@ -65,6 +67,7 @@ import co.edu.unbosque.view.SelectGamblerToDeleteManager;
 import co.edu.unbosque.view.SelectGamblerToUpdateManager;
 import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
+import co.edu.unbosque.view.ShowBetManager;
 import co.edu.unbosque.view.ShowBetOwn;
 import co.edu.unbosque.view.ShowConsult;
 import co.edu.unbosque.view.ShowGamblerManager;
@@ -135,6 +138,9 @@ public class Controller implements ActionListener {
 	private CashierMainMenu cashierMainMenu;
 	private GamblerManagmentByCahier gambManagCashier;
 	private ShowGamblerManager showGamMan;
+	private CreateGamblerCashierWindow createGamblerCashier;
+	private ShowBetManager showBetManag;
+	private SelBetToDeleteManager selBetDeleteManager;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -223,6 +229,9 @@ public class Controller implements ActionListener {
 		cashierMainMenu = new CashierMainMenu();
 		gambManagCashier = new GamblerManagmentByCahier();
 		showGamMan = new ShowGamblerManager();
+		createGamblerCashier = new CreateGamblerCashierWindow();
+		showBetManag = new ShowBetManager();
+		selBetDeleteManager = new SelBetToDeleteManager();
 
 		agregarLectores();
 
@@ -836,6 +845,28 @@ public class Controller implements ActionListener {
 		betManagmentManager.getCreate().addActionListener(this);
 		betManagmentManager.getCreate().setActionCommand("CREATE BET MENU MANAGER");
 
+		betManagmentManager.getRead().addActionListener(this);
+		betManagmentManager.getRead().setActionCommand("SHOW BET MENU MANAGER");
+
+		betManagmentManager.getDelete().addActionListener(this);
+		betManagmentManager.getDelete().setActionCommand("DELETE BET MENU MANAGER");
+
+		// BOTONES MOSTRAR APUESTAS JEFE DE SEDE
+
+		showBetManag.getExit().addActionListener(this);
+		showBetManag.getExit().setActionCommand("EXIT");
+
+		showBetManag.getBack().addActionListener(this);
+		showBetManag.getBack().setActionCommand("BACK SHOW BET MANAGER");
+
+		// BOTONES ELIMINAR APUESTA JEFE DE SEDE
+
+		selBetDeleteManager.getExit().addActionListener(this);
+		selBetDeleteManager.getExit().setActionCommand("EXIT");
+
+		selBetDeleteManager.getBack().addActionListener(this);
+		selBetDeleteManager.getBack().setActionCommand("BACK DELETE BET MANAGER");
+
 		// BOTONES ELEGIR APOSTADOR A HACER APUESTAS POR EL JEFE DE SEDE
 
 		selGambCreateBetMan.getExit().addActionListener(this);
@@ -889,6 +920,9 @@ public class Controller implements ActionListener {
 		gambManagCashier.getBack().addActionListener(this);
 		gambManagCashier.getBack().setActionCommand("BACK MENU GAMBLER CASHIER");
 
+		gambManagCashier.getCreate().addActionListener(this);
+		gambManagCashier.getCreate().setActionCommand("CREATE GAMBLER CASHIER");
+
 		// BOTONES MOSTRAR GAMBLER MANAGER
 
 		showGamMan.getExit().addActionListener(this);
@@ -896,6 +930,17 @@ public class Controller implements ActionListener {
 
 		showGamMan.getBack().addActionListener(this);
 		showGamMan.getBack().setActionCommand("BACK MENU GAMBLER SHOW");
+
+		// BOTONES CREAR APOSTADORES POR CAJERO
+
+		createGamblerCashier.getExit().addActionListener(this);
+		createGamblerCashier.getExit().setActionCommand("EXIT");
+
+		createGamblerCashier.getBack().addActionListener(this);
+		createGamblerCashier.getBack().setActionCommand("BACK CREATE GAMBLER CASHIER");
+
+		createGamblerCashier.getCreateGambler().addActionListener(this);
+		createGamblerCashier.getCreateGambler().setActionCommand("CREATE GAMBLER BY CASHIER");
 
 	}
 
@@ -2012,6 +2057,75 @@ public class Controller implements ActionListener {
 			updateTableGamblerManager();
 			break;
 		}
+		case "CREATE GAMBLER CASHIER": {
+
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+				if (exit.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+
+					createGamblerCashier.getComboLocation()
+							.addItem(venueDAO.getHeadquarterList().get(i).getVenueName());
+
+				}
+
+			}
+			createGamblerCashier.setVisible(true);
+			gambManagCashier.setVisible(false);
+
+			break;
+		}
+		case "BACK CREATE GAMBLER CASHIER": {
+
+			gambManagCashier.setVisible(true);
+			createGamblerCashier.setVisible(false);
+
+			createGamblerCashier.getCompleteName().setText("");
+			createGamblerCashier.getComboLocation().removeAllItems();
+			createGamblerCashier.getDocument().setText(null);
+			createGamblerCashier.getAdress().setText(null);
+			createGamblerCashier.getPhoneNumber().setText(null);
+			break;
+
+		}
+		case "CREATE GAMBLER BY CASHIER": {
+			createGamblerCashier();
+			gambManagCashier.setVisible(true);
+			createGamblerCashier.setVisible(false);
+			createGamblerCashier.getCompleteName().setText("");
+			createGamblerCashier.getComboLocation().removeAllItems();
+			createGamblerCashier.getDocument().setText(null);
+			createGamblerCashier.getAdress().setText(null);
+			createGamblerCashier.getPhoneNumber().setText(null);
+
+			break;
+
+		}
+		case "SHOW BET MENU MANAGER": {
+			showTableBetManager(exit);
+			showBetManag.setVisible(true);
+			betManagmentManager.setVisible(false);
+
+			break;
+
+		}
+		case "BACK SHOW BET MANAGER": {
+
+			betManagmentManager.setVisible(true);
+			showBetManag.setVisible(false);
+			break;
+		}
+		case "DELETE BET MENU MANAGER": {
+
+			selBetDeleteManager.setVisible(true);
+			betManagmentManager.setVisible(false);
+			break;
+		}
+		case "BACK DELETE BET MANAGER": {
+
+			betManagmentManager.setVisible(true);
+			selBetDeleteManager.setVisible(false);
+			break;
+		}
 
 		default:
 
@@ -2599,6 +2713,50 @@ public class Controller implements ActionListener {
 			} catch (SameDocumentException e) {
 
 				createGambManager.getDocument().setText("");
+				gamDAO.delete(0);
+
+			}
+			break;
+		}
+	}
+
+	public void createGamblerCashier() {
+
+		String gamingVenue = "";
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			if (exit.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+
+				gamingVenue = venueDAO.getHeadquarterList().get(i).getVenueName();
+
+			}
+
+		}
+
+		String fullName = "";
+		String document = "";
+		String adress = "";
+		String phoneNumber = "";
+		while (true) {
+			try {
+				fullName = createGamblerCashier.getCompleteName().getText();
+				document = createGamblerCashier.getDocument().getText();
+				checkDuplicatedDocument(document);
+				adress = createGamblerCashier.getAdress().getText();
+				phoneNumber = createGamblerCashier.getPhoneNumber().getText();
+
+				if (checkDuplicatedDocument(document) == true) {
+					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
+					JOptionPane.showMessageDialog(createGamblerCashier, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
+					createGamblerCashier.getComboLocation().removeAllItems();
+
+				} else {
+
+				}
+
+			} catch (SameDocumentException e) {
+
+				createGamblerCashier.getDocument().setText("");
 				gamDAO.delete(0);
 
 			}
@@ -3556,6 +3714,7 @@ public class Controller implements ActionListener {
 	 * Funcion que actualiza la tabla de sedes
 	 * 
 	 * @author Santiago Rueda
+	 *
 	 */
 	public void updateTableVenue() {
 		for (int i = venueDAO.getHeadquarterList().size() - 1; i >= 0; i--) {
@@ -3989,7 +4148,7 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
-	
+
 	public void updateTableGamblerManager() {
 		int aux = showGamMan.getTablePanel().getModel().getRowCount();
 		for (int i = aux - 1; i >= 0; i--) {
@@ -3998,5 +4157,95 @@ public class Controller implements ActionListener {
 
 		}
 	}
-	
+
+	public void showTableBetManager(String s) {
+		for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
+			if (s.equals(venueDAO.getHeadquarterList().get(j).getId())) {
+				for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+					if (venueDAO.getHeadquarterList().get(j).getLocationVenue()
+							.equals(loteriaDAO.getLoteryBetList().get(i).getHeadQuarterName())) {
+						int dia = loteriaDAO.getLoteryBetList().get(i).getDay();
+						int mes = loteriaDAO.getLoteryBetList().get(i).getMonth();
+						int ano = loteriaDAO.getLoteryBetList().get(i).getYear();
+						double valorapostado = loteriaDAO.getLoteryBetList().get(i).getBetPlaced();
+						long documento = loteriaDAO.getLoteryBetList().get(i).getDocument();
+						String juego = "Loteria";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetManag.getTablePanel().getModel().addRow(data);
+					}
+				}
+				for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+
+					if (venueDAO.getHeadquarterList().get(j).getLocationVenue()
+							.equals(balotoDAO.getBallotList().get(i).getHeadQuarterName())) {
+						int dia = balotoDAO.getBallotList().get(i).getDay();
+						int mes = balotoDAO.getBallotList().get(i).getMonth();
+						int ano = balotoDAO.getBallotList().get(i).getYear();
+						double valorapostado = balotoDAO.getBallotList().get(i).getBetPlaced();
+						long documento = balotoDAO.getBallotList().get(i).getDocument();
+						String juego = "Baloto";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetManag.getTablePanel().getModel().addRow(data);
+					}
+
+				}
+				for (int i = 0; i < superAstroDAO.getSuperAstroList().size(); i++) {
+
+					if (venueDAO.getHeadquarterList().get(j).getLocationVenue()
+							.equals(superAstroDAO.getSuperAstroList().get(i).getHeadQuarterName())) {
+						int dia = superAstroDAO.getSuperAstroList().get(i).getDay();
+						int mes = superAstroDAO.getSuperAstroList().get(i).getMonth();
+						int ano = superAstroDAO.getSuperAstroList().get(i).getYear();
+						double valorapostado = superAstroDAO.getSuperAstroList().get(i).getBetPlaced();
+						long documento = superAstroDAO.getSuperAstroList().get(i).getDocument();
+						String juego = "Super astro";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetManag.getTablePanel().getModel().addRow(data);
+					}
+
+				}
+				for (int i = 0; i < chanceDAO.getChanceList().size(); i++) {
+
+					if (venueDAO.getHeadquarterList().get(j).getLocationVenue()
+							.equals(chanceDAO.getChanceList().get(i).getHeadQuarterName())) {
+						int dia = chanceDAO.getChanceList().get(i).getDay();
+						int mes = chanceDAO.getChanceList().get(i).getMonth();
+						int ano = chanceDAO.getChanceList().get(i).getYear();
+						double valorapostado = chanceDAO.getChanceList().get(i).getBetPlaced();
+						long documento = chanceDAO.getChanceList().get(i).getDocument();
+						String juego = "Chance";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetManag.getTablePanel().getModel().addRow(data);
+					}
+				}
+				for (int i = 0; i < betPlayDAO.getBetPlayList().size(); i++) {
+
+					if (venueDAO.getHeadquarterList().get(j).getLocationVenue()
+							.equals(betPlayDAO.getBetPlayList().get(i).getHeadQuarterName())) {
+						int dia = betPlayDAO.getBetPlayList().get(i).getDay();
+						int mes = betPlayDAO.getBetPlayList().get(i).getMonth();
+						int ano = betPlayDAO.getBetPlayList().get(i).getYear();
+						double valorapostado = betPlayDAO.getBetPlayList().get(i).getBetPlaced();
+						long documento = betPlayDAO.getBetPlayList().get(i).getDocument();
+						String juego = "Bet Play";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetManag.getTablePanel().getModel().addRow(data);
+					}
+
+				}
+			}
+
+		}
+	}
+
 }
