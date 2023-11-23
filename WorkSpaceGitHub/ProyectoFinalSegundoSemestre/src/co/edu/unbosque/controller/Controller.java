@@ -70,6 +70,7 @@ import co.edu.unbosque.view.SelectDeleteGamblerOwnWindow;
 import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindowToDelete;
+import co.edu.unbosque.view.SelectGamblerToDeleteBetCashier;
 import co.edu.unbosque.view.SelectGamblerToDeleteBetManager;
 import co.edu.unbosque.view.SelectGamblerToDeleteCashier;
 import co.edu.unbosque.view.SelectGamblerToDeleteManager;
@@ -77,6 +78,7 @@ import co.edu.unbosque.view.SelectGamblerToUpdateCashier;
 import co.edu.unbosque.view.SelectGamblerToUpdateManager;
 import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
+import co.edu.unbosque.view.ShowBetCashier;
 import co.edu.unbosque.view.ShowBetManager;
 import co.edu.unbosque.view.ShowBetOwn;
 import co.edu.unbosque.view.ShowConsult;
@@ -167,6 +169,8 @@ public class Controller implements ActionListener {
 	private SuperAstroCashier superAstroCashier;
 	private ChanceCashier chanceCashier;
 	private BetPlayCashier betPlayCashier;
+	private ShowBetCashier showBetCashier;
+	private SelectGamblerToDeleteBetCashier selGambBetDeleteCashier;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -271,6 +275,8 @@ public class Controller implements ActionListener {
 		superAstroCashier = new SuperAstroCashier();
 		chanceCashier = new ChanceCashier();
 		betPlayCashier = new BetPlayCashier();
+		showBetCashier = new ShowBetCashier();
+		selGambBetDeleteCashier = new SelectGamblerToDeleteBetCashier();
 
 		agregarLectores();
 
@@ -1142,6 +1148,25 @@ public class Controller implements ActionListener {
 
 		betMenuCashier.getBetPlay().addActionListener(this);
 		betMenuCashier.getBetPlay().setActionCommand("BETPLAYCASHIER");
+
+		// MOSTRAR APUESTAS CAJERO
+
+		showBetCashier.getExit().addActionListener(this);
+		showBetCashier.getExit().setActionCommand("EXIT");
+
+		showBetCashier.getBack().addActionListener(this);
+		showBetCashier.getBack().setActionCommand("BACK SHOW BET CASHIER");
+
+		// ELIMINAR APUESTAS CAJERO
+
+		selGambBetDeleteCashier.getExit().addActionListener(this);
+		selGambBetDeleteCashier.getExit().setActionCommand("EXIT");
+
+		selGambBetDeleteCashier.getBack().addActionListener(this);
+		selGambBetDeleteCashier.getBack().setActionCommand("BACK DELETE BET CASHIER");
+
+		selGambBetDeleteCashier.getNextStep().addActionListener(this);
+		selGambBetDeleteCashier.getNextStep().setActionCommand("NEXT DELETE BET CASHIER");
 
 	}
 
@@ -2617,6 +2642,38 @@ public class Controller implements ActionListener {
 			betPlayCashier.getMatch12().setValue(0);
 			betPlayCashier.getMatch13().setValue(0);
 			betPlayCashier.getMatch14().setValue(0);
+			break;
+		}
+		case "SHOW BET CASHIER": {
+
+			showBetCashier.setVisible(true);
+			betManCashier.setVisible(false);
+			break;
+
+		}
+		case "BACK SHOW BET CASHIER": {
+
+			betManCashier.setVisible(true);
+			showBetCashier.setVisible(false);
+			break;
+
+		}
+		case "DELETE BET CASHIER": {
+
+			selGambBetDeleteCashier.setVisible(true);
+			betManCashier.setVisible(false);
+			break;
+
+		}
+		case "BACK DELETE BET CASHIER": {
+
+			selGambBetDeleteCashier.setVisible(true);
+			betManCashier.setVisible(false);
+			break;
+
+		}
+		case "NEXT DELETE BET CASHIER": {
+
 			break;
 		}
 		default:
