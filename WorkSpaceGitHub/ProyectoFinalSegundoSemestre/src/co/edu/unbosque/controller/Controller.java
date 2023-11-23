@@ -64,6 +64,7 @@ import co.edu.unbosque.view.SelectDeleteVenueOwnWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindow;
 import co.edu.unbosque.view.SelectGamblerAfterVenueWindowToDelete;
 import co.edu.unbosque.view.SelectGamblerToDeleteManager;
+import co.edu.unbosque.view.SelectGamblerToUpdateCashier;
 import co.edu.unbosque.view.SelectGamblerToUpdateManager;
 import co.edu.unbosque.view.SelectUpdateGamblerWindow;
 import co.edu.unbosque.view.SelectUpdateVenueWindow;
@@ -76,6 +77,7 @@ import co.edu.unbosque.view.ShowVenueOwn;
 import co.edu.unbosque.view.SignUpWindow;
 import co.edu.unbosque.view.SuperAstroManager;
 import co.edu.unbosque.view.SuperAstroWindow;
+import co.edu.unbosque.view.UpdateGamblerCashierWindow;
 import co.edu.unbosque.view.UpdateGamblerManagerWindow;
 import co.edu.unbosque.view.UpdateVenueByOwnerWindow;
 import co.edu.unbosque.view.VenueManagerMenu;
@@ -141,6 +143,8 @@ public class Controller implements ActionListener {
 	private CreateGamblerCashierWindow createGamblerCashier;
 	private ShowBetManager showBetManag;
 	private SelBetToDeleteManager selBetDeleteManager;
+	private SelectGamblerToUpdateCashier selGambUpdateCashier;
+	private UpdateGamblerCashierWindow updateGamblerCashier;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -232,6 +236,8 @@ public class Controller implements ActionListener {
 		createGamblerCashier = new CreateGamblerCashierWindow();
 		showBetManag = new ShowBetManager();
 		selBetDeleteManager = new SelBetToDeleteManager();
+		selGambUpdateCashier = new SelectGamblerToUpdateCashier();
+		updateGamblerCashier = new UpdateGamblerCashierWindow();
 
 		agregarLectores();
 
@@ -923,6 +929,9 @@ public class Controller implements ActionListener {
 		gambManagCashier.getCreate().addActionListener(this);
 		gambManagCashier.getCreate().setActionCommand("CREATE GAMBLER CASHIER");
 
+		gambManagCashier.getUpdate().addActionListener(this);
+		gambManagCashier.getUpdate().setActionCommand("UPDATE GAMBLER CASHIER");
+
 		// BOTONES MOSTRAR GAMBLER MANAGER
 
 		showGamMan.getExit().addActionListener(this);
@@ -941,6 +950,28 @@ public class Controller implements ActionListener {
 
 		createGamblerCashier.getCreateGambler().addActionListener(this);
 		createGamblerCashier.getCreateGambler().setActionCommand("CREATE GAMBLER BY CASHIER");
+
+		// BOTONES SELECCIONAR APOSTADOR A ACTUALIZAR APOSTADOR POR CAJERO
+
+		selGambUpdateCashier.getExit().addActionListener(this);
+		selGambUpdateCashier.getExit().setActionCommand("EXIT");
+
+		selGambUpdateCashier.getBack().addActionListener(this);
+		selGambUpdateCashier.getBack().setActionCommand("BACK SEL UPDATE GAMB CASHIER");
+
+		selGambUpdateCashier.getNextStep().addActionListener(this);
+		selGambUpdateCashier.getNextStep().setActionCommand("NEXT SEL UPDATE GAMB CASHIER");
+
+		// BOTONES ACTUALIZAR APOSTADOR POR CAJERO
+
+		updateGamblerCashier.getExit().addActionListener(this);
+		updateGamblerCashier.getExit().setActionCommand("EXIT");
+
+		updateGamblerCashier.getBack().addActionListener(this);
+		updateGamblerCashier.getBack().setActionCommand("BACK UPTADE GAMB CASHIER");
+
+		updateGamblerCashier.getCreateGambler().addActionListener(this);
+		updateGamblerCashier.getCreateGambler().setActionCommand("UPTADE GAMBLER BY CASHIER");
 
 	}
 
@@ -2126,6 +2157,42 @@ public class Controller implements ActionListener {
 			selBetDeleteManager.setVisible(false);
 			break;
 		}
+		case "UPDATE GAMBLER CASHIER": {
+
+			selGambUpdateCashier.setVisible(true);
+			gambManagCashier.setVisible(false);
+			updateBoxSelectGamblerCashier(exit);
+			break;
+
+		}
+		case "BACK SEL UPDATE GAMB CASHIER": {
+
+			gambManagCashier.setVisible(true);
+			selGambUpdateCashier.setVisible(false);
+			break;
+		}
+		case "NEXT SEL UPDATE GAMB CASHIER": {
+
+			setDataToUpdateGamblerCashier();
+			updateGamblerCashier.setVisible(true);
+			selGambUpdateCashier.setVisible(false);
+
+			break;
+		}
+		case "BACK UPTADE GAMB CASHIER": {
+
+			selGambUpdateCashier.setVisible(true);
+			updateGamblerCashier.setVisible(false);
+			updateGamblerCashier.getComboLocation().removeAllItems();
+			break;
+		}
+		case "UPTADE GAMBLER BY CASHIER": {
+
+			updateGamblerCashier();
+			updateGamblerCashier.getComboLocation().removeAllItems();
+			break;
+
+		}
 
 		default:
 
@@ -2814,6 +2881,44 @@ public class Controller implements ActionListener {
 
 		gamblerManagManager.setVisible(true);
 		updateGambManager.setVisible(false);
+
+	}
+
+	public void updateGamblerCashier() {
+		String gamingVenue = "";
+
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			if (exit.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+
+				gamingVenue = venueDAO.getHeadquarterList().get(i).getVenueName();
+
+			}
+
+		}
+
+		String fullName = updateGamblerCashier.getCompleteName().getText();
+		String document = updateGamblerCashier.getDocument().getText();
+		String addres = updateGamblerCashier.getAdress().getText();
+		String phoneNumber = updateGamblerCashier.getPhoneNumber().getText();
+		int index = 0;
+
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+
+			long aux = Long.parseLong(updateGamblerCashier.getDocument().getText());
+
+			if (aux == gamDAO.getGamblerList().get(i).getDocumentId()) {
+				index = i;
+			}
+
+		}
+
+		gamDAO.updateByIndex(index, fullName, document, gamingVenue, addres, phoneNumber);
+
+		JOptionPane.showMessageDialog(updateGamblerCashier, "ACTUALIZADO CON EXITO");
+
+		gambManagCashier.setVisible(true);
+		updateGamblerCashier.setVisible(false);
 
 	}
 
@@ -4074,6 +4179,23 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	public void updateBoxSelectGamblerCashier(String s) {
+		if (!gamDAO.getGamblerList().isEmpty()) {
+			selGambUpdateCashier.getComboGambler().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				if (s.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+					for (int j = 0; j < gamDAO.getGamblerList().size(); j++) {
+						if (venueDAO.getHeadquarterList().get(i).getVenueName()
+								.equals(gamDAO.getGamblerList().get(j).getGamingVenue())) {
+							selGambUpdateCashier.getComboGambler()
+									.addItem(gamDAO.getGamblerList().get(j).getDocumentId());
+						}
+					}
+				}
+			}
+		}
+	}
+
 	public void setDataToUpdateGamblerManager() {
 
 		long docToCheck = Long.parseLong(selGambUpdateManager.getComboGambler().getSelectedItem().toString());
@@ -4088,6 +4210,28 @@ public class Controller implements ActionListener {
 				updateGambManager.getPhoneNumber()
 						.setText(String.valueOf(gamDAO.getGamblerList().get(i).getPhoneNumber()));
 				updateGambManager.getComboLocation().addItem(gamDAO.getGamblerList().get(i).getGamingVenue());
+
+			}
+
+		}
+
+	}
+
+	public void setDataToUpdateGamblerCashier() {
+
+		long docToCheck = Long.parseLong(selGambUpdateCashier.getComboGambler().getSelectedItem().toString());
+
+		for (int i = 0; i < gamDAO.getGamblerList().size(); i++) {
+
+			if (docToCheck == gamDAO.getGamblerList().get(i).getDocumentId()) {
+
+				updateGamblerCashier.getCompleteName().setText(gamDAO.getGamblerList().get(i).getFullName());
+				updateGamblerCashier.getDocument()
+						.setText(String.valueOf(gamDAO.getGamblerList().get(i).getDocumentId()));
+				updateGamblerCashier.getAdress().setText(gamDAO.getGamblerList().get(i).getAddres());
+				updateGamblerCashier.getPhoneNumber()
+						.setText(String.valueOf(gamDAO.getGamblerList().get(i).getPhoneNumber()));
+				updateGamblerCashier.getComboLocation().addItem(gamDAO.getGamblerList().get(i).getGamingVenue());
 
 			}
 
