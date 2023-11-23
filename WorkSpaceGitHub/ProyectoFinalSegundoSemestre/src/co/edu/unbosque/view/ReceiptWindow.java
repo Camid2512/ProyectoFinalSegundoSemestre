@@ -14,20 +14,39 @@ import javax.swing.border.EmptyBorder;
 public class ReceiptWindow extends JFrame {
 
 	/**
+	 * Ventana encargada de mostrar los recibos de cada apuesta
 	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+
+	/**
+	 * Identificador de serialización de la clase.
 	 */
 	private static final long serialVersionUID = 5453165584751636416L;
 
+	/**
+	 * Botón para salir.
+	 */
 	private JButton exit;
 
+	/**
+	 * Etiqueta principal de la imagen.
+	 */
 	private JLabel mainImage;
 
+	/**
+	 * Área de texto para la fecha, nombre, documento,lugar de apuesta, tipo de
+	 * apuesta.
+	 */
 	private JTextArea date, fullName, document, venueBet, typeBet;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public ReceiptWindow() {
-		// TODO Auto-generated constructor stub
-
-		setSize(1280, 720);
+		// TODO Auto-generated constructor stube(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setTitle("RECIBO");
@@ -111,62 +130,107 @@ public class ReceiptWindow extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el área de texto para la fecha.
+	 */
 	public JTextArea getDate() {
 		return date;
 	}
 
+	/**
+	 * Establece el área de texto para la fecha.
+	 */
 	public void setDate(JTextArea date) {
 		this.date = date;
 	}
 
+	/**
+	 * Obtiene el área de texto para el nombre completo.
+	 */
 	public JTextArea getFullName() {
 		return fullName;
 	}
 
+	/**
+	 * Establece el área de texto para el nombre completo.
+	 */
 	public void setFullName(JTextArea fullName) {
 		this.fullName = fullName;
 	}
 
+	/**
+	 * Obtiene el área de texto para el documento.
+	 */
 	public JTextArea getDocument() {
 		return document;
 	}
 
+	/**
+	 * Establece el área de texto para el documento.
+	 */
 	public void setDocument(JTextArea document) {
 		this.document = document;
 	}
 
+	/**
+	 * Obtiene el área de texto para el lugar de la apuesta.
+	 */
 	public JTextArea getVenueBet() {
 		return venueBet;
 	}
 
+	/**
+	 * Establece el área de texto para el lugar de la apuesta.
+	 */
 	public void setVenueBet(JTextArea venueBet) {
 		this.venueBet = venueBet;
 	}
 
+	/**
+	 * Obtiene el área de texto para el tipo de apuesta.
+	 */
 	public JTextArea getTypeBet() {
 		return typeBet;
 	}
 
+	/**
+	 * Establece el área de texto para el tipo de apuesta.
+	 */
 	public void setTypeBet(JTextArea typeBet) {
 		this.typeBet = typeBet;
 	}
 
+	/**
+	 * Obtiene el número de versión serial.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class BetManagmentByManagerWindow extends JFrame {
+public class BetManagmentByCashierWindow extends JFrame {
 
 	/**
 	 * Este es el atributo de la version serial
@@ -59,11 +59,9 @@ public class BetManagmentByManagerWindow extends JFrame {
 	 * @since 10/11/2023
 	 */
 
-	public BetManagmentByManagerWindow() {
+	public BetManagmentByCashierWindow() {
 		// TODO Auto-generated constructor stub
-		/**
-	     * Configuración de botones y etiquetas visuales.
-	     */
+
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -73,7 +71,7 @@ public class BetManagmentByManagerWindow extends JFrame {
 		setLayout(null);
 
 		exit = new JButton();
-		exit.setBounds(1199, 7, 74, 72);			
+		exit.setBounds(1199, 7, 74, 72);
 		exit.setToolTipText("SALIR DEL PROGRAMA");
 		exit.setBackground(new Color(0, 0, 0, 0));
 		exit.setOpaque(false);

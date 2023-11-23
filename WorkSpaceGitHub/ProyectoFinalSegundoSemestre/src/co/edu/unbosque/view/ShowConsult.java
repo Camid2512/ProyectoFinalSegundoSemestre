@@ -15,14 +15,46 @@ import javax.swing.border.EmptyBorder;
 public class ShowConsult extends JFrame {
 
 	/**
+	 * Esta clase permite mostrar consultas realizadas
 	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+
+	/**
+	 * Identificador de serialización de la clase.
 	 */
 	private static final long serialVersionUID = -3076482943278818043L;
 
+	/**
+	 * Etiqueta principal de la imagen.
+	 */
 	private JLabel mainImage;
+
+	/**
+	 * Área de texto para mostrar el monto total apostado y el monto apostado por un
+	 * apostador en especifico.
+	 */
 	private JTextArea totalBetAmount, totalBetAmountGambler;
+
+	/**
+	 * Botones que permiten salir ,volver, consultar juego
+	 */
 	private JButton exit, back, consultGam;
+
+	/**
+	 * ComboBox para seleccionar un apostador.
+	 */
 	private JComboBox<Long> ComboGambler;
+
+	/**
+	 * Panel que muestra la tabla de consultas.
+	 */
+
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	private ConsultTable tablePanel = new ConsultTable();
 
 	public ShowConsult() {
@@ -107,70 +139,125 @@ public class ShowConsult extends JFrame {
 		add(mainImage);
 	}
 
+	/**
+	 * Método getter para obtener la etiqueta de imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Método setter para configurar la etiqueta de imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Método getter para obtener el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Método setter para configurar el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Método getter para obtener el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Método setter para configurar el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Método getter para obtener el panel de consulta.
+	 */
 	public ConsultTable getTablePanel() {
 		return tablePanel;
 	}
 
+	/**
+	 * Método setter para configurar el panel de consulta.
+	 */
 	public void setTablePanel(ConsultTable tablePanel) {
 		this.tablePanel = tablePanel;
 	}
 
+	/**
+	 * Método getter para obtener el número de versión de serialización.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	/**
+	 * Método getter para obtener el botón de consulta de apostador.
+	 */
 	public JButton getConsultGam() {
 		return consultGam;
 	}
 
+	/**
+	 * Método setter para configurar el botón de consulta de apostador.
+	 */
 	public void setConsultGam(JButton consultGam) {
 		this.consultGam = consultGam;
 	}
 
+	/**
+	 * Método getter para obtener el área de texto para el monto total de la
+	 * apuesta.
+	 */
 	public JTextArea getTotalBetAmount() {
 		return totalBetAmount;
 	}
 
+	/**
+	 * Método setter para configurar el área de texto para el monto total de la
+	 * apuesta.
+	 */
 	public void setTotalBetAmount(JTextArea totalBetAmount) {
 		this.totalBetAmount = totalBetAmount;
 	}
 
+	/**
+	 * Método getter para obtener el área de texto para el monto total de la apuesta
+	 * del apostador.
+	 */
 	public JTextArea getTotalBetAmountGambler() {
 		return totalBetAmountGambler;
 	}
 
+	/**
+	 * Método setter para configurar el área de texto para el monto total de la
+	 * apuesta del apostador.
+	 */
 	public void setTotalBetAmountGambler(JTextArea totalBetAmountGambler) {
 		this.totalBetAmountGambler = totalBetAmountGambler;
 	}
 
+	/**
+	 * Método getter para obtener el ComboBox para el apostador.
+	 */
 	public JComboBox<Long> getComboGambler() {
 		return ComboGambler;
 	}
 
+	/**
+	 * Método setter para configurar el ComboBox para el apostador.
+	 */
 	public void setComboGambler(JComboBox<Long> comboGambler) {
 		ComboGambler = comboGambler;
 	}

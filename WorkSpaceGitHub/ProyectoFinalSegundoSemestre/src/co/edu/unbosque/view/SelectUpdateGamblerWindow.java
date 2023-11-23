@@ -13,14 +13,31 @@ import javax.swing.JLabel;
 public class SelectUpdateGamblerWindow extends JFrame {
 
 	/**
+	 * La clase SelectUpdateGamblerWindow representa una ventana de actualización
+	 * para un apostador.
 	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+
+	/**
+	 * Identificador de serialización de la clase.
 	 */
 	private static final long serialVersionUID = 4847687659616758624L;
 
+	/** Botones para salir, retroceder y avanzar. */
 	private JButton exit, back, next;
+
+	/** ComboBox para seleccionar el lugar. */
 	private JComboBox<String> comboVenue;
+
+	/** Etiqueta principal de la imagen. */
 	private JLabel mainImage;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public SelectUpdateGamblerWindow() {
 		// TODO Auto-generated constructor stub
 
@@ -82,46 +99,79 @@ public class SelectUpdateGamblerWindow extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón de siguiente.
+	 */
 	public JButton getNext() {
 		return next;
 	}
 
+	/**
+	 * Establece el botón de siguiente.
+	 */
 	public void setNext(JButton next) {
 		this.next = next;
 	}
 
+	/**
+	 * Obtiene el ComboBox para el lugar.
+	 */
 	public JComboBox<String> getComboVenue() {
 		return comboVenue;
 	}
 
+	/**
+	 * Establece el ComboBox para el lugar.
+	 */
 	public void setComboVenue(JComboBox<String> comboVenue) {
 		this.comboVenue = comboVenue;
 	}
 
+	/**
+	 * Obtiene la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el identificador de serialización de la clase.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

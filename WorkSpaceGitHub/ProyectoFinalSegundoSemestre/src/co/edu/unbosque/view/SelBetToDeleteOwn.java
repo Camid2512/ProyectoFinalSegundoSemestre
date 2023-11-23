@@ -14,13 +14,37 @@ public class SelBetToDeleteOwn extends JFrame {
 
 	/**
 	 * 
+	 * Ventana encargada de seleccionar la apuesta a eliminar
+	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+
+	/**
+	 * Número de versión serial para garantizar la compatibilidad de la clase
+	 * durante la serialización.
 	 */
 	private static final long serialVersionUID = -7122147527086186987L;
 
+	/**
+	 * ComboBox para el jugador.
+	 */
 	private JComboBox<String> comboGambler;
+
+	/**
+	 * Botones salida, volver, y siguiente paso.
+	 */
 	private JButton exit, back, nextStep;
+
+	/**
+	 * Etiqueta principal de la imagen.
+	 */
 	private JLabel mainImage;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public SelBetToDeleteOwn() {
 		// TODO Auto-generated constructor stub
 
@@ -82,46 +106,80 @@ public class SelBetToDeleteOwn extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el ComboBox para el jugador.
+	 */
 	public JComboBox<String> getComboGambler() {
 		return comboGambler;
 	}
 
+	/**
+	 * Establece el ComboBox para el jugador.
+	 */
 	public void setComboGambler(JComboBox<String> comboGambler) {
 		this.comboGambler = comboGambler;
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón para el siguiente paso.
+	 */
 	public JButton getNextStep() {
 		return nextStep;
 	}
 
+	/**
+	 * Establece el botón para el siguiente paso.
+	 */
 	public void setNextStep(JButton nextStep) {
 		this.nextStep = nextStep;
 	}
 
+	/**
+	 * Obtiene la etiqueta principal de la imagen.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta principal de la imagen.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el número de versión serial para la compatibilidad de la clase
+	 * durante la serialización.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -17,17 +17,41 @@ import javax.swing.border.EmptyBorder;
 public class UpdateVenueByOwnerWindow extends JFrame {
 
 	/**
+	 * UpdateVenueByOwnerWindow representa una ventana para actualizar información relacionada
+	 * con un lugar de eventos o un lugar para realizar apuestas. Permite al propietario modificar
+	 * datos específicos del lugar.
 	 * 
+	 * Autor: SOFTPYLSA
+	 * Versión: 1.0
+	 * Fecha: 10/11/2023
 	 */
+	
+	/**
+     * Número de versión para el control de serialización.
+     */
 	private static final long serialVersionUID = -4408642502855127544L;
 
+	/** Botones para salir, retroceder y crear el lugar. */
 	private JButton exit, back, createVenue;
+	
+
+    /** Etiqueta principal de la imagen. */
 	private JLabel mainImage;
+	
+	   /** Campo de texto para el nombre del lugar. */
 	private JTextField venueName;
+	
+	/** ComboBox para seleccionar la ubicación del lugar. */
 	private JComboBox<String> comboLocation;
+	
+	 /** Spinner para la cantidad de empleados. */
 	private JSpinner numEmployes;
 	private SpinnerNumberModel n;
 
+	
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public UpdateVenueByOwnerWindow() {
 		// TODO Auto-generated constructor stub
 
@@ -131,72 +155,123 @@ public class UpdateVenueByOwnerWindow extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
-		return exit;
+	    return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
-		this.exit = exit;
+	    this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
-		return back;
+	    return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
-		this.back = back;
+	    this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón para crear un lugar.
+	 */
 	public JButton getCreateVenue() {
-		return createVenue;
+	    return createVenue;
 	}
 
+	/**
+	 * Establece el botón para crear un lugar.
+	 */
 	public void setCreateVenue(JButton createVenue) {
-		this.createVenue = createVenue;
+	    this.createVenue = createVenue;
 	}
 
+	/**
+	 * Obtiene la etiqueta de imagen principal.
+	 */
 	public JLabel getMainImage() {
-		return mainImage;
+	    return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta de imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
-		this.mainImage = mainImage;
+	    this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el campo de texto para el nombre del lugar.
+	 */
 	public JTextField getVenueName() {
-		return venueName;
+	    return venueName;
 	}
 
+	/**
+	 * Establece el campo de texto para el nombre del lugar.
+	 */
 	public void setVenueName(JTextField venueName) {
-		this.venueName = venueName;
+	    this.venueName = venueName;
 	}
 
+	/**
+	 * Obtiene el componente de selección de ubicación.
+	 */
 	public JComboBox<String> getComboLocation() {
-		return comboLocation;
+	    return comboLocation;
 	}
 
+	/**
+	 * Establece el componente de selección de ubicación.
+	 */
 	public void setComboLocation(JComboBox<String> comboLocation) {
-		this.comboLocation = comboLocation;
+	    this.comboLocation = comboLocation;
 	}
 
+	/**
+	 * Obtiene el componente de selección numérica para el número de empleados.
+	 */
 	public JSpinner getNumEmployes() {
-		return numEmployes;
+	    return numEmployes;
 	}
 
+	/**
+	 * Establece el componente de selección numérica para el número de empleados.
+	 */
 	public void setNumEmployes(JSpinner numEmployes) {
-		this.numEmployes = numEmployes;
+	    this.numEmployes = numEmployes;
 	}
 
+	/**
+	 * Obtiene el modelo de números asociado al JSpinner.
+	 */
 	public SpinnerNumberModel getN() {
-		return n;
+	    return n;
 	}
 
+	/**
+	 * Establece el modelo de números para el JSpinner.
+	 */
 	public void setN(SpinnerNumberModel n) {
-		this.n = n;
+	    this.n = n;
 	}
 
+	/**
+	 * Obtiene el identificador serial de la versión de la clase.
+	 */
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+	    return serialVersionUID;
 	}
 
 }

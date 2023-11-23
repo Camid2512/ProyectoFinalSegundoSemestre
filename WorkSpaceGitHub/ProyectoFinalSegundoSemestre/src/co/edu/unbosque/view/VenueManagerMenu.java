@@ -14,15 +14,29 @@ import javax.swing.border.EmptyBorder;
 public class VenueManagerMenu extends JFrame {
 
 	/**
+	 * Clase VenueManagerMenu que representa la interfaz gráfica para la gestión de
+	 * lugares.
+	 * Autor: SOFTPYLSA
+	 * Versión: 1.0
+	 * Fecha: 10/11/2023
 	 * 
 	 */
+
+	/** SerialVersionUID para la serialización */
 	private static final long serialVersionUID = 4682807708706332707L;
 
+	/** Botones de la interfaz */
 	private JButton exit, back, manageVenue, gamblers, bets;
+
+	/** Botones de la interfaz */
 	private JLabel mainImage;
 
+	/** Área de texto para el nombre del lugar */
 	private JTextArea nameVenue;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public VenueManagerMenu() {
 		// TODO Auto-generated constructor stub
 
@@ -106,62 +120,107 @@ public class VenueManagerMenu extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón para gestionar lugares.
+	 */
 	public JButton getManageVenue() {
 		return manageVenue;
 	}
 
+	/**
+	 * Establece el botón para gestionar lugares.
+	 */
 	public void setManageVenue(JButton manageVenue) {
 		this.manageVenue = manageVenue;
 	}
 
+	/**
+	 * Obtiene el botón para apostadores.
+	 */
 	public JButton getGamblers() {
 		return gamblers;
 	}
 
+	/**
+	 * Establece el botón para apostadores.
+	 */
 	public void setGamblers(JButton gamblers) {
 		this.gamblers = gamblers;
 	}
 
+	/**
+	 * Obtiene el botón para apuestas.
+	 */
 	public JButton getBets() {
 		return bets;
 	}
 
+	/**
+	 * Establece el botón para apuestas.
+	 */
 	public void setBets(JButton bets) {
 		this.bets = bets;
 	}
 
+	/**
+	 * Obtiene la etiqueta de imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta de imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el área de texto para el nombre del lugar.
+	 */
 	public JTextArea getNameVenue() {
 		return nameVenue;
 	}
 
+	/**
+	 * Establece el área de texto para el nombre del lugar.
+	 */
 	public void setNameVenue(JTextArea nameVenue) {
 		this.nameVenue = nameVenue;
 	}
 
+	/**
+	 * Obtiene el identificador serial de la versión de la clase.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

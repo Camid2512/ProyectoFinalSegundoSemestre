@@ -13,7 +13,15 @@ import javax.swing.JLabel;
 public class SelVenuToDeleteBetOwner extends JFrame {
 
 	/**
+	 * Seleccionar sede a eliminar
 	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+	
+	/**
+	 * Identificador de serialización de la clase.
 	 */
 	private static final long serialVersionUID = -9206446675511622182L;
 
@@ -21,6 +29,10 @@ public class SelVenuToDeleteBetOwner extends JFrame {
 	private JComboBox<String> comboVenue;
 	private JLabel mainImage;
 
+	
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public SelVenuToDeleteBetOwner() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
@@ -80,48 +92,81 @@ public class SelVenuToDeleteBetOwner extends JFrame {
 		add(mainImage);
 	}
 
+	/**
+	 * Método getter para obtener el botón de salida.
+	 */
 	public JButton getExit() {
-		return exit;
+	    return exit;
 	}
 
+	/**
+	 * Método setter para configurar el botón de salida.
+	 */
 	public void setExit(JButton exit) {
-		this.exit = exit;
+	    this.exit = exit;
 	}
 
+	/**
+	 * Método getter para obtener el botón de retroceso.
+	 */
 	public JButton getBack() {
-		return back;
+	    return back;
 	}
 
+	/**
+	 * Método setter para configurar el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
-		this.back = back;
+	    this.back = back;
 	}
 
+	/**
+	 * Método getter para obtener el botón de siguiente.
+	 */
 	public JButton getNext() {
-		return next;
+	    return next;
 	}
 
+	/**
+	 * Método setter para configurar el botón de siguiente.
+	 */
 	public void setNext(JButton next) {
-		this.next = next;
+	    this.next = next;
 	}
 
+	/**
+	 * Método getter para obtener el ComboBox de lugares.
+	 */
 	public JComboBox<String> getComboVenue() {
-		return comboVenue;
+	    return comboVenue;
 	}
 
+	/**
+	 * Método setter para configurar el ComboBox de lugares.
+	 */
 	public void setComboVenue(JComboBox<String> comboVenue) {
-		this.comboVenue = comboVenue;
+	    this.comboVenue = comboVenue;
 	}
 
+	/**
+	 * Método getter para obtener la imagen principal.
+	 */
 	public JLabel getMainImage() {
-		return mainImage;
+	    return mainImage;
 	}
 
+	/**
+	 * Método setter para configurar la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
-		this.mainImage = mainImage;
+	    this.mainImage = mainImage;
 	}
 
+	/**
+	 * Método getter para obtener el número de versión de serialización.
+	 */
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+	    return serialVersionUID;
 	}
 
 }

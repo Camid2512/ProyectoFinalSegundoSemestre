@@ -14,14 +14,29 @@ import javax.swing.border.EmptyBorder;
 public class SignUpWindow extends JFrame {
 
 	/**
+	 * Ventana de registro de usuario. Permite a los usuarios registrarse
+	 * proporcionando información como usuario y contraseña.
 	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
+
+	/** Identificador de serialización de la clase. */
 	private static final long serialVersionUID = -1518185821545289498L;
 
+	/** Etiqueta para la imagen principal. */
 	private JLabel mainImage;
+
+	/** Campo de texto para ingresar el usuario, contraseña */
 	private JTextField usuario, password;
+
+	/** Botón para el registro del usuario, volver y salir */
 	private JButton botonRegistro, exit, back;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public SignUpWindow() {
 
 		setSize(1280, 720);
@@ -92,54 +107,93 @@ public class SignUpWindow extends JFrame {
 		add(mainImage);
 	}
 
+	/**
+	 * Obtiene la etiqueta para la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Obtiene el campo de texto para el usuario.
+	 */
 	public JTextField getUsuario() {
 		return usuario;
 	}
 
+	/**
+	 * Establece el campo de texto para el usuario.
+	 */
 	public void setUsuario(JTextField usuario) {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * Obtiene el campo de texto para la contraseña.
+	 */
 	public JTextField getPassword() {
 		return password;
 	}
 
+	/**
+	 * Establece el campo de texto para la contraseña.
+	 */
 	public void setPassword(JTextField password) {
 		this.password = password;
 	}
 
+	/**
+	 * Obtiene el botón para el registro del usuario.
+	 */
 	public JButton getBotonRegistro() {
 		return botonRegistro;
 	}
 
+	/**
+	 * Establece el botón para el registro del usuario.
+	 */
 	public void setBotonRegistro(JButton botonRegistro) {
 		this.botonRegistro = botonRegistro;
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón para retroceder.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón para retroceder.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el identificador de serialización de la clase.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	/**
+	 * Establece la etiqueta para la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}

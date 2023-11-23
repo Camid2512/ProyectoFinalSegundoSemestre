@@ -8,7 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class ShowBetManager extends JFrame {
+public class ShowGamblerCashier extends JFrame {
+
 	/**
 	 * Este es el atributo de la version serial
 	 * 
@@ -16,13 +17,13 @@ public class ShowBetManager extends JFrame {
 	 * @version 1.0
 	 * @since 28/09/2023
 	 */
-	private static final long serialVersionUID = 5106702916498315840L;
+	private static final long serialVersionUID = 8176187398995221112L;
 	/**
 	 * Estos son los atributos de la imagen principal
 	 * 
 	 * @author Santiago Rueda
 	 * @version 1.0
-	 * @since 10/11/2023
+	 * @since 28/09/2023
 	 */
 	private JLabel mainImage;
 	/**
@@ -40,7 +41,7 @@ public class ShowBetManager extends JFrame {
 	 * @version 1.0
 	 * @since 28/09/2023
 	 */
-	private BetTableManager tablePanel = new BetTableManager();
+	private GamblerTableManager tablePanel = new GamblerTableManager();
 
 	/**
 	 * Este es el constructor vacio de la ventana mostrar militar extranjero
@@ -49,12 +50,12 @@ public class ShowBetManager extends JFrame {
 	 * @version 1.0
 	 * @since 28/09/2023
 	 */
-	public ShowBetManager() {
+	public ShowGamblerCashier() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("VENTANA TABLA APUESTAS");
+		setTitle("VENTANA TABLA APOSTADORES");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -128,7 +129,7 @@ public class ShowBetManager extends JFrame {
 	 * @since 28/09/2023
 	 */
 
-	public BetTableManager getTablePanel() {
+	public GamblerTableManager getTablePanel() {
 		return tablePanel;
 	}
 
@@ -140,7 +141,7 @@ public class ShowBetManager extends JFrame {
 	 * @since 28/09/2023
 	 */
 
-	public void setTablePanel(BetTableManager tablePanel) {
+	public void setTablePanel(GamblerTableManager tablePanel) {
 		this.tablePanel = tablePanel;
 	}
 

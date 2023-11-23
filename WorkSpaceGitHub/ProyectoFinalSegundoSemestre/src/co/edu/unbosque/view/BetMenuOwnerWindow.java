@@ -11,16 +11,31 @@ import javax.swing.JLabel;
 public class BetMenuOwnerWindow extends JFrame {
 
 	/**
+	 * Clase que representa la ventana de selección de apuestas. * 
 	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
+
+	/** Número de versión de serialización. */
 	private static final long serialVersionUID = -1021661811041945435L;
 
+	/** Etiqueta principal de la ventana. */
 	private JLabel mainImage;
+
+	/** Botones de la ventana. */
 	private JButton exit, back, loteria, betPlay, superAstro, chance, baloto;
 
+	/**
+	 * Constructor de la ventana de selección de apuestas.
+	 */
 	public BetMenuOwnerWindow() {
 		// TODO Auto-generated constructor stub
 
+		/**
+		 * Configuración de botones y etiquetas visuales.
+		 */
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -108,70 +123,121 @@ public class BetMenuOwnerWindow extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene la etiqueta principal de la ventana.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta principal de la ventana.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón de lotería.
+	 */
 	public JButton getLoteria() {
 		return loteria;
 	}
 
+	/**
+	 * Establece el botón de lotería.
+	 */
 	public void setLoteria(JButton loteria) {
 		this.loteria = loteria;
 	}
 
+	/**
+	 * Obtiene el botón de BetPlay.
+	 */
 	public JButton getBetPlay() {
 		return betPlay;
 	}
 
+	/**
+	 * Establece el botón de BetPlay.
+	 */
 	public void setBetPlay(JButton betPlay) {
 		this.betPlay = betPlay;
 	}
 
+	/**
+	 * Obtiene el botón de SuperAstro.
+	 */
 	public JButton getSuperAstro() {
 		return superAstro;
 	}
 
+	/**
+	 * Establece el botón de SuperAstro.
+	 */
 	public void setSuperAstro(JButton superAstro) {
 		this.superAstro = superAstro;
 	}
 
+	/**
+	 * Obtiene el botón de Chance.
+	 */
 	public JButton getChance() {
 		return chance;
 	}
 
+	/**
+	 * Establece el botón de Chance.
+	 */
 	public void setChance(JButton chance) {
 		this.chance = chance;
 	}
 
+	/**
+	 * Obtiene el botón de Baloto.
+	 */
 	public JButton getBaloto() {
 		return baloto;
 	}
 
+	/**
+	 * Establece el botón de Baloto.
+	 */
 	public void setBaloto(JButton baloto) {
 		this.baloto = baloto;
 	}
 
+	/**
+	 * Obtiene el número de versión de serialización.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

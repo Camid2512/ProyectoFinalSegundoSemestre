@@ -15,20 +15,37 @@ import javax.swing.border.EmptyBorder;
 public class ChanceManager extends JFrame {
 
 	/**
-	 * 
+	 *
+	 * Representa la ventana de gestión de apuestas de Chance. Proporciona métodos
+	 * para manejar elementos de interfaz de usuario.
+	 *
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
-	private static final long serialVersionUID = 5898606968191455247L;
 
+	/** Identificador de serialización de la clase. */
+	private static final long serialVersionUID = 5898606968191455247L;
+	
+	/** Botones para salir, volver, y siguiente . */
 	private JButton exit, back, next;
 
+	/** Campo de texto para la cantidad de apuesta. */
 	private JTextField betAmount;
 
+	/** Listas despegables para numeros 1, 2, 3, 4. */
 	private JComboBox<Integer> num1, num2, num3, num4;
 
+	/** Lista desplegable para el tipo de lotería. */
 	private JComboBox<String> loteryType;
-	
+
+	/** Etiqueta principal de la imagen. */
 	private JLabel mainImage;
 
+	/**
+	 * Constructor de la clase ChanceManager. Configura la ventana y sus
+	 * componentes.
+	 */
 	public ChanceManager() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
@@ -102,7 +119,7 @@ public class ChanceManager extends JFrame {
 		num4.setForeground(Color.black);
 		num4.setFont(new Font("Arial", 1, 25));
 		add(num4);
-		
+
 		loteryType = new JComboBox<String>();
 		loteryType.setBounds(115, 510, 685, 77);
 		loteryType.setBackground(new Color(225, 223, 228));
@@ -140,90 +157,156 @@ public class ChanceManager extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón para salir.
+	 * 
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón para salir.
+	 * 
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón para retroceder.
+	 * 
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón para retroceder.
+	 * 
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón para avanzar.
+	 * 
+	 */
 	public JButton getNext() {
 		return next;
 	}
 
+	/**
+	 * Establece el botón para avanzar.
+	 * 
+	 */
 	public void setNext(JButton next) {
 		this.next = next;
 	}
 
+	/**
+	 * Obtiene el campo de texto para la cantidad de apuesta.
+	 * 
+	 */
 	public JTextField getBetAmount() {
 		return betAmount;
 	}
 
+	/**
+	 * Establece el campo de texto para la cantidad de apuesta.
+	 * 
+	 */
 	public void setBetAmount(JTextField betAmount) {
 		this.betAmount = betAmount;
 	}
 
+	/**
+	 * Obtiene la lista desplegable para el primer número.
+	 * 
+	 */
 	public JComboBox<Integer> getNum1() {
 		return num1;
 	}
 
+	/**
+	 * Establece la lista desplegable para el primer número.
+	 * 
+	 */
 	public void setNum1(JComboBox<Integer> num1) {
 		this.num1 = num1;
 	}
 
+	/**
+	 * Obtiene la lista desplegable para el segundo número.
+	 * 
+	 */
 	public JComboBox<Integer> getNum2() {
 		return num2;
 	}
 
+	/**
+	 * Establece la lista desplegable para el segundo número.
+	 * 
+	 */
 	public void setNum2(JComboBox<Integer> num2) {
 		this.num2 = num2;
 	}
 
+	/**
+	 * Obtiene la lista desplegable para el tercer número.
+	 * 
+	 */
 	public JComboBox<Integer> getNum3() {
 		return num3;
 	}
 
+	/**
+	 * Establece la lista desplegable para el tercer número.
+	 * 
+	 */
 	public void setNum3(JComboBox<Integer> num3) {
 		this.num3 = num3;
 	}
 
+	/**
+	 * Obtiene la lista desplegable para el cuarto número.
+	 * 
+	 */
 	public JComboBox<Integer> getNum4() {
 		return num4;
 	}
 
+	/**
+	 * Establece la lista desplegable para el cuarto número.
+	 * 
+	 */
 	public void setNum4(JComboBox<Integer> num4) {
 		this.num4 = num4;
 	}
 
-	public JLabel getMainImage() {
-		return mainImage;
-	}
-
-	public void setMainImage(JLabel mainImage) {
-		this.mainImage = mainImage;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/**
+	 * Obtiene el tipo de lotería en la lista desplegable.
+	 * 
+	 */
 	public JComboBox<String> getLoteryType() {
 		return loteryType;
 	}
 
+	/**
+	 * Establece el tipo de lotería en la lista desplegable.
+	 * 
+	 */
 	public void setLoteryType(JComboBox<String> loteryType) {
 		this.loteryType = loteryType;
 	}
-	
-	
+
+	/**
+	 * Obtiene el identificador de serialización de la clase.
+	 * 
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }

@@ -17,18 +17,31 @@ import javax.swing.border.EmptyBorder;
 public class LoteriaWindowManager extends JFrame {
 
 	/**
+	 * Representa la ventana de gestion de loteria para el manager
 	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
 	 */
+
+	/** Identificador de serialización de la clase. */
 	private static final long serialVersionUID = -3176888367658121195L;
 
+	/** Botones para salir, volver, y siguiente . */
 	private JButton exit, back, next;
 
+	/** Etiqueta principal de la imagen. */
 	private JLabel mainImage;
 
+	/** Campo de texto para la cantidad de apuesta. */
 	private JTextField betAmount;
+	/** Lista desplegable para el tipo de lotería. */
 	private JComboBox<String> loteryType;
+	/** Lista desplegable para el número de serie. */
 	private JComboBox<Integer> serialNumber;
+	/** Selector de números 1,2,3,4. */
 	private JSpinner num1, num2, num3, num4;
+	/** Modelo de números para el selector 1,2,3,4. */
 	private SpinnerNumberModel n1, n2, n3, n4;
 
 	public LoteriaWindowManager() {
@@ -191,126 +204,219 @@ public class LoteriaWindowManager extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón de siguiente.
+	 */
 	public JButton getNext() {
 		return next;
 	}
 
+	/**
+	 * Establece el botón de siguiente.
+	 */
 	public void setNext(JButton next) {
 		this.next = next;
 	}
 
+	/**
+	 * Obtiene la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene la cantidad de apuesta.
+	 */
 	public JTextField getBetAmount() {
 		return betAmount;
 	}
 
+	/**
+	 * Establece la cantidad de apuesta.
+	 */
 	public void setBetAmount(JTextField betAmount) {
 		this.betAmount = betAmount;
 	}
 
+	/**
+	 * Obtiene el tipo de lotería.
+	 */
 	public JComboBox<String> getLoteryType() {
 		return loteryType;
 	}
 
+	/**
+	 * Establece el tipo de lotería.
+	 */
 	public void setLoteryType(JComboBox<String> loteryType) {
 		this.loteryType = loteryType;
 	}
 
+	/**
+	 * Obtiene el número serial.
+	 */
 	public JComboBox<Integer> getSerialNumber() {
 		return serialNumber;
 	}
 
+	/**
+	 * Establece el número serial.
+	 */
 	public void setSerialNumber(JComboBox<Integer> serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 
+	/**
+	 * Obtiene el primer número.
+	 */
 	public JSpinner getNum1() {
 		return num1;
 	}
 
+	/**
+	 * Establece el primer número.
+	 */
 	public void setNum1(JSpinner num1) {
 		this.num1 = num1;
 	}
 
+	/**
+	 * Obtiene el segundo número.
+	 */
 	public JSpinner getNum2() {
 		return num2;
 	}
 
+	/**
+	 * Establece el segundo número.
+	 */
 	public void setNum2(JSpinner num2) {
 		this.num2 = num2;
 	}
 
+	/**
+	 * Obtiene el tercer número.
+	 */
 	public JSpinner getNum3() {
 		return num3;
 	}
 
+	/**
+	 * Establece el tercer número.
+	 */
 	public void setNum3(JSpinner num3) {
 		this.num3 = num3;
 	}
 
+	/**
+	 * Obtiene el cuarto número.
+	 */
 	public JSpinner getNum4() {
 		return num4;
 	}
 
+	/**
+	 * Establece el cuarto número.
+	 */
 	public void setNum4(JSpinner num4) {
 		this.num4 = num4;
 	}
 
+	/**
+	 * Obtiene el modelo para el primer número.
+	 */
 	public SpinnerNumberModel getN1() {
 		return n1;
 	}
 
+	/**
+	 * Establece el modelo para el primer número.
+	 */
 	public void setN1(SpinnerNumberModel n1) {
 		this.n1 = n1;
 	}
 
+	/**
+	 * Obtiene el modelo para el segundo número.
+	 */
 	public SpinnerNumberModel getN2() {
 		return n2;
 	}
 
+	/**
+	 * Establece el modelo para el segundo número.
+	 */
 	public void setN2(SpinnerNumberModel n2) {
 		this.n2 = n2;
 	}
 
+	/**
+	 * Obtiene el modelo para el tercer número.
+	 */
 	public SpinnerNumberModel getN3() {
 		return n3;
 	}
 
+	/**
+	 * Establece el modelo para el tercer número.
+	 */
 	public void setN3(SpinnerNumberModel n3) {
 		this.n3 = n3;
 	}
 
+	/**
+	 * Obtiene el modelo para el cuarto número.
+	 */
 	public SpinnerNumberModel getN4() {
 		return n4;
 	}
 
+	/**
+	 * Establece el modelo para el cuarto número.
+	 */
 	public void setN4(SpinnerNumberModel n4) {
 		this.n4 = n4;
 	}
 
+	/**
+	 * Obtiene el valor de serialVersionUID.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

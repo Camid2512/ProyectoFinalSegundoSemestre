@@ -51,7 +51,7 @@ public class SelectGamblerToUpdateCashier extends JFrame {
 
 		nextStep = new JButton();
 		nextStep.setBounds(858, 498, 298, 99);
-		nextStep.setToolTipText("ELIMINAR SELECCIONADO");
+		nextStep.setToolTipText("SIGUIENTE");
 		nextStep.setBackground(new Color(0, 0, 0, 0));
 		nextStep.setOpaque(false);
 		nextStep.setContentAreaFilled(false);

@@ -12,12 +12,22 @@ public class VenueManagmentByOwnerWindow extends JFrame {
 
 	/**
 	 * 
+	 * Representa la interfaz gráfica para la gestión de lugares por parte del
+	 * propietario. Autor: SOFTPYLSA Versión: 1.0 Fecha: 10/11/2023
 	 */
+
+	/** SerialVersionUID para la serialización */
 	private static final long serialVersionUID = 415700271536832498L;
 
+	/** Botones de la interfaz */
 	private JButton exit, back, create, read, update, delete;
+
+	/** Etiqueta principal de imagen */
 	private JLabel mainImage;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public VenueManagmentByOwnerWindow() {
 		// TODO Auto-generated constructor stub
 
@@ -99,62 +109,107 @@ public class VenueManagmentByOwnerWindow extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón para crear.
+	 */
 	public JButton getCreate() {
 		return create;
 	}
 
+	/**
+	 * Establece el botón para crear.
+	 */
 	public void setCreate(JButton create) {
 		this.create = create;
 	}
 
+	/**
+	 * Obtiene el botón para leer.
+	 */
 	public JButton getRead() {
 		return read;
 	}
 
+	/**
+	 * Establece el botón para leer.
+	 */
 	public void setRead(JButton read) {
 		this.read = read;
 	}
 
+	/**
+	 * Obtiene el botón para actualizar.
+	 */
 	public JButton getUpdate() {
 		return update;
 	}
 
+	/**
+	 * Establece el botón para actualizar.
+	 */
 	public void setUpdate(JButton update) {
 		this.update = update;
 	}
 
+	/**
+	 * Obtiene el botón para eliminar.
+	 */
 	public JButton getDelete() {
 		return delete;
 	}
 
+	/**
+	 * Establece el botón para eliminar.
+	 */
 	public void setDelete(JButton delete) {
 		this.delete = delete;
 	}
 
+	/**
+	 * Obtiene la etiqueta de imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta de imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el identificador serial de la versión de la clase.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -14,52 +14,29 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
-public class SuperAstroManager extends JFrame {
+public class LoteriaWindowCashier extends JFrame {
 
 	/**
-	 * SuperAstroManager es una clase que representa la interfaz gráfica para un
-	 * sistema relacionado con la gestión de apuestas o juegos de tipo astro. Esta
-	 * interfaz permite al usuario realizar apuestas, seleccionar números y signos
-	 * zodiacales.
 	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
 	 */
+	private static final long serialVersionUID = -3176888367658121195L;
 
-	/**
-	 * serialVersionUID es un número de versión para control de serialización.
-	 */
-	private static final long serialVersionUID = 5898606968191455247L;
-
-	/** Botones para la navegación en la interfaz, salir, volver y siguiente */
 	private JButton exit, back, next;
 
-	/** Campo de texto para ingresar el monto de la apuesta */
-	private JTextField betAmount;
-
-	/** Campos de selección de números */
-	private JSpinner num1, num2, num3, num4;
-
-	/** Modelos para los campos de selección de números */
-	private SpinnerNumberModel n1, n2, n3, n4;
-
-	/** Selección del signo zodiacal */
-	private JComboBox<String> zodiacSign;
-
-	/** Etiqueta para la imagen principal. */
 	private JLabel mainImage;
 
-	
-	/**
-	 * Este es el constructor, se encarga tambien de crear la ventana
-	 */
-	public SuperAstroManager() {
+	private JTextField betAmount;
+	private JComboBox<String> loteryType;
+	private JComboBox<Integer> serialNumber;
+	private JSpinner num1, num2, num3, num4;
+	private SpinnerNumberModel n1, n2, n3, n4;
+
+	public LoteriaWindowCashier() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("SUPERASTRO");
+		setTitle("LOTERIA MANAGER");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -99,6 +76,44 @@ public class SuperAstroManager extends JFrame {
 		betAmount.setFont(new Font("Arial", 1, 25));
 		betAmount.setForeground(Color.white);
 		add(betAmount);
+
+		loteryType = new JComboBox<String>();
+		loteryType.setBounds(111, 250, 685, 77);
+		loteryType.setBackground(new Color(225, 223, 228));
+		loteryType.setForeground(Color.black);
+		loteryType.setFont(new Font("Arial", 1, 25));
+		loteryType.addItem("LOTERIA DE BOGOTA");
+		loteryType.addItem("LOTERIA DE BOYACA");
+		loteryType.addItem("LOTERIA DEL CAUCA");
+		loteryType.addItem("LOTERIA CRUZ ROJA");
+		loteryType.addItem("LOTERIA DE CUNDINAMARCA");
+		loteryType.addItem("LOTERIA DEL HUILA");
+		loteryType.addItem("LOTERIA DE MANIZALES");
+		loteryType.addItem("LOTERIA DE MEDELLIN");
+		loteryType.addItem("LOTERIA DEL META");
+		loteryType.addItem("LOTERIA DEL QUINDIO");
+		loteryType.addItem("LOTERIA DE RISARALDA");
+		loteryType.addItem("LOTERIA DE SANTANDER");
+		loteryType.addItem("LOTERIA DEL TOLIMA");
+		loteryType.addItem("LOTERIA DEL VALLE");
+		add(loteryType);
+
+		serialNumber = new JComboBox<Integer>();
+		serialNumber.setBounds(253, 485, 402, 76);
+		serialNumber.setBackground(new Color(225, 223, 228));
+		serialNumber.setForeground(Color.black);
+		serialNumber.setFont(new Font("Arial", 1, 25));
+		serialNumber.addItem(101);
+		serialNumber.addItem(111);
+		serialNumber.addItem(121);
+		serialNumber.addItem(131);
+		serialNumber.addItem(141);
+		serialNumber.addItem(151);
+		serialNumber.addItem(161);
+		serialNumber.addItem(171);
+		serialNumber.addItem(181);
+		serialNumber.addItem(191);
+		add(serialNumber);
 
 		n1 = new SpinnerNumberModel();
 		n1.setMinimum(0);
@@ -160,30 +175,11 @@ public class SuperAstroManager extends JFrame {
 		num4.getEditor().getComponent(0).setBackground(new Color(188, 186, 190));
 		add(num4);
 
-		zodiacSign = new JComboBox<String>();
-		zodiacSign.setBounds(111, 250, 685, 77);
-		zodiacSign.setBackground(new Color(225, 223, 228));
-		zodiacSign.setForeground(Color.black);
-		zodiacSign.setFont(new Font("Arial", 1, 25));
-		zodiacSign.addItem("ARIES");
-		zodiacSign.addItem("TAURO");
-		zodiacSign.addItem("GEMINIS");
-		zodiacSign.addItem("CANCER");
-		zodiacSign.addItem("LEO");
-		zodiacSign.addItem("VIRGO");
-		zodiacSign.addItem("LIBRA");
-		zodiacSign.addItem("ESCORPIO");
-		zodiacSign.addItem("SAGITARIO");
-		zodiacSign.addItem("CAPRICORNIO");
-		zodiacSign.addItem("ACUARIO");
-		zodiacSign.addItem("PISCIS");
-		add(zodiacSign);
-
 		mainImage = new JLabel();
 		mainImage.setBounds(0, 0, 1280, 720);
 
 		Image temporal1;
-		temporal1 = new ImageIcon("src/Images/superastro.png").getImage();
+		temporal1 = new ImageIcon("src/Images/loteria.png").getImage();
 
 		ImageIcon img1;
 		img1 = new ImageIcon(
@@ -195,205 +191,126 @@ public class SuperAstroManager extends JFrame {
 
 	}
 
-	/**
-	 * Devuelve el botón de salida.
-	 */
 	public JButton getExit() {
 		return exit;
 	}
 
-	/**
-	 * Establece el botón de salida.
-	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
-	/**
-	 * Devuelve el botón de retroceso.
-	 */
 	public JButton getBack() {
 		return back;
 	}
 
-	/**
-	 * Establece el botón de retroceso.
-	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
-	/**
-	 * Devuelve el botón de avance.
-	 */
 	public JButton getNext() {
 		return next;
 	}
 
-	/**
-	 * Establece el botón de avance.
-	 */
 	public void setNext(JButton next) {
 		this.next = next;
 	}
 
-	/**
-	 * Devuelve el campo de texto para la cantidad apostada.
-	 */
-	public JTextField getBetAmount() {
-		return betAmount;
-	}
-
-	/**
-	 * Establece el campo de texto para la cantidad apostada.
-	 */
-	public void setBetAmount(JTextField betAmount) {
-		this.betAmount = betAmount;
-	}
-
-	/**
-	 * Devuelve el spinner numérico 1.
-	 */
-	public JSpinner getNum1() {
-		return num1;
-	}
-
-	/**
-	 * Establece el spinner numérico 1.
-	 */
-	public void setNum1(JSpinner num1) {
-		this.num1 = num1;
-	}
-
-	/**
-	 * Devuelve el spinner numérico 2.
-	 */
-	public JSpinner getNum2() {
-		return num2;
-	}
-
-	/**
-	 * Establece el spinner numérico 2.
-	 */
-	public void setNum2(JSpinner num2) {
-		this.num2 = num2;
-	}
-
-	/**
-	 * Devuelve el spinner numérico 3.
-	 */
-	public JSpinner getNum3() {
-		return num3;
-	}
-
-	/**
-	 * Establece el spinner numérico 3.
-	 */
-	public void setNum3(JSpinner num3) {
-		this.num3 = num3;
-	}
-
-	/**
-	 * Devuelve el spinner numérico 4.
-	 */
-	public JSpinner getNum4() {
-		return num4;
-	}
-
-	/**
-	 * Establece el spinner numérico 4.
-	 */
-	public void setNum4(JSpinner num4) {
-		this.num4 = num4;
-	}
-
-	/**
-	 * Devuelve el modelo de número para el spinner numérico 1
-	 */
-	public SpinnerNumberModel getN1() {
-		return n1;
-	}
-
-	/**
-	 * Establece el modelo de número para el spinner numérico 1.
-	 */
-	public void setN1(SpinnerNumberModel n1) {
-		this.n1 = n1;
-	}
-
-	/**
-	 * Devuelve el modelo de número para el spinner numérico 2.
-	 */
-	public SpinnerNumberModel getN2() {
-		return n2;
-	}
-
-	/**
-	 * Establece el modelo de número para el spinner numérico 2.
-	 */
-	public void setN2(SpinnerNumberModel n2) {
-		this.n2 = n2;
-	}
-
-	/**
-	 * Devuelve el modelo de número para el spinner numérico 3.
-	 */
-	public SpinnerNumberModel getN3() {
-		return n3;
-	}
-
-	/**
-	 * Establece el modelo de número para el spinner numérico 3.
-	 */
-	public void setN3(SpinnerNumberModel n3) {
-		this.n3 = n3;
-	}
-
-	/**
-	 * Devuelve el modelo de número para el spinner numérico 4.
-	 */
-	public SpinnerNumberModel getN4() {
-		return n4;
-	}
-
-	/**
-	 * Establece el modelo de número para el spinner numérico 4.
-	 */
-	public void setN4(SpinnerNumberModel n4) {
-		this.n4 = n4;
-	}
-
-	/**
-	 * Devuelve el JComboBox para el signo del zodíaco.
-	 */
-	public JComboBox<String> getZodiacSign() {
-		return zodiacSign;
-	}
-
-	/**
-	 * Establece el JComboBox para el signo del zodíaco.
-	 */
-	public void setZodiacSign(JComboBox<String> zodiacSign) {
-		this.zodiacSign = zodiacSign;
-	}
-
-	/**
-	 * Devuelve la imagen principal
-	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
-	/**
-	 * Establece la imagen principal.
-	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
-	/**
-	 * Devuelve el número de versión de serialización.
-	 */
+	public JTextField getBetAmount() {
+		return betAmount;
+	}
+
+	public void setBetAmount(JTextField betAmount) {
+		this.betAmount = betAmount;
+	}
+
+	public JComboBox<String> getLoteryType() {
+		return loteryType;
+	}
+
+	public void setLoteryType(JComboBox<String> loteryType) {
+		this.loteryType = loteryType;
+	}
+
+	public JComboBox<Integer> getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(JComboBox<Integer> serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+
+	public JSpinner getNum1() {
+		return num1;
+	}
+
+	public void setNum1(JSpinner num1) {
+		this.num1 = num1;
+	}
+
+	public JSpinner getNum2() {
+		return num2;
+	}
+
+	public void setNum2(JSpinner num2) {
+		this.num2 = num2;
+	}
+
+	public JSpinner getNum3() {
+		return num3;
+	}
+
+	public void setNum3(JSpinner num3) {
+		this.num3 = num3;
+	}
+
+	public JSpinner getNum4() {
+		return num4;
+	}
+
+	public void setNum4(JSpinner num4) {
+		this.num4 = num4;
+	}
+
+	public SpinnerNumberModel getN1() {
+		return n1;
+	}
+
+	public void setN1(SpinnerNumberModel n1) {
+		this.n1 = n1;
+	}
+
+	public SpinnerNumberModel getN2() {
+		return n2;
+	}
+
+	public void setN2(SpinnerNumberModel n2) {
+		this.n2 = n2;
+	}
+
+	public SpinnerNumberModel getN3() {
+		return n3;
+	}
+
+	public void setN3(SpinnerNumberModel n3) {
+		this.n3 = n3;
+	}
+
+	public SpinnerNumberModel getN4() {
+		return n4;
+	}
+
+	public void setN4(SpinnerNumberModel n4) {
+		this.n4 = n4;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

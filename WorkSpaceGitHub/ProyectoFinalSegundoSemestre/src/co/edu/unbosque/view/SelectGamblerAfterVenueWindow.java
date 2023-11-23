@@ -13,14 +13,33 @@ import javax.swing.JLabel;
 public class SelectGamblerAfterVenueWindow extends JFrame {
 
 	/**
+	 * Clase que representa una ventana para seleccionar apostadores después de
+	 * elegir un lugar de apuesta. Permite la selección de apostadores mediante un
+	 * combo box.
 	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+
+	/**
+	 * Identificador de serialización de la clase.
 	 */
 	private static final long serialVersionUID = 5261141351305780143L;
-
+	/**
+	 * ComboBox para la selección de apostadores.
+	 */
 	private JComboBox<Long> comboGambler;
+
+	/** Botones para salir, retroceder y avanzar. */
 	private JButton exit, back, nextStep;
+
+	/** Etiqueta principal de la imagen. */
 	private JLabel mainImage;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public SelectGamblerAfterVenueWindow() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
@@ -80,46 +99,79 @@ public class SelectGamblerAfterVenueWindow extends JFrame {
 		add(mainImage);
 	}
 
+	/**
+	 * Método para obtener el ComboBox de apostadores.
+	 */
 	public JComboBox<Long> getComboGambler() {
 		return comboGambler;
 	}
 
+	/**
+	 * Método para establecer el ComboBox de apostadores.
+	 */
 	public void setComboGambler(JComboBox<Long> comboGambler) {
 		this.comboGambler = comboGambler;
 	}
 
+	/**
+	 * Método para obtener el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Método para establecer el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Método para obtener el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Método para establecer el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Método para obtener el botón de siguiente paso.
+	 */
 	public JButton getNextStep() {
 		return nextStep;
 	}
 
+	/**
+	 * Método para establecer el botón de siguiente paso.
+	 */
 	public void setNextStep(JButton nextStep) {
 		this.nextStep = nextStep;
 	}
 
+	/**
+	 * Método para obtener la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Método para establecer la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Método estático para obtener el identificador de serialización.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -14,13 +14,37 @@ public class SelectCreateBetWindow extends JFrame {
 
 	/**
 	 * 
+	 * Ventana encargada de crear apuesta
+	 * 
+	 * @author SOFTPYLSA
+	 * @version 1.0
+	 * @since 10/11/2023
+	 */
+
+	/**
+	 * Número de versión serial para garantizar la compatibilidad de la clase
+	 * durante la serialización.
 	 */
 	private static final long serialVersionUID = 7976763735079298830L;
 
+	/**
+	 * Botones para salir, volver, y siguiente de la ventana.
+	 */
 	private JButton exit, back, next;
+
+	/**
+	 * ComboBox para la selección del lugar.
+	 */
 	private JComboBox<String> comboVenue;
+
+	/**
+	 * Etiqueta principal de la imagen.
+	 */
 	private JLabel mainImage;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public SelectCreateBetWindow() {
 		// TODO Auto-generated constructor stub
 
@@ -82,46 +106,79 @@ public class SelectCreateBetWindow extends JFrame {
 
 	}
 
+	/**
+	 * Retorna el botón para salir de la ventana.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón para salir de la ventana.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Retorna el botón para retroceder en la ventana.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón para retroceder en la ventana.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Retorna el botón para avanzar al siguiente paso en la ventana.
+	 */
 	public JButton getNext() {
 		return next;
 	}
 
+	/**
+	 * Establece el botón para avanzar al siguiente paso en la ventana.
+	 */
 	public void setNext(JButton next) {
 		this.next = next;
 	}
 
+	/**
+	 * Retorna el ComboBox para la selección del lugar.
+	 */
 	public JComboBox<String> getComboVenue() {
 		return comboVenue;
 	}
 
+	/**
+	 * Establece el ComboBox para la selección del lugar.
+	 */
 	public void setComboVenue(JComboBox<String> comboVenue) {
 		this.comboVenue = comboVenue;
 	}
 
+	/**
+	 * Retorna la etiqueta principal de la imagen.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta principal de la imagen.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Retorna el identificador de serialización de la clase.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
