@@ -31,10 +31,12 @@ import co.edu.unbosque.view.BetManagmentByOwnerWindow;
 import co.edu.unbosque.view.BetMenuCashierWindow;
 import co.edu.unbosque.view.BetMenuManagerWindow;
 import co.edu.unbosque.view.BetMenuOwnerWindow;
+import co.edu.unbosque.view.BetPlayCashier;
 import co.edu.unbosque.view.BetPlayManager;
 import co.edu.unbosque.view.BetPlayWindow;
 import co.edu.unbosque.view.BettingHouseManagmentWindow;
 import co.edu.unbosque.view.CashierMainMenu;
+import co.edu.unbosque.view.ChanceCashier;
 import co.edu.unbosque.view.ChanceManager;
 import co.edu.unbosque.view.ChanceWindow;
 import co.edu.unbosque.view.ConsultWindow;
@@ -163,6 +165,8 @@ public class Controller implements ActionListener {
 	private SelGamblerCreateBetCashierWindow selGambCreateBetCashier;
 	private BalotoCashier balotoCashier;
 	private SuperAstroCashier superAstroCashier;
+	private ChanceCashier chanceCashier;
+	private BetPlayCashier betPlayCashier;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -261,10 +265,12 @@ public class Controller implements ActionListener {
 		selGamToDelCashi = new SelectGamblerToDeleteCashier();
 		betManCashier = new BetManagmentByCashierWindow();
 		betMenuCashier = new BetMenuCashierWindow();
-		loteriaCashier = new LoteriaWindowCashier();
 		selGambCreateBetCashier = new SelGamblerCreateBetCashierWindow();
+		loteriaCashier = new LoteriaWindowCashier();
 		balotoCashier = new BalotoCashier();
 		superAstroCashier = new SuperAstroCashier();
+		chanceCashier = new ChanceCashier();
+		betPlayCashier = new BetPlayCashier();
 
 		agregarLectores();
 
@@ -708,6 +714,17 @@ public class Controller implements ActionListener {
 		chanceMan.getNext().addActionListener(this);
 		chanceMan.getNext().setActionCommand("NEXTCHANCEMAN");
 
+		// BOTONES CHANCE CASHIER
+
+		chanceCashier.getExit().addActionListener(this);
+		chanceCashier.getExit().setActionCommand("EXIT");
+
+		chanceCashier.getBack().addActionListener(this);
+		chanceCashier.getBack().setActionCommand("BACKCHANCECASHIER");
+
+		chanceCashier.getNext().addActionListener(this);
+		chanceCashier.getNext().setActionCommand("NEXTCHANCECASHIER");
+
 		// BOTONES BETPLAY
 
 		betplayWin.getExit().addActionListener(this);
@@ -729,6 +746,17 @@ public class Controller implements ActionListener {
 
 		betPlayMan.getNext().addActionListener(this);
 		betPlayMan.getNext().setActionCommand("NEXTBETPLAYMAN");
+
+		// BOTONES BETPLAY MANAGER
+
+		betPlayCashier.getExit().addActionListener(this);
+		betPlayCashier.getExit().setActionCommand("EXIT");
+
+		betPlayCashier.getBack().addActionListener(this);
+		betPlayCashier.getBack().setActionCommand("BACKBETPLAYCASHIER");
+
+		betPlayCashier.getNext().addActionListener(this);
+		betPlayCashier.getNext().setActionCommand("NEXTBETPLAYCASHIER");
 
 		// BOTONES SELECCIONAR SEDE PARA ELIMINAR APUESTA
 
@@ -2512,6 +2540,85 @@ public class Controller implements ActionListener {
 			superAstroCashier.getNum4().setValue(0);
 			break;
 		}
+		case "CHANCECASHIER": {
+
+			chanceCashier.setVisible(true);
+			betMenuCashier.setVisible(false);
+			for (int i = 0; i < 5; i++) {
+
+				generateRandomNumberCashier();
+
+			}
+
+		}
+		case "BACKCHANCECASHIER": {
+
+			betMenuCashier.setVisible(true);
+			chanceCashier.setVisible(false);
+			chanceCashier.getBetAmount().setText(null);
+			chanceCashier.getNum1().removeAllItems();
+			chanceCashier.getNum2().removeAllItems();
+			chanceCashier.getNum3().removeAllItems();
+			chanceCashier.getNum4().removeAllItems();
+			break;
+		}
+		case "NEXTCHANCECASHIER": {
+
+			makeChanceBetCashier();
+			chanceCashier.getBetAmount().setText(null);
+			chanceCashier.getNum1().removeAllItems();
+			chanceCashier.getNum2().removeAllItems();
+			chanceCashier.getNum3().removeAllItems();
+			chanceCashier.getNum4().removeAllItems();
+			break;
+		}
+		case "BETPLAYCASHIER": {
+
+			betPlayCashier.setVisible(true);
+			betMenuCashier.setVisible(false);
+			break;
+		}
+		case "BACKBETPLAYCASHIER": {
+
+			betMenuCashier.setVisible(true);
+			betPlayCashier.setVisible(false);
+			betPlayCashier.getBetAmount().setText(null);
+			betPlayCashier.getMatch1().setValue(0);
+			betPlayCashier.getMatch2().setValue(0);
+			betPlayCashier.getMatch3().setValue(0);
+			betPlayCashier.getMatch4().setValue(0);
+			betPlayCashier.getMatch5().setValue(0);
+			betPlayCashier.getMatch6().setValue(0);
+			betPlayCashier.getMatch7().setValue(0);
+			betPlayCashier.getMatch8().setValue(0);
+			betPlayCashier.getMatch9().setValue(0);
+			betPlayCashier.getMatch10().setValue(0);
+			betPlayCashier.getMatch11().setValue(0);
+			betPlayCashier.getMatch12().setValue(0);
+			betPlayCashier.getMatch13().setValue(0);
+			betPlayCashier.getMatch14().setValue(0);
+			break;
+		}
+		case "NEXTBETPLAYCASHIER": {
+
+			makeBetPlayBetCashier();
+			betPlayCashier.getBetAmount().setText(null);
+			betPlayCashier.getMatch1().setValue(0);
+			betPlayCashier.getMatch2().setValue(0);
+			betPlayCashier.getMatch3().setValue(0);
+			betPlayCashier.getMatch4().setValue(0);
+			betPlayCashier.getMatch5().setValue(0);
+			betPlayCashier.getMatch6().setValue(0);
+			betPlayCashier.getMatch7().setValue(0);
+			betPlayCashier.getMatch8().setValue(0);
+			betPlayCashier.getMatch9().setValue(0);
+			betPlayCashier.getMatch10().setValue(0);
+			betPlayCashier.getMatch11().setValue(0);
+			betPlayCashier.getMatch12().setValue(0);
+			betPlayCashier.getMatch13().setValue(0);
+			betPlayCashier.getMatch14().setValue(0);
+			break;
+		}
 		default:
 
 			break;
@@ -3962,6 +4069,24 @@ public class Controller implements ActionListener {
 
 	}
 
+	public void generateRandomNumberCashier() {
+
+		Random rand1 = new Random();
+		Random rand2 = new Random();
+		Random rand3 = new Random();
+		Random rand4 = new Random();
+		int num1 = rand1.nextInt(99);
+		int num2 = rand2.nextInt(99);
+		int num3 = rand3.nextInt(99);
+		int num4 = rand4.nextInt(99);
+
+		chanceCashier.getNum1().addItem(num1);
+		chanceCashier.getNum2().addItem(num2);
+		chanceCashier.getNum3().addItem(num3);
+		chanceCashier.getNum4().addItem(num4);
+
+	}
+
 	public void makeChanceBetOwn() {
 		LocalDateTime actualDate = LocalDateTime.now();
 
@@ -4088,6 +4213,83 @@ public class Controller implements ActionListener {
 			betManagmentManager.setVisible(true);
 			receiptWindow.setVisible(true);
 			chanceMan.setVisible(false);
+
+		} else {
+		}
+
+	}
+
+	public void makeChanceBetCashier() {
+
+		String headQuarterName = "";
+
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			if (exit.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+
+				headQuarterName = venueDAO.getHeadquarterList().get(i).getVenueName();
+
+			}
+
+		}
+
+		LocalDateTime actualDate = LocalDateTime.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
+
+		String betPlaced = chanceCashier.getBetAmount().getText();
+
+		String document = selGambCreateBetCashier.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String loteryName = chanceCashier.getLoteryType().getSelectedItem().toString();
+
+		String typeBet = "CHANCE";
+
+		String num1 = chanceCashier.getNum1().getSelectedItem().toString();
+		String num2 = chanceCashier.getNum2().getSelectedItem().toString();
+		String num3 = chanceCashier.getNum3().getSelectedItem().toString();
+		String num4 = chanceCashier.getNum4().getSelectedItem().toString();
+
+		String numbers = num1 + num2 + num3 + num4;
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		} else if (JOptionPane.CANCEL_OPTION == response) {
+			confirmation = false;
+		}
+		if (confirmation) {
+			chanceDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName,
+					numbers);
+			JOptionPane.showMessageDialog(chanceMan,
+					"HAS REALIZADO LA APUESTA CON LOS NUMEROS: " + num1 + "-" + num2 + "-" + num3 + "-" + num4);
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
+
+			betMenuCashier.setVisible(true);
+			receiptWindow.setVisible(true);
+			chanceCashier.setVisible(false);
 
 		} else {
 		}
@@ -4277,6 +4479,89 @@ public class Controller implements ActionListener {
 			betMenuManager.setVisible(true);
 			receiptWindow.setVisible(true);
 			betPlayMan.setVisible(false);
+
+		} else {
+
+		}
+
+	}
+
+	public void makeBetPlayBetCashier() {
+
+		String headQuarterName = "";
+
+		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+
+			if (exit.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+
+				headQuarterName = venueDAO.getHeadquarterList().get(i).getVenueName();
+
+			}
+
+		}
+		LocalDateTime actualDate = LocalDateTime.now();
+
+		String day = String.valueOf(actualDate.getDayOfMonth());
+		String month = String.valueOf(actualDate.getMonthValue());
+		String year = String.valueOf(actualDate.getYear());
+
+		String hour = String.valueOf(actualDate.getHour());
+		String minute = String.valueOf(actualDate.getMinute());
+		String second = String.valueOf(actualDate.getSecond());
+
+		String dateAndTime = day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
+
+		String betPlaced = betPlayCashier.getBetAmount().getText();
+
+		String document = selGambCreateBetCashier.getComboGambler().getSelectedItem().toString();
+
+		String name = searchNameByDocument(document);
+
+		String typeBet = "DEPORTIVO";
+
+		String match1 = betPlayCashier.getMatch1().getValue().toString();
+		String match2 = betPlayCashier.getMatch2().getValue().toString();
+		String match3 = betPlayCashier.getMatch3().getValue().toString();
+		String match4 = betPlayCashier.getMatch4().getValue().toString();
+		String match5 = betPlayCashier.getMatch5().getValue().toString();
+		String match6 = betPlayCashier.getMatch6().getValue().toString();
+		String match7 = betPlayCashier.getMatch7().getValue().toString();
+		String match8 = betPlayCashier.getMatch8().getValue().toString();
+		String match9 = betPlayCashier.getMatch9().getValue().toString();
+		String match10 = betPlayCashier.getMatch10().getValue().toString();
+		String match11 = betPlayCashier.getMatch11().getValue().toString();
+		String match12 = betPlayCashier.getMatch12().getValue().toString();
+		String match13 = betPlayCashier.getMatch13().getValue().toString();
+		String match14 = betPlayCashier.getMatch14().getValue().toString();
+
+		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS?", "CONFIRMATION",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
+
+		boolean confirmation = false;
+
+		if (JOptionPane.NO_OPTION == response) {
+			confirmation = false;
+		} else if (JOptionPane.OK_OPTION == response) {
+			confirmation = true;
+		}
+		if (confirmation) {
+
+			betPlayDAO.create(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, match1,
+					match2, match3, match4, match5, match6, match7, match8, match9, match10, match11, match12, match13,
+					match14);
+
+			JOptionPane.showMessageDialog(betPlayCashier, "HAS REALIZADO LA APUESTA CON EXITO");
+
+			receiptDAO.create(dateAndTime, name, document, headQuarterName, typeBet);
+			receiptWindow.getDate().setText(dateAndTime);
+			receiptWindow.getFullName().setText(name);
+			receiptWindow.getDocument().setText(document);
+			receiptWindow.getVenueBet().setText(headQuarterName);
+			receiptWindow.getTypeBet().setText(typeBet);
+
+			betMenuCashier.setVisible(true);
+			receiptWindow.setVisible(true);
+			betPlayCashier.setVisible(false);
 
 		} else {
 
