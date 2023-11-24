@@ -1,5 +1,13 @@
 package co.edu.unbosque.view;
 
+/**
+ * Representa la ventana de gestion de loteria
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -14,15 +22,17 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Representa la ventana de gestion de loteria
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class LoteriaWindowOwner extends JFrame {
 
-	/**
-	 * Representa la ventana de gestion de loteria
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/** Identificador de serialización de la clase. */
 	private static final long serialVersionUID = -3176888367658121195L;

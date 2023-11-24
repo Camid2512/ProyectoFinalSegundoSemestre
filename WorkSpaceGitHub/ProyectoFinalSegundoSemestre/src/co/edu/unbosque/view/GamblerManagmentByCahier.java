@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
 
+/** 
+ * Menu de gestion de apostadores en el cajero
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
+
 import java.awt.Color;
 import java.awt.Image;
 
@@ -8,15 +15,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/** 
+ * Menu de gestion de apostadores en el cajero
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class GamblerManagmentByCahier extends JFrame {
 
 	/**
 	 * Este es el atributo de la version serial
 	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 19/11/2023
+	 * 
 	 */
 	private static final long serialVersionUID = -6008736904091158887L;
 	/**
@@ -129,62 +139,107 @@ public class GamblerManagmentByCahier extends JFrame {
 		add(mainImage);
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón de crear.
+	 */
 	public JButton getCreate() {
 		return create;
 	}
 
+	/**
+	 * Establece el botón de crear.
+	 */
 	public void setCreate(JButton create) {
 		this.create = create;
 	}
 
+	/**
+	 * Obtiene el botón de leer.
+	 */
 	public JButton getRead() {
 		return read;
 	}
 
+	/**
+	 * Establece el botón de leer.
+	 */
 	public void setRead(JButton read) {
 		this.read = read;
 	}
 
+	/**
+	 * Obtiene el botón de actualizar.
+	 */
 	public JButton getUpdate() {
 		return update;
 	}
 
+	/**
+	 * Establece el botón de actualizar.
+	 */
 	public void setUpdate(JButton update) {
 		this.update = update;
 	}
 
+	/**
+	 * Obtiene el botón de eliminar.
+	 */
 	public JButton getDelete() {
 		return delete;
 	}
 
+	/**
+	 * Establece el botón de eliminar.
+	 */
 	public void setDelete(JButton delete) {
 		this.delete = delete;
 	}
 
+	/**
+	 * Obtiene la etiqueta principal de imagen.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta principal de imagen.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el identificador de versión serial.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

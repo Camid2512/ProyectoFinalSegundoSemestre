@@ -1,4 +1,12 @@
 package co.edu.unbosque.view;
+/**
+ * 
+ * Clase que permite crear cajero
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,6 +19,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * 
+ * Clase que permite crear cajero
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class CreateCashier extends JFrame {
 
 	/**

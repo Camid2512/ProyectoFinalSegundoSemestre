@@ -1,4 +1,12 @@
 package co.edu.unbosque.view;
+/**
+ * 
+ * Representa la interfaz gráfica para la gestión de lugares por parte del
+ * propietario. 
+ * Autor: SOFTPYLSA 
+ * Versión: 1.0 
+ * Fecha: 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Image;
@@ -8,13 +16,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+/**
+ * 
+ * Representa la interfaz gráfica para la gestión de lugares por parte del
+ * propietario. 
+ * Autor: SOFTPYLSA 
+ * Versión: 1.0 
+ * Fecha: 10/11/2023
+ */
 public class VenueManagmentByOwnerWindow extends JFrame {
 
-	/**
-	 * 
-	 * Representa la interfaz gráfica para la gestión de lugares por parte del
-	 * propietario. Autor: SOFTPYLSA Versión: 1.0 Fecha: 10/11/2023
-	 */
+	
 
 	/** SerialVersionUID para la serialización */
 	private static final long serialVersionUID = 415700271536832498L;

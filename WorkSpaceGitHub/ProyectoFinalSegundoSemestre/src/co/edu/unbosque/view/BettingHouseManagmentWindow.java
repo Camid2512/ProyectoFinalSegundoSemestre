@@ -20,6 +20,12 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+/** 
+ * Esta es la clase ventana de gestion de la casa de apuestas
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class BettingHouseManagmentWindow extends JFrame {
 
 	/**

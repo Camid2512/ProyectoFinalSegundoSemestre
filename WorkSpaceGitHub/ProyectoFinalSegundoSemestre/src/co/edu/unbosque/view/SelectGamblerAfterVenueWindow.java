@@ -1,4 +1,13 @@
 package co.edu.unbosque.view;
+/**
+ * Clase que representa una ventana para seleccionar apostadores después de
+ * elegir un lugar de apuesta. Permite la selección de apostadores mediante un
+ * combo box.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,17 +19,19 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+/**
+ * Clase que representa una ventana para seleccionar apostadores después de
+ * elegir un lugar de apuesta. Permite la selección de apostadores mediante un
+ * combo box.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class SelectGamblerAfterVenueWindow extends JFrame {
 
-	/**
-	 * Clase que representa una ventana para seleccionar apostadores después de
-	 * elegir un lugar de apuesta. Permite la selección de apostadores mediante un
-	 * combo box.
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/**
 	 * Identificador de serialización de la clase.

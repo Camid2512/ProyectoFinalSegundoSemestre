@@ -17,6 +17,12 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/** 
+ * Esta es la clase ventana de gestion de apuesta del dueno
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class ConsultWindow extends JFrame {
 
 	/**

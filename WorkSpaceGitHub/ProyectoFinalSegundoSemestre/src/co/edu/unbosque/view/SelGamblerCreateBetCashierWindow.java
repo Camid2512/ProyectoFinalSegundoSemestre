@@ -1,5 +1,14 @@
 package co.edu.unbosque.view;
 
+/**
+ * 
+ * Ventana que permite seleccionar el apostador a crear por ventana cajero
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -10,17 +19,34 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+/**
+ * 
+ * Ventana que permite seleccionar el apostador a crear por ventana cajero
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class SelGamblerCreateBetCashierWindow extends JFrame {
 
 	/**
-	 * 
+	 * Identificador de serialización de la clase.
 	 */
 	private static final long serialVersionUID = -2902607414608498023L;
 
+	/**
+	 * ComboBox para la selección de apostadores.
+	 */
 	private JComboBox<Long> comboGambler;
+	/** Botones para salir, retroceder y avanzar. */
 	private JButton exit, back, nextStep;
+	/** Etiqueta principal de la imagen. */
 	private JLabel mainImage;
 
+	/**
+	 * Este es el constructor, se encarga tambien de crear la ventana
+	 */
 	public SelGamblerCreateBetCashierWindow() {
 		// TODO Auto-generated constructor stub
 
@@ -82,46 +108,79 @@ public class SelGamblerCreateBetCashierWindow extends JFrame {
 
 	}
 
+	/**
+	 * Método para obtener el ComboBox de apostadores.
+	 */
 	public JComboBox<Long> getComboGambler() {
 		return comboGambler;
 	}
 
+	/**
+	 * Método para establecer el ComboBox de apostadores.
+	 */
 	public void setComboGambler(JComboBox<Long> comboGambler) {
 		this.comboGambler = comboGambler;
 	}
 
+	/**
+	 * Método para obtener el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Método para establecer el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Método para obtener el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Método para establecer el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Método para obtener el botón de siguiente paso.
+	 */
 	public JButton getNextStep() {
 		return nextStep;
 	}
 
+	/**
+	 * Método para establecer el botón de siguiente paso.
+	 */
 	public void setNextStep(JButton nextStep) {
 		this.nextStep = nextStep;
 	}
 
+	/**
+	 * Método para obtener la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Método para establecer la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Método estático para obtener el identificador de serialización.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

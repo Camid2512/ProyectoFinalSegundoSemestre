@@ -1,4 +1,12 @@
 package co.edu.unbosque.view;
+/**
+ * Ventana de registro de usuario. Permite a los usuarios registrarse
+ * proporcionando información como usuario y contraseña.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,16 +19,18 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Ventana de registro de usuario. Permite a los usuarios registrarse
+ * proporcionando información como usuario y contraseña.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class SignUpWindow extends JFrame {
 
-	/**
-	 * Ventana de registro de usuario. Permite a los usuarios registrarse
-	 * proporcionando información como usuario y contraseña.
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/** Identificador de serialización de la clase. */
 	private static final long serialVersionUID = -1518185821545289498L;

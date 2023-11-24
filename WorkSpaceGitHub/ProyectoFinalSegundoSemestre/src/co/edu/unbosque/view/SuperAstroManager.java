@@ -1,4 +1,14 @@
 package co.edu.unbosque.view;
+/**
+ * SuperAstroManager es una clase que representa la interfaz gráfica para un
+ * sistema relacionado con la gestión de apuestas o juegos de tipo astro. Esta
+ * interfaz permite al usuario realizar apuestas, seleccionar números y signos
+ * zodiacales.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,18 +24,20 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * SuperAstroManager es una clase que representa la interfaz gráfica para un
+ * sistema relacionado con la gestión de apuestas o juegos de tipo astro. Esta
+ * interfaz permite al usuario realizar apuestas, seleccionar números y signos
+ * zodiacales.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class SuperAstroManager extends JFrame {
 
-	/**
-	 * SuperAstroManager es una clase que representa la interfaz gráfica para un
-	 * sistema relacionado con la gestión de apuestas o juegos de tipo astro. Esta
-	 * interfaz permite al usuario realizar apuestas, seleccionar números y signos
-	 * zodiacales.
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/**
 	 * serialVersionUID es un número de versión para control de serialización.

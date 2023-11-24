@@ -1,5 +1,13 @@
 package co.edu.unbosque.view;
-
+/**
+ * 
+ * Panel que muestra una tabla con información de clientes, juegos y apuestas.
+ * Esta clase extiende JPanel y utiliza un JTable para mostrar los datos.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -9,17 +17,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * 
+ * Panel que muestra una tabla con información de clientes, juegos y apuestas.
+ * Esta clase extiende JPanel y utiliza un JTable para mostrar los datos.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class ConsultTable extends JPanel {
 
-	/**
-	 * 
-	 * Panel que muestra una tabla con información de clientes, juegos y apuestas.
-	 * Esta clase extiende JPanel y utiliza un JTable para mostrar los datos.
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/** Identificador de serialización de la clase. */
 	private static final long serialVersionUID = 4126275918683973272L;

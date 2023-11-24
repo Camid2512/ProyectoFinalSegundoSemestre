@@ -1,4 +1,12 @@
 package co.edu.unbosque.view;
+/**
+ * 
+ * Ventana encargada de seleccionar la apuesta a eliminar
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,16 +18,18 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+/**
+ * 
+ * Ventana encargada de seleccionar la apuesta a eliminar
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class SelBetToDeleteCashier extends JFrame {
 
-	/**
-	 * 
-	 * Ventana encargada de seleccionar la apuesta a eliminar
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/**
 	 * Número de versión serial para garantizar la compatibilidad de la clase

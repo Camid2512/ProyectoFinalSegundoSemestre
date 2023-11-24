@@ -1,4 +1,11 @@
 package co.edu.unbosque.view;
+/**
+ * Esta clase permite mostrar las sedes para el dueño
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Image;
@@ -8,14 +15,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+/**
+ * Esta clase permite mostrar las sedes para el dueño
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class ShowVenueOwn extends JFrame {
 
 	/**
 	 * Este es el atributo de la version serial
-	 * 
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 28/09/2023
 	 */
 	private static final long serialVersionUID = -1584181554540173993L;
 	/**

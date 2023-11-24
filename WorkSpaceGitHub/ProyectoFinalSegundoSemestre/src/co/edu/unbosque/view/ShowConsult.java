@@ -1,4 +1,12 @@
 package co.edu.unbosque.view;
+/**
+ * Esta clase permite mostrar consultas realizadas
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
+
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,15 +20,17 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Esta clase permite mostrar consultas realizadas
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class ShowConsult extends JFrame {
 
-	/**
-	 * Esta clase permite mostrar consultas realizadas
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/**
 	 * Identificador de serialización de la clase.

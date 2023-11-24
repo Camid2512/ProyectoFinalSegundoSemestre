@@ -1,5 +1,16 @@
 package co.edu.unbosque.controller;
 
+/**
+ * 
+ * Clase encargada de llevar el control del programa
+ * 
+ * @author SOFTPYLSA
+ * 
+ * @version 1.0
+ * 
+ * @since 10/11/2023
+ * 
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -106,97 +117,375 @@ import co.edu.unbosque.view.UpdateVenueByOwnerWindow;
 import co.edu.unbosque.view.VenueManagerMenu;
 import co.edu.unbosque.view.VenueManagmentByOwnerWindow;
 
+/**
+ * 
+ * Clase encargada de llevar el control del programa
+ * 
+ * @author SOFTPYLSA
+ * 
+ * @version 1.0
+ * 
+ * @since 10/11/2023
+ * 
+ */
 public class Controller implements ActionListener {
 
+	/**
+	 * Atributo de ventana login
+	 */
 	private LoginWindow logWind;
+	/**
+	 * Atributo de ventana register
+	 */
 	private SignUpWindow signWind;
+	/**
+	 * Atributo de ventana dueño
+	 */
 	private OwnerWindow ownWind;
+	/**
+	 * Atributo de ventana gestion casa de apuestas
+	 */
 	private BettingHouseManagmentWindow houseManageWindow;
+	/**
+	 * Atributo de ventana gestion sede
+	 */
 	private VenueManagmentByOwnerWindow venueManageOwn;
+	/**
+	 * Atributo de ventana creacion usuario jefe de sede
+	 */
 	private ManagerCreationWindow managerCreationWin;
+	/**
+	 * Atributo de ventana creacion sede
+	 */
 	private CreateVenueWindow createVenueWin;
+	/**
+	 * Atributo de ventana seleccion sede a actualizar
+	 */
 	private SelectUpdateVenueWindow selUpdateVenOwn;
+	/**
+	 * Atributo de ventana actualizar sede por dueño
+	 */
 	private UpdateVenueByOwnerWindow updateVenueOwn;
+	/**
+	 * Atributo de ventana seleccion sede a eliminar por el dueño
+	 */
 	private SelectDeleteVenueOwnWindow selDeleteVenueOwn;
+	/**
+	 * Atributo de ventana gestion apostadores por dueño
+	 */
 	private GamblerManagmentByOwnerWindow gamManageOwn;
+	/**
+	 * Atributo de ventana creacion apostador por dueño
+	 */
 	private CreateGamblerWindow createGamblerWinOwn;
+	/**
+	 * Atributo de ventana seleccion apostador a actualizar
+	 */
 	private SelectUpdateGamblerWindow selUpdateGamblerOwn;
+	/**
+	 * Atributo de ventana actualizacion apostador por dueño
+	 */
 	private GamblerUpdateOwnWindow gamUpdateWinOwn;
+	/**
+	 * Atributo de ventana seleccion apostador a eliminar
+	 */
 	private SelectDeleteGamblerOwnWindow selDeleteGamblerOwn;
+	/**
+	 * Atributo de ventana gestion de apuestas por dueño
+	 */
 	private BetManagmentByOwnerWindow betManOwn;
+	/**
+	 * Atributo de ventana menu creacion apuestas
+	 */
 	private SelectCreateBetWindow selcreatebet;
+	/**
+	 * Atributo de ventana seleccion sede donde se hara apuesta
+	 */
 	private SelGamblerCreateBetOwnWindow selGamCreateBetOwn;
+	/**
+	 * Atributo de ventana gestion de presupuestos de juegos
+	 */
 	private GamesSettingWindow gamesSettingWin;
+	/**
+	 * Atributo de ventana seleccion sede donde se hizo apuesta para eliminar una
+	 * apuesta
+	 */
 	private SelectGamblerAfterVenueWindow selGamToUpdateWinOwn;
+	/**
+	 * Atributo de ventana seleccion apostador que hizo apuesta para elminar una
+	 * apuesta
+	 */
 	private SelectGamblerAfterVenueWindowToDelete selGamToDeleteWinOwn;
+	/**
+	 * Atributo de ventana menu con todoas las apuestas
+	 */
 	private BetMenuOwnerWindow betMenuOwn;
+	/**
+	 * Atributo de ventana de la loteria
+	 */
 	private LoteriaWindowOwner loteriaWin;
+	/**
+	 * Atributo de ventana del baloto
+	 */
 	private BalotoWindow balotoWin;
+	/**
+	 * Atributo de ventana de superastro
+	 */
 	private SuperAstroWindow superastroWin;
+	/**
+	 * Atributo de ventana de chance
+	 */
 	private ChanceWindow chanceWin;
+	/**
+	 * Atributo de ventana de betPlay
+	 */
 	private BetPlayWindow betplayWin;
+	/**
+	 * Atributo de ventana de recibo
+	 */
 	private ReceiptWindow receiptWindow;
 	private ShowVenueOwn showVenueOwn;
+	/**
+	 * Atributo de ventana mostrar apostador
+	 */
 	private ShowGamblerOwn showGamOwn;
+	/**
+	 * Atributo de ventana mostrar apuestas
+	 */
 	private ShowBetOwn showBetOwn;
+	/**
+	 * Atributo de ventana seleccion sede para eliminar una apuesta
+	 */
 	private SelVenuToDeleteBetOwner selVenDelBetOwn;
+	/**
+	 * Atributo de ventana seleccion apostador para eliminar una apuesta
+	 */
 	private SelGamblerDeleteBetOwnWindow selGamDelBetOwn;
+	/**
+	 * Atributo de ventana seleccion apuesta a eliminar
+	 */
 	private SelBetToDeleteOwn selBetDeleteOwn;
+	/**
+	 * Atributo de ventana menu principal jefe de sede
+	 */
 	private VenueManagerMenu managerMenuWin;
+	/**
+	 * Atributo de ventana gestion sede por jefe de sede
+	 */
 	private ManageVenueManager manageVenueManager;
+	/**
+	 * Atributo de ventana creacion usuario de cajero
+	 */
 	private CreateCashier createCashier;
+	/**
+	 * Atributo de ventana gestion apostadores por jefe de sede
+	 */
 	private GamblerManagmentByManager gamblerManagManager;
+	/**
+	 * Atributo de ventana creacion apostador por jefe de sede
+	 */
 	private CreateGamblerManagerWindow createGambManager;
+	/**
+	 * Atributo de ventana actualizar apostador por jefe de sede
+	 */
 	private UpdateGamblerManagerWindow updateGambManager;
+	/**
+	 * Atributo de ventana seleccion apostador a actualizar por jefe de sede
+	 */
 	private SelectGamblerToUpdateManager selGambUpdateManager;
+	/**
+	 * Atributo de ventana mostrar consultas
+	 */
 	private ShowConsult showCon;
+	/**
+	 * Atributo de ventana modulo consulta
+	 */
 	private ConsultWindow consultwin;
+	/**
+	 * Atributo de ventana seleccion apostador a eliminar por jefe de sede
+	 */
 	private SelectGamblerToDeleteManager selGambDeleteManager;
+	/**
+	 * Atributo de ventana gestion apuestas por jefe de sede
+	 */
 	private BetManagmentByManagerWindow betManagmentManager;
+	/**
+	 * Atributo de ventana menu de apuestas en jefe de sede
+	 */
 	private BetMenuManagerWindow betMenuManager;
+	/**
+	 * Atributo de ventana seleccion apostador para hacer apuesta por jefe de sede
+	 */
 	private SelGamblerCreateBetManWindow selGambCreateBetMan;
+	/**
+	 * Atributo de ventana creacion loteria por jefe de sede
+	 */
 	private LoteriaWindowManager loteriaMan;
+	/**
+	 * Atributo de ventana creacion baloto por jefe de sede
+	 */
 	private BalotoManager balotoMan;
+	/**
+	 * Atributo de ventana creacion betplay por jefe de sede
+	 */
 	private BetPlayManager betPlayMan;
+	/**
+	 * Atributo de ventana creacion chance por jefe de sede
+	 */
 	private ChanceManager chanceMan;
+	/**
+	 * Atributo de ventana creacion superastro por jefe de sede
+	 */
 	private SuperAstroManager superastroMan;
+	/**
+	 * Atributo de ventana menu principal de cajero
+	 */
 	private CashierMainMenu cashierMainMenu;
+	/**
+	 * Atributo de ventana gestion apostadores por cajero
+	 */
 	private GamblerManagmentByCahier gambManagCashier;
+	/**
+	 * Atributo de ventana mostrar apostadores en cajero
+	 */
 	private ShowGamblerManager showGamMan;
+	/**
+	 * Atributo de ventana creacion apostador por cajero
+	 */
 	private CreateGamblerCashierWindow createGamblerCashier;
+	/**
+	 * Atributo de ventana mostrar apuesta por cajero
+	 */
 	private ShowBetManager showBetManag;
+	/**
+	 * Atributo de ventana seleccion apuesta a eliminar por jefe de sede
+	 */
 	private SelBetToDeleteManager selBetDeleteManager;
+	/**
+	 * Atributo de ventana seleccion apostador a actualizar por cajero
+	 */
 	private SelectGamblerToUpdateCashier selGambUpdateCashier;
+	/**
+	 * Atributo de ventana actualizar apostador por cajero
+	 */
 	private UpdateGamblerCashierWindow updateGamblerCashier;
+	/**
+	 * Atributo de ventana seleccion apostador a eliminar por cajero
+	 */
 	private SelectGamblerToDeleteBetManager selGamDeleteBet;
+	/**
+	 * Atributo de ventana mostrar apostadores en cajero
+	 */
 	private ShowGamblerCashier showGamCashi;
+	/**
+	 * Atributo de ventana seleccion apostador a eliminar por cajero
+	 */
 	private SelectGamblerToDeleteCashier selGamToDelCashi;
+	/**
+	 * Atributo de ventana gestion de apuestas por cajero
+	 */
 	private BetManagmentByCashierWindow betManCashier;
+	/**
+	 * Atributo de ventana menu con todas las apuestas en cajero
+	 */
 	private BetMenuCashierWindow betMenuCashier;
+	/**
+	 * Atributo de ventana creacion loteria por cajero
+	 */
 	private LoteriaWindowCashier loteriaCashier;
+	/**
+	 * Atributo de ventana seleccion apostador para crear una apuesta en cajero
+	 */
 	private SelGamblerCreateBetCashierWindow selGambCreateBetCashier;
+	/**
+	 * Atributo de ventana creacion baloto por cajero
+	 */
 	private BalotoCashier balotoCashier;
+	/**
+	 * Atributo de ventana creacion superastro por cajero
+	 */
 	private SuperAstroCashier superAstroCashier;
+	/**
+	 * Atributo de ventana creacion chance por cajero
+	 */
 	private ChanceCashier chanceCashier;
+	/**
+	 * Atributo de ventana creacion betplay por cajero
+	 */
 	private BetPlayCashier betPlayCashier;
+	/**
+	 * Atributo de ventana mostrar apuestas en cajero
+	 */
 	private ShowBetCashier showBetCashier;
+	/**
+	 * Atributo de ventana seleccion apostador que hizo apuesta para eliminar
+	 * apuesta por cajero
+	 */
 	private SelectGamblerToDeleteBetCashier selGambBetDeleteCashier;
+	/**
+	 * Atributo de ventana seleccion apuesta a eliminar por cajero
+	 */
 	private SelBetToDeleteCashier selBetDeleteCashi;
 
+	/**
+	 * Atributo de DAO de configuracion casa de apuestas
+	 */
 	private HouseSettingDAO houseDAO;
+	/**
+	 * Atributo de DAO de configuracion juegos de apuestas
+	 */
 	private GameDAO gameDAO;
+	/**
+	 * Atributo de DAO de gestion usuarios dueño
+	 */
 	private OwnerDAO ownDAO;
+	/**
+	 * Atributo de DAO de gestion usuarios jefe de sede
+	 */
 	private HeadquarterManagerDAO bossDAO;
+	/**
+	 * Atributo de DAO de gestion de sedes
+	 */
 	private HeadquarterDAO venueDAO;
+	/**
+	 * Atributo de DAO de gestion de apostadores
+	 */
 	private GamblerDAO gamDAO;
+	/**
+	 * Atributo de DAO de loteria
+	 */
 	private LoteryBetDAO loteriaDAO;
+	/**
+	 * Atributo de DAO de baloto
+	 */
 	private BallotDAO balotoDAO;
+	/**
+	 * Atributo de DAO de superastro
+	 */
 	private SuperAstroDAO superAstroDAO;
+	/**
+	 * Atributo de DAO de chance
+	 */
 	private ChanceDAO chanceDAO;
+	/**
+	 * Atributo de DAO de betplay
+	 */
 	private BetPlayDAO betPlayDAO;
+	/**
+	 * Atributo de DAO de gestion recibo
+	 */
 	private ReceiptDAO receiptDAO;
+	/**
+	 * Atributo de DAO de gestion usuarios cajero
+	 */
 	private CheckerDAO cashierDAO;
+
 	String exit = "";
+
+	/**
+	 * Constructor vacio de la clase controller donde se inicializan todos los
+	 * atributos y se llama la funcion para agregar lectores de botones
+	 */
 
 	public Controller() {
 
@@ -294,6 +583,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion que dicta el inicio del programa
+	 */
 	public void run() {
 
 		if (ownDAO.getOwnerList().isEmpty()) {
@@ -303,6 +595,10 @@ public class Controller implements ActionListener {
 		}
 
 	}
+
+	/**
+	 * Funcion que agrega lectores a todos los botones
+	 */
 
 	public void agregarLectores() {
 		// BOTON RECIBO
@@ -1192,6 +1488,10 @@ public class Controller implements ActionListener {
 		selBetDeleteCashi.getNextStep().setActionCommand("NEXT DELETE BET");
 
 	}
+
+	/**
+	 * Funcion que obtiene los gestos realizados por el usuario al clickear un boton
+	 */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -2740,6 +3040,10 @@ public class Controller implements ActionListener {
 		}
 
 	}
+
+	/**
+	 * Funcion revisando si el usuario y contraseña existen y a que pertenece
+	 */
 
 	public void checkLoginOwner() {
 

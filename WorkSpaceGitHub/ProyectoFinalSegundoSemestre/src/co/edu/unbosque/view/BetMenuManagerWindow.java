@@ -1,4 +1,10 @@
 package co.edu.unbosque.view;
+/**
+ * Clase que representa la ventana de selección de apuestas. * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Image;
@@ -8,14 +14,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+/**
+ * Clase que representa la ventana de selección de apuestas. * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class BetMenuManagerWindow extends JFrame {
 
-	/**
-	 * Clase que representa la ventana de selección de apuestas. * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/** Identificador de serialización de la clase. */
 	private static final long serialVersionUID = -1021661811041945435L;

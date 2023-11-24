@@ -1,4 +1,10 @@
 package co.edu.unbosque.view;
+/** 
+ * Apostar ventana de apostadores
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,15 +18,17 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+
+/** 
+ * Apostar ventana de apostadores
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class GamblerUpdateOwnWindow extends JFrame {
 
 	/**
 	 * Este es el atributo de la version serial
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 10/11/2023
 	 */
 	private static final long serialVersionUID = -7716788844537073483L;
 

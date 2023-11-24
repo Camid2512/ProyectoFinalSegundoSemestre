@@ -1,6 +1,15 @@
 package co.edu.unbosque.view;
 
+/**
+ * BalotoCashier - Clase que representa la interfaz del cajero de Baloto.
+ * Extiende de JFrame.
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
+
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.Image;
 
@@ -13,18 +22,33 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * BalotoCashier - Clase que representa la interfaz del cajero de Baloto.
+ * Extiende de JFrame.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class BalotoCashier extends JFrame {
 
-	/**
-	 * 
-	 */
+	/** Número de serie de la versión actual de la clase. */
 	private static final long serialVersionUID = -769680791092189359L;
 
+	/** Campo de texto para ingresar el monto de la apuesta. */
 	private JTextField betAmount;
+	/** Selectores para los números. */
 	private JSpinner num1, num2, num3, num4, num5, num6;
+	/** Modelos para los selectores de números. */
 	private SpinnerNumberModel n1, n2, n3, n4, n5, n6;
+	/** Etiqueta para mostrar una imagen principal. */
 	private JLabel mainImage;
-	private JButton exit, back, next;
+	/** Botón para salir de la interfaz del cajero. */
+	private JButton exit;
+	/** Botón para retroceder en la interfaz. */
+	private JButton back;
+	/** Botón para avanzar en la interfaz. */
+	private JButton next;
 
 	public BalotoCashier() {
 
@@ -179,144 +203,249 @@ public class BalotoCashier extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el campo de texto para ingresar el monto de la apuesta.
+	 */
 	public JTextField getBetAmount() {
 		return betAmount;
 	}
 
+	/**
+	 * Establece el campo de texto para ingresar el monto de la apuesta.
+	 */
 	public void setBetAmount(JTextField betAmount) {
 		this.betAmount = betAmount;
 	}
 
+	/**
+	 * Obtiene el selector de número 1.
+	 */
 	public JSpinner getNum1() {
 		return num1;
 	}
 
+	/**
+	 * Establece el selector de número 1.
+	 */
 	public void setNum1(JSpinner num1) {
 		this.num1 = num1;
 	}
 
+	/**
+	 * Obtiene el selector de número 2.
+	 */
 	public JSpinner getNum2() {
 		return num2;
 	}
 
+	/**
+	 * Establece el selector de número 2.
+	 */
 	public void setNum2(JSpinner num2) {
 		this.num2 = num2;
 	}
 
+	/**
+	 * Obtiene el selector de número 3.
+	 */
 	public JSpinner getNum3() {
 		return num3;
 	}
 
+	/**
+	 * Establece el selector de número 3.
+	 */
 	public void setNum3(JSpinner num3) {
 		this.num3 = num3;
 	}
 
+	/**
+	 * Obtiene el selector de número 4.
+	 */
 	public JSpinner getNum4() {
 		return num4;
 	}
 
+	/**
+	 * Establece el selector de número 4.
+	 */
 	public void setNum4(JSpinner num4) {
 		this.num4 = num4;
 	}
 
+	/**
+	 * Obtiene el selector de número 5.
+	 */
 	public JSpinner getNum5() {
 		return num5;
 	}
 
+	/**
+	 * Establece el selector de número 5.
+	 */
 	public void setNum5(JSpinner num5) {
 		this.num5 = num5;
 	}
 
+	/**
+	 * Obtiene el selector de número 6.
+	 */
 	public JSpinner getNum6() {
 		return num6;
 	}
 
+	/**
+	 * Establece el selector de número 6.
+	 */
 	public void setNum6(JSpinner num6) {
 		this.num6 = num6;
 	}
 
+	/**
+	 * Obtiene el modelo del selector de número 1.
+	 */
 	public SpinnerNumberModel getN1() {
 		return n1;
 	}
 
+	/**
+	 * Establece el modelo del selector de número 1.
+	 */
 	public void setN1(SpinnerNumberModel n1) {
 		this.n1 = n1;
 	}
 
+	/**
+	 * Obtiene el modelo del selector de número 2.
+	 */
 	public SpinnerNumberModel getN2() {
 		return n2;
 	}
 
+	/**
+	 * Establece el modelo del selector de número 2.
+	 */
 	public void setN2(SpinnerNumberModel n2) {
 		this.n2 = n2;
 	}
 
+	/**
+	 * Obtiene el modelo del selector de número 3.
+	 */
 	public SpinnerNumberModel getN3() {
 		return n3;
 	}
 
+	/**
+	 * Establece el modelo del selector de número 3.
+	 */
 	public void setN3(SpinnerNumberModel n3) {
 		this.n3 = n3;
 	}
 
+	/**
+	 * Obtiene el modelo del selector de número 4.
+	 */
 	public SpinnerNumberModel getN4() {
 		return n4;
 	}
 
+	/**
+	 * Establece el modelo del selector de número 4.
+	 */
 	public void setN4(SpinnerNumberModel n4) {
 		this.n4 = n4;
 	}
 
+	/**
+	 * Obtiene el modelo del selector de número 5.
+	 */
 	public SpinnerNumberModel getN5() {
 		return n5;
 	}
 
+	/**
+	 * Establece el modelo del selector de número 5.
+	 */
 	public void setN5(SpinnerNumberModel n5) {
 		this.n5 = n5;
 	}
 
+	/**
+	 * Obtiene el modelo del selector de número 6.
+	 */
 	public SpinnerNumberModel getN6() {
 		return n6;
 	}
 
+	/**
+	 * Establece el modelo del selector de número 6.
+	 */
 	public void setN6(SpinnerNumberModel n6) {
 		this.n6 = n6;
 	}
 
+	/**
+	 * Obtiene la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón de siguiente.
+	 */
 	public JButton getNext() {
 		return next;
 	}
 
+	/**
+	 * Establece el botón de siguiente.
+	 */
 	public void setNext(JButton next) {
 		this.next = next;
+	}
+
+	/**
+	 * Obtiene el identificador de versión serial.
+	 */
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 
 }

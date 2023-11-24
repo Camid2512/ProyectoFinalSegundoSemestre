@@ -1,5 +1,13 @@
 package co.edu.unbosque.view;
 
+/**
+ * Ventana loteria cajero
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -14,23 +22,57 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Ventana loteria cajero
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
+
 public class LoteriaWindowCashier extends JFrame {
 
 	/**
-	 * 
+	 * Representa el número de versión para controlar la serialización.
 	 */
 	private static final long serialVersionUID = -3176888367658121195L;
-
+	/**
+	 * Botones de la ventana
+	 */
 	private JButton exit, back, next;
 
+	/**
+	 * Etiqueta principal de la imagen.
+	 */
 	private JLabel mainImage;
 
+	/**
+	 * Campo de texto para la cantidad de apuesta.
+	 */
 	private JTextField betAmount;
+	/**
+	 * ComboBox para el tipo de lotería.
+	 */
 	private JComboBox<String> loteryType;
+
+	/**
+	 * ComboBox para el número de serie.
+	 */
 	private JComboBox<Integer> serialNumber;
+
+	/**
+	 * Spinner para los numeros 1,2,3,4
+	 */
 	private JSpinner num1, num2, num3, num4;
+
+	/**
+	 * Modelo de número para el spinner 1,2,3,4.
+	 */
 	private SpinnerNumberModel n1, n2, n3, n4;
 
+	/**
+	 * Constructor de la clase y crear la ventana
+	 */
 	public LoteriaWindowCashier() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);
@@ -191,126 +233,219 @@ public class LoteriaWindowCashier extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón siguiente.
+	 */
 	public JButton getNext() {
 		return next;
 	}
 
+	/**
+	 * Establece el botón siguiente.
+	 */
 	public void setNext(JButton next) {
 		this.next = next;
 	}
 
+	/**
+	 * Obtiene la etiqueta principal de la imagen.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta principal de la imagen.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el campo de texto para la cantidad de apuesta.
+	 */
 	public JTextField getBetAmount() {
 		return betAmount;
 	}
 
+	/**
+	 * Establece el campo de texto para la cantidad de apuesta.
+	 */
 	public void setBetAmount(JTextField betAmount) {
 		this.betAmount = betAmount;
 	}
 
+	/**
+	 * Obtiene el ComboBox para el tipo de lotería.
+	 */
 	public JComboBox<String> getLoteryType() {
 		return loteryType;
 	}
 
+	/**
+	 * Establece el ComboBox para el tipo de lotería.
+	 */
 	public void setLoteryType(JComboBox<String> loteryType) {
 		this.loteryType = loteryType;
 	}
 
+	/**
+	 * Obtiene el ComboBox para el número de serie.
+	 */
 	public JComboBox<Integer> getSerialNumber() {
 		return serialNumber;
 	}
 
+	/**
+	 * Establece el ComboBox para el número de serie.
+	 */
 	public void setSerialNumber(JComboBox<Integer> serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 
+	/**
+	 * Obtiene el Spinner para el número 1.
+	 */
 	public JSpinner getNum1() {
 		return num1;
 	}
 
+	/**
+	 * Establece el Spinner para el número 1.
+	 */
 	public void setNum1(JSpinner num1) {
 		this.num1 = num1;
 	}
 
+	/**
+	 * Obtiene el Spinner para el número 2.
+	 */
 	public JSpinner getNum2() {
 		return num2;
 	}
 
+	/**
+	 * Establece el Spinner para el número 2.
+	 */
 	public void setNum2(JSpinner num2) {
 		this.num2 = num2;
 	}
 
+	/**
+	 * Obtiene el Spinner para el número 3.
+	 */
 	public JSpinner getNum3() {
 		return num3;
 	}
 
+	/**
+	 * Establece el Spinner para el número 3.
+	 */
 	public void setNum3(JSpinner num3) {
 		this.num3 = num3;
 	}
 
+	/**
+	 * Obtiene el Spinner para el número 4.
+	 */
 	public JSpinner getNum4() {
 		return num4;
 	}
 
+	/**
+	 * Establece el Spinner para el número 4.
+	 */
 	public void setNum4(JSpinner num4) {
 		this.num4 = num4;
 	}
 
+	/**
+	 * Obtiene el modelo de Spinner para el número 1.
+	 */
 	public SpinnerNumberModel getN1() {
 		return n1;
 	}
 
+	/**
+	 * Establece el modelo de Spinner para el número 1.
+	 */
 	public void setN1(SpinnerNumberModel n1) {
 		this.n1 = n1;
 	}
 
+	/**
+	 * Obtiene el modelo de Spinner para el número 2.
+	 */
 	public SpinnerNumberModel getN2() {
 		return n2;
 	}
 
+	/**
+	 * Establece el modelo de Spinner para el número 2.
+	 */
 	public void setN2(SpinnerNumberModel n2) {
 		this.n2 = n2;
 	}
 
+	/**
+	 * Obtiene el modelo de Spinner para el número 3.
+	 */
 	public SpinnerNumberModel getN3() {
 		return n3;
 	}
 
+	/**
+	 * Establece el modelo de Spinner para el número 3.
+	 */
 	public void setN3(SpinnerNumberModel n3) {
 		this.n3 = n3;
 	}
 
+	/**
+	 * Obtiene el modelo de Spinner para el número 4.
+	 */
 	public SpinnerNumberModel getN4() {
 		return n4;
 	}
 
+	/**
+	 * Establece el modelo de Spinner para el número 4.
+	 */
 	public void setN4(SpinnerNumberModel n4) {
 		this.n4 = n4;
 	}
 
+	/**
+	 * Obtiene el número de versión de serialización.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -1,4 +1,11 @@
 package co.edu.unbosque.view;
+/**
+ * Ventana con las opciones de superastro
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,15 +21,17 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Ventana con las opciones de superastro
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class SuperAstroWindow extends JFrame {
 
-	/**
-	 * Ventana con las opciones de superastro
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/**
 	 * serialVersionUID es un número de versión para control de serialización.

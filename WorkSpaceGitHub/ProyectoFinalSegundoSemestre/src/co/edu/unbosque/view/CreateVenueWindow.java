@@ -21,6 +21,12 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+/** 
+ * Esta es la clase ventana de crear sede
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class CreateVenueWindow extends JFrame {
 
 	/**

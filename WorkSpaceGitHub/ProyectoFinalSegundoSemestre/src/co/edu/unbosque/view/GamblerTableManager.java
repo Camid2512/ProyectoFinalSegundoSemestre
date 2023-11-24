@@ -1,5 +1,10 @@
 package co.edu.unbosque.view;
-
+/** 
+ * Tabla de apostadores por gerente 
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -9,6 +14,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/** 
+ * Tabla de apostadores por gerente 
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class GamblerTableManager extends JPanel {
 
 	/**

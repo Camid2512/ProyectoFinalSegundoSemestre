@@ -1,4 +1,10 @@
 package co.edu.unbosque.view;
+/** 
+ * Tabla de apostadores 
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -9,14 +15,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+
+/** 
+ * Tabla de apostadores 
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class GamblerTable extends JPanel {
 
 	/**
 	 * Este es el atributo de la version serial
-	 * 
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 18/11/2023
 	 */
 	private static final long serialVersionUID = -2774902160217326772L;
 

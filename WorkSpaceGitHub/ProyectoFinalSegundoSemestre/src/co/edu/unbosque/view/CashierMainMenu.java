@@ -1,4 +1,11 @@
 package co.edu.unbosque.view;
+/**
+ * Menu principal cajero menu*
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Image;
@@ -8,6 +15,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * Menu principal cajero menu*
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class CashierMainMenu extends JFrame {
 
 	/**
@@ -103,48 +117,81 @@ public class CashierMainMenu extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón para salir de la interfaz.
+	 */
 	public JButton getExit() {
-		return exit;
+	    return exit;
 	}
 
+	/**
+	 * Establece el botón para salir de la interfaz.
+	 */
 	public void setExit(JButton exit) {
-		this.exit = exit;
+	    this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón para retroceder en la interfaz.
+	 */
 	public JButton getBack() {
-		return back;
+	    return back;
 	}
 
+	/**
+	 * Establece el botón para retroceder en la interfaz.
+	 */
 	public void setBack(JButton back) {
-		this.back = back;
+	    this.back = back;
 	}
 
+	/**
+	 * Obtiene la etiqueta que muestra la imagen principal de la interfaz.
+	 */
 	public JLabel getMainImage() {
-		return mainImage;
+	    return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta que muestra la imagen principal de la interfaz.
+	 */
 	public void setMainImage(JLabel mainImage) {
-		this.mainImage = mainImage;
+	    this.mainImage = mainImage;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	/**
+	 * Obtiene el botón para gestionar apostadores.
+	 */
 	public JButton getGamblerManagment() {
-		return gamblerManagment;
+	    return gamblerManagment;
 	}
 
+	/**
+	 * Establece el botón para gestionar apostadores.
+	 */
 	public void setGamblerManagment(JButton gamblerManagment) {
-		this.gamblerManagment = gamblerManagment;
+	    this.gamblerManagment = gamblerManagment;
 	}
 
+	/**
+	 * Obtiene el botón para gestionar apuestas.
+	 */
 	public JButton getBetManagment() {
-		return betManagment;
+	    return betManagment;
 	}
 
+	/**
+	 * Establece el botón para gestionar apuestas.
+	 */
 	public void setBetManagment(JButton betManagment) {
-		this.betManagment = betManagment;
+	    this.betManagment = betManagment;
+	}
+
+	/**
+	 * Obtiene el identificador de versión serial para control de versiones.
+	 */
+	public static long getSerialversionuid() {
+	    return serialVersionUID;
 	}
 
 }

@@ -1,4 +1,11 @@
 package co.edu.unbosque.view;
+/**
+ * Ventana para gestionar apuestas BetPlay *
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,15 +20,17 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Ventana para gestionar apuestas BetPlay *
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class BetPlayWindow extends JFrame {
 
-	/**
-	 * Ventana para gestionar apuestas BetPlay *
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/** Número de versión de serialización. */
 	private static final long serialVersionUID = 5239526211513542986L;

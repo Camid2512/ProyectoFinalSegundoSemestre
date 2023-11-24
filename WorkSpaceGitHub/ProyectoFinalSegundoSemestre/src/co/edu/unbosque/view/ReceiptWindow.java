@@ -1,4 +1,11 @@
 package co.edu.unbosque.view;
+/**
+ * Ventana encargada de mostrar los recibos de cada apuesta
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,6 +27,8 @@ import javax.swing.border.EmptyBorder;
  */
 public class ReceiptWindow extends JFrame {
 
+	
+
 	/**
 	 * Identificador de serialización de la clase.
 	 */
@@ -32,23 +41,20 @@ public class ReceiptWindow extends JFrame {
 
 	/**
 	 * Etiqueta principal de la imagen.
-	 * 
 	 */
 	private JLabel mainImage;
 
 	/**
 	 * Área de texto para la fecha, nombre, documento,lugar de apuesta, tipo de
 	 * apuesta.
-	 * 
 	 */
 	private JTextArea date, fullName, document, venueBet, typeBet;
 
 	/**
 	 * Este es el constructor, se encarga tambien de crear la ventana
-	 * 
 	 */
-
 	public ReceiptWindow() {
+		// TODO Auto-generated constructor
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);

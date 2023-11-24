@@ -1,4 +1,12 @@
 package co.edu.unbosque.view;
+/**
+ **
+ * Clase que representa la ventana principal de Baloto.
+ *
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,16 +21,19 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ **
+ * Clase que representa la ventana principal de Baloto.
+ *
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
+
 public class BalotoWindow extends JFrame {
 
-	/**
-	 **
-	 * Clase que representa la ventana principal de Baloto.
-	 *
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+
 
 	/** Identificador de serialización de la clase. */
 	private static final long serialVersionUID = -769680791092189359L;

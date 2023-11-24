@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
 
+/** 
+ * Administrar sedes, jefe
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -14,15 +21,17 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/** 
+ * Administrar sedes, jefe
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class ManageVenueManager extends JFrame {
 
 	/**
 	 * Este es el atributo de la version serial
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 19/11/2023
 	 */
 	private static final long serialVersionUID = 3986654240221857404L;
 
@@ -193,78 +202,135 @@ public class ManageVenueManager extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón para crear sedes.
+	 */
 	public JButton getCreateVenue() {
 		return createVenue;
 	}
 
+	/**
+	 * Establece el botón para crear sedes.
+	 */
 	public void setCreateVenue(JButton createVenue) {
 		this.createVenue = createVenue;
 	}
 
+	/**
+	 * Obtiene el botón para crear cajeros.
+	 */
 	public JButton getCreateCashier() {
 		return createCashier;
 	}
 
+	/**
+	 * Establece el botón para crear cajeros.
+	 */
 	public void setCreateCashier(JButton createCashier) {
 		this.createCashier = createCashier;
 	}
 
+	/**
+	 * Obtiene la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el nombre de la sede.
+	 */
 	public JTextField getVenueName() {
 		return venueName;
 	}
 
+	/**
+	 * Establece el nombre de la sede.
+	 */
 	public void setVenueName(JTextField venueName) {
 		this.venueName = venueName;
 	}
 
+	/**
+	 * Obtiene la lista desplegable de ubicaciones.
+	 */
 	public JComboBox<String> getComboLocation() {
 		return comboLocation;
 	}
 
+	/**
+	 * Establece la lista desplegable de ubicaciones.
+	 */
 	public void setComboLocation(JComboBox<String> comboLocation) {
 		this.comboLocation = comboLocation;
 	}
 
+	/**
+	 * Obtiene el spinner para el número de empleados.
+	 */
 	public JSpinner getNumEmployes() {
 		return numEmployes;
 	}
 
+	/**
+	 * Establece el spinner para el número de empleados.
+	 */
 	public void setNumEmployes(JSpinner numEmployes) {
 		this.numEmployes = numEmployes;
 	}
 
+	/**
+	 * Obtiene el modelo de spinner.
+	 */
 	public SpinnerNumberModel getN() {
 		return n;
 	}
 
+	/**
+	 * Establece el modelo de spinner.
+	 */
 	public void setN(SpinnerNumberModel n) {
 		this.n = n;
 	}
 
+	/**
+	 * Obtiene el número de versión de serialización.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

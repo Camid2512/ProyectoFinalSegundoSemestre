@@ -1,5 +1,11 @@
 package co.edu.unbosque.view;
-
+/**
+ * Ventana para gestionar tabla apuestas betPlay
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -9,6 +15,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+
+/**
+ * Ventana para gestionar tabla apuestas betPlay
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class BetTable extends JPanel {
 
 	/**

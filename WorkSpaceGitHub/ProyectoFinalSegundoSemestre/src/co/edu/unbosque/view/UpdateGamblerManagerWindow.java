@@ -1,5 +1,13 @@
 package co.edu.unbosque.view;
 
+/**
+ * Ventana actualizar apuesta desde ventana gerente
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -12,15 +20,18 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Ventana actualizar apuesta desde ventana gerente
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class UpdateGamblerManagerWindow extends JFrame {
 
 	/**
 	 * Este es el atributo de la version serial
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 19/11/2023
 	 */
 	private static final long serialVersionUID = 1006226609223776165L;
 
@@ -174,78 +185,135 @@ public class UpdateGamblerManagerWindow extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón para crear un apostador.
+	 */
 	public JButton getCreateGambler() {
 		return createGambler;
 	}
 
+	/**
+	 * Establece el botón para crear un apostador.
+	 */
 	public void setCreateGambler(JButton createGambler) {
 		this.createGambler = createGambler;
 	}
 
+	/**
+	 * Obtiene la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el campo de nombre completo.
+	 */
 	public JTextField getCompleteName() {
 		return completeName;
 	}
 
+	/**
+	 * Establece el campo de nombre completo.
+	 */
 	public void setCompleteName(JTextField completeName) {
 		this.completeName = completeName;
 	}
 
+	/**
+	 * Obtiene el campo de documento.
+	 */
 	public JTextField getDocument() {
 		return document;
 	}
 
+	/**
+	 * Establece el campo de documento.
+	 */
 	public void setDocument(JTextField document) {
 		this.document = document;
 	}
 
+	/**
+	 * Obtiene el campo de dirección.
+	 */
 	public JTextField getAdress() {
 		return adress;
 	}
 
+	/**
+	 * Establece el campo de dirección.
+	 */
 	public void setAdress(JTextField adress) {
 		this.adress = adress;
 	}
 
+	/**
+	 * Obtiene el campo de número telefónico.
+	 */
 	public JTextField getPhoneNumber() {
 		return phoneNumber;
 	}
 
+	/**
+	 * Establece el campo de número telefónico.
+	 */
 	public void setPhoneNumber(JTextField phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
+	/**
+	 * Obtiene la lista desplegable de ubicación.
+	 */
 	public JComboBox<String> getComboLocation() {
 		return comboLocation;
 	}
 
+	/**
+	 * Establece la lista desplegable de ubicación.
+	 */
 	public void setComboLocation(JComboBox<String> comboLocation) {
 		this.comboLocation = comboLocation;
 	}
 
+	/**
+	 * Obtiene el valor del serialVersionUID.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

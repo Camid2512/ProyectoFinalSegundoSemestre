@@ -15,15 +15,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/** 
+ * Esta es la clase ventana de gestion de apuesta del dueno
+ * @author Cristhian Diaz 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 10/11/2023*/
 public class BetManagmentByManagerWindow extends JFrame {
 
 	/**
 	 * Este es el atributo de la version serial
 	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 10/11/2023
 	 */
 
 	private static final long serialVersionUID = 415700271536832498L;

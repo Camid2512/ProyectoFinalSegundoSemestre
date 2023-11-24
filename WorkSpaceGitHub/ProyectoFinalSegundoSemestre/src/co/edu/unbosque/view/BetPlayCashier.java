@@ -1,5 +1,11 @@
 package co.edu.unbosque.view;
-
+/**
+ * Clase que representa la ventana de selección de apuestas. * 
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -13,15 +19,17 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Clase que representa la ventana de selección de apuestas. * 
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class BetPlayCashier extends JFrame {
 
-	/**
-	 * Ventana para gestionar apuestas BetPlay manager *
-	 * 
-	 *  @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/** Número de versión de serialización. */
 	private static final long serialVersionUID = 5239526211513542986L;

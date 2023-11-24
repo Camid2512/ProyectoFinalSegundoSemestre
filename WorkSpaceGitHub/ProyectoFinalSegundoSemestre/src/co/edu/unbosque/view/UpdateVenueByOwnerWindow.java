@@ -1,4 +1,13 @@
 package co.edu.unbosque.view;
+/**
+ * UpdateVenueByOwnerWindow representa una ventana para actualizar información relacionada
+ * con un lugar de eventos o un lugar para realizar apuestas. Permite al propietario modificar
+ * datos específicos del lugar.
+ * 
+ * Autor: SOFTPYLSA
+ * Versión: 1.0
+ * Fecha: 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,17 +23,19 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * UpdateVenueByOwnerWindow representa una ventana para actualizar información relacionada
+ * con un lugar de eventos o un lugar para realizar apuestas. Permite al propietario modificar
+ * datos específicos del lugar.
+ * 
+ * Autor: SOFTPYLSA
+ * Versión: 1.0
+ * Fecha: 10/11/2023
+ */
 public class UpdateVenueByOwnerWindow extends JFrame {
 
-	/**
-	 * UpdateVenueByOwnerWindow representa una ventana para actualizar información relacionada
-	 * con un lugar de eventos o un lugar para realizar apuestas. Permite al propietario modificar
-	 * datos específicos del lugar.
-	 * 
-	 * Autor: SOFTPYLSA
-	 * Versión: 1.0
-	 * Fecha: 10/11/2023
-	 */
+
 	
 	/**
      * Número de versión para el control de serialización.

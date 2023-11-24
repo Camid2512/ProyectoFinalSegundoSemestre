@@ -1,5 +1,12 @@
 package co.edu.unbosque.view;
-
+/**
+ * Este es el atributo de la version serial
+ * 
+ * @author Cristhian Diaz
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 19/11/2023
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -12,16 +19,17 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Este es el atributo de la version serial
+ * 
+ * @author Cristhian Diaz
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 19/11/2023
+ */
 public class CreateGamblerManagerWindow extends JFrame {
 
-	/**
-	 * Este es el atributo de la version serial
-	 * 
-	 * @author Cristhian Diaz
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 19/11/2023
-	 */
+	
 	private static final long serialVersionUID = 1006226609223776165L;
 
 	/**
@@ -174,80 +182,137 @@ public class CreateGamblerManagerWindow extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón para salir de la interfaz.
+	 */
 	public JButton getExit() {
-		return exit;
+	    return exit;
 	}
 
+	/**
+	 * Establece el botón para salir de la interfaz.
+	 */
 	public void setExit(JButton exit) {
-		this.exit = exit;
+	    this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón para retroceder en la interfaz.
+	 */
 	public JButton getBack() {
-		return back;
+	    return back;
 	}
 
+	/**
+	 * Establece el botón para retroceder en la interfaz.
+	 */
 	public void setBack(JButton back) {
-		this.back = back;
+	    this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón para crear apostadores.
+	 */
 	public JButton getCreateGambler() {
-		return createGambler;
+	    return createGambler;
 	}
 
+	/**
+	 * Establece el botón para crear apostadores.
+	 */
 	public void setCreateGambler(JButton createGambler) {
-		this.createGambler = createGambler;
+	    this.createGambler = createGambler;
 	}
 
+	/**
+	 * Obtiene la etiqueta que muestra la imagen principal de la interfaz.
+	 */
 	public JLabel getMainImage() {
-		return mainImage;
+	    return mainImage;
 	}
 
+	/**
+	 * Establece la etiqueta que muestra la imagen principal de la interfaz.
+	 */
 	public void setMainImage(JLabel mainImage) {
-		this.mainImage = mainImage;
+	    this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el campo de texto para el nombre completo.
+	 */
 	public JTextField getCompleteName() {
-		return completeName;
+	    return completeName;
 	}
 
+	/**
+	 * Establece el campo de texto para el nombre completo.
+	 */
 	public void setCompleteName(JTextField completeName) {
-		this.completeName = completeName;
+	    this.completeName = completeName;
 	}
 
+	/**
+	 * Obtiene el campo de texto para el documento.
+	 */
 	public JTextField getDocument() {
-		return document;
+	    return document;
 	}
 
+	/**
+	 * Establece el campo de texto para el documento.
+	 */
 	public void setDocument(JTextField document) {
-		this.document = document;
+	    this.document = document;
 	}
 
+	/**
+	 * Obtiene el campo de texto para la dirección.
+	 */
 	public JTextField getAdress() {
-		return adress;
+	    return adress;
 	}
 
+	/**
+	 * Establece el campo de texto para la dirección.
+	 */
 	public void setAdress(JTextField adress) {
-		this.adress = adress;
+	    this.adress = adress;
 	}
 
+	/**
+	 * Obtiene el campo de texto para el número telefónico.
+	 */
 	public JTextField getPhoneNumber() {
-		return phoneNumber;
+	    return phoneNumber;
 	}
 
+	/**
+	 * Establece el campo de texto para el número telefónico.
+	 */
 	public void setPhoneNumber(JTextField phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	    this.phoneNumber = phoneNumber;
 	}
 
+	/**
+	 * Obtiene el ComboBox para la ubicación.
+	 */
 	public JComboBox<String> getComboLocation() {
-		return comboLocation;
+	    return comboLocation;
 	}
 
+	/**
+	 * Establece el ComboBox para la ubicación.
+	 */
 	public void setComboLocation(JComboBox<String> comboLocation) {
-		this.comboLocation = comboLocation;
+	    this.comboLocation = comboLocation;
 	}
 
+	/**
+	 * Obtiene el identificador de versión serial.
+	 */
 	public static long getSerialversionuid() {
-		return serialVersionUID;
+	    return serialVersionUID;
 	}
 
 }

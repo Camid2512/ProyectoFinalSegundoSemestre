@@ -1,5 +1,13 @@
 package co.edu.unbosque.view;
 
+/**
+ * Muestra tabla de sedes
+ * propietario. 
+ * Autor: SOFTPYLSA 
+ * Versión: 1.0 
+ * Fecha: 10/11/2023
+ */
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -9,14 +17,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Muestra tabla de sedes propietario. Autor: SOFTPYLSA Versión: 1.0 Fecha:
+ * 10/11/2023
+ */
 public class VenueTable extends JPanel {
 
 	/**
 	 * Este es el atributo de la version serial
-	 * 
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 18/11/2023
 	 */
 	private static final long serialVersionUID = 8992744891426880464L;
 

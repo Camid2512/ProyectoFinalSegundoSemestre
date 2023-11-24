@@ -1,5 +1,13 @@
 package co.edu.unbosque.view;
 
+/**
+ * Esta clase representa la ventana de gestión de apuestas en el juego Baloto.
+ * Permite a los usuarios realizar operaciones relacionadas con las apuestas.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -13,19 +21,19 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 
+
+/**
+ * Esta clase representa la ventana de gestión de apuestas en el juego Baloto.
+ * Permite a los usuarios realizar operaciones relacionadas con las apuestas.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class BalotoManager extends JFrame {
 
-	/**
-	 * Esta clase representa la ventana de gestión de apuestas en el juego Baloto.
-	 * Permite a los usuarios realizar operaciones relacionadas con las apuestas.
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	/** Identificador de serialización de la clase. */
 
-	/** Identificador de serialización de la clase.*/
-	
 	private static final long serialVersionUID = -769680791092189359L;
 
 	/** Campo para ingresar el monto de la apuesta. */
@@ -50,8 +58,8 @@ public class BalotoManager extends JFrame {
 	public BalotoManager() {
 
 		/**
-	     * Configuración de botones y etiquetas visuales.
-	     */
+		 * Configuración de botones y etiquetas visuales.
+		 */
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);

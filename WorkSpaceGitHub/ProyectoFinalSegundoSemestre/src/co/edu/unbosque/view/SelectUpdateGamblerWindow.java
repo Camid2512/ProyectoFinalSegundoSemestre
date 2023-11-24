@@ -1,4 +1,12 @@
 package co.edu.unbosque.view;
+/**
+ * La clase SelectUpdateGamblerWindow representa una ventana de actualización
+ * para un apostador.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,16 +18,17 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * La clase SelectUpdateGamblerWindow representa una ventana de actualización
+ * para un apostador.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class SelectUpdateGamblerWindow extends JFrame {
 
-	/**
-	 * La clase SelectUpdateGamblerWindow representa una ventana de actualización
-	 * para un apostador.
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
+	
 
 	/**
 	 * Identificador de serialización de la clase.

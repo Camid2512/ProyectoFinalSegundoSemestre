@@ -1,4 +1,11 @@
 package co.edu.unbosque.view;
+/**
+ * Clase encargada de mostrar apuesta
+ * 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 28/09/2023
+ */
 
 import java.awt.Color;
 import java.awt.Image;
@@ -8,13 +15,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
+/**
+ * Clase encargada de mostrar apuesta
+ * 
+ * @author Santiago Rueda
+ * @version 1.0
+ * @since 28/09/2023
+ */
 public class ShowBetOwn extends JFrame {
 	/**
 	 * Este es el atributo de la version serial
-	 * 
-	 * @author Santiago Rueda
-	 * @version 1.0
-	 * @since 28/09/2023
 	 */
 	private static final long serialVersionUID = 5106702916498315840L;
 	/**
