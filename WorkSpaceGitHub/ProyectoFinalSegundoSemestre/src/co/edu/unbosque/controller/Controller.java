@@ -58,6 +58,7 @@ import co.edu.unbosque.view.ManageVenueManager;
 import co.edu.unbosque.view.ManagerCreationWindow;
 import co.edu.unbosque.view.OwnerWindow;
 import co.edu.unbosque.view.ReceiptWindow;
+import co.edu.unbosque.view.SelBetToDeleteCashier;
 import co.edu.unbosque.view.SelBetToDeleteManager;
 import co.edu.unbosque.view.SelBetToDeleteOwn;
 import co.edu.unbosque.view.SelGamblerCreateBetCashierWindow;
@@ -171,6 +172,7 @@ public class Controller implements ActionListener {
 	private BetPlayCashier betPlayCashier;
 	private ShowBetCashier showBetCashier;
 	private SelectGamblerToDeleteBetCashier selGambBetDeleteCashier;
+	private SelBetToDeleteCashier selBetDeleteCashi;
 
 	private HouseSettingDAO houseDAO;
 	private GameDAO gameDAO;
@@ -277,6 +279,7 @@ public class Controller implements ActionListener {
 		betPlayCashier = new BetPlayCashier();
 		showBetCashier = new ShowBetCashier();
 		selGambBetDeleteCashier = new SelectGamblerToDeleteBetCashier();
+		selBetDeleteCashi = new SelBetToDeleteCashier();
 
 		agregarLectores();
 
@@ -1157,7 +1160,7 @@ public class Controller implements ActionListener {
 		showBetCashier.getBack().addActionListener(this);
 		showBetCashier.getBack().setActionCommand("BACK SHOW BET CASHIER");
 
-		// ELIMINAR APUESTAS CAJERO
+		// ELIMINAR APUESTAS SELECCIONAR APOSTADOR CAJERO
 
 		selGambBetDeleteCashier.getExit().addActionListener(this);
 		selGambBetDeleteCashier.getExit().setActionCommand("EXIT");
@@ -1166,7 +1169,18 @@ public class Controller implements ActionListener {
 		selGambBetDeleteCashier.getBack().setActionCommand("BACK DELETE BET CASHIER");
 
 		selGambBetDeleteCashier.getNextStep().addActionListener(this);
-		selGambBetDeleteCashier.getNextStep().setActionCommand("NEXT DELETE BET CASHIER");
+		selGambBetDeleteCashier.getNextStep().setActionCommand("NEXTDELETEBETCASHIER");
+
+		// ELIMINAR APUESTAS CAJERO
+
+		selBetDeleteCashi.getExit().addActionListener(this);
+		selBetDeleteCashi.getExit().setActionCommand("EXIT");
+
+		selBetDeleteCashi.getBack().addActionListener(this);
+		selBetDeleteCashi.getBack().setActionCommand("BACK DELETE BET");
+
+		selBetDeleteCashi.getNextStep().addActionListener(this);
+		selBetDeleteCashi.getNextStep().setActionCommand("NEXT DELETE BET");
 
 	}
 
@@ -2645,35 +2659,47 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "SHOW BET CASHIER": {
-
 			showBetCashier.setVisible(true);
 			betManCashier.setVisible(false);
+			showTableBetCashier(exit);
 			break;
 
 		}
 		case "BACK SHOW BET CASHIER": {
-
 			betManCashier.setVisible(true);
 			showBetCashier.setVisible(false);
+			updateTableBetCashier();
 			break;
-
 		}
 		case "DELETE BET CASHIER": {
-
+			updateBoxSelectGamblerCashierForDeleteBet();
 			selGambBetDeleteCashier.setVisible(true);
 			betManCashier.setVisible(false);
 			break;
 
 		}
 		case "BACK DELETE BET CASHIER": {
-
-			selGambBetDeleteCashier.setVisible(true);
-			betManCashier.setVisible(false);
+			betManCashier.setVisible(true);
+			selGambBetDeleteCashier.setVisible(false);
 			break;
-
 		}
-		case "NEXT DELETE BET CASHIER": {
-
+		case "NEXTDELETEBETCASHIER": {
+			selBetDeleteCashi.setVisible(true);
+			selGambBetDeleteCashier.setVisible(false);
+			long aux = Long.parseLong(selGambBetDeleteCashier.getComboGambler().getSelectedItem().toString());
+			updateSelectBetDeleteBetCashier(aux);
+			break;
+		}
+		case "BACK DELETE BET": {
+			selGambBetDeleteCashier.setVisible(true);
+			selBetDeleteCashi.setVisible(false);
+			break;
+		}
+		case "NEXT DELETE BET": {
+			betManCashier.setVisible(true);
+			selBetDeleteCashi.setVisible(false);
+			String aux = selBetDeleteCashi.getComboGambler().getSelectedItem().toString();
+			DeleteBetCashier(aux);
 			break;
 		}
 		default:
@@ -5484,6 +5510,216 @@ public class Controller implements ActionListener {
 		JOptionPane.showMessageDialog(selGamToDelCashi, "ELIMINADO CON EXITO");
 		gambManagCashier.setVisible(true);
 		selGamToDelCashi.setVisible(false);
+
+	}
+
+	public void showTableBetCashier(String s) {
+		for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
+			if (s.equals(venueDAO.getHeadquarterList().get(j).getId())) {
+				for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+					if (venueDAO.getHeadquarterList().get(j).getVenueName()
+							.equals(loteriaDAO.getLoteryBetList().get(i).getHeadQuarterName())) {
+						int dia = loteriaDAO.getLoteryBetList().get(i).getDay();
+						int mes = loteriaDAO.getLoteryBetList().get(i).getMonth();
+						int ano = loteriaDAO.getLoteryBetList().get(i).getYear();
+						double valorapostado = loteriaDAO.getLoteryBetList().get(i).getBetPlaced();
+						long documento = loteriaDAO.getLoteryBetList().get(i).getDocument();
+						String juego = "Loteria";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetCashier.getTablePanel().getModel().addRow(data);
+					}
+				}
+				for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+
+					if (venueDAO.getHeadquarterList().get(j).getVenueName()
+							.equals(balotoDAO.getBallotList().get(i).getHeadQuarterName())) {
+						int dia = balotoDAO.getBallotList().get(i).getDay();
+						int mes = balotoDAO.getBallotList().get(i).getMonth();
+						int ano = balotoDAO.getBallotList().get(i).getYear();
+						double valorapostado = balotoDAO.getBallotList().get(i).getBetPlaced();
+						long documento = balotoDAO.getBallotList().get(i).getDocument();
+						String juego = "Baloto";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetCashier.getTablePanel().getModel().addRow(data);
+					}
+
+				}
+				for (int i = 0; i < superAstroDAO.getSuperAstroList().size(); i++) {
+
+					if (venueDAO.getHeadquarterList().get(j).getVenueName()
+							.equals(superAstroDAO.getSuperAstroList().get(i).getHeadQuarterName())) {
+						int dia = superAstroDAO.getSuperAstroList().get(i).getDay();
+						int mes = superAstroDAO.getSuperAstroList().get(i).getMonth();
+						int ano = superAstroDAO.getSuperAstroList().get(i).getYear();
+						double valorapostado = superAstroDAO.getSuperAstroList().get(i).getBetPlaced();
+						long documento = superAstroDAO.getSuperAstroList().get(i).getDocument();
+						String juego = "Super astro";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetCashier.getTablePanel().getModel().addRow(data);
+					}
+
+				}
+				for (int i = 0; i < chanceDAO.getChanceList().size(); i++) {
+
+					if (venueDAO.getHeadquarterList().get(j).getVenueName()
+							.equals(chanceDAO.getChanceList().get(i).getHeadQuarterName())) {
+						int dia = chanceDAO.getChanceList().get(i).getDay();
+						int mes = chanceDAO.getChanceList().get(i).getMonth();
+						int ano = chanceDAO.getChanceList().get(i).getYear();
+						double valorapostado = chanceDAO.getChanceList().get(i).getBetPlaced();
+						long documento = chanceDAO.getChanceList().get(i).getDocument();
+						String juego = "Chance";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetCashier.getTablePanel().getModel().addRow(data);
+					}
+				}
+				for (int i = 0; i < betPlayDAO.getBetPlayList().size(); i++) {
+
+					if (venueDAO.getHeadquarterList().get(j).getVenueName()
+							.equals(betPlayDAO.getBetPlayList().get(i).getHeadQuarterName())) {
+						int dia = betPlayDAO.getBetPlayList().get(i).getDay();
+						int mes = betPlayDAO.getBetPlayList().get(i).getMonth();
+						int ano = betPlayDAO.getBetPlayList().get(i).getYear();
+						double valorapostado = betPlayDAO.getBetPlayList().get(i).getBetPlaced();
+						long documento = betPlayDAO.getBetPlayList().get(i).getDocument();
+						String juego = "Bet Play";
+
+						Object[] data = { dia, mes, ano, valorapostado, documento, juego };
+
+						showBetCashier.getTablePanel().getModel().addRow(data);
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	public void updateTableBetCashier() {
+		int aux = showBetManag.getTablePanel().getModel().getRowCount();
+		for (int i = aux - 1; i >= 0; i--) {
+			showBetCashier.getTablePanel().getModel().removeRow(i);
+
+		}
+	}
+
+	public void updateBoxSelectGamblerCashierForDeleteBet() {
+		String s = "";
+		for (int x = 0; x < venueDAO.getHeadquarterList().size(); x++) {
+			if (exit.equals(venueDAO.getHeadquarterList().get(x).getId())) {
+				s = venueDAO.getHeadquarterList().get(x).getId();
+			}
+		}
+		if (!gamDAO.getGamblerList().isEmpty()) {
+			selGambBetDeleteCashier.getComboGambler().removeAllItems();
+			for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
+				if (s.equals(venueDAO.getHeadquarterList().get(i).getId())) {
+					for (int j = 0; j < gamDAO.getGamblerList().size(); j++) {
+						if (venueDAO.getHeadquarterList().get(i).getVenueName()
+								.equals(gamDAO.getGamblerList().get(j).getGamingVenue())) {
+							selGambBetDeleteCashier.getComboGambler()
+									.addItem(gamDAO.getGamblerList().get(j).getDocumentId());
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public void updateSelectBetDeleteBetCashier(long data) {
+		System.out.println("hola");
+		if (!loteriaDAO.getLoteryBetList().isEmpty() || !balotoDAO.getBallotList().isEmpty()
+				|| !superAstroDAO.getSuperAstroList().isEmpty() || !chanceDAO.getChanceList().isEmpty()
+				|| !betPlayDAO.getBetPlayList().isEmpty()) {
+			selBetDeleteCashi.getComboGambler().removeAllItems();
+			for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
+				if (data == (loteriaDAO.getLoteryBetList().get(i).getDocument())) {
+					selBetDeleteCashi.getComboGambler().addItem(
+							"Apuesta en loteria de valor " + loteriaDAO.getLoteryBetList().get(i).getBetPlaced());
+				}
+			}
+			for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+				if (data == (balotoDAO.getBallotList().get(i).getDocument())) {
+					selBetDeleteCashi.getComboGambler()
+							.addItem("Apuesta en baloto de valor " + balotoDAO.getBallotList().get(i).getBetPlaced());
+				}
+			}
+			for (int i = 0; i < superAstroDAO.getSuperAstroList().size(); i++) {
+				if (data == (superAstroDAO.getSuperAstroList().get(i).getDocument())) {
+					selBetDeleteCashi.getComboGambler().addItem("Apuesta en super astro de valor "
+							+ superAstroDAO.getSuperAstroList().get(i).getBetPlaced());
+				}
+			}
+			for (int i = 0; i < chanceDAO.getChanceList().size(); i++) {
+				if (data == (chanceDAO.getChanceList().get(i).getDocument())) {
+					selBetDeleteCashi.getComboGambler()
+							.addItem("Apuesta en chance de valor " + chanceDAO.getChanceList().get(i).getBetPlaced());
+				}
+			}
+			for (int i = 0; i < betPlayDAO.getBetPlayList().size(); i++) {
+				if (data == (betPlayDAO.getBetPlayList().get(i).getDocument())) {
+					selBetDeleteCashi.getComboGambler().addItem(
+							"Apuesta en bet play de valor " + betPlayDAO.getBetPlayList().get(i).getBetPlaced());
+				}
+			}
+
+		}
+	}
+
+	public void DeleteBetCashier(String s) {
+
+		String s2 = "";
+		for (int u = 0; u < venueDAO.getHeadquarterList().size(); u++) {
+			if (exit.equals(venueDAO.getHeadquarterList().get(u).getId())) {
+				s2 = venueDAO.getHeadquarterList().get(u).getVenueName();
+			}
+		}
+
+		for (int x = 0; x < loteriaDAO.getLoteryBetList().size(); x++) {
+			if (s.equals("Apuesta en loteria de valor " + loteriaDAO.getLoteryBetList().get(x).getBetPlaced())
+					&& loteriaDAO.getLoteryBetList().get(x).getHeadQuarterName().equals(s2)) {
+				loteriaDAO.delete(x);
+				JOptionPane.showMessageDialog(loteriaWin, "ELIMINADO CON EXITO");
+			}
+		}
+		for (int i = 0; i < balotoDAO.getBallotList().size(); i++) {
+			if (s.equals("Apuesta en baloto de valor " + balotoDAO.getBallotList().get(i).getBetPlaced())
+					&& balotoDAO.getBallotList().get(i).getHeadQuarterName().equals(s2)) {
+				balotoDAO.delete(i);
+				JOptionPane.showMessageDialog(balotoWin, "ELIMINADO CON EXITO");
+			}
+		}
+		for (int j = 0; j < superAstroDAO.getSuperAstroList().size(); j++) {
+			if (s.equals("Apuesta en super astro de valor " + superAstroDAO.getSuperAstroList().get(j).getBetPlaced())
+					&& superAstroDAO.getSuperAstroList().get(j).getHeadQuarterName().equals(s2)) {
+				superAstroDAO.delete(j);
+				JOptionPane.showMessageDialog(superastroWin, "ELIMINADO CON EXITO");
+			}
+		}
+		for (int k = 0; k < chanceDAO.getChanceList().size(); k++) {
+			if (s.equals("Apuesta en chance de valor " + chanceDAO.getChanceList().get(k).getBetPlaced())
+					&& chanceDAO.getChanceList().get(k).getHeadQuarterName().equals(s2)) {
+				chanceDAO.delete(k);
+				JOptionPane.showMessageDialog(chanceWin, "ELIMINADO CON EXITO");
+			}
+		}
+		for (int l = 0; l < betPlayDAO.getBetPlayList().size(); l++) {
+			if (s.equals("Apuesta en bet play de valor " + betPlayDAO.getBetPlayList().get(l).getBetPlaced())
+					&& betPlayDAO.getBetPlayList().get(l).getHeadQuarterName().equals(s2)) {
+				betPlayDAO.delete(l);
+				JOptionPane.showMessageDialog(betplayWin, "ELIMINADO CON EXITO");
+			}
+		}
 
 	}
 

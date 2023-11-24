@@ -69,7 +69,7 @@ public class SelectGamblerToDeleteBetCashier extends JFrame {
 		mainImage.setBounds(0, 0, 1280, 720);
 
 		Image temporal1;
-		temporal1 = new ImageIcon("src/Images/eliminarapostador.png").getImage();
+		temporal1 = new ImageIcon("src/Images/selectapostador.png").getImage();
 
 		ImageIcon img1;
 		img1 = new ImageIcon(

@@ -10,11 +10,11 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class SelectGamblerToDeleteManager extends JFrame {
+public class SelBetToDeleteCashier extends JFrame {
 
 	/**
 	 * 
-	 * Selecciona el apostador a eliminar del jefe de sede
+	 * Ventana encargada de seleccionar la apuesta a eliminar
 	 * 
 	 * @author SOFTPYLSA
 	 * @version 1.0
@@ -22,28 +22,36 @@ public class SelectGamblerToDeleteManager extends JFrame {
 	 */
 
 	/**
-	 * Identificador de serialización de la clase.
+	 * Número de versión serial para garantizar la compatibilidad de la clase
+	 * durante la serialización.
 	 */
-	private static final long serialVersionUID = 5261141351305780143L;
+	private static final long serialVersionUID = -7122147527086186987L;
 
 	/**
-	 * ComboBox para la selección de apostadores.
+	 * ComboBox para el jugador.
 	 */
-	private JComboBox<Long> comboGambler;
-	/** Botones para salir, retroceder y avanzar. */
+	private JComboBox<String> comboGambler;
+
+	/**
+	 * Botones salida, volver, y siguiente paso.
+	 */
 	private JButton exit, back, nextStep;
-	/** Etiqueta principal de la imagen. */
+
+	/**
+	 * Etiqueta principal de la imagen.
+	 */
 	private JLabel mainImage;
 
 	/**
 	 * Este es el constructor, se encarga tambien de crear la ventana
 	 */
-	public SelectGamblerToDeleteManager() {
+	public SelBetToDeleteCashier() {
 		// TODO Auto-generated constructor stub
+
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setTitle("ELIMINAR APOSTADOR MANAGER");
+		setTitle("SELECCIONAR APUESTA A ELIMINAR");
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setUndecorated(true);
 		setLayout(null);
@@ -68,7 +76,7 @@ public class SelectGamblerToDeleteManager extends JFrame {
 
 		nextStep = new JButton();
 		nextStep.setBounds(858, 498, 298, 99);
-		nextStep.setToolTipText("ELIMINAR SELECCIONADO");
+		nextStep.setToolTipText("SELECCIONAR");
 		nextStep.setBackground(new Color(0, 0, 0, 0));
 		nextStep.setOpaque(false);
 		nextStep.setContentAreaFilled(false);
@@ -86,7 +94,7 @@ public class SelectGamblerToDeleteManager extends JFrame {
 		mainImage.setBounds(0, 0, 1280, 720);
 
 		Image temporal1;
-		temporal1 = new ImageIcon("src/Images/eliminarapostador.png").getImage();
+		temporal1 = new ImageIcon("src/Images/apuestaaeliminar.png").getImage();
 
 		ImageIcon img1;
 		img1 = new ImageIcon(
@@ -95,80 +103,82 @@ public class SelectGamblerToDeleteManager extends JFrame {
 		mainImage.setIcon(img1);
 		mainImage.setVisible(true);
 		add(mainImage);
+
 	}
 
 	/**
-	 * Método para obtener el ComboBox de apostadores.
+	 * Obtiene el ComboBox para el jugador.
 	 */
-	public JComboBox<Long> getComboGambler() {
+	public JComboBox<String> getComboGambler() {
 		return comboGambler;
 	}
 
 	/**
-	 * Método para establecer el ComboBox de apostadores.
+	 * Establece el ComboBox para el jugador.
 	 */
-	public void setComboGambler(JComboBox<Long> comboGambler) {
+	public void setComboGambler(JComboBox<String> comboGambler) {
 		this.comboGambler = comboGambler;
 	}
 
 	/**
-	 * Método para obtener el botón de salida.
+	 * Obtiene el botón de salida.
 	 */
 	public JButton getExit() {
 		return exit;
 	}
 
 	/**
-	 * Método para establecer el botón de salida.
+	 * Establece el botón de salida.
 	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
 	/**
-	 * Método para obtener el botón de retroceso.
+	 * Obtiene el botón de retroceso.
 	 */
 	public JButton getBack() {
 		return back;
 	}
 
 	/**
-	 * Método para establecer el botón de retroceso.
+	 * Establece el botón de retroceso.
 	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
 	/**
-	 * Método para obtener el botón de siguiente paso.
+	 * Obtiene el botón para el siguiente paso.
 	 */
 	public JButton getNextStep() {
 		return nextStep;
 	}
 
 	/**
-	 * Método para establecer el botón de siguiente paso.
+	 * Establece el botón para el siguiente paso.
 	 */
 	public void setNextStep(JButton nextStep) {
 		this.nextStep = nextStep;
 	}
 
 	/**
-	 * Método para obtener la imagen principal.
+	 * Obtiene la etiqueta principal de la imagen.
 	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
 	/**
-	 * Método para establecer la imagen principal.
+	 * Establece la etiqueta principal de la imagen.
 	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
 	/**
-	 * Método estático para obtener el identificador de serialización.
+	 * Obtiene el número de versión serial para la compatibilidad de la clase
+	 * durante la serialización.
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;

@@ -94,7 +94,7 @@ public class VenueManagerMenu extends JFrame {
 		add(bets);
 
 		nameVenue = new JTextArea();
-		nameVenue.setBounds(379, 10, 805, 95);
+		nameVenue.setBounds(570, 10, 805, 95);
 		nameVenue.setBackground(new Color(0, 0, 0, 0));
 		nameVenue.setOpaque(false);
 		nameVenue.setBorder(new EmptyBorder(15, 15, 15, 15));
