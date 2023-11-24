@@ -11,15 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Ventana encargada de mostrar los recibos de cada apuesta
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 10/11/2023
+ */
 public class ReceiptWindow extends JFrame {
-
-	/**
-	 * Ventana encargada de mostrar los recibos de cada apuesta
-	 * 
-	 * @author SOFTPYLSA
-	 * @version 1.0
-	 * @since 10/11/2023
-	 */
 
 	/**
 	 * Identificador de serialización de la clase.
@@ -33,20 +32,24 @@ public class ReceiptWindow extends JFrame {
 
 	/**
 	 * Etiqueta principal de la imagen.
+	 * 
 	 */
 	private JLabel mainImage;
 
 	/**
 	 * Área de texto para la fecha, nombre, documento,lugar de apuesta, tipo de
 	 * apuesta.
+	 * 
 	 */
 	private JTextArea date, fullName, document, venueBet, typeBet;
 
 	/**
 	 * Este es el constructor, se encarga tambien de crear la ventana
+	 * 
 	 */
+
 	public ReceiptWindow() {
-		// TODO Auto-generated constructor stube(1280, 720);
+		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setTitle("RECIBO");

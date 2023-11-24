@@ -2,7 +2,12 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -21,6 +26,10 @@ import co.edu.unbosque.model.persistence.LoteryBetDAO;
 import co.edu.unbosque.model.persistence.OwnerDAO;
 import co.edu.unbosque.model.persistence.ReceiptDAO;
 import co.edu.unbosque.model.persistence.SuperAstroDAO;
+import co.edu.unbosque.util.EmptyDataException;
+import co.edu.unbosque.util.NotValidNameException;
+import co.edu.unbosque.util.NotValidPasswordException;
+import co.edu.unbosque.util.NumberNotValidException;
 import co.edu.unbosque.util.SameDocumentException;
 import co.edu.unbosque.view.BalotoCashier;
 import co.edu.unbosque.view.BalotoManager;
@@ -1245,6 +1254,31 @@ public class Controller implements ActionListener {
 
 		case "BOTONMOD1OWN": {
 
+			String nameHouse = "";
+			int cantVenueMax = 0;
+			String budget = "";
+
+			Properties prop = new Properties();
+			try {
+				prop.load(new FileInputStream(new File("src/co/edu/unbosque/model/persistence/config.properties")));
+				nameHouse = prop.getProperty(
+						"PRF_PROG1_20232_DIAZCRISTHIAN_RUEDASANTIAGO_LARAVALENTINA_GUERREROCAMILO.porperties.nombrecasa")
+						.toString();
+				cantVenueMax = Integer.parseInt(prop.get(
+						"PRF_PROG1_20232_DIAZCRISTHIAN_RUEDASANTIAGO_LARAVALENTINA_GUERREROCAMILO.porperties.numerosede")
+						.toString());
+				budget = prop.getProperty(
+						"PRF_PROG1_20232_DIAZCRISTHIAN_RUEDASANTIAGO_LARAVALENTINA_GUERREROCAMILO.porperties.presupuesto")
+						.toString();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+			}
+
+			houseManageWindow.getNameHouse().setText(nameHouse);
+			houseManageWindow.getNumberVenue().setValue(cantVenueMax);
+			houseManageWindow.getTotalBudget().setText(budget);
 			houseManageWindow.setVisible(true);
 			logWind.setVisible(false);
 			ownWind.setVisible(false);
@@ -1296,8 +1330,7 @@ public class Controller implements ActionListener {
 		}
 
 		case "CREATENEWVENUE": {
-			createVenueWin.setVisible(true);
-			managerCreationWin.setVisible(false);
+
 			createBoss();
 			managerCreationWin.getUser().setText("");
 			managerCreationWin.getPassword().setText("");
@@ -1982,8 +2015,7 @@ public class Controller implements ActionListener {
 		}
 		case "CREATE ACOUNT CASHIER": {
 			createCashier();
-			manageVenueManager.setVisible(true);
-			createCashier.setVisible(false);
+
 			createCashier.getUser().setText("");
 			createCashier.getPassword().setText("");
 			break;
@@ -2793,34 +2825,110 @@ public class Controller implements ActionListener {
 
 	public void createHouse() {
 
-		String name = houseManageWindow.getNameHouse().getText();
-		double budget = Double.parseDouble(houseManageWindow.getTotalBudget().getText());
-		int numVenue = Integer.parseInt(houseManageWindow.getNumberVenue().getValue().toString());
+		String name = "";
+		String budgetCheck = "";
+		String numVenueCheck = "";
+		while (true) {
 
-		houseDAO.create(name, numVenue, budget);
+			try {
+				name = houseManageWindow.getNameHouse().getText();
+				checkName(name);
+				emptyData(name);
+				budgetCheck = houseManageWindow.getTotalBudget().getText();
+				Double budget = Double.parseDouble(budgetCheck);
+				numNotValid(budgetCheck);
+				emptyData(budgetCheck);
+				numVenueCheck = houseManageWindow.getNumberVenue().getValue().toString();
+				int numVenue = Integer.parseInt(numVenueCheck);
+				numNotValid(numVenueCheck);
+				emptyData(numVenueCheck);
 
-		JOptionPane.showMessageDialog(houseManageWindow,
-				"HAS SETEADO CON EXITO LA CONFIGURACION DE TU CASA DE APUESTAS");
+				if (checkName(name) == true && emptyData(name) == true && numNotValid(budgetCheck) == true
+						&& emptyData(budgetCheck) == true && numNotValid(numVenueCheck) == true
+						&& emptyData(numVenueCheck) == true) {
 
+					houseDAO.create(name, numVenue, budget);
+
+					JOptionPane.showMessageDialog(houseManageWindow,
+							"HAS SETEADO CON EXITO LA CONFIGURACION DE TU CASA DE APUESTAS");
+				}
+
+			} catch (NotValidNameException e) {
+				// TODO Auto-generated catch block
+				houseManageWindow.getNameHouse().setText(null);
+				houseManageWindow.getTotalBudget().setText(null);
+				houseManageWindow.getNumberVenue().setValue(0);
+			} catch (NumberNotValidException e) {
+				// TODO Auto-generated catch block
+				houseManageWindow.getNameHouse().setText(null);
+				houseManageWindow.getTotalBudget().setText(null);
+				houseManageWindow.getNumberVenue().setValue(0);
+			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				houseManageWindow.getNameHouse().setText(null);
+				houseManageWindow.getTotalBudget().setText(null);
+				houseManageWindow.getNumberVenue().setValue(0);
+			}
+
+			break;
+		}
 	}
 
 	public void createAccount() {
 
 		String user = "";
 		String pass = "";
+		while (true) {
 
-		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?", "CONFIRMAR",
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
-		user = signWind.getUsuario().getText();
-		pass = signWind.getPassword().getText();
+			try {
+				user = signWind.getUsuario().getText();
+				sameUserException(user);
+				emptyData(user);
+				pass = signWind.getPassword().getText();
+				validPassword(pass);
+				emptyData(pass);
 
-		if (JOptionPane.NO_OPTION == response) {
+				if (sameUserException(user) == true && validPassword(pass) == true && emptyData(user) == true
+						&& emptyData(pass)) {
+					int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
+							"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+							new Object[] { "SI", "NO" }, "SI");
 
-		} else if (JOptionPane.OK_OPTION == response) {
-			ownDAO.create(user, pass);
-			JOptionPane.showMessageDialog(signWind, "CUENTA CREADA CON EXITO");
+					if (JOptionPane.NO_OPTION == response) {
 
+						signWind.getUsuario().setText(null);
+						signWind.getPassword().setText(null);
+
+					} else if (JOptionPane.OK_OPTION == response) {
+						ownDAO.create(user, pass);
+						JOptionPane.showMessageDialog(signWind, "CUENTA CREADA CON EXITO");
+
+						logWind.setVisible(true);
+						signWind.setVisible(false);
+
+					}
+
+				} else {
+
+				}
+
+			} catch (SameDocumentException e) {
+				// TODO Auto-generated catch block
+				signWind.getUsuario().setText(null);
+				signWind.getPassword().setText(null);
+
+			} catch (NotValidPasswordException e) {
+				// TODO Auto-generated catch block
+				signWind.getUsuario().setText(null);
+				signWind.getPassword().setText(null);
+			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				signWind.getUsuario().setText(null);
+				signWind.getPassword().setText(null);
+			}
+			break;
 		}
+
 	}
 
 	public void createBoss() {
@@ -2829,18 +2937,52 @@ public class Controller implements ActionListener {
 		String password = "";
 		String id = randomString();
 
-		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?", "CONFIRMAR",
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
-		user = managerCreationWin.getUser().getText();
-		password = managerCreationWin.getPassword().getText();
+		while (true) {
 
-		if (JOptionPane.NO_OPTION == response) {
+			try {
+				user = managerCreationWin.getUser().getText();
+				sameUserException(user);
+				emptyData(user);
+				password = managerCreationWin.getPassword().getText();
+				validPassword(password);
+				emptyData(password);
 
-		} else if (JOptionPane.OK_OPTION == response) {
-			bossDAO.create(user, password, id);
-			JOptionPane.showMessageDialog(managerCreationWin, "CUENTA CREADA CON EXITO");
-			System.out.println(id);
+				if (sameUserException(user) == true && validPassword(password) == true && emptyData(user) == true
+						&& emptyData(password)) {
+
+					int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
+							"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+							new Object[] { "SI", "NO" }, "SI");
+
+					if (JOptionPane.NO_OPTION == response) {
+						managerCreationWin.getUser().setText("");
+						managerCreationWin.getPassword().setText("");
+					} else if (JOptionPane.OK_OPTION == response) {
+						bossDAO.create(user, password, id);
+						JOptionPane.showMessageDialog(managerCreationWin, "CUENTA CREADA CON EXITO");
+						createVenueWin.setVisible(true);
+						managerCreationWin.setVisible(false);
+						System.out.println(id);
+					}
+				} else {
+
+				}
+			} catch (SameDocumentException e) {
+				// TODO Auto-generated catch block
+				managerCreationWin.getUser().setText("");
+				managerCreationWin.getPassword().setText("");
+			} catch (NotValidPasswordException e) {
+				// TODO Auto-generated catch block
+				managerCreationWin.getUser().setText("");
+				managerCreationWin.getPassword().setText("");
+			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				managerCreationWin.getUser().setText("");
+				managerCreationWin.getPassword().setText("");
+			}
+			break;
 		}
+
 	}
 
 	public void createCashier() {
@@ -2861,18 +3003,55 @@ public class Controller implements ActionListener {
 
 		}
 
-		int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?", "CONFIRMAR",
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "SI", "NO" }, "SI");
-		user = createCashier.getUser().getText();
-		password = createCashier.getPassword().getText();
+		while (true) {
 
-		if (JOptionPane.NO_OPTION == response) {
+			try {
+				user = createCashier.getUser().getText();
+				sameUserException(user);
+				emptyData(user);
+				password = createCashier.getPassword().getText();
+				validPassword(password);
+				emptyData(password);
 
-		} else if (JOptionPane.OK_OPTION == response) {
-			cashierDAO.create(user, password, id);
-			JOptionPane.showMessageDialog(createCashier, "CUENTA CREADA CON EXITO");
-			System.out.println(id);
+				if (sameUserException(user) == true && validPassword(password) == true && emptyData(user) == true
+						&& emptyData(password) == true) {
+
+					int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
+							"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+							new Object[] { "SI", "NO" }, "SI");
+					if (JOptionPane.NO_OPTION == response) {
+
+						createCashier.getUser().setText("");
+						createCashier.getPassword().setText("");
+
+					} else if (JOptionPane.OK_OPTION == response) {
+						cashierDAO.create(user, password, id);
+						JOptionPane.showMessageDialog(createCashier, "CUENTA CREADA CON EXITO");
+						manageVenueManager.setVisible(true);
+						createCashier.setVisible(false);
+						System.out.println(id);
+					}
+
+				} else {
+
+				}
+
+			} catch (SameDocumentException e) {
+				// TODO Auto-generated catch block
+				createCashier.getUser().setText("");
+				createCashier.getPassword().setText("");
+			} catch (NotValidPasswordException e) {
+				// TODO Auto-generated catch block
+				createCashier.getUser().setText("");
+				createCashier.getPassword().setText("");
+			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				createCashier.getUser().setText("");
+				createCashier.getPassword().setText("");
+			}
+			break;
 		}
+
 	}
 
 	public void createVenue() {
@@ -2889,9 +3068,33 @@ public class Controller implements ActionListener {
 
 		System.out.println(id);
 
-		venueDAO.create(name, locationVenue, numEmployes, id);
+		int cantVenueMax = 0;
+		int numVenue = venueDAO.getHeadquarterList().size();
 
-		JOptionPane.showMessageDialog(createVenueWin, "HAS CREADO CON EXITO UNA NUEVA SEDE");
+		Properties prop = new Properties();
+		try {
+			prop.load(new FileInputStream(new File("src/co/edu/unbosque/model/persistence/config.properties")));
+			cantVenueMax = Integer.parseInt(prop.get(
+					"PRF_PROG1_20232_DIAZCRISTHIAN_RUEDASANTIAGO_LARAVALENTINA_GUERREROCAMILO.porperties.numerosede")
+					.toString());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (cantVenueMax < numVenue) {
+			JOptionPane.showMessageDialog(logWind, "NO SE PUEDEN CREAR MAS DE " + cantVenueMax + " sedes", "EXCEPTION",
+					0);
+			venueDAO.delete(cantVenueMax + 1);
+		} else {
+
+			venueDAO.create(name, locationVenue, numEmployes, id);
+
+			JOptionPane.showMessageDialog(createVenueWin, "HAS CREADO CON EXITO UNA NUEVA SEDE");
+
+		}
 
 	}
 
@@ -3238,13 +3441,26 @@ public class Controller implements ActionListener {
 		while (true) {
 			try {
 				fullName = createGamblerWinOwn.getCompleteName().getText();
+				checkName(fullName);
+				emptyData(fullName);
 				document = createGamblerWinOwn.getDocument().getText();
 				checkDuplicatedDocument(document);
+				numNotValid(document);
+				emptyData(document);
 				gamingVenue = createGamblerWinOwn.getComboLocation().getSelectedItem().toString();
+				checkName(gamingVenue);
+				emptyData(gamingVenue);
 				adress = createGamblerWinOwn.getAdress().getText();
+				checkName(adress);
+				emptyData(adress);
 				phoneNumber = createGamblerWinOwn.getPhoneNumber().getText();
+				numNotValid(phoneNumber);
+				emptyData(phoneNumber);
 
-				if (checkDuplicatedDocument(document) == true) {
+				if (checkDuplicatedDocument(document) && checkName(fullName) && emptyData(fullName)
+						&& numNotValid(document) && emptyData(document) && checkName(gamingVenue)
+						&& emptyData(gamingVenue) && checkName(adress) && emptyData(adress) && numNotValid(phoneNumber)
+						&& emptyData(phoneNumber)) {
 					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
 					JOptionPane.showMessageDialog(gamesSettingWin, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
 				} else {
@@ -3256,6 +3472,24 @@ public class Controller implements ActionListener {
 				createGamblerWinOwn.getDocument().setText("");
 				gamDAO.delete(0);
 
+			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				createGamblerWinOwn.getDocument().setText("");
+				createGamblerWinOwn.getCompleteName().setText("");
+				createGamblerWinOwn.getAdress().setText("");
+				createGamblerWinOwn.getPhoneNumber().setText("");
+			} catch (NotValidNameException e) {
+				// TODO Auto-generated catch block
+				createGamblerWinOwn.getDocument().setText("");
+				createGamblerWinOwn.getCompleteName().setText("");
+				createGamblerWinOwn.getAdress().setText("");
+				createGamblerWinOwn.getPhoneNumber().setText("");
+			} catch (NumberNotValidException e) {
+				// TODO Auto-generated catch block
+				createGamblerWinOwn.getDocument().setText("");
+				createGamblerWinOwn.getCompleteName().setText("");
+				createGamblerWinOwn.getAdress().setText("");
+				createGamblerWinOwn.getPhoneNumber().setText("");
 			}
 			break;
 		}
@@ -3271,12 +3505,21 @@ public class Controller implements ActionListener {
 		while (true) {
 			try {
 				fullName = createGambManager.getCompleteName().getText();
+				checkName(fullName);
+				emptyData(fullName);
 				document = createGambManager.getDocument().getText();
 				checkDuplicatedDocument(document);
+				numNotValid(document);
+				emptyData(document);
+				checkDuplicatedDocument(document);
+				checkName(gamingVenue);
+				emptyData(gamingVenue);
 				adress = createGambManager.getAdress().getText();
 				phoneNumber = createGambManager.getPhoneNumber().getText();
 
-				if (checkDuplicatedDocument(document) == true) {
+				if (checkDuplicatedDocument(document) && checkName(fullName) && emptyData(fullName)
+						&& numNotValid(document) && emptyData(document) && checkName(gamingVenue)
+						&& emptyData(gamingVenue)) {
 					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
 					JOptionPane.showMessageDialog(createGambManager, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
 					createGambManager.getComboLocation().removeAllItems();
@@ -3290,6 +3533,24 @@ public class Controller implements ActionListener {
 				createGambManager.getDocument().setText("");
 				gamDAO.delete(0);
 
+			} catch (NotValidNameException e) {
+				// TODO Auto-generated catch block
+				createGambManager.getDocument().setText("");
+				createGambManager.getCompleteName().setText("");
+				createGambManager.getAdress().setText("");
+				createGambManager.getPhoneNumber().setText("");
+			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				createGambManager.getDocument().setText("");
+				createGambManager.getCompleteName().setText("");
+				createGambManager.getAdress().setText("");
+				createGambManager.getPhoneNumber().setText("");
+			} catch (NumberNotValidException e) {
+				// TODO Auto-generated catch block
+				createGambManager.getDocument().setText("");
+				createGambManager.getCompleteName().setText("");
+				createGambManager.getAdress().setText("");
+				createGambManager.getPhoneNumber().setText("");
 			}
 			break;
 		}
@@ -3315,12 +3576,17 @@ public class Controller implements ActionListener {
 		while (true) {
 			try {
 				fullName = createGamblerCashier.getCompleteName().getText();
+				checkName(fullName);
+				emptyData(fullName);
 				document = createGamblerCashier.getDocument().getText();
 				checkDuplicatedDocument(document);
+				numNotValid(document);
+				emptyData(document);
 				adress = createGamblerCashier.getAdress().getText();
 				phoneNumber = createGamblerCashier.getPhoneNumber().getText();
 
-				if (checkDuplicatedDocument(document) == true) {
+				if (checkDuplicatedDocument(document) && checkName(fullName) && emptyData(fullName)
+						&& numNotValid(document) && emptyData(document)) {
 					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
 					JOptionPane.showMessageDialog(createGamblerCashier, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
 					createGamblerCashier.getComboLocation().removeAllItems();
@@ -3334,6 +3600,24 @@ public class Controller implements ActionListener {
 				createGamblerCashier.getDocument().setText("");
 				gamDAO.delete(0);
 
+			} catch (NotValidNameException e) {
+				// TODO Auto-generated catch block
+				createGamblerCashier.getDocument().setText("");
+				createGamblerCashier.getCompleteName().setText("");
+				createGamblerCashier.getAdress().setText("");
+				createGamblerCashier.getPhoneNumber().setText("");
+			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				createGamblerCashier.getDocument().setText("");
+				createGamblerCashier.getCompleteName().setText("");
+				createGamblerCashier.getAdress().setText("");
+				createGamblerCashier.getPhoneNumber().setText("");
+			} catch (NumberNotValidException e) {
+				// TODO Auto-generated catch block
+				createGamblerCashier.getDocument().setText("");
+				createGamblerCashier.getCompleteName().setText("");
+				createGamblerCashier.getAdress().setText("");
+				createGamblerCashier.getPhoneNumber().setText("");
 			}
 			break;
 		}
@@ -5720,6 +6004,150 @@ public class Controller implements ActionListener {
 				JOptionPane.showMessageDialog(betplayWin, "ELIMINADO CON EXITO");
 			}
 		}
+
+	}
+
+	public boolean sameUserException(String user) throws SameDocumentException {
+
+		boolean check = true;
+
+		String userToCheck = user;
+		int cont = 0;
+
+		for (int i = 0; i < ownDAO.getOwnerList().size(); i++) {
+
+			if (userToCheck.equals(ownDAO.getOwnerList().get(i).getUsername())) {
+
+				cont++;
+
+			} else {
+
+				for (int j = 0; j < bossDAO.getHeadquarterManagerList().size(); j++) {
+
+					if (userToCheck.equals(bossDAO.getHeadquarterManagerList().get(j).getUser())) {
+
+						cont++;
+
+					} else {
+
+						for (int j2 = 0; j2 < cashierDAO.getCheckerList().size(); j2++) {
+							if (userToCheck.equals(cashierDAO.getCheckerList().get(j2).getUser())) {
+
+								cont++;
+
+							}
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		if (cont > 0) {
+			JOptionPane.showMessageDialog(logWind, "USUARIO YA EXISTENTE, INTENTELO DE NUEVO", "EXCEPTION", 0);
+			check = false;
+		} else if (cont == 0) {
+
+			check = true;
+
+		}
+
+		return check;
+
+	}
+
+	public boolean validPassword(String pass) throws NotValidPasswordException {
+
+		boolean check = true;
+
+		int cont = 0;
+
+		if (pass.length() < 8) {
+			cont++;
+		}
+		if (!pass.matches(".*[A-Z].*")) {
+
+			cont++;
+		}
+		if (!pass.matches(".*[a-z].*")) {
+			cont++;
+		}
+		if (!pass.matches(".*\\d.*")) {
+			cont++;
+		}
+		if (!pass.matches(".*[!@#$%^&()_+\\-=\\[\\]{};':\",.<>/?].*")) {
+			cont++;
+		}
+
+		if (cont > 0) {
+
+			JOptionPane.showMessageDialog(logWind,
+					"LA CONTRASEÑA NO ES LO SUFICIENTEMENTE SEGURA \n(LA CONTRASEÑA DEBE TENER: MINIMO 8 CARACTERES, UNA MAYUSCULA, UN NUMERO Y UN CARACTER ESPECIAL)",
+					"EXCEPTION", 0);
+			check = false;
+		} else if (cont == 0) {
+			check = true;
+		}
+
+		return check;
+	}
+
+	public boolean numNotValid(String num) throws NumberNotValidException {
+
+		boolean check = true;
+		String message = "LOS NUMEROS SOLO PUEDEN SER NUMEROS";
+
+		int numToCheck = Integer.parseInt(num);
+
+		for (char c : num.toCharArray()) {
+
+			if (Character.isAlphabetic(c) || numToCheck < 0) {
+
+				JOptionPane.showMessageDialog(logWind, message + " Y LOS NUMEROS DEBEN SER POSITIVOS", "EXCEPTION", 0);
+				check = false;
+			} else {
+				check = true;
+			}
+
+		}
+
+		return check;
+
+	}
+
+	public boolean checkName(String name) throws NotValidNameException {
+
+		boolean check = true;
+
+		String message = "LOS NOMBRES NO CONTIENEN CARACTERES ESPECIALES";
+
+		for (char c : name.toCharArray()) {
+
+			if (!Character.isAlphabetic(c) && !Character.isWhitespace(c)) {
+				JOptionPane.showMessageDialog(logWind, message, "EXCEPTION", 0);
+				check = false;
+			} else {
+				check = true;
+			}
+
+		}
+		return check;
+
+	}
+
+	public boolean emptyData(String data) throws EmptyDataException {
+
+		boolean check = true;
+		if (data.isBlank() || data.isEmpty()) {
+			JOptionPane.showMessageDialog(logWind, "HAY DATOS VACIOS, VERIFIQUE", "EXCEPTION", 0);
+			check = false;
+		} else {
+			check = true;
+		}
+		return check;
 
 	}
 
