@@ -3127,6 +3127,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para crear la casa de apuestas
+	 */
+
 	public void createHouse() {
 
 		String name = "";
@@ -3177,6 +3181,10 @@ public class Controller implements ActionListener {
 			break;
 		}
 	}
+
+	/**
+	 * Funcion para crear cuenta de dueño
+	 */
 
 	public void createAccount() {
 
@@ -3235,6 +3243,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para crear cuenta de jefe de sede
+	 */
 	public void createBoss() {
 
 		String user = "";
@@ -3288,6 +3299,10 @@ public class Controller implements ActionListener {
 		}
 
 	}
+
+	/**
+	 * Funcion para crear cuenta de cajero
+	 */
 
 	public void createCashier() {
 
@@ -3358,6 +3373,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para crear una nueva sede
+	 */
+
 	public void createVenue() {
 
 		String name = createVenueWin.getVenueName().getText();
@@ -3402,10 +3421,18 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para generar un numero aleaotrio entre numeros elegidos
+	 */
+
 	public int randomNumberInRange(int minimo, int maximo) {
 
 		return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
 	}
+
+	/**
+	 * Funcion para generar ID aleatorio con respecto a un rango especificado
+	 */
 
 	public String randomString() {
 		String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -3418,6 +3445,10 @@ public class Controller implements ActionListener {
 		}
 		return cadena;
 	}
+
+	/**
+	 * Funcion para confirmar salida del programa
+	 */
 
 	public boolean exitConfirm() {
 
@@ -3435,6 +3466,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de sede
+	 */
+
 	public void updateBoxSelectUpdateVenue() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selUpdateVenOwn.getComboVenue().removeAllItems();
@@ -3446,6 +3481,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de sede a eliminar
+	 */
 	public void updateBoxSelectDeleteVenue() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selDeleteVenueOwn.getComboVenue().removeAllItems();
@@ -3456,6 +3494,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de seleccion apostador para eliminar sede
+	 */
 	public void updateBoxSelectUpdateVenueGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selUpdateGamblerOwn.getComboVenue().removeAllItems();
@@ -3467,6 +3508,10 @@ public class Controller implements ActionListener {
 		}
 
 	}
+
+	/**
+	 * Funcion para actualizar ComboBox seleccionar apuesta a eliminar
+	 */
 
 	public void updateBoxSelectDeleteVenueBet() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
@@ -3480,6 +3525,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox seleccionar apostador a actualizar
+	 */
+
 	public void updateBoxUpdateVenueGamblerUpdate() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			gamUpdateWinOwn.getComboLocation().removeAllItems();
@@ -3492,6 +3541,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox seleccionar apostador a eliminar
+	 */
+
 	public void updateBoxSelectDeleteVenueGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selDeleteGamblerOwn.getComboVenue().removeAllItems();
@@ -3501,6 +3554,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para settear datos para actualizar sede
+	 */
 	public void setDataToUpdateVenue() {
 		updateVenueOwn.getVenueName().setText(selUpdateVenOwn.getComboVenue().getSelectedItem().toString());
 		String venue = selUpdateVenOwn.getComboVenue().getSelectedItem().toString();
@@ -3519,6 +3575,10 @@ public class Controller implements ActionListener {
 		}
 
 	}
+
+	/**
+	 * Funcion para settear datos para actualizar apostador
+	 */
 
 	public void setDataToUpdateGambler() {
 
@@ -3544,6 +3604,10 @@ public class Controller implements ActionListener {
 		}
 
 	}
+
+	/**
+	 * Funcion para actualizar sede por dueño
+	 */
 
 	public void updateVenueOwn() {
 
@@ -3572,6 +3636,10 @@ public class Controller implements ActionListener {
 		JOptionPane.showMessageDialog(updateVenueOwn, "HAS ACTUALIZADO CON EXITO LA SEDE: " + nameVenue);
 
 	}
+
+	/**
+	 * Funcion para eliminar sede por dueño
+	 */
 
 	public void deleteVenueOwn() {
 		int index = 0;
@@ -3607,6 +3675,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para crear los parametros de los juegos de la casa de apuestas
+	 */
+
 	public void setGameSettings() {
 
 		double budget1 = Double.parseDouble(gamesSettingWin.getBudget1().getText());
@@ -3631,6 +3703,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox que crea un apostador
+	 */
 	public String updateBoxCreateGambler() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			createGamblerWinOwn.getComboLocation().removeAllItems();
@@ -3643,6 +3718,10 @@ public class Controller implements ActionListener {
 		return opcion;
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox creacion apuesta
+	 */
+
 	public void updateBoxCreateBet() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			selcreatebet.getComboVenue().removeAllItems();
@@ -3651,6 +3730,10 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+
+	/**
+	 * Funcion para actualizar ComboBox seleccionar apostador a actualizar
+	 */
 
 	public void updateSelectGamblerUpdate(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
@@ -3663,6 +3746,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox seleccionar apostador que hara apuesta
+	 */
+
 	public void updateSelectGamblerCreateBet(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGamCreateBetOwn.getComboGambler().removeAllItems();
@@ -3674,6 +3761,11 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox seleccionar apostador que hizo apuesta para
+	 * eliminar apuesta
+	 */
+
 	public void updateSelectGamblerDeleteBet(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGamDelBetOwn.getComboGambler().removeAllItems();
@@ -3684,6 +3776,10 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+
+	/**
+	 * Funcion para actualizar ComboBox seleccionar apuesta a eliminar
+	 */
 
 	public void updateSelectBetDeleteBet(long data) {
 		if (!loteriaDAO.getLoteryBetList().isEmpty() || !balotoDAO.getBallotList().isEmpty()
@@ -3724,6 +3820,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox seleccionar apostador a eliminar
+	 */
+
 	public void updateSelectGamblerDelete(String data) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGamToDeleteWinOwn.getComboGambler().removeAllItems();
@@ -3734,6 +3834,10 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+
+	/**
+	 * Funcion para crear apostador por el dueño
+	 */
 
 	public void createGamblerOwner() {
 
@@ -3799,6 +3903,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para crear apostador por jefe de sede
+	 */
+
 	public void createGamblerManager() {
 
 		String fullName = "";
@@ -3859,6 +3967,10 @@ public class Controller implements ActionListener {
 			break;
 		}
 	}
+
+	/**
+	 * Funcion para crear apostador por cajero
+	 */
 
 	public void createGamblerCashier() {
 
@@ -3927,6 +4039,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar apostador por dueño
+	 */
+
 	public void updateGamblerOwner() {
 
 		String fullName = gamUpdateWinOwn.getCompleteName().getText();
@@ -3952,6 +4068,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar apostador por jefe de sede
+	 */
 	public void updateGamblerManager() {
 
 		String fullName = updateGambManager.getCompleteName().getText();
@@ -3979,6 +4098,10 @@ public class Controller implements ActionListener {
 		updateGambManager.setVisible(false);
 
 	}
+
+	/**
+	 * Funcion para actualizar apostador por cajero
+	 */
 
 	public void updateGamblerCashier() {
 		String gamingVenue = "";
@@ -4018,6 +4141,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para eliminar apostador por dueño
+	 */
+
 	public void deleteGamblerOwner() {
 
 		int index = 0;
@@ -4035,6 +4162,10 @@ public class Controller implements ActionListener {
 		gamDAO.delete(index);
 
 	}
+
+	/**
+	 * Funcion para eliminar apostador por jefe de sede
+	 */
 
 	public void deleteGamblerManager() {
 
@@ -4056,6 +4187,11 @@ public class Controller implements ActionListener {
 		selGambDeleteManager.setVisible(false);
 
 	}
+
+	/**
+	 * Funcion para verificar que los numeros de documento de apostadores no se
+	 * repiten
+	 */
 
 	public boolean checkDuplicatedDocument(String document) throws SameDocumentException {
 
@@ -4083,6 +4219,10 @@ public class Controller implements ActionListener {
 		}
 		return check;
 	}
+
+	/**
+	 * Funcion para realizar una apuesta de loteria
+	 */
 
 	public void makeLoteryBetOwn() {
 
@@ -4154,6 +4294,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de loteria
+	 */
 	public void makeLoteryBetMan() {
 
 		LocalDateTime actualDate = LocalDateTime.now();
@@ -4221,6 +4364,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de loteria
+	 */
 	public void makeLoteryBetCashier() {
 
 		String headQuarterName = "";
@@ -4298,6 +4444,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de baloto
+	 */
 	public void makeBalotoBetOwn() {
 
 		LocalDateTime actualDate = LocalDateTime.now();
@@ -4362,6 +4511,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de baloto
+	 */
 	public void makeBalotoBetMan() {
 
 		LocalDateTime actualDate = LocalDateTime.now();
@@ -4426,6 +4578,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de baloto
+	 */
 	public void makeBalotoBetCashier() {
 
 		String headQuarterName = "";
@@ -4499,6 +4654,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de Super astro
+	 */
 	public void makeSuperAstroBetOwn() {
 
 		LocalDateTime actualDate = LocalDateTime.now();
@@ -4564,6 +4722,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de Super astro
+	 */
 	public void makeSuperAstroBetMan() {
 
 		LocalDateTime actualDate = LocalDateTime.now();
@@ -4629,6 +4790,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de Super astro
+	 */
 	public void makeSuperAstroBetCashier() {
 
 		String headQuarterName = "";
@@ -4704,6 +4868,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para generar numeros aleatorios para el chance
+	 */
 	public void generateRandomNumber() {
 
 		Random rand1 = new Random();
@@ -4722,6 +4889,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para generar numeros aleatorios para el chance
+	 */
 	public void generateRandomNumberMan() {
 
 		Random rand1 = new Random();
@@ -4740,6 +4910,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para generar numeros aleatorios para el chance
+	 */
 	public void generateRandomNumberCashier() {
 
 		Random rand1 = new Random();
@@ -4758,6 +4931,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de chance
+	 */
 	public void makeChanceBetOwn() {
 		LocalDateTime actualDate = LocalDateTime.now();
 
@@ -4824,6 +5000,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de chance
+	 */
 	public void makeChanceBetMan() {
 		LocalDateTime actualDate = LocalDateTime.now();
 
@@ -4890,6 +5069,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de chance
+	 */
 	public void makeChanceBetCashier() {
 
 		String headQuarterName = "";
@@ -4967,6 +5149,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para eliminar una apuesta
+	 */
 	public void DeleteBet(String s) {
 
 		for (int x = 0; x < loteriaDAO.getLoteryBetList().size(); x++) {
@@ -5011,6 +5196,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de BetPlay
+	 */
 	public void makeBetPlayBetOwn() {
 		LocalDateTime actualDate = LocalDateTime.now();
 
@@ -5084,6 +5272,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de BetPlay
+	 */
 	public void makeBetPlayBetMan() {
 		LocalDateTime actualDate = LocalDateTime.now();
 
@@ -5157,6 +5348,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una apuesta de BetPlay
+	 */
 	public void makeBetPlayBetCashier() {
 
 		String headQuarterName = "";
@@ -5240,6 +5434,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para realizar una busqueda de nombre a partir del documento
+	 */
 	public String searchNameByDocument(String document) {
 
 		long documentToSearch = Long.parseLong(document);
@@ -5256,6 +5453,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para setear los datos de sede
+	 */
+
 	public void setDataVenueManager() {
 		String nameCheck = managerMenuWin.getNameVenue().getText();
 
@@ -5270,6 +5471,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar los datos de sede
+	 */
 	public void saveDataVenueManager() {
 
 		int index = 0;
@@ -5465,6 +5669,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox del modulo 5
+	 */
 	public void updateBoxModule5() {
 		if (!venueDAO.getHeadquarterList().isEmpty()) {
 			consultwin.getComboVenue().removeAllItems();
@@ -5474,6 +5681,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para mostrar tabla de consultas
+	 */
 	public void showTableConsult(String s) {
 		for (int i = 0; i < loteriaDAO.getLoteryBetList().size(); i++) {
 			if (s.equals(loteriaDAO.getLoteryBetList().get(i).getHeadQuarterName())) {
@@ -5541,6 +5751,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de la tabla dentro de las consultas
+	 */
 	public void updateTableConsult() {
 		int aux = showCon.getTablePanel().getModel().getRowCount();
 		for (int i = aux - 1; i >= 0; i--) {
@@ -5550,6 +5763,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para sumar todas las apuestas
+	 */
 	public String sumAllTheBets(String s) {
 
 		double sum = 0;
@@ -5605,6 +5821,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de apostadores en la ventana de consultas
+	 */
 	public void updateBoxGamblerConsult(String s) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			showCon.getComboGambler().removeAllItems();
@@ -5614,6 +5833,10 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+
+	/**
+	 * Funcion para sumar todas las apuestas realizadas por un apostador
+	 */
 
 	public String sumAllTheBetsGambler(long l) {
 
@@ -5670,6 +5893,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox seleccion apostador
+	 */
 	public void updateBoxSelectGamblerManager(String s) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGambUpdateManager.getComboGambler().removeAllItems();
@@ -5687,6 +5913,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox seleccion apostador
+	 */
 	public void updateBoxSelectGamblerCashier(String s) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGambUpdateCashier.getComboGambler().removeAllItems();
@@ -5704,6 +5933,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para setear datos de apostador al actualizar
+	 */
 	public void setDataToUpdateGamblerManager() {
 
 		long docToCheck = Long.parseLong(selGambUpdateManager.getComboGambler().getSelectedItem().toString());
@@ -5725,6 +5957,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para setear datos de apostador al actualizar
+	 */
 	public void setDataToUpdateGamblerCashier() {
 
 		long docToCheck = Long.parseLong(selGambUpdateCashier.getComboGambler().getSelectedItem().toString());
@@ -5747,6 +5982,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de seleccion apostador a eliminar
+	 */
 	public void updateBoxSelectGamblerManagerToDelete(String s) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGambDeleteManager.getComboGambler().removeAllItems();
@@ -5764,6 +6002,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de seleccion apostador que hizo una apuesta
+	 * a eliminar
+	 */
 	public void updateBoxSelectGamblerManagerForBet(String s) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGambCreateBetMan.getComboGambler().removeAllItems();
@@ -5781,6 +6023,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de seleccion apostador que hizo una apuesta
+	 * a eliminar
+	 */
 	public void updateBoxSelectGamblerCashierForBet(String s) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGambCreateBetCashier.getComboGambler().removeAllItems();
@@ -5798,6 +6044,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion mostrar tabla de apostadores en la ventana de jefe de sede
+	 */
 	public void showTableGamblerManager(String s) {
 		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
 			if (s.equals(venueDAO.getHeadquarterList().get(i).getId())) {
@@ -5818,6 +6067,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar tabla de apostadores
+	 */
+
 	public void updateTableGamblerManager() {
 		int aux = showGamMan.getTablePanel().getModel().getRowCount();
 		for (int i = aux - 1; i >= 0; i--) {
@@ -5827,6 +6080,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para mostrar tabla de apuestas
+	 */
 	public void showTableBetManager(String s) {
 		for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
 			if (s.equals(venueDAO.getHeadquarterList().get(j).getId())) {
@@ -5919,6 +6175,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar tabla de apuestas
+	 */
 	public void updateTableBetManager() {
 		int aux = showBetManag.getTablePanel().getModel().getRowCount();
 		for (int i = aux - 1; i >= 0; i--) {
@@ -5926,6 +6185,10 @@ public class Controller implements ActionListener {
 
 		}
 	}
+
+	/**
+	 * Funcion para eliminar una apuesta
+	 */
 
 	public void DeleteBetManager(String s) {
 
@@ -5974,6 +6237,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de seleccion apostador que hizo apuesta que
+	 * sera eliminada
+	 */
 	public void updateBoxSelectGamblerManagerForDeleteBet() {
 		String s = "";
 		for (int x = 0; x < venueDAO.getHeadquarterList().size(); x++) {
@@ -5996,6 +6263,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de apuesta a eliminar
+	 */
 	public void updateSelectBetDeleteBetManager(long data) {
 		if (!loteriaDAO.getLoteryBetList().isEmpty() || !balotoDAO.getBallotList().isEmpty()
 				|| !superAstroDAO.getSuperAstroList().isEmpty() || !chanceDAO.getChanceList().isEmpty()
@@ -6035,6 +6305,9 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para mostrar tabla de apostadores en ventana de cajero
+	 */
 	public void showTableGamblerCashier(String s) {
 		for (int i = 0; i < venueDAO.getHeadquarterList().size(); i++) {
 			if (s.equals(venueDAO.getHeadquarterList().get(i).getId())) {
@@ -6055,6 +6328,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar tabla de apostadores
+	 */
+
 	public void updateTableGamblerCashier() {
 		int aux = showGamCashi.getTablePanel().getModel().getRowCount();
 		for (int i = aux - 1; i >= 0; i--) {
@@ -6064,6 +6341,10 @@ public class Controller implements ActionListener {
 		}
 	}
 
+	/**
+	 * Funcion para actualizar ComboBox de apostadores que hicieron una apuesta que
+	 * sera eliminada
+	 */
 	public void updateBoxSelectGamblerCashierToDelete(String s) {
 		if (!gamDAO.getGamblerList().isEmpty()) {
 			selGamToDelCashi.getComboGambler().removeAllItems();
@@ -6079,6 +6360,10 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+
+	/**
+	 * Funcion para elimnar apostador
+	 */
 
 	public void deleteGamblerCashier() {
 
@@ -6100,6 +6385,10 @@ public class Controller implements ActionListener {
 		selGamToDelCashi.setVisible(false);
 
 	}
+
+	/**
+	 * Funcion para mostrar tabla de apuestas en la ventana de cajero
+	 */
 
 	public void showTableBetCashier(String s) {
 		for (int j = 0; j < venueDAO.getHeadquarterList().size(); j++) {
@@ -6193,6 +6482,10 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para actualizar tabla de apuestas en cajero
+	 */
+
 	public void updateTableBetCashier() {
 		int aux = showBetManag.getTablePanel().getModel().getRowCount();
 		for (int i = aux - 1; i >= 0; i--) {
@@ -6200,6 +6493,11 @@ public class Controller implements ActionListener {
 
 		}
 	}
+
+	/**
+	 * Funcion para actualizar ComboBox de seleccion apostadores que hizo apuesta
+	 * para eliminar
+	 */
 
 	public void updateBoxSelectGamblerCashierForDeleteBet() {
 		String s = "";
@@ -6223,6 +6521,10 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+
+	/**
+	 * Funcion para seleccion actualizar apuesta a eliminar
+	 */
 
 	public void updateSelectBetDeleteBetCashier(long data) {
 		System.out.println("hola");
@@ -6263,6 +6565,10 @@ public class Controller implements ActionListener {
 
 		}
 	}
+
+	/**
+	 * Funcion para eliminar apuesta
+	 */
 
 	public void DeleteBetCashier(String s) {
 
@@ -6310,6 +6616,10 @@ public class Controller implements ActionListener {
 		}
 
 	}
+
+	/**
+	 * Funcion para revisar usuarios repetidos
+	 */
 
 	public boolean sameUserException(String user) throws SameDocumentException {
 
@@ -6363,6 +6673,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para revisar seguridad de contraseña
+	 */
 	public boolean validPassword(String pass) throws NotValidPasswordException {
 
 		boolean check = true;
@@ -6399,6 +6712,10 @@ public class Controller implements ActionListener {
 		return check;
 	}
 
+	/**
+	 * Funcion para revisar numeros no validos
+	 */
+
 	public boolean numNotValid(String num) throws NumberNotValidException {
 
 		boolean check = true;
@@ -6422,6 +6739,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para revisar nombres de forma incorrecta
+	 */
 	public boolean checkName(String name) throws NotValidNameException {
 
 		boolean check = true;
@@ -6442,6 +6762,9 @@ public class Controller implements ActionListener {
 
 	}
 
+	/**
+	 * Funcion para revisar datos vacios
+	 */
 	public boolean emptyData(String data) throws EmptyDataException {
 
 		boolean check = true;

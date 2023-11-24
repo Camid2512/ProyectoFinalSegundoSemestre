@@ -7,6 +7,9 @@ public class SameDocumentException extends Exception {
 	 */
 	private static final long serialVersionUID = -1682480689042693847L;
 
+	/**
+	 * Constructor vacio de excepcion con mensaje predeterminado
+	 */
 	public SameDocumentException() {
 		// TODO Auto-generated constructor stub
 
@@ -14,6 +17,9 @@ public class SameDocumentException extends Exception {
 
 	}
 
+	/**
+	 * Constructor vacio de excepcion con mensaje
+	 */
 	public SameDocumentException(String mensaje) {
 		// TODO Auto-generated constructor stub
 

@@ -7,6 +7,9 @@ public class SameUserException extends Exception {
 	 */
 	private static final long serialVersionUID = -6384141409319854834L;
 
+	/**
+	 * Constructor vacio de excepcion con mensaje predeterminado
+	 */
 	public SameUserException() {
 		// TODO Auto-generated constructor stub
 
@@ -14,6 +17,9 @@ public class SameUserException extends Exception {
 
 	}
 
+	/**
+	 * Constructor vacio de excepcion con mensaje
+	 */
 	public SameUserException(String message) {
 		// TODO Auto-generated constructor stub
 

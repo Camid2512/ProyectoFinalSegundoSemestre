@@ -7,6 +7,9 @@ public class NumberNotValidException extends Exception {
 	 */
 	private static final long serialVersionUID = 7387645943625430992L;
 
+	/**
+	 * Constructor vacio de excepcion con mensaje predeterminado
+	 */
 	public NumberNotValidException() {
 		// TODO Auto-generated constructor stub
 
@@ -14,6 +17,9 @@ public class NumberNotValidException extends Exception {
 
 	}
 
+	/**
+	 * Constructor vacio de excepcion con mensaje
+	 */
 	public NumberNotValidException(String message) {
 		// TODO Auto-generated constructor stub
 
