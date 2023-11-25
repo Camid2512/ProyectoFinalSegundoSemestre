@@ -1,5 +1,11 @@
 package co.edu.unbosque.model;
 
+/**
+ * 
+ * Clase dueño con datos de registro
+ * 
+ */
+
 import java.io.Serializable;
 
 /**
@@ -17,7 +23,7 @@ public class OwnerDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -2327892187158301932L;
-	/*
+	/**
 	 * Atributo para usuario del dueño
 	 * 
 	 * @author Cristhian Diaz & Santiago Rueda
@@ -27,7 +33,7 @@ public class OwnerDTO implements Serializable {
 	 * @since 28/10/2023
 	 */
 	private String username;
-	/*
+	/**
 	 * Atributo para contraseña del dueño
 	 * 
 	 * @author Cristhian Diaz & Santiago Rueda
@@ -38,7 +44,7 @@ public class OwnerDTO implements Serializable {
 	 */
 	private String password;
 
-	/*
+	/**
 	 * 
 	 * Constructor vacio de la clase owner
 	 * 
@@ -47,7 +53,7 @@ public class OwnerDTO implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
+	/**
 	 * 
 	 * Constructor completo de la clase owner
 	 * 

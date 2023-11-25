@@ -1,11 +1,23 @@
 package co.edu.unbosque.model;
 
+/**
+ * Objeto de transferencia de datos BetPlay. Esta clase implementa Serializable
+ * para permitir la serialización de objetos.
+ */
+
 public class BetPlayDTO extends BetDTO {
 
 	/**
-	 * 
+	 * Objeto de transferencia de datos BetPlay. Esta clase implementa Serializable
+	 * para permitir la serialización de objetos.
 	 */
+
+	/** Identificador único para la serialización */
 	private static final long serialVersionUID = -6649047852911984639L;
+
+	/**
+	 * Atributos utilizados
+	 */
 	private int match1;
 	private int match2;
 	private int match3;
@@ -21,10 +33,17 @@ public class BetPlayDTO extends BetDTO {
 	private int match13;
 	private int match14;
 
+	/**
+	 * Constructor vacío de BetPlayDTO. Inicializa los atributos con valores
+	 * predeterminados.
+	 */
 	public BetPlayDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Constructor de BetPlayDTO con detalles de cada partido.
+	 */
 	public BetPlayDTO(int match1, int match2, int match3, int match4, int match5, int match6, int match7, int match8,
 			int match9, int match10, int match11, int match12, int match13, int match14) {
 		super();
@@ -44,14 +63,20 @@ public class BetPlayDTO extends BetDTO {
 		this.match14 = match14;
 	}
 
-	
-
+	/**
+	 * Constructor de BetPlayDTO con detalles de cada partido y detalles de la
+	 * apuesta.
+	 */
 	public BetPlayDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
 			String headQuarterName, long document) {
 		super(day, month, year, hour, minute, second, betPlaced, headQuarterName, document);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Constructor de BetPlayDTO con detalles de cada partido y detalles de la
+	 * apuesta.
+	 */
 	public BetPlayDTO(int day, int month, int year, int hour, int minute, int second, double betPlaced,
 			String headQuarterName, long document, int match1, int match2, int match3, int match4, int match5,
 			int match6, int match7, int match8, int match9, int match10, int match11, int match12, int match13,
@@ -73,6 +98,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match14 = match14;
 	}
 
+	/** Getter y Setter para match1 */
 	public int getMatch1() {
 		return match1;
 	}
@@ -81,6 +107,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match1 = match1;
 	}
 
+	/** Getter y Setter para match2 */
 	public int getMatch2() {
 		return match2;
 	}
@@ -89,6 +116,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match2 = match2;
 	}
 
+	/** Getter y Setter para match3 */
 	public int getMatch3() {
 		return match3;
 	}
@@ -97,6 +125,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match3 = match3;
 	}
 
+	/** Getter y Setter para match4 */
 	public int getMatch4() {
 		return match4;
 	}
@@ -105,6 +134,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match4 = match4;
 	}
 
+	/** Getter y Setter para match5 */
 	public int getMatch5() {
 		return match5;
 	}
@@ -113,6 +143,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match5 = match5;
 	}
 
+	/** Getter y Setter para match6 */
 	public int getMatch6() {
 		return match6;
 	}
@@ -121,6 +152,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match6 = match6;
 	}
 
+	/** Getter y Setter para match7 */
 	public int getMatch7() {
 		return match7;
 	}
@@ -129,6 +161,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match7 = match7;
 	}
 
+	/** Getter y Setter para match8 */
 	public int getMatch8() {
 		return match8;
 	}
@@ -137,6 +170,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match8 = match8;
 	}
 
+	/** Getter y Setter para match9 */
 	public int getMatch9() {
 		return match9;
 	}
@@ -145,6 +179,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match9 = match9;
 	}
 
+	/** Getter y Setter para match10 */
 	public int getMatch10() {
 		return match10;
 	}
@@ -153,6 +188,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match10 = match10;
 	}
 
+	/** Getter y Setter para match11 */
 	public int getMatch11() {
 		return match11;
 	}
@@ -161,6 +197,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match11 = match11;
 	}
 
+	/** Getter y Setter para match12 */
 	public int getMatch12() {
 		return match12;
 	}
@@ -169,6 +206,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match12 = match12;
 	}
 
+	/** Getter y Setter para match13 */
 	public int getMatch13() {
 		return match13;
 	}
@@ -177,6 +215,7 @@ public class BetPlayDTO extends BetDTO {
 		this.match13 = match13;
 	}
 
+	/** Getter y Setter para match14 */
 	public int getMatch14() {
 		return match14;
 	}
@@ -185,10 +224,16 @@ public class BetPlayDTO extends BetDTO {
 		this.match14 = match14;
 	}
 
+	/**
+	 * Método para obtener el valor de serialVersionUID.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
+	/**
+	 * Genera una representación en cadena de esta instancia.
+	 */
 	@Override
 	public String toString() {
 		return "BetPlayDTO [match1=" + match1 + ", match2=" + match2 + ", match3=" + match3 + ", match4=" + match4

@@ -1590,9 +1590,6 @@ public class Controller implements ActionListener {
 
 			createHouse();
 
-			gamesSettingWin.setVisible(true);
-			houseManageWindow.setVisible(false);
-
 			break;
 		}
 
@@ -2362,7 +2359,6 @@ public class Controller implements ActionListener {
 
 			selGambUpdateManager.setVisible(true);
 			gamblerManagManager.setVisible(false);
-			System.out.println(exit);
 			updateBoxSelectGamblerManager(exit);
 			break;
 
@@ -3083,7 +3079,6 @@ public class Controller implements ActionListener {
 
 			}
 
-			System.out.println(exit);
 		}
 
 		if (cont == 1) {
@@ -3143,23 +3138,20 @@ public class Controller implements ActionListener {
 				checkName(name);
 				emptyData(name);
 				budgetCheck = houseManageWindow.getTotalBudget().getText();
-				Double budget = Double.parseDouble(budgetCheck);
 				numNotValid(budgetCheck);
 				emptyData(budgetCheck);
+				Double budget = Double.parseDouble(budgetCheck);
 				numVenueCheck = houseManageWindow.getNumberVenue().getValue().toString();
 				int numVenue = Integer.parseInt(numVenueCheck);
 				numNotValid(numVenueCheck);
 				emptyData(numVenueCheck);
 
-				if (checkName(name) == true && emptyData(name) == true && numNotValid(budgetCheck) == true
-						&& emptyData(budgetCheck) == true && numNotValid(numVenueCheck) == true
-						&& emptyData(numVenueCheck) == true) {
+				houseDAO.create(name, numVenue, budget);
 
-					houseDAO.create(name, numVenue, budget);
-
-					JOptionPane.showMessageDialog(houseManageWindow,
-							"HAS SETEADO CON EXITO LA CONFIGURACION DE TU CASA DE APUESTAS");
-				}
+				JOptionPane.showMessageDialog(houseManageWindow,
+						"HAS SETEADO CON EXITO LA CONFIGURACION DE TU CASA DE APUESTAS");
+				gamesSettingWin.setVisible(true);
+				houseManageWindow.setVisible(false);
 
 			} catch (NotValidNameException e) {
 				// TODO Auto-generated catch block
@@ -3200,27 +3192,21 @@ public class Controller implements ActionListener {
 				validPassword(pass);
 				emptyData(pass);
 
-				if (sameUserException(user) == true && validPassword(pass) == true && emptyData(user) == true
-						&& emptyData(pass)) {
-					int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
-							"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-							new Object[] { "SI", "NO" }, "SI");
+				int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
+						"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+						new Object[] { "SI", "NO" }, "SI");
 
-					if (JOptionPane.NO_OPTION == response) {
+				if (JOptionPane.NO_OPTION == response) {
 
-						signWind.getUsuario().setText(null);
-						signWind.getPassword().setText(null);
+					signWind.getUsuario().setText(null);
+					signWind.getPassword().setText(null);
 
-					} else if (JOptionPane.OK_OPTION == response) {
-						ownDAO.create(user, pass);
-						JOptionPane.showMessageDialog(signWind, "CUENTA CREADA CON EXITO");
+				} else if (JOptionPane.OK_OPTION == response) {
+					ownDAO.create(user, pass);
+					JOptionPane.showMessageDialog(signWind, "CUENTA CREADA CON EXITO");
 
-						logWind.setVisible(true);
-						signWind.setVisible(false);
-
-					}
-
-				} else {
+					logWind.setVisible(true);
+					signWind.setVisible(false);
 
 				}
 
@@ -3262,25 +3248,18 @@ public class Controller implements ActionListener {
 				validPassword(password);
 				emptyData(password);
 
-				if (sameUserException(user) == true && validPassword(password) == true && emptyData(user) == true
-						&& emptyData(password)) {
+				int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
+						"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+						new Object[] { "SI", "NO" }, "SI");
 
-					int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
-							"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-							new Object[] { "SI", "NO" }, "SI");
-
-					if (JOptionPane.NO_OPTION == response) {
-						managerCreationWin.getUser().setText("");
-						managerCreationWin.getPassword().setText("");
-					} else if (JOptionPane.OK_OPTION == response) {
-						bossDAO.create(user, password, id);
-						JOptionPane.showMessageDialog(managerCreationWin, "CUENTA CREADA CON EXITO");
-						createVenueWin.setVisible(true);
-						managerCreationWin.setVisible(false);
-						System.out.println(id);
-					}
-				} else {
-
+				if (JOptionPane.NO_OPTION == response) {
+					managerCreationWin.getUser().setText("");
+					managerCreationWin.getPassword().setText("");
+				} else if (JOptionPane.OK_OPTION == response) {
+					bossDAO.create(user, password, id);
+					JOptionPane.showMessageDialog(managerCreationWin, "CUENTA CREADA CON EXITO");
+					createVenueWin.setVisible(true);
+					managerCreationWin.setVisible(false);
 				}
 			} catch (SameDocumentException e) {
 				// TODO Auto-generated catch block
@@ -3332,27 +3311,19 @@ public class Controller implements ActionListener {
 				validPassword(password);
 				emptyData(password);
 
-				if (sameUserException(user) == true && validPassword(password) == true && emptyData(user) == true
-						&& emptyData(password) == true) {
+				int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
+						"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+						new Object[] { "SI", "NO" }, "SI");
+				if (JOptionPane.NO_OPTION == response) {
 
-					int response = JOptionPane.showOptionDialog(logWind, "¿ESTA SEGURO DE LOS DATOS INGRESADOS?",
-							"CONFIRMAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-							new Object[] { "SI", "NO" }, "SI");
-					if (JOptionPane.NO_OPTION == response) {
+					createCashier.getUser().setText("");
+					createCashier.getPassword().setText("");
 
-						createCashier.getUser().setText("");
-						createCashier.getPassword().setText("");
-
-					} else if (JOptionPane.OK_OPTION == response) {
-						cashierDAO.create(user, password, id);
-						JOptionPane.showMessageDialog(createCashier, "CUENTA CREADA CON EXITO");
-						manageVenueManager.setVisible(true);
-						createCashier.setVisible(false);
-						System.out.println(id);
-					}
-
-				} else {
-
+				} else if (JOptionPane.OK_OPTION == response) {
+					cashierDAO.create(user, password, id);
+					JOptionPane.showMessageDialog(createCashier, "CUENTA CREADA CON EXITO");
+					manageVenueManager.setVisible(true);
+					createCashier.setVisible(false);
 				}
 
 			} catch (SameDocumentException e) {
@@ -3388,8 +3359,6 @@ public class Controller implements ActionListener {
 
 			id = bossDAO.getHeadquarterManagerList().get(i).getId();
 		}
-
-		System.out.println(id);
 
 		int cantVenueMax = 0;
 		int numVenue = venueDAO.getHeadquarterList().size();
@@ -3629,8 +3598,6 @@ public class Controller implements ActionListener {
 
 		}
 
-		System.out.println(index);
-
 		venueDAO.updateByIndex(index, nameVenue, updateLocation, numEmployes, id);
 
 		JOptionPane.showMessageDialog(updateVenueOwn, "HAS ACTUALIZADO CON EXITO LA SEDE: " + nameVenue);
@@ -3865,15 +3832,8 @@ public class Controller implements ActionListener {
 				numNotValid(phoneNumber);
 				emptyData(phoneNumber);
 
-				if (checkDuplicatedDocument(document) && checkName(fullName) && emptyData(fullName)
-						&& numNotValid(document) && emptyData(document) && checkName(gamingVenue)
-						&& emptyData(gamingVenue) && checkName(adress) && emptyData(adress) && numNotValid(phoneNumber)
-						&& emptyData(phoneNumber)) {
-					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
-					JOptionPane.showMessageDialog(gamesSettingWin, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
-				} else {
-
-				}
+				gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
+				JOptionPane.showMessageDialog(gamesSettingWin, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
 
 			} catch (SameDocumentException e) {
 
@@ -3928,17 +3888,9 @@ public class Controller implements ActionListener {
 				emptyData(gamingVenue);
 				adress = createGambManager.getAdress().getText();
 				phoneNumber = createGambManager.getPhoneNumber().getText();
-
-				if (checkDuplicatedDocument(document) && checkName(fullName) && emptyData(fullName)
-						&& numNotValid(document) && emptyData(document) && checkName(gamingVenue)
-						&& emptyData(gamingVenue)) {
-					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
-					JOptionPane.showMessageDialog(createGambManager, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
-					createGambManager.getComboLocation().removeAllItems();
-
-				} else {
-
-				}
+				gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
+				JOptionPane.showMessageDialog(createGambManager, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
+				createGambManager.getComboLocation().removeAllItems();
 
 			} catch (SameDocumentException e) {
 
@@ -3966,6 +3918,7 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
+
 	}
 
 	/**
@@ -4000,16 +3953,9 @@ public class Controller implements ActionListener {
 				emptyData(document);
 				adress = createGamblerCashier.getAdress().getText();
 				phoneNumber = createGamblerCashier.getPhoneNumber().getText();
-
-				if (checkDuplicatedDocument(document) && checkName(fullName) && emptyData(fullName)
-						&& numNotValid(document) && emptyData(document)) {
-					gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
-					JOptionPane.showMessageDialog(createGamblerCashier, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
-					createGamblerCashier.getComboLocation().removeAllItems();
-
-				} else {
-
-				}
+				gamDAO.create(fullName, document, gamingVenue, adress, phoneNumber);
+				JOptionPane.showMessageDialog(createGamblerCashier, "EL APOSTADOR " + fullName + " HA SIDO CREADO");
+				createGamblerCashier.getComboLocation().removeAllItems();
 
 			} catch (SameDocumentException e) {
 
@@ -4037,6 +3983,7 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
+
 	}
 
 	/**
@@ -4061,8 +4008,6 @@ public class Controller implements ActionListener {
 			}
 
 		}
-
-		System.out.println(index);
 
 		gamDAO.updateByIndex(index, fullName, document, gamingVenue, addres, phoneNumber);
 
@@ -4213,6 +4158,7 @@ public class Controller implements ActionListener {
 		if (cont > 0) {
 			JOptionPane.showMessageDialog(logWind, "NO PUEDEN EXISTIR 2 DOCUMENTOS IGUALES", "EXCEPTION", 0);
 			check = false;
+			throw new SameDocumentException();
 		} else if (cont == 0) {
 			check = true;
 
@@ -6527,7 +6473,6 @@ public class Controller implements ActionListener {
 	 */
 
 	public void updateSelectBetDeleteBetCashier(long data) {
-		System.out.println("hola");
 		if (!loteriaDAO.getLoteryBetList().isEmpty() || !balotoDAO.getBallotList().isEmpty()
 				|| !superAstroDAO.getSuperAstroList().isEmpty() || !chanceDAO.getChanceList().isEmpty()
 				|| !betPlayDAO.getBetPlayList().isEmpty()) {
@@ -6705,6 +6650,7 @@ public class Controller implements ActionListener {
 					"LA CONTRASEÑA NO ES LO SUFICIENTEMENTE SEGURA \n(LA CONTRASEÑA DEBE TENER: MINIMO 8 CARACTERES, UNA MAYUSCULA, UN NUMERO Y UN CARACTER ESPECIAL)",
 					"EXCEPTION", 0);
 			check = false;
+			throw new NotValidPasswordException();
 		} else if (cont == 0) {
 			check = true;
 		}
@@ -6721,18 +6667,25 @@ public class Controller implements ActionListener {
 		boolean check = true;
 		String message = "LOS NUMEROS SOLO PUEDEN SER NUMEROS";
 
-		int numToCheck = Integer.parseInt(num);
+		double numToCheck = Double.parseDouble(num);
 
-		for (char c : num.toCharArray()) {
+		int cont = 0;
 
-			if (Character.isAlphabetic(c) || numToCheck < 0) {
+		if (numToCheck < 0) {
+			cont++;
 
-				JOptionPane.showMessageDialog(logWind, message + " Y LOS NUMEROS DEBEN SER POSITIVOS", "EXCEPTION", 0);
-				check = false;
-			} else {
-				check = true;
-			}
+		} else {
 
+			check = true;
+		}
+
+		if (cont > 0) {
+
+			JOptionPane.showMessageDialog(logWind, message + " Y LOS NUMEROS DEBEN SER POSITIVOS", "EXCEPTION", 0);
+			check = false;
+			throw new NumberNotValidException();
+		} else if (cont == 0) {
+			check = true;
 		}
 
 		return check;
@@ -6748,16 +6701,27 @@ public class Controller implements ActionListener {
 
 		String message = "LOS NOMBRES NO CONTIENEN CARACTERES ESPECIALES";
 
+		int cont = 0;
+
 		for (char c : name.toCharArray()) {
 
 			if (!Character.isAlphabetic(c) && !Character.isWhitespace(c)) {
-				JOptionPane.showMessageDialog(logWind, message, "EXCEPTION", 0);
-				check = false;
+				cont++;
+
 			} else {
 				check = true;
 			}
 
 		}
+
+		if (cont > 0) {
+			JOptionPane.showMessageDialog(logWind, message, "EXCEPTION", 0);
+			check = false;
+			throw new NotValidNameException();
+		} else if (cont == 0) {
+			check = true;
+		}
+
 		return check;
 
 	}
@@ -6771,6 +6735,7 @@ public class Controller implements ActionListener {
 		if (data.isBlank() || data.isEmpty()) {
 			JOptionPane.showMessageDialog(logWind, "HAY DATOS VACIOS, VERIFIQUE", "EXCEPTION", 0);
 			check = false;
+			throw new EmptyDataException();
 		} else {
 			check = true;
 		}
