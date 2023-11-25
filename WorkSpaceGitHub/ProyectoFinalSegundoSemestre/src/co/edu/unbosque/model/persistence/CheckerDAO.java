@@ -1,9 +1,24 @@
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos CheckerDTO y gestiona su persistencia.
+ * Implementa operaciones para crear, leer, actualizar y eliminar objetos CheckerDTO en archivos y utiliza 
+ * serialización para almacenar y recuperar objetos.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
 package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.CheckerDTO;
 
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos CheckerDTO y
+ * gestiona su persistencia. Implementa operaciones para crear, leer, actualizar
+ * y eliminar objetos CheckerDTO en archivos y utiliza serialización para
+ * almacenar y recuperar objetos.
+ */
 public class CheckerDAO implements CRUDOperation {
 
 	private ArrayList<CheckerDTO> checkerList;
@@ -24,11 +39,19 @@ public class CheckerDAO implements CRUDOperation {
 	 */
 	private final String SERIAL_FILENAME;
 
+	/**
+	 * Constructor de la clase CheckerDAO que inicializa la lista de apuestas y los
+	 * nombres de archivos. También lee archivos si están disponibles y los asigna a
+	 * la lista de apuestas.
+	 */
 	public CheckerDAO() {
 
 		checkerList = new ArrayList<CheckerDTO>();
 		FILENAME = "checkerlogin.csv";
 		SERIAL_FILENAME = "checkerloginserialized.csv";
+		/**
+		 * Lee los datos del archivo
+		 */
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
@@ -42,6 +65,9 @@ public class CheckerDAO implements CRUDOperation {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Crea una nueva entrada de apuesta a partir de los atributos proporcionados.
+	 */
 	@Override
 	public void create(String... attribs) {
 		// TODO Auto-generated method stub
@@ -58,6 +84,9 @@ public class CheckerDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Agrega un objeto de tipo BetDTO a la lista.
+	 */
 	@Override
 	public void create(Object obj) {
 		// TODO Auto-generated method stub
@@ -69,6 +98,9 @@ public class CheckerDAO implements CRUDOperation {
 
 	int index = 0;
 
+	/**
+	 * Recupera todas las datos registrados en la lista.
+	 */
 	@Override
 	public String readAll() {
 		// TODO Auto-generated method stub
@@ -82,6 +114,9 @@ public class CheckerDAO implements CRUDOperation {
 		return sb.toString();
 	}
 
+	/**
+	 * Actualiza la lista segun su indice con datos nuevos
+	 */
 	@Override
 	public boolean updateByIndex(int index, String... newData) {
 		// TODO Auto-generated method stub
@@ -103,6 +138,9 @@ public class CheckerDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista segun su indice.
+	 */
 	@Override
 	public boolean delete(int index) {
 		// TODO Auto-generated method stub
@@ -116,6 +154,9 @@ public class CheckerDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista según el objeto seleccionado
+	 */
 	@Override
 	public boolean delete(Object obj) {
 		// TODO Auto-generated method stub
@@ -130,6 +171,10 @@ public class CheckerDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Lee y carga la informacion de la lista desde un archivo de texto, si el
+	 * archivo está vacio no realiza ninguna opercacion
+	 */
 	@Override
 	public void readFromFile() {
 		// TODO Auto-generated method stub
@@ -151,6 +196,9 @@ public class CheckerDAO implements CRUDOperation {
 
 	String content = "";
 
+	/**
+	 * Escribe la información en un archivo de texto
+	 */
 	@Override
 	public void writeFile() {
 		// TODO Auto-generated method stub
@@ -165,6 +213,9 @@ public class CheckerDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Escribe la lista de datos en un archivo serializable.
+	 */
 	@Override
 	public void writeSerializable() {
 
@@ -174,34 +225,58 @@ public class CheckerDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Devuelve la lista de objetos CheckerDTO.
+	 */
 	public ArrayList<CheckerDTO> getCheckerList() {
 		return checkerList;
 	}
 
+	/**
+	 * Establece la lista de objetos CheckerDTO.
+	 */
 	public void setCheckerList(ArrayList<CheckerDTO> checkerList) {
 		this.checkerList = checkerList;
 	}
 
+	/**
+	 * Devuelve el índice actual.
+	 */
 	public int getIndex() {
 		return index;
 	}
 
+	/**
+	 * Establece el índice actual.
+	 */
 	public void setIndex(int index) {
 		this.index = index;
 	}
 
+	/**
+	 * Devuelve el contenido actual.
+	 */
 	public String getContent() {
 		return content;
 	}
 
+	/**
+	 * Establece el contenido.
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
+	/**
+	 * Devuelve el nombre del archivo de datos.
+	 */
 	public String getFILENAME() {
 		return FILENAME;
 	}
 
+	/**
+	 * Devuelve el nombre del archivo serializado.
+	 */
 	public String getSERIAL_FILENAME() {
 		return SERIAL_FILENAME;
 	}

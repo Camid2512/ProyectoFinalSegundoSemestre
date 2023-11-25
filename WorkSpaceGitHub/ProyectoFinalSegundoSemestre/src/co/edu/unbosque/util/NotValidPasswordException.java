@@ -1,9 +1,20 @@
+/**
+ * Encargada de verificar la validez de las contraseñas
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
 package co.edu.unbosque.util;
 
+
+/**
+ * Encargada de verificar la validez de las contraseñas
+ */
 public class NotValidPasswordException extends Exception {
 
 	/**
-	 * 
+	 * Identificador de serialización para la clase.
 	 */
 	private static final long serialVersionUID = -7722503494210032280L;
 

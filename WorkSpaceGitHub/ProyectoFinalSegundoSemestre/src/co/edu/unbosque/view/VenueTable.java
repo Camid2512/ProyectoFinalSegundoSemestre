@@ -68,7 +68,7 @@ public class VenueTable extends JPanel {
 
 	private void tablePropierties() {
 		setLayout(new FlowLayout());
-		String[] titulos = { "Nombre de la sede", "Localidad", "NÃºmero de empleados" };
+		String[] titulos = { "Nombre de la sede", "Localidad", "Numero de empleados" };
 		model = new DefaultTableModel(titulos, 0);
 
 		table = new JTable(model) {

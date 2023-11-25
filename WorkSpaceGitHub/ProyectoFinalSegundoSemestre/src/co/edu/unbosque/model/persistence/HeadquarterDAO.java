@@ -1,9 +1,24 @@
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos HeadquarterDTO y gestiona su persistencia.
+ * Implementa operaciones para crear, leer, actualizar y eliminar objetos HeadquarterDTO en archivos y utiliza 
+ * serialización para almacenar y recuperar objetos.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
 package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.HeadquarterDTO;
 
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos HeadquarterDTO y
+ * gestiona su persistencia. Implementa operaciones para crear, leer, actualizar
+ * y eliminar objetos HeadquarterDTO en archivos y utiliza serialización para
+ * almacenar y recuperar objetos.
+ */
 public class HeadquarterDAO implements CRUDOperation {
 
 	private ArrayList<HeadquarterDTO> headquarterList;
@@ -27,6 +42,9 @@ public class HeadquarterDAO implements CRUDOperation {
 	public HeadquarterDAO() {
 		// TODO Auto-generated constructor stub
 		headquarterList = new ArrayList<HeadquarterDTO>();
+		/**
+		 * Lee los datos del archivo
+		 */
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
@@ -38,6 +56,9 @@ public class HeadquarterDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Crea una nueva entrada de apuesta a partir de los atributos proporcionados.
+	 */
 	@Override
 	public void create(String... attribs) {
 		// TODO Auto-generated method stub
@@ -56,6 +77,9 @@ public class HeadquarterDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Agrega un objeto de tipo BetDTO a la lista.
+	 */
 	@Override
 	public void create(Object obj) {
 		// TODO Auto-generated method stub
@@ -67,6 +91,9 @@ public class HeadquarterDAO implements CRUDOperation {
 
 	int index = 0;
 
+	/**
+	 * Recupera todas las datos registrados en la lista.
+	 */
 	@Override
 	public String readAll() {
 
@@ -82,6 +109,9 @@ public class HeadquarterDAO implements CRUDOperation {
 		return sb.toString();
 	}
 
+	/**
+	 * Actualiza la lista segun su indice con datos nuevos
+	 */
 	@Override
 	public boolean updateByIndex(int index, String... newData) {
 		// TODO Auto-generated method stub
@@ -106,6 +136,9 @@ public class HeadquarterDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista segun su indice.
+	 */
 	@Override
 	public boolean delete(int index) {
 		// TODO Auto-generated method stub
@@ -119,6 +152,9 @@ public class HeadquarterDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista según el objeto seleccionado
+	 */
 	@Override
 	public boolean delete(Object obj) {
 		// TODO Auto-generated method stub
@@ -133,6 +169,10 @@ public class HeadquarterDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Lee y carga la informacion de la lista desde un archivo de texto, si el
+	 * archivo está vacio no realiza ninguna opercacion
+	 */
 	@Override
 	public void readFromFile() {
 		// TODO Auto-generated method stub
@@ -155,6 +195,9 @@ public class HeadquarterDAO implements CRUDOperation {
 
 	String content = "";
 
+	/**
+	 * Escribe la información en un archivo de texto
+	 */
 	@Override
 	public void writeFile() {
 		// TODO Auto-generated method stub
@@ -168,40 +211,67 @@ public class HeadquarterDAO implements CRUDOperation {
 		FileHandler.openAndWriteFile(FILENAME, content);
 	}
 
+	/**
+	 * Escribe la lista de datos en un archivo serializable.
+	 */
 	@Override
 	public void writeSerializable() {
 		// TODO Auto-generated method stub
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, headquarterList);
 	}
 
+	/**
+	 * Obtiene la lista de sedes.
+	 */
 	public ArrayList<HeadquarterDTO> getHeadquarterList() {
 		return headquarterList;
 	}
 
+	/**
+	 * Establece la lista de sedes.
+	 */
 	public void setHeadquarterList(ArrayList<HeadquarterDTO> headquarterList) {
 		this.headquarterList = headquarterList;
 	}
 
+	/**
+	 * Obtiene el índice.
+	 */
 	public int getIndex() {
 		return index;
 	}
 
+	/**
+	 * Establece el índice.
+	 */
 	public void setIndex(int index) {
 		this.index = index;
 	}
 
+	/**
+	 * Obtiene el contenido.
+	 */
 	public String getContent() {
 		return content;
 	}
 
+	/**
+	 * Establece el contenido.
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
+	/**
+	 * Obtiene el nombre del archivo.
+	 */
 	public String getFILENAME() {
 		return FILENAME;
 	}
 
+	/**
+	 * Obtiene el nombre del archivo serializado.
+	 */
 	public String getSERIAL_FILENAME() {
 		return SERIAL_FILENAME;
 	}

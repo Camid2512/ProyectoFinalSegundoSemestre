@@ -1,9 +1,24 @@
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos GamblerDTO y gestiona su persistencia.
+ * Implementa operaciones para crear, leer, actualizar y eliminar objetos GamblerDTO en archivos y utiliza 
+ * serialización para almacenar y recuperar objetos.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
 package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.GamblerDTO;
 
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos GamblerDTO y
+ * gestiona su persistencia. Implementa operaciones para crear, leer, actualizar
+ * y eliminar objetos GamblerDTO en archivos y utiliza serialización para
+ * almacenar y recuperar objetos.
+ */
 public class GamblerDAO implements CRUDOperation {
 
 	private ArrayList<GamblerDTO> gamblerList;
@@ -26,10 +41,18 @@ public class GamblerDAO implements CRUDOperation {
 	 */
 	private final String SERIAL_FILENAME = "apostadoresserialized.dat";
 
+	/**
+	 * Constructor de la clase GamblerDAO que inicializa la lista de apuestas y los
+	 * nombres de archivos. También lee archivos si están disponibles y los asigna a
+	 * la lista de apuestas.
+	 */
 	public GamblerDAO() {
 		// TODO Auto-generated constructor stub
 
 		gamblerList = new ArrayList<GamblerDTO>();
+		/**
+		 * Lee los datos del archivo
+		 */
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
@@ -41,6 +64,9 @@ public class GamblerDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Crea una nueva entrada de apuesta a partir de los atributos proporcionados.
+	 */
 	@Override
 	public void create(String... attribs) {
 		// TODO Auto-generated method stub
@@ -60,6 +86,9 @@ public class GamblerDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Agrega un objeto de tipo BetDTO a la lista.
+	 */
 	@Override
 	public void create(Object obj) {
 		// TODO Auto-generated method stub
@@ -71,6 +100,9 @@ public class GamblerDAO implements CRUDOperation {
 
 	int index = 0;
 
+	/**
+	 * Recupera todas las datos registrados en la lista.
+	 */
 	@Override
 	public String readAll() {
 		// TODO Auto-generated method stub
@@ -84,6 +116,9 @@ public class GamblerDAO implements CRUDOperation {
 		return sb.toString();
 	}
 
+	/**
+	 * Actualiza la lista segun su indice con datos nuevos
+	 */
 	@Override
 	public boolean updateByIndex(int index, String... newData) {
 		// TODO Auto-generated method stub
@@ -111,6 +146,9 @@ public class GamblerDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista segun su indice.
+	 */
 	@Override
 	public boolean delete(int index) {
 		// TODO Auto-generated method stub
@@ -124,6 +162,9 @@ public class GamblerDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista según el objeto seleccionado
+	 */
 	@Override
 	public boolean delete(Object obj) {
 		// TODO Auto-generated method stub
@@ -138,6 +179,10 @@ public class GamblerDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Lee y carga la informacion de la lista desde un archivo de texto, si el
+	 * archivo está vacio no realiza ninguna opercacion
+	 */
 	@Override
 	public void readFromFile() {
 		// TODO Auto-generated method stub
@@ -161,6 +206,9 @@ public class GamblerDAO implements CRUDOperation {
 
 	String content = "";
 
+	/**
+	 * Escribe la información en un archivo de texto
+	 */
 	@Override
 	public void writeFile() {
 		// TODO Auto-generated method stub
@@ -177,6 +225,9 @@ public class GamblerDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Escribe la lista de datos en un archivo serializable.
+	 */
 	@Override
 	public void writeSerializable() {
 
@@ -186,34 +237,58 @@ public class GamblerDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Devuelve la lista de jugadores.
+	 */
 	public ArrayList<GamblerDTO> getGamblerList() {
 		return gamblerList;
 	}
 
+	/**
+	 * Establece la lista de jugadores.
+	 */
 	public void setGamblerList(ArrayList<GamblerDTO> gamblerList) {
 		this.gamblerList = gamblerList;
 	}
 
+	/**
+	 * Devuelve el nombre de archivo.
+	 */
 	public String getFILENAME() {
 		return FILENAME;
 	}
 
+	/**
+	 * Devuelve el nombre del archivo serializado.
+	 */
 	public String getSERIAL_FILENAME() {
 		return SERIAL_FILENAME;
 	}
 
+	/**
+	 * Devuelve el índice.
+	 */
 	public int getIndex() {
 		return index;
 	}
 
+	/**
+	 * Establece el índice.
+	 */
 	public void setIndex(int index) {
 		this.index = index;
 	}
 
+	/**
+	 * Devuelve el contenido.
+	 */
 	public String getContent() {
 		return content;
 	}
 
+	/**
+	 * Establece el contenido.
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}

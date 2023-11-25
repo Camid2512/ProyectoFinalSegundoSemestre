@@ -1,9 +1,19 @@
+/**
+ * Encargada de verificar la validez de los numeros
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
 package co.edu.unbosque.util;
 
+/**
+ * Encargada de verificar la validez de los numeros
+ */
 public class NumberNotValidException extends Exception {
 
 	/**
-	 * 
+	 * Identificador de serialización para la clase.
 	 */
 	private static final long serialVersionUID = 7387645943625430992L;
 

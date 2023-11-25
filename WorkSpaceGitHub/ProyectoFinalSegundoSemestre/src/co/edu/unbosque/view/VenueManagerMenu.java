@@ -1,4 +1,5 @@
 package co.edu.unbosque.view;
+
 /**
  * Clase VenueManagerMenu que representa la interfaz gráfica para la gestión de
  * lugares.
@@ -19,18 +20,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
-
 /**
  * Clase VenueManagerMenu que representa la interfaz gráfica para la gestión de
- * lugares.
- * Autor: SOFTPYLSA
- * Versión: 1.0
- * Fecha: 10/11/2023
+ * lugares. Autor: SOFTPYLSA Versión: 1.0 Fecha: 10/11/2023
  * 
  */
 public class VenueManagerMenu extends JFrame {
-
-	
 
 	/** SerialVersionUID para la serialización */
 	private static final long serialVersionUID = 4682807708706332707L;
@@ -109,7 +104,7 @@ public class VenueManagerMenu extends JFrame {
 		nameVenue.setOpaque(false);
 		nameVenue.setBorder(new EmptyBorder(15, 15, 15, 15));
 		nameVenue.setFont(new Font("Arial", 1, 50));
-		nameVenue.setForeground(Color.white);
+		nameVenue.setForeground(Color.black);
 		nameVenue.setEditable(false);
 		nameVenue.setHighlighter(null);
 		add(nameVenue);

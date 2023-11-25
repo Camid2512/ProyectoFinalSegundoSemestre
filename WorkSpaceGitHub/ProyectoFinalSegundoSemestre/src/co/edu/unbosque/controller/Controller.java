@@ -42,6 +42,7 @@ import co.edu.unbosque.util.NotValidNameException;
 import co.edu.unbosque.util.NotValidPasswordException;
 import co.edu.unbosque.util.NumberNotValidException;
 import co.edu.unbosque.util.SameDocumentException;
+import co.edu.unbosque.util.SameUserException;
 import co.edu.unbosque.view.BalotoCashier;
 import co.edu.unbosque.view.BalotoManager;
 import co.edu.unbosque.view.BalotoWindow;
@@ -3210,16 +3211,15 @@ public class Controller implements ActionListener {
 
 				}
 
-			} catch (SameDocumentException e) {
-				// TODO Auto-generated catch block
-				signWind.getUsuario().setText(null);
-				signWind.getPassword().setText(null);
-
 			} catch (NotValidPasswordException e) {
 				// TODO Auto-generated catch block
 				signWind.getUsuario().setText(null);
 				signWind.getPassword().setText(null);
 			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				signWind.getUsuario().setText(null);
+				signWind.getPassword().setText(null);
+			} catch (SameUserException e) {
 				// TODO Auto-generated catch block
 				signWind.getUsuario().setText(null);
 				signWind.getPassword().setText(null);
@@ -3261,7 +3261,7 @@ public class Controller implements ActionListener {
 					createVenueWin.setVisible(true);
 					managerCreationWin.setVisible(false);
 				}
-			} catch (SameDocumentException e) {
+			} catch (SameUserException e) {
 				// TODO Auto-generated catch block
 				managerCreationWin.getUser().setText("");
 				managerCreationWin.getPassword().setText("");
@@ -3326,15 +3326,15 @@ public class Controller implements ActionListener {
 					createCashier.setVisible(false);
 				}
 
-			} catch (SameDocumentException e) {
-				// TODO Auto-generated catch block
-				createCashier.getUser().setText("");
-				createCashier.getPassword().setText("");
 			} catch (NotValidPasswordException e) {
 				// TODO Auto-generated catch block
 				createCashier.getUser().setText("");
 				createCashier.getPassword().setText("");
 			} catch (EmptyDataException e) {
+				// TODO Auto-generated catch block
+				createCashier.getUser().setText("");
+				createCashier.getPassword().setText("");
+			} catch (SameUserException e) {
 				// TODO Auto-generated catch block
 				createCashier.getUser().setText("");
 				createCashier.getPassword().setText("");
@@ -3823,10 +3823,8 @@ public class Controller implements ActionListener {
 				numNotValid(document);
 				emptyData(document);
 				gamingVenue = createGamblerWinOwn.getComboLocation().getSelectedItem().toString();
-				checkName(gamingVenue);
 				emptyData(gamingVenue);
 				adress = createGamblerWinOwn.getAdress().getText();
-				checkName(adress);
 				emptyData(adress);
 				phoneNumber = createGamblerWinOwn.getPhoneNumber().getText();
 				numNotValid(phoneNumber);
@@ -3884,7 +3882,6 @@ public class Controller implements ActionListener {
 				numNotValid(document);
 				emptyData(document);
 				checkDuplicatedDocument(document);
-				checkName(gamingVenue);
 				emptyData(gamingVenue);
 				adress = createGambManager.getAdress().getText();
 				phoneNumber = createGambManager.getPhoneNumber().getText();
@@ -4010,6 +4007,8 @@ public class Controller implements ActionListener {
 		}
 
 		gamDAO.updateByIndex(index, fullName, document, gamingVenue, addres, phoneNumber);
+
+		JOptionPane.showMessageDialog(gamUpdateWinOwn, "ACTUALIZADO CON EXITO");
 
 	}
 
@@ -5501,7 +5500,7 @@ public class Controller implements ActionListener {
 			String direccion = gamDAO.getGamblerList().get(i).getAddres();
 			long num = gamDAO.getGamblerList().get(i).getPhoneNumber();
 
-			Object[] data = { name, documento, num, sede, direccion, num };
+			Object[] data = { name, documento, sede, direccion, num };
 			showGamOwn.getTablePanel().getModel().addRow(data);
 
 		}
@@ -6564,9 +6563,11 @@ public class Controller implements ActionListener {
 
 	/**
 	 * Funcion para revisar usuarios repetidos
+	 * 
+	 * @throws SameUserException
 	 */
 
-	public boolean sameUserException(String user) throws SameDocumentException {
+	public boolean sameUserException(String user) throws SameUserException {
 
 		boolean check = true;
 
@@ -6608,6 +6609,7 @@ public class Controller implements ActionListener {
 		if (cont > 0) {
 			JOptionPane.showMessageDialog(logWind, "USUARIO YA EXISTENTE, INTENTELO DE NUEVO", "EXCEPTION", 0);
 			check = false;
+			throw new SameUserException();
 		} else if (cont == 0) {
 
 			check = true;

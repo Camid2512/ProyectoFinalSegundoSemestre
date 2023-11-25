@@ -1,3 +1,12 @@
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos BetPlayDTO y gestiona su persistencia.
+ * Implementa operaciones para crear, leer, actualizar y eliminar objetos BetPlayDTO en archivos y utiliza 
+ * serialización para almacenar y recuperar objetos.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
 package co.edu.unbosque.model.persistence;
 
 import java.io.File;
@@ -7,6 +16,12 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.BetPlayDTO;
 
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos BetPlayDTO y
+ * gestiona su persistencia. Implementa operaciones para crear, leer, actualizar
+ * y eliminar objetos BetPlayDTO en archivos y utiliza serialización para
+ * almacenar y recuperar objetos.
+ */
 public class BetPlayDAO implements CRUDOperation {
 
 	private ArrayList<BetPlayDTO> betPlayList;
@@ -28,12 +43,20 @@ public class BetPlayDAO implements CRUDOperation {
 	 */
 	private final String SERIAL_FILENAME;
 
+	/**
+	 * Constructor de la clase BetPlayDAO que inicializa la lista de apuestas y los
+	 * nombres de archivos. También lee archivos si están disponibles y los asigna a
+	 * la lista de apuestas.
+	 */
 	public BetPlayDAO() {
 		// TODO Auto-generated constructor stub
 
 		betPlayList = new ArrayList<BetPlayDTO>();
 		FILENAME = "apuestas-betplay.dat";
 		SERIAL_FILENAME = "apuestas-betplayserializable.dat";
+		/**
+		 * Lee los datos del archivo
+		 */
 		readFromFile();
 		if (FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME) != null) {
 			Object temp = FileHandler.serializableOpenAndReadFile(SERIAL_FILENAME);
@@ -46,6 +69,9 @@ public class BetPlayDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Crea una nueva entrada de apuesta a partir de los atributos proporcionados.
+	 */
 	@Override
 	public void create(String... attribs) {
 		// TODO Auto-generated method stub
@@ -81,6 +107,9 @@ public class BetPlayDAO implements CRUDOperation {
 		createListMatches();
 	}
 
+	/**
+	 * Agrega un objeto de tipo BetPlayDTO a la lista.
+	 */
 	@Override
 	public void create(Object obj) {
 		// TODO Auto-generated method stub
@@ -92,6 +121,9 @@ public class BetPlayDAO implements CRUDOperation {
 
 	int index = 0;
 
+	/**
+	 * Recupera todas las datos registrados en la lista.
+	 */
 	@Override
 	public String readAll() {
 		// TODO Auto-generated method stub
@@ -105,6 +137,9 @@ public class BetPlayDAO implements CRUDOperation {
 		return sb.toString();
 	}
 
+	/**
+	 * Actualiza la lista segun su indice con datos nuevos
+	 */
 	@Override
 	public boolean updateByIndex(int index, String... newData) {
 		if (index < 0 || index >= betPlayList.size()) {
@@ -177,6 +212,9 @@ public class BetPlayDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista segun su indice.
+	 */
 	@Override
 	public boolean delete(int index) {
 		// TODO Auto-generated method stub
@@ -190,6 +228,9 @@ public class BetPlayDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista según el objeto seleccionado
+	 */
 	@Override
 	public boolean delete(Object obj) {
 		// TODO Auto-generated method stub
@@ -204,6 +245,10 @@ public class BetPlayDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Lee y carga la informacion de la lista desde un archivo de texto, si el
+	 * archivo está vacio no realiza ninguna opercacion
+	 */
 	@Override
 	public void readFromFile() {
 		// TODO Auto-generated method stub
@@ -239,14 +284,17 @@ public class BetPlayDAO implements CRUDOperation {
 			int match13 = Integer.parseInt(cols[21]);
 			int match14 = Integer.parseInt(cols[22]);
 
-			betPlayList.add(new BetPlayDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, match1, match2,
-					match3, match4, match5, match6, match7, match8, match9, match10, match11, match12, match13,
-					match14));
+			betPlayList.add(new BetPlayDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document,
+					match1, match2, match3, match4, match5, match6, match7, match8, match9, match10, match11, match12,
+					match13, match14));
 		}
 	}
 
 	String content = "";
 
+	/**
+	 * Escribe la información en un archivo de texto
+	 */
 	@Override
 	public void writeFile() {
 		// TODO Auto-generated method stub
@@ -282,12 +330,18 @@ public class BetPlayDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Escribe la lista de datos en un archivo serializable.
+	 */
 	@Override
 	public void writeSerializable() {
 		// TODO Auto-generated method stub
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, betPlayList);
 	}
 
+	/**
+	 * Crea la lista de partidos
+	 */
 	public void createListMatches() {
 		File myFile;
 		PrintWriter fileWriter;
@@ -312,34 +366,58 @@ public class BetPlayDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Devuelve la lista de apuestas de tipo BetPlay.
+	 */
 	public ArrayList<BetPlayDTO> getBetPlayList() {
 		return betPlayList;
 	}
 
+	/**
+	 * Establece la lista de apuestas de tipo BetPlay.
+	 */
 	public void setBetPlayList(ArrayList<BetPlayDTO> betPlayList) {
 		this.betPlayList = betPlayList;
 	}
 
+	/**
+	 * Devuelve el índice actual.
+	 */
 	public int getIndex() {
 		return index;
 	}
 
+	/**
+	 * Establece el índice actual.
+	 */
 	public void setIndex(int index) {
 		this.index = index;
 	}
 
+	/**
+	 * Devuelve el contenido actual.
+	 */
 	public String getContent() {
 		return content;
 	}
 
+	/**
+	 * Establece el contenido.
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
+	/**
+	 * Devuelve el nombre del archivo de datos.
+	 */
 	public String getFILENAME() {
 		return FILENAME;
 	}
 
+	/**
+	 * Devuelve el nombre del archivo serializado.
+	 */
 	public String getSERIAL_FILENAME() {
 		return SERIAL_FILENAME;
 	}

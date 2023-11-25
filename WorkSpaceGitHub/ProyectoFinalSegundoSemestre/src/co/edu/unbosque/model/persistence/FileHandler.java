@@ -1,10 +1,9 @@
-package co.edu.unbosque.model.persistence;
-
 /** 
  * Esta es la clase File handler es el manejo de archivos
  * @author Cristhian Diaz & Santiago Rueda
  * @version 1.0
  * @since 28/10/2023*/
+package co.edu.unbosque.model.persistence;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +15,13 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+/**
+ * Esta es la clase File handler es el manejo de archivos
+ * 
+ * @author Cristhian Diaz & Santiago Rueda
+ * @version 1.0
+ * @since 28/10/2023
+ */
 public class FileHandler {
 
 	/**
@@ -209,58 +215,100 @@ public class FileHandler {
 		}
 	}
 
+	/**
+	 * Devuelve el lector de archivos.
+	 */
 	public static Scanner getFileReader() {
 		return fileReader;
 	}
 
+	/**
+	 * Establece el lector de archivos.
+	 */
 	public static void setFileReader(Scanner fileReader) {
 		FileHandler.fileReader = fileReader;
 	}
 
+	/**
+	 * Devuelve el escritor de archivos.
+	 */
 	public static PrintWriter getFileWriter() {
 		return fileWriter;
 	}
 
+	/**
+	 * Establece el escritor de archivos.
+	 */
 	public static void setFileWriter(PrintWriter fileWriter) {
 		FileHandler.fileWriter = fileWriter;
 	}
 
+	/**
+	 * Devuelve el archivo.
+	 */
 	public static File getMyFile() {
 		return myFile;
 	}
 
+	/**
+	 * Establece el archivo.
+	 */
 	public static void setMyFile(File myFile) {
 		FileHandler.myFile = myFile;
 	}
 
+	/**
+	 * Devuelve el flujo de salida de archivos.
+	 */
 	public static FileOutputStream getFos() {
 		return fos;
 	}
 
+	/**
+	 * Establece el flujo de salida de archivos.
+	 */
 	public static void setFos(FileOutputStream fos) {
 		FileHandler.fos = fos;
 	}
 
+	/**
+	 * Devuelve el objeto de flujo de entrada.
+	 */
 	public static ObjectInputStream getOis() {
 		return ois;
 	}
 
+	/**
+	 * Establece el objeto de flujo de entrada.
+	 */
 	public static void setOis(ObjectInputStream ois) {
 		FileHandler.ois = ois;
 	}
 
+	/**
+	 * Devuelve el flujo de entrada de archivos.
+	 */
 	public static FileInputStream getFis() {
 		return fis;
 	}
 
+	/**
+	 * Establece el flujo de entrada de archivos.
+	 */
 	public static void setFis(FileInputStream fis) {
 		FileHandler.fis = fis;
 	}
 
+	/**
+	 * Devuelve el objeto de flujo de salida.
+	 */
 	public static ObjectOutputStream getOos() {
 		return oos;
 	}
 
+	/**
+	 * Establece el objeto de flujo de salida.
+	 */
 	public static void setOos(ObjectOutputStream oos) {
 		FileHandler.oos = oos;
 	}

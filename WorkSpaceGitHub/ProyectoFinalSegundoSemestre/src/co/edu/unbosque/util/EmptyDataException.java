@@ -1,9 +1,19 @@
+/**
+ * Encargada de verificar que no haya datos vacios
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
 package co.edu.unbosque.util;
 
+/**
+ * Encargada de verificar que no haya datos vacios
+ */
 public class EmptyDataException extends Exception {
 
 	/**
-	 * 
+	 * Identificador de serialización para la clase.
 	 */
 	private static final long serialVersionUID = 4358355654793907189L;
 

@@ -1,9 +1,24 @@
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos LoteryBetDTO y gestiona su persistencia.
+ * Implementa operaciones para crear, leer, actualizar y eliminar objetos LoteryBetDTO en archivos y utiliza 
+ * serialización para almacenar y recuperar objetos.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
 package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.LoteryBetDTO;
 
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos LoteryBetDTO y
+ * gestiona su persistencia. Implementa operaciones para crear, leer, actualizar
+ * y eliminar objetos LoteryBetDTO en archivos y utiliza serialización para
+ * almacenar y recuperar objetos.
+ */
 public class LoteryBetDAO implements CRUDOperation {
 
 	private ArrayList<LoteryBetDTO> loteryBetList;
@@ -26,6 +41,11 @@ public class LoteryBetDAO implements CRUDOperation {
 	 */
 	private final String SERIAL_FILENAME;
 
+	/**
+	 * Constructor de la clase LoteryBetDAO que inicializa la lista de apuestas y
+	 * los nombres de archivos. También lee archivos si están disponibles y los
+	 * asigna a la lista de apuestas.
+	 */
 	public LoteryBetDAO() {
 		// TODO Auto-generated constructor stub
 
@@ -44,6 +64,9 @@ public class LoteryBetDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Crea una nueva entrada de apuesta a partir de los atributos proporcionados.
+	 */
 	@Override
 	public void create(String... attribs) {
 		// TODO Auto-generated method stub
@@ -68,6 +91,9 @@ public class LoteryBetDAO implements CRUDOperation {
 		writeSerializable();
 	}
 
+	/**
+	 * Agrega un objeto de tipo BetDTO a la lista.
+	 */
 	@Override
 	public void create(Object obj) {
 		// TODO Auto-generated method stub
@@ -78,6 +104,9 @@ public class LoteryBetDAO implements CRUDOperation {
 
 	int index = 0;
 
+	/**
+	 * Recupera todas las datos registrados en la lista.
+	 */
 	@Override
 	public String readAll() {
 		// TODO Auto-generated method stub
@@ -91,6 +120,9 @@ public class LoteryBetDAO implements CRUDOperation {
 		return sb.toString();
 	}
 
+	/**
+	 * Actualiza la lista segun su indice con datos nuevos
+	 */
 	@Override
 	public boolean updateByIndex(int index, String... newData) {
 		if (index < 0 || index >= loteryBetList.size()) {
@@ -129,6 +161,9 @@ public class LoteryBetDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista segun su indice.
+	 */
 	@Override
 	public boolean delete(int index) {
 		// TODO Auto-generated method stub
@@ -142,6 +177,9 @@ public class LoteryBetDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista según el objeto seleccionado
+	 */
 	@Override
 	public boolean delete(Object obj) {
 		// TODO Auto-generated method stub
@@ -156,6 +194,10 @@ public class LoteryBetDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Lee y carga la informacion de la lista desde un archivo de texto, si el
+	 * archivo está vacio no realiza ninguna opercacion
+	 */
 	@Override
 	public void readFromFile() {
 		// TODO Auto-generated method stub
@@ -180,14 +222,17 @@ public class LoteryBetDAO implements CRUDOperation {
 			int number = Integer.parseInt(cols[10]);
 			int serialNum = Integer.parseInt(cols[11]);
 
-			loteryBetList.add(new LoteryBetDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName,
-					number, serialNum));
+			loteryBetList.add(new LoteryBetDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName,
+					document, loteryName, number, serialNum));
 
 		}
 	}
 
 	String content = "";
 
+	/**
+	 * Escribe la información en un archivo de texto
+	 */
 	@Override
 	public void writeFile() {
 		// TODO Auto-generated method stub
@@ -212,40 +257,67 @@ public class LoteryBetDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Escribe la lista de datos en un archivo serializable.
+	 */
 	@Override
 	public void writeSerializable() {
 		// TODO Auto-generated method stub
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, loteryBetList);
 	}
 
+	/**
+	 * Obtiene la lista de apuestas de lotería.
+	 */
 	public ArrayList<LoteryBetDTO> getLoteryBetList() {
 		return loteryBetList;
 	}
 
+	/**
+	 * Establece la lista de apuestas de lotería.
+	 */
 	public void setLoteryBetList(ArrayList<LoteryBetDTO> loteryBetList) {
 		this.loteryBetList = loteryBetList;
 	}
 
+	/**
+	 * Obtiene el índice.
+	 */
 	public int getIndex() {
 		return index;
 	}
 
+	/**
+	 * Establece el índice.
+	 */
 	public void setIndex(int index) {
 		this.index = index;
 	}
 
+	/**
+	 * Obtiene el contenido.
+	 */
 	public String getContent() {
 		return content;
 	}
 
+	/**
+	 * Establece el contenido.
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
+	/**
+	 * Obtiene el nombre del archivo.
+	 */
 	public String getFILENAME() {
 		return FILENAME;
 	}
 
+	/**
+	 * Obtiene el nombre del archivo serializado.
+	 */
 	public String getSERIAL_FILENAME() {
 		return SERIAL_FILENAME;
 	}

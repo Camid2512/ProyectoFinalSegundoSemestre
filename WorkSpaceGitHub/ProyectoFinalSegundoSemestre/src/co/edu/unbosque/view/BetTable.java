@@ -1,4 +1,5 @@
 package co.edu.unbosque.view;
+
 /**
  * Ventana para gestionar tabla apuestas betPlay
  * 
@@ -14,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  * Ventana para gestionar tabla apuestas betPlay
@@ -75,7 +75,7 @@ public class BetTable extends JPanel {
 
 	private void tablePropierties() {
 		setLayout(new FlowLayout());
-		String[] titulos = { "Dia", "Mes", "AÃ±o", "Valor apostado", "Sede donde se aposto", "Documento apostador",
+		String[] titulos = { "Dia", "Mes", "Anio", "Valor apostado", "Sede donde se aposto", "Documento apostador",
 				"Juego donde aposto" };
 		model = new DefaultTableModel(titulos, 0);
 

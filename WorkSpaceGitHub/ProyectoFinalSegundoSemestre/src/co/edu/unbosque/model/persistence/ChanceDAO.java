@@ -1,9 +1,25 @@
+/**
+  * Esta clase proporciona funcionalidades CRUD para objetos ChanceDTO y gestiona su persistencia.
+ * Implementa operaciones para crear, leer, actualizar y eliminar objetos ChanceDTO en archivos y utiliza 
+ * serialización para almacenar y recuperar objetos.
+ * 
+ * @author SOFTPYLSA
+ * @version 1.0
+ * @since 25/09/2023
+ */
+
 package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
 import co.edu.unbosque.model.ChanceDTO;
 
+/**
+ * Esta clase proporciona funcionalidades CRUD para objetos ChanceDTO y gestiona
+ * su persistencia. Implementa operaciones para crear, leer, actualizar y
+ * eliminar objetos ChanceDTO en archivos y utiliza serialización para almacenar
+ * y recuperar objetos.
+ */
 public class ChanceDAO implements CRUDOperation {
 
 	private ArrayList<ChanceDTO> chanceList;
@@ -25,6 +41,11 @@ public class ChanceDAO implements CRUDOperation {
 	 */
 	private final String SERIAL_FILENAME;
 
+	/**
+	 * Constructor de la clase ChanceDAO que inicializa la lista de apuestas y los
+	 * nombres de archivos. También lee archivos si están disponibles y los asigna a
+	 * la lista de apuestas.
+	 */
 	public ChanceDAO() {
 		// TODO Auto-generated constructor stub
 
@@ -43,6 +64,9 @@ public class ChanceDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Crea una nueva entrada de apuesta a partir de los atributos proporcionados.
+	 */
 	@Override
 	public void create(String... attribs) {
 		// TODO Auto-generated method stub
@@ -65,6 +89,9 @@ public class ChanceDAO implements CRUDOperation {
 		writeSerializable();
 	}
 
+	/**
+	 * Agrega un objeto de tipo BetDTO a la lista.
+	 */
 	@Override
 	public void create(Object obj) {
 		// TODO Auto-generated method stub
@@ -75,6 +102,9 @@ public class ChanceDAO implements CRUDOperation {
 
 	int index = 0;
 
+	/**
+	 * Recupera todas las datos registrados en la lista.
+	 */
 	@Override
 	public String readAll() {
 		// TODO Auto-generated method stub
@@ -88,6 +118,9 @@ public class ChanceDAO implements CRUDOperation {
 		return sb.toString();
 	}
 
+	/**
+	 * Actualiza la lista segun su indice con datos nuevos
+	 */
 	@Override
 	public boolean updateByIndex(int index, String... newData) {
 		if (index < 0 || index >= chanceList.size()) {
@@ -123,6 +156,9 @@ public class ChanceDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista segun su indice.
+	 */
 	@Override
 	public boolean delete(int index) {
 		// TODO Auto-generated method stub
@@ -136,6 +172,9 @@ public class ChanceDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Elimina un dato de la lista según el objeto seleccionado
+	 */
 	@Override
 	public boolean delete(Object obj) {
 		// TODO Auto-generated method stub
@@ -150,6 +189,10 @@ public class ChanceDAO implements CRUDOperation {
 		}
 	}
 
+	/**
+	 * Lee y carga la informacion de la lista desde un archivo de texto, si el
+	 * archivo está vacio no realiza ninguna opercacion
+	 */
 	@Override
 	public void readFromFile() {
 		// TODO Auto-generated method stub
@@ -173,13 +216,17 @@ public class ChanceDAO implements CRUDOperation {
 			String loteryName = cols[9];
 			int numbers = Integer.parseInt(cols[10]);
 
-			chanceList.add(new ChanceDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document, loteryName, numbers));
+			chanceList.add(new ChanceDTO(day, month, year, hour, minute, second, betPlaced, headQuarterName, document,
+					loteryName, numbers));
 
 		}
 	}
 
 	String content = "";
 
+	/**
+	 * Escribe la información en un archivo de texto
+	 */
 	@Override
 	public void writeFile() {
 		// TODO Auto-generated method stub
@@ -203,40 +250,67 @@ public class ChanceDAO implements CRUDOperation {
 
 	}
 
+	/**
+	 * Escribe la lista de datos en un archivo serializable.
+	 */
 	@Override
 	public void writeSerializable() {
 		// TODO Auto-generated method stub
 		FileHandler.serializableOpenAndWriteFile(SERIAL_FILENAME, chanceList);
 	}
 
+	/**
+	 * Devuelve la lista de oportunidades de tipo Chance.
+	 */
 	public ArrayList<ChanceDTO> getChanceList() {
 		return chanceList;
 	}
 
+	/**
+	 * Establece la lista de oportunidades de tipo Chance.
+	 */
 	public void setChanceList(ArrayList<ChanceDTO> chanceList) {
 		this.chanceList = chanceList;
 	}
 
+	/**
+	 * Devuelve el índice actual.
+	 */
 	public int getIndex() {
 		return index;
 	}
 
+	/**
+	 * Establece el índice actual.
+	 */
 	public void setIndex(int index) {
 		this.index = index;
 	}
 
+	/**
+	 * Devuelve el contenido actual.
+	 */
 	public String getContent() {
 		return content;
 	}
 
+	/**
+	 * Establece el contenido.
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
+	/**
+	 * Devuelve el nombre del archivo de datos.
+	 */
 	public String getFILENAME() {
 		return FILENAME;
 	}
 
+	/**
+	 * Devuelve el nombre del archivo serializado.
+	 */
 	public String getSERIAL_FILENAME() {
 		return SERIAL_FILENAME;
 	}
