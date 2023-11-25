@@ -59,6 +59,8 @@ public class BetManagmentByCashierWindow extends JFrame {
 	 * @since 10/11/2023
 	 */
 
+	
+	/** Contructor de la clase e incializador de la ventana */
 	public BetManagmentByCashierWindow() {
 		// TODO Auto-generated constructor stub
 

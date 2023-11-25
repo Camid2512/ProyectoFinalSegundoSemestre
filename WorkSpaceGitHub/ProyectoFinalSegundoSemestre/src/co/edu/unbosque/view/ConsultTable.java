@@ -36,6 +36,8 @@ public class ConsultTable extends JPanel {
 	private JTable table;
 	private DefaultTableModel model;
 
+	
+	/** Contructor de la clase e incializador de la ventana */
 	public ConsultTable() {
 		tablePropierties();
 	}

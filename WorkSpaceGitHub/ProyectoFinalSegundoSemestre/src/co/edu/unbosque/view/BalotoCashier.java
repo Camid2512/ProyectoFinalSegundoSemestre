@@ -50,6 +50,7 @@ public class BalotoCashier extends JFrame {
 	/** Botón para avanzar en la interfaz. */
 	private JButton next;
 
+	/** Contructor de la clase e incializador de la ventana */
 	public BalotoCashier() {
 
 		setSize(1280, 720);

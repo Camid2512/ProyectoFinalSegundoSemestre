@@ -55,6 +55,8 @@ public class CashierMainMenu extends JFrame {
 
 	private JLabel mainImage;
 
+	
+	/** Contructor de la clase e incializador de la ventana */
 	public CashierMainMenu() {
 		// TODO Auto-generated constructor stub
 		setSize(1280, 720);

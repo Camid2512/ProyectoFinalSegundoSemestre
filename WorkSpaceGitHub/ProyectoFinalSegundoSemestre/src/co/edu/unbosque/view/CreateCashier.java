@@ -1,4 +1,5 @@
 package co.edu.unbosque.view;
+
 /**
  * 
  * Clase que permite crear cajero
@@ -152,54 +153,93 @@ public class CreateCashier extends JFrame {
 
 	}
 
+	/**
+	 * Obtiene el botón de salida.
+	 */
 	public JButton getExit() {
 		return exit;
 	}
 
+	/**
+	 * Establece el botón de salida.
+	 */
 	public void setExit(JButton exit) {
 		this.exit = exit;
 	}
 
+	/**
+	 * Obtiene el botón de retroceso.
+	 */
 	public JButton getBack() {
 		return back;
 	}
 
+	/**
+	 * Establece el botón de retroceso.
+	 */
 	public void setBack(JButton back) {
 		this.back = back;
 	}
 
+	/**
+	 * Obtiene el botón de creación de cuenta.
+	 */
 	public JButton getCreateAccount() {
 		return createAccount;
 	}
 
+	/**
+	 * Establece el botón de creación de cuenta.
+	 */
 	public void setCreateAccount(JButton createAccount) {
 		this.createAccount = createAccount;
 	}
 
+	/**
+	 * Obtiene la imagen principal.
+	 */
 	public JLabel getMainImage() {
 		return mainImage;
 	}
 
+	/**
+	 * Establece la imagen principal.
+	 */
 	public void setMainImage(JLabel mainImage) {
 		this.mainImage = mainImage;
 	}
 
+	/**
+	 * Obtiene el campo de texto de usuario.
+	 */
 	public JTextField getUser() {
 		return user;
 	}
 
+	/**
+	 * Establece el campo de texto de usuario.
+	 */
 	public void setUser(JTextField user) {
 		this.user = user;
 	}
 
+	/**
+	 * Obtiene el campo de texto de contraseña.
+	 */
 	public JTextField getPassword() {
 		return password;
 	}
 
+	/**
+	 * Establece el campo de texto de contraseña.
+	 */
 	public void setPassword(JTextField password) {
 		this.password = password;
 	}
 
+	/**
+	 * Obtiene el serialVersion.
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

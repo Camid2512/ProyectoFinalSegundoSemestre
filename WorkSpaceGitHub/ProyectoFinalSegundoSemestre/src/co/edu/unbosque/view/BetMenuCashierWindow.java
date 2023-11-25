@@ -17,10 +17,12 @@ import javax.swing.JLabel;
 
 /**
  * Clase que representa la ventana del menú de apuestas para el cajero.
- * @author Cristhian Diaz 
+ * 
+ * @author Cristhian Diaz
  * @author Santiago Rueda
  * @version 1.0
- * @since 10/11/2023*/
+ * @since 10/11/2023
+ */
 public class BetMenuCashierWindow extends JFrame {
 
 	/**
@@ -38,6 +40,9 @@ public class BetMenuCashierWindow extends JFrame {
 	 */
 	private JButton exit, back, loteria, betPlay, superAstro, chance, baloto;
 
+	/**
+	 * Contructor e incializador de la ventana
+	 */
 	public BetMenuCashierWindow() {
 		// TODO Auto-generated constructor stub
 

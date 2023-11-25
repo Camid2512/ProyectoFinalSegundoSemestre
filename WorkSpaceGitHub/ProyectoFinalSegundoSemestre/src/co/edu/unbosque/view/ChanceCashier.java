@@ -54,7 +54,7 @@ public class ChanceCashier extends JFrame {
 	private JLabel mainImage;
 
 	/**
-	 * Constructor de la clase ChanceManager. Configura la ventana y sus
+	 * Constructor de la clase ChanceCashier. Configura la ventana y sus
 	 * componentes.
 	 */
 	public ChanceCashier() {

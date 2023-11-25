@@ -39,6 +39,9 @@ public class HeadquarterDAO implements CRUDOperation {
 	 */
 	private final String SERIAL_FILENAME = "headquarterserialized.dat";
 
+	/**
+	 * Constructor de la clase HeadquarterDAO
+	 */
 	public HeadquarterDAO() {
 		// TODO Auto-generated constructor stub
 		headquarterList = new ArrayList<HeadquarterDTO>();

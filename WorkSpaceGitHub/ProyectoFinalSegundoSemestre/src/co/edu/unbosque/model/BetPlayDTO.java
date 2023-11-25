@@ -98,134 +98,204 @@ public class BetPlayDTO extends BetDTO {
 		this.match14 = match14;
 	}
 
-	/** Getter y Setter para match1 */
+	/**
+	 * Obtiene el valor del partido 1.
+	 */
 	public int getMatch1() {
 		return match1;
 	}
 
+	/**
+	 * Establece el valor del partido 1.
+	 */
 	public void setMatch1(int match1) {
 		this.match1 = match1;
 	}
 
-	/** Getter y Setter para match2 */
+	/**
+	 * Obtiene el valor del partido 2.
+	 */
 	public int getMatch2() {
 		return match2;
 	}
 
+	/**
+	 * Establece el valor del partido 2.
+	 */
 	public void setMatch2(int match2) {
 		this.match2 = match2;
 	}
 
-	/** Getter y Setter para match3 */
+	/**
+	 * Obtiene el valor del partido 3.
+	 */
 	public int getMatch3() {
 		return match3;
 	}
 
+	/**
+	 * Establece el valor del partido 3.
+	 */
 	public void setMatch3(int match3) {
 		this.match3 = match3;
 	}
 
-	/** Getter y Setter para match4 */
+	/**
+	 * Obtiene el valor del partido 4.
+	 */
 	public int getMatch4() {
 		return match4;
 	}
 
+	/**
+	 * Establece el valor del partido 4.
+	 */
 	public void setMatch4(int match4) {
 		this.match4 = match4;
 	}
 
-	/** Getter y Setter para match5 */
+	/**
+	 * Obtiene el valor del partido 5.
+	 */
 	public int getMatch5() {
 		return match5;
 	}
 
+	/**
+	 * Establece el valor del partido 5.
+	 */
 	public void setMatch5(int match5) {
 		this.match5 = match5;
 	}
 
-	/** Getter y Setter para match6 */
+	/**
+	 * Obtiene el valor del partido 6.
+	 */
 	public int getMatch6() {
 		return match6;
 	}
 
+	/**
+	 * Establece el valor del partido 6.
+	 */
 	public void setMatch6(int match6) {
 		this.match6 = match6;
 	}
 
-	/** Getter y Setter para match7 */
+	/**
+	 * Obtiene el valor del partido 7.
+	 */
 	public int getMatch7() {
 		return match7;
 	}
 
+	/**
+	 * Establece el valor del partido 7.
+	 */
 	public void setMatch7(int match7) {
 		this.match7 = match7;
 	}
 
-	/** Getter y Setter para match8 */
+	/**
+	 * Obtiene el valor del partido 8.
+	 */
 	public int getMatch8() {
 		return match8;
 	}
 
+	/**
+	 * Establece el valor del partido 8.
+	 */
 	public void setMatch8(int match8) {
 		this.match8 = match8;
 	}
 
-	/** Getter y Setter para match9 */
+	/**
+	 * Obtiene el valor del partido 9.
+	 */
 	public int getMatch9() {
 		return match9;
 	}
 
+	/**
+	 * Establece el valor del partido 9.
+	 */
 	public void setMatch9(int match9) {
 		this.match9 = match9;
 	}
 
-	/** Getter y Setter para match10 */
+	/**
+	 * Obtiene el valor del partido 10.
+	 */
 	public int getMatch10() {
 		return match10;
 	}
 
+	/**
+	 * Establece el valor del partido 10.
+	 */
 	public void setMatch10(int match10) {
 		this.match10 = match10;
 	}
 
-	/** Getter y Setter para match11 */
+	/**
+	 * Obtiene el valor del partido 11.
+	 */
 	public int getMatch11() {
 		return match11;
 	}
 
+	/**
+	 * Establece el valor del partido 11.
+	 */
 	public void setMatch11(int match11) {
 		this.match11 = match11;
 	}
 
-	/** Getter y Setter para match12 */
+	/**
+	 * Obtiene el valor del partido 12.
+	 */
 	public int getMatch12() {
 		return match12;
 	}
 
+	/**
+	 * Establece el valor del partido 12.
+	 */
 	public void setMatch12(int match12) {
 		this.match12 = match12;
 	}
 
-	/** Getter y Setter para match13 */
+	/**
+	 * Obtiene el valor del partido 13.
+	 */
 	public int getMatch13() {
 		return match13;
 	}
 
+	/**
+	 * Establece el valor del partido 13.
+	 */
 	public void setMatch13(int match13) {
 		this.match13 = match13;
 	}
 
-	/** Getter y Setter para match14 */
+	/**
+	 * Obtiene el valor del partido 14.
+	 */
 	public int getMatch14() {
 		return match14;
 	}
 
+	/**
+	 * Establece el valor del partido 14.
+	 */
 	public void setMatch14(int match14) {
 		this.match14 = match14;
 	}
 
 	/**
-	 * Método para obtener el valor de serialVersionUID.
+	 * Obtiene el número de serie de versión.
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
